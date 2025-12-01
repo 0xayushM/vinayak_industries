@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-1">
             <Image
-              src="/logo/logo.png"
+              src="/logo/logo1.png"
               alt="Vinayak Industries Logo"
               width={120}
               height={60}
