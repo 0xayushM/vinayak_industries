@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -13,6 +14,20 @@ export default function AboutPage() {
     "Management Team",
     "Infrastructure"
   ];
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
   const infrastructureImages = [
     "/images/infrastructure/Vinayak-Technoplast1.jpg",
@@ -43,7 +58,7 @@ export default function AboutPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden">
+      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -54,14 +69,25 @@ export default function AboutPage() {
             priority
           />
         </div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+        <motion.div 
+          className="max-w-7xl mx-auto relative z-10 w-full md:py-32"
+          initial="initial"
+          animate="animate"
+          variants={staggerContainer}
+        >
+          <motion.h1 
+            className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            variants={fadeInUp}
+          >
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Vinayak Technoplast</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-3xl leading-relaxed"
+            variants={fadeInUp}
+          >
             Specialising in design, mould development and moulding solutions under one roof.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Tabs Navigation */}
@@ -89,7 +115,11 @@ export default function AboutPage() {
       <div className="min-h-screen">
         {/* Tab 1: Who We Are */}
         {activeTab === 0 && (
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             {/* Who We Are */}
             <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -251,11 +281,16 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-          </div>
+          </motion.div>
         )}
 
         {/* Tab 2: Management Team */}
         {activeTab === 1 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
           <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Management Team</h2>
@@ -273,10 +308,7 @@ export default function AboutPage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Mr. Sandeep Agarwal</h3>
                 <p className="text-pink-500 font-semibold mb-4">CEO</p>
                 <p className="text-gray-600 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ornare euismod rutrum. 
-                  Fusce condimentum augue at mauris convallis, ut tempor ex tempus. Suspendisse varius varius nisl in accumsan. 
-                  Aliquam odio felis, viverra vel leo vitae, faucibus volutpat mi. Donec eu lacus in metus gravida efficitur. 
-                  Praesent condimentum gravida gravida. Ut augue nibh, convallis id aliquam vel, venenatis id ligula.
+                  At Vinayak Technoplast, we don’t compete on the cheapest price. We compete on the lowest failure rate. Led by CEO Sandeep Agarwal, who brings over 21 years of hands-on experience in precision injection molding, we focus on engineering reliability into every tool and every part. Over the years, we have seen countless manufacturers lose time and money to poorly designed molds, cheap steel, inefficient cooling, and rushed tooling logic. Our approach is different: we diagnose the root causes of warpage, flashing, and part failure, and then engineer molds with proper venting, optimized gating, and advanced cooling solutions that consistently reduce cycle times by 20 to 30 percent. This commitment to performance and predictability has made us a trusted Tier-1 partner for industry leaders including Maruti Suzuki, Hyundai, RR Kabel, and top brands across the Automotive, Pharma, Kitchenware, and Electrical sectors. If you are looking for manufacturing that delivers certainty and not surprises, you are in the right place.
                 </p>
               </div>
             </div>
@@ -295,10 +327,16 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+          </motion.div>
         )}
 
         {/* Tab 3: Infrastructure */}
         {activeTab === 2 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
           <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Infrastructure</h2>
@@ -320,6 +358,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+          </motion.div>
         )}
       </div>
 

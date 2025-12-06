@@ -4,9 +4,24 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ProductLinePage() {
   const [activeTab, setActiveTab] = useState(0);
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
   const categories = [
     {
@@ -68,7 +83,7 @@ export default function ProductLinePage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden">
+      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -79,18 +94,29 @@ export default function ProductLinePage() {
             priority
           />
         </div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+        <motion.div 
+          className="max-w-7xl mx-auto relative z-10 w-full md:py-32"
+          initial="initial"
+          animate="animate"
+          variants={staggerContainer}
+        >
+          <motion.h1 
+            className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            variants={fadeInUp}
+          >
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Product Line</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-3xl leading-relaxed"
+            variants={fadeInUp}
+          >
             Diverse range of plastic injection molded products serving multiple industries with precision and quality.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Tabs Navigation */}
-      <section className="py-8 px-6 bg-gray-50 sticky top-20 z-10 border-b border-gray-200">
+      <section className="py-8 px-6 bg-gray-50 sticky top-20 z-10 border-b">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-4">
             {categories.map((category, index) => (
@@ -111,37 +137,23 @@ export default function ProductLinePage() {
       </section>
 
       {/* Tab Content */}
-      <section className="py-16 px-6 bg-gray-50 min-h-screen">
+      <section className="pb-8 px-6 bg-gray-50 min-h-screen">
         <div className="max-w-7xl mx-auto">
           {categories.map((category, categoryIndex) => (
             activeTab === categoryIndex && (
               <div key={categoryIndex}>
-                {/* Category Header */}
-                <div className={`bg-gradient-to-r ${category.color} rounded-3xl p-8 md:p-12 mb-8`}>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{category.name}</h2>
-                  <p className="text-white/90 text-lg">{category.images.length} Products in this category</p>
-                </div>
-
-                {/* Product Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {category.images.map((image, imageIndex) => (
                     <div 
                       key={imageIndex}
-                      className="group relative aspect-square bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all cursor-pointer border border-gray-200"
+                      className="group relative aspect-square bg-white rounded-2xl overflow-hidden hover:shadow-md transition-all cursor-pointer border border-gray-200"
                     >
                       <Image
                         src={`/images/product-line/${category.folder}/${image}`}
                         alt={`${category.name} - ${imageIndex + 1}`}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <p className="text-white font-medium text-sm">
-                            {image.replace(/\.(jpg|jpeg|png)$/i, '').replace(/-/g, ' ')}
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   ))}
                 </div>

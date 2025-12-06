@@ -1,14 +1,30 @@
+'use client';
+
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden">
+      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -19,17 +35,31 @@ export default function ContactPage() {
             priority
           />
         </div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+        <motion.div 
+          className="max-w-7xl mx-auto relative z-10 w-full md:py-32"
+          initial="initial"
+          animate="animate"
+          variants={staggerContainer}
+        >
+          <motion.h1 
+            className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            variants={fadeInUp}
+          >
             Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Us</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed mb-4">
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-3xl leading-relaxed mb-4"
+            variants={fadeInUp}
+          >
             <span className="font-bold text-gray-900">VINAYAK TECHNOPLAST</span>
-          </p>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          </motion.p>
+          <motion.p 
+            className="text-lg text-gray-600 max-w-3xl"
+            variants={fadeInUp}
+          >
             One Stop Solution - Plastic Injection Moulded Components, Assemblies & Final Product
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Contact Form & Info */}

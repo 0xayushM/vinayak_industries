@@ -1,14 +1,30 @@
+'use client';
+
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function OfferingsPage() {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden">
+      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -19,14 +35,25 @@ export default function OfferingsPage() {
             priority
           />
         </div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+        <motion.div 
+          className="max-w-7xl mx-auto relative z-10 w-full md:py-32"
+          initial="initial"
+          animate="animate"
+          variants={staggerContainer}
+        >
+          <motion.h1 
+            className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            variants={fadeInUp}
+          >
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Offerings</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-gray-600 max-w-3xl leading-relaxed"
+            variants={fadeInUp}
+          >
             Comprehensive plastic injection molding solutions from design to delivery.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </section>
 
       {/* Design & Development */}
