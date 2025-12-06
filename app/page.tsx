@@ -1,7 +1,10 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import StatsSection from "@/components/StatsSection";
-import EquipmentSection from "@/components/EquipmentSection";
+import AboutSection from "@/components/AboutSection";
+import OfferingsSection from "@/components/OfferingsSection";
+import CapabilitiesSection from "@/components/CapabilitiesSection";
+import ProductLineSection from "@/components/ProductLineSection";
+import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -9,8 +12,11 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Navigation />
       <HeroSection />
-      <StatsSection />
-      <EquipmentSection />
+      <AboutSection />
+      <OfferingsSection />
+      <CapabilitiesSection />
+      <ProductLineSection />
+      <CTASection />
       <Footer />
     </div>
   );

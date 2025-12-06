@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function HeroSection() {
   const fadeInUp = {
@@ -18,8 +19,18 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="py-32 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-32 px-6 relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/background-tile.jpg"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-12 py-12 items-center">
           <motion.div
             initial="initial"
@@ -30,13 +41,19 @@ export default function HeroSection() {
               className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-4"
               variants={fadeInUp}
             >
-              Leading Plastic Injection Molding Manufacturer
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Vinayak Technoplast</span>
             </motion.h1>
             <motion.p 
-              className="text-2xl text-blue-600 font-semibold mb-8"
+              className="text-2xl text-gray-700 font-semibold mb-4"
               variants={fadeInUp}
             >
-              in Southern California
+              One Stop Solution for Plastic Injection Moulding
+            </motion.p>
+            <motion.p 
+              className="text-lg text-gray-600 mb-8 max-w-2xl"
+              variants={fadeInUp}
+            >
+              Specialising in design, mould development and moulding solutions under one roof. 30 years of excellence in Delhi.
             </motion.p>
             <motion.button 
               className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors"
