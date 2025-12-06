@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 export default function OfferingsPage() {
   return (
@@ -7,149 +8,276 @@ export default function OfferingsPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Our Offerings</h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
-            Comprehensive plastic injection molding solutions tailored to your specific needs.
+      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/background-tile.jpg"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Offerings</span>
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+            Comprehensive plastic injection molding solutions from design to delivery.
           </p>
         </div>
       </section>
 
-      {/* Main Services */}
-      <section className="py-16 px-6">
+      {/* Design & Development */}
+      <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Design & Development of<br />
+                <span className="text-pink-500">Injection Moulds and Dies</span>
+              </h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed">
+                <p>
+                  We provide our customers with best possible options for their products and components with attention to detail. 
+                  Our team of qualified Product Designers talk to you through every step of the design process to ensure that the 
+                  design best represents your ideas for the product. The design studios are fully equipped with the latest hardware 
+                  equipment and software. A range of tooling and other machines ensure that we deliver the best quality product within 
+                  the fastest possible time.
+                </p>
+                <p>
+                  Vinayak Technoplast is experienced at developing custom molds/die and tools. We have an in-house full fledged ultra 
+                  modern toolroom helping to reduce overall lead times in the supply chain. It also ensures seamless communication 
+                  through the development, tooling and production process.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Custom Injection Molding</h3>
-              <p className="text-gray-600 mb-4">
-                High-precision plastic injection molding for custom parts and components. 
-                Our machines range from 30 to 2800 tons, accommodating projects of all sizes.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-pink-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Low to high volume production</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-pink-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Multiple material options</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-pink-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Tight tolerance capabilities</span>
-                </li>
-              </ul>
             </div>
-
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                </svg>
+            <div className="order-1 md:order-2">
+              <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
+                <Image 
+                  src="/images/offerings/offering-1.jpg"
+                  alt="Injection Moulds Design"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Mold Design & Engineering</h3>
-              <p className="text-gray-600 mb-4">
-                Expert mold design and engineering services to optimize your product manufacturing 
-                and reduce production costs.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>CAD/CAM design services</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Mold flow analysis</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Prototype development</span>
-                </li>
-              </ul>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+      {/* Injection Moulding */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
+                <Image 
+                  src="/images/offerings/offering-2.jpg"
+                  alt="Injection Moulding Engineering Polymer"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Quality Control & Testing</h3>
-              <p className="text-gray-600 mb-4">
-                Rigorous quality control processes to ensure every product meets or exceeds 
-                industry standards and your specifications.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>In-process inspection</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Dimensional verification</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Material testing</span>
-                </li>
-              </ul>
             </div>
-
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Injection Moulding of<br />
+                <span className="text-pink-500">Engineering Polymers</span>
+              </h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed">
+                <p>
+                  Plastic injection moulding remains at the core of our offerings. We are proud to serve the Indian industry by 
+                  producing high quality parts and products at our injection moulding facility.
+                </p>
+                <p>
+                  We deal with materials such as <span className="font-semibold text-gray-900">Polystyrene, Nylon, PC, ABS, PMMA, Polypropylene and SAN</span> for 
+                  injection moulding. We employ a team of experienced and dedicated operators who are adept at using these materials 
+                  and our equipment. All are computer controlled, and give optimal efficiency in set-up, process control and monitoring. 
+                  Our injection molding machines are designed for repeatability to help secure reduced labor costs and lower reject rates, 
+                  saving you money.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Assembly & Packaging</h3>
-              <p className="text-gray-600 mb-4">
-                Complete turnkey solutions including assembly, packaging, and logistics 
-                to streamline your supply chain.
-              </p>
-              <ul className="space-y-2 text-gray-600">
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Product assembly</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Custom packaging solutions</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Warehousing & logistics</span>
-                </li>
-              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Complete Assembly */}
+      <section className="py-16 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Complete Assembly and Supply<br />
+                <span className="text-pink-500">of Finish Products</span>
+              </h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed">
+                <p>
+                  It is our endeavor to provide effective services to our customers that allow them to save on time and effort and 
+                  hence increase their profitability. We do packaging, assembling, and also perform secondary operations to help 
+                  shorten the supply chain, provide turnkey manufacturing, and reduce lead times and overall cost.
+                </p>
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
+                <Image 
+                  src="/images/offerings/offering-3.jpg"
+                  alt="Complete Product Assembly"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Moulding Capacities - Table 1 */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Moulding Capacities</h2>
+          <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-pink-500 text-white">
+                    <th className="px-6 py-4 text-left font-semibold">S.No.</th>
+                    <th className="px-6 py-4 text-left font-semibold">Moulding Machines</th>
+                    <th className="px-6 py-4 text-left font-semibold">Clamp Tonnage (Tones) Max.</th>
+                    <th className="px-6 py-4 text-left font-semibold">Shot Wt. (gms)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {[
+                    { no: 1, machine: "Ferromatik Milacron", tonnage: 450, shot: 1530 },
+                    { no: 2, machine: "Bole", tonnage: 350, shot: 1000 },
+                    { no: 3, machine: "JSW", tonnage: 250, shot: 600 },
+                    { no: 4, machine: "Windsor", tonnage: 230, shot: 750 },
+                    { no: 5, machine: "Toshiba", tonnage: 220, shot: 402 },
+                    { no: 6, machine: "JSW", tonnage: 200, shot: 215 },
+                    { no: 7, machine: "Kawaguchi", tonnage: 190, shot: 260 },
+                    { no: 8, machine: "Ferromatik Milacron", tonnage: 170, shot: 355 },
+                    { no: 9, machine: "Ferromatik Milacron", tonnage: 150, shot: 303 },
+                    { no: 10, machine: "Bole", tonnage: 160, shot: 250 },
+                    { no: 11, machine: "Ferromatik Milacron", tonnage: 145, shot: 150 },
+                    { no: 12, machine: "Ferromatik Milacron", tonnage: 140, shot: 140 },
+                    { no: 13, machine: "Ferromatik Milacron", tonnage: 135, shot: 135 },
+                    { no: 14, machine: "Toshiba", tonnage: 125, shot: 210 },
+                    { no: 15, machine: "Nigata", tonnage: 120, shot: 200 },
+                    { no: 16, machine: "Ferromatik Milacron", tonnage: 115, shot: 128 },
+                    { no: 17, machine: "Toshiba", tonnage: 110, shot: 162 },
+                    { no: 18, machine: "Pratishna", tonnage: 100, shot: 160 },
+                    { no: 19, machine: "Pratishna", tonnage: 90, shot: 155 },
+                    { no: 20, machine: "Sperry", tonnage: 80, shot: 150 },
+                    { no: 21, machine: "Swift", tonnage: 75, shot: 104 },
+                  ].map((row) => (
+                    <tr key={row.no} className="hover:bg-gray-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-900">{row.no}</td>
+                      <td className="px-6 py-4 text-gray-900 font-medium">{row.machine}</td>
+                      <td className="px-6 py-4 text-gray-700">{row.tonnage}</td>
+                      <td className="px-6 py-4 text-gray-700">{row.shot}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Moulding Capacities - Table 2 (Detailed Specs 450T-150T) */}
+      <section className="py-16 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Moulding Capacities</h2>
+          <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-pink-500 text-white">
+                    <th className="px-4 py-3 text-left font-semibold">Description</th>
+                    <th className="px-4 py-3 text-left font-semibold">Unit</th>
+                    <th className="px-4 py-3 text-left font-semibold">450 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">350 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">250 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">230 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">220 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">200 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">190 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">170 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">160 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">150 T</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Make</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">Ferromatik</td><td className="px-4 py-3 text-gray-700">Bole</td><td className="px-4 py-3 text-gray-700">JSW</td><td className="px-4 py-3 text-gray-700">Windsor</td><td className="px-4 py-3 text-gray-700">Toshiba</td><td className="px-4 py-3 text-gray-700">JSW</td><td className="px-4 py-3 text-gray-700">Kawaguchi</td><td className="px-4 py-3 text-gray-700">Ferromatik</td><td className="px-4 py-3 text-gray-700">Bole</td><td className="px-4 py-3 text-gray-700">Ferromatik</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Platen Size</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">1810*1010</td><td className="px-4 py-3 text-gray-700">1000*950</td><td className="px-4 py-3 text-gray-700">840*840</td><td className="px-4 py-3 text-gray-700">600*600</td><td className="px-4 py-3 text-gray-700">720*720</td><td className="px-4 py-3 text-gray-700">740*740</td><td className="px-4 py-3 text-gray-700">690*680</td><td className="px-4 py-3 text-gray-700">610*610</td><td className="px-4 py-3 text-gray-700">660*660</td><td className="px-4 py-3 text-gray-700">610*610</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Tie Bar Distance</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">710*710</td><td className="px-4 py-3 text-gray-700">680*600</td><td className="px-4 py-3 text-gray-700">560*560</td><td className="px-4 py-3 text-gray-700">510*510</td><td className="px-4 py-3 text-gray-700">510*510</td><td className="px-4 py-3 text-gray-700">510*510</td><td className="px-4 py-3 text-gray-700">450*450</td><td className="px-4 py-3 text-gray-700">410*410</td><td className="px-4 py-3 text-gray-700">460*460</td><td className="px-4 py-3 text-gray-700">410*410</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Min Mould Height</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">300</td><td className="px-4 py-3 text-gray-700">250</td><td className="px-4 py-3 text-gray-700">230</td><td className="px-4 py-3 text-gray-700">250</td><td className="px-4 py-3 text-gray-700">200</td><td className="px-4 py-3 text-gray-700">220</td><td className="px-4 py-3 text-gray-700">250</td><td className="px-4 py-3 text-gray-700">200</td><td className="px-4 py-3 text-gray-700">220</td><td className="px-4 py-3 text-gray-700">200</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Max Mould Height</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">1360</td><td className="px-4 py-3 text-gray-700">690</td><td className="px-4 py-3 text-gray-700">620</td><td className="px-4 py-3 text-gray-700">790</td><td className="px-4 py-3 text-gray-700">550</td><td className="px-4 py-3 text-gray-700">500</td><td className="px-4 py-3 text-gray-700">420</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">530</td><td className="px-4 py-3 text-gray-700">-</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Max. Shot Weight</td><td className="px-4 py-3 text-gray-700">GM</td><td className="px-4 py-3 text-gray-700">1530</td><td className="px-4 py-3 text-gray-700">1000</td><td className="px-4 py-3 text-gray-700">500</td><td className="px-4 py-3 text-gray-700">750</td><td className="px-4 py-3 text-gray-700">402</td><td className="px-4 py-3 text-gray-700">215</td><td className="px-4 py-3 text-gray-700">260</td><td className="px-4 py-3 text-gray-700">355</td><td className="px-4 py-3 text-gray-700">250</td><td className="px-4 py-3 text-gray-700">303</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Locating Ring Size</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">110</td><td className="px-4 py-3 text-gray-700">110</td><td className="px-4 py-3 text-gray-700">110</td><td className="px-4 py-3 text-gray-700">110</td><td className="px-4 py-3 text-gray-700">125</td><td className="px-4 py-3 text-gray-700">120</td><td className="px-4 py-3 text-gray-700">110</td><td className="px-4 py-3 text-gray-700">100</td><td className="px-4 py-3 text-gray-700">125</td><td className="px-4 py-3 text-gray-700">100</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Plasticizing</td><td className="px-4 py-3 text-gray-700">GM/S EC</td><td className="px-4 py-3 text-gray-700">77</td><td className="px-4 py-3 text-gray-700">42</td><td className="px-4 py-3 text-gray-700">58</td><td className="px-4 py-3 text-gray-700">40</td><td className="px-4 py-3 text-gray-700">31</td><td className="px-4 py-3 text-gray-700">29.7</td><td className="px-4 py-3 text-gray-700">36</td><td className="px-4 py-3 text-gray-700">20</td><td className="px-4 py-3 text-gray-700">26</td><td className="px-4 py-3 text-gray-700">20</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Screw Dia</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">80</td><td className="px-4 py-3 text-gray-700">58</td><td className="px-4 py-3 text-gray-700">60</td><td className="px-4 py-3 text-gray-700">60</td><td className="px-4 py-3 text-gray-700">50</td><td className="px-4 py-3 text-gray-700">46</td><td className="px-4 py-3 text-gray-700">52</td><td className="px-4 py-3 text-gray-700">45</td><td className="px-4 py-3 text-gray-700">45</td><td className="px-4 py-3 text-gray-700">45</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Clamp Force</td><td className="px-4 py-3 text-gray-700">TON</td><td className="px-4 py-3 text-gray-700">450</td><td className="px-4 py-3 text-gray-700">350</td><td className="px-4 py-3 text-gray-700">250</td><td className="px-4 py-3 text-gray-700">230</td><td className="px-4 py-3 text-gray-700">220</td><td className="px-4 py-3 text-gray-700">200</td><td className="px-4 py-3 text-gray-700">190</td><td className="px-4 py-3 text-gray-700">170</td><td className="px-4 py-3 text-gray-700">160</td><td className="px-4 py-3 text-gray-700">150</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Total Connecting Load</td><td className="px-4 py-3 text-gray-700">KW</td><td className="px-4 py-3 text-gray-700">54.6</td><td className="px-4 py-3 text-gray-700">42</td><td className="px-4 py-3 text-gray-700">38</td><td className="px-4 py-3 text-gray-700">40</td><td className="px-4 py-3 text-gray-700">30</td><td className="px-4 py-3 text-gray-700">34.4</td><td className="px-4 py-3 text-gray-700">35</td><td className="px-4 py-3 text-gray-700">27.2</td><td className="px-4 py-3 text-gray-700">32</td><td className="px-4 py-3 text-gray-700">27.2</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Nozzle Hole Dia</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">5</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Core Pull System</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Nozzle Radios</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Oil Tank Capacity</td><td className="px-4 py-3 text-gray-700">LTR.</td><td className="px-4 py-3 text-gray-700">905</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">630</td><td className="px-4 py-3 text-gray-700">840</td><td className="px-4 py-3 text-gray-700">310</td><td className="px-4 py-3 text-gray-700">350</td><td className="px-4 py-3 text-gray-700">450</td><td className="px-4 py-3 text-gray-700">315+140</td><td className="px-4 py-3 text-gray-700">300</td><td className="px-4 py-3 text-gray-700">315+400</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Max Opening</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">1660</td><td className="px-4 py-3 text-gray-700">1320</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">990</td><td className="px-4 py-3 text-gray-700">450</td><td className="px-4 py-3 text-gray-700">990</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">760</td><td className="px-4 py-3 text-gray-700">850</td><td className="px-4 py-3 text-gray-700">760</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Moulding Capacities - Table 3 (Detailed Specs 145T-75T) */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Moulding Capacities</h2>
+          <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-pink-500 text-white">
+                    <th className="px-4 py-3 text-left font-semibold">Description</th>
+                    <th className="px-4 py-3 text-left font-semibold">Unit</th>
+                    <th className="px-4 py-3 text-left font-semibold">145 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">140 T</th>
+                    <th className="px-4 py-3 text-left font-semibold">135T</th>
+                    <th className="px-4 py-3 text-left font-semibold">125T</th>
+                    <th className="px-4 py-3 text-left font-semibold">120T</th>
+                    <th className="px-4 py-3 text-left font-semibold">115T</th>
+                    <th className="px-4 py-3 text-left font-semibold">110T</th>
+                    <th className="px-4 py-3 text-left font-semibold">100T</th>
+                    <th className="px-4 py-3 text-left font-semibold">90T</th>
+                    <th className="px-4 py-3 text-left font-semibold">80T</th>
+                    <th className="px-4 py-3 text-left font-semibold">75T</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Make</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">Ferromatik</td><td className="px-4 py-3 text-gray-700">Bole</td><td className="px-4 py-3 text-gray-700">JSW</td><td className="px-4 py-3 text-gray-700">Windsor</td><td className="px-4 py-3 text-gray-700">Toshiba</td><td className="px-4 py-3 text-gray-700">JSW</td><td className="px-4 py-3 text-gray-700">Kawaguchi</td><td className="px-4 py-3 text-gray-700">Ferromatik</td><td className="px-4 py-3 text-gray-700">Bole</td><td className="px-4 py-3 text-gray-700">Ferromatik</td><td className="px-4 py-3 text-gray-700">Swift</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Platen Size</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">610*565</td><td className="px-4 py-3 text-gray-700">610*570</td><td className="px-4 py-3 text-gray-700">610*565</td><td className="px-4 py-3 text-gray-700">600*600</td><td className="px-4 py-3 text-gray-700">600*600</td><td className="px-4 py-3 text-gray-700">610*565</td><td className="px-4 py-3 text-gray-700">480*480</td><td className="px-4 py-3 text-gray-700">570*560</td><td className="px-4 py-3 text-gray-700">560*550</td><td className="px-4 py-3 text-gray-700">550*500</td><td className="px-4 py-3 text-gray-700">-</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Tie Bar Distance</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">450*360</td><td className="px-4 py-3 text-gray-700">410*370</td><td className="px-4 py-3 text-gray-700">350*360</td><td className="px-4 py-3 text-gray-700">420*420</td><td className="px-4 py-3 text-gray-700">420*420</td><td className="px-4 py-3 text-gray-700">450*360</td><td className="px-4 py-3 text-gray-700">320*320</td><td className="px-4 py-3 text-gray-700">370*350</td><td className="px-4 py-3 text-gray-700">350*350</td><td className="px-4 py-3 text-gray-700">350*350</td><td className="px-4 py-3 text-gray-700">-</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Min Mould Height</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">150</td><td className="px-4 py-3 text-gray-700">200</td><td className="px-4 py-3 text-gray-700">150</td><td className="px-4 py-3 text-gray-700">200</td><td className="px-4 py-3 text-gray-700">200</td><td className="px-4 py-3 text-gray-700">150</td><td className="px-4 py-3 text-gray-700">180</td><td className="px-4 py-3 text-gray-700">170</td><td className="px-4 py-3 text-gray-700">170</td><td className="px-4 py-3 text-gray-700">150</td><td className="px-4 py-3 text-gray-700">180</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Max Mould Height</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">400</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">400</td><td className="px-4 py-3 text-gray-700">530</td><td className="px-4 py-3 text-gray-700">400</td><td className="px-4 py-3 text-gray-700">400</td><td className="px-4 py-3 text-gray-700">410</td><td className="px-4 py-3 text-gray-700">360</td><td className="px-4 py-3 text-gray-700">370</td><td className="px-4 py-3 text-gray-700">330</td><td className="px-4 py-3 text-gray-700">380</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Max. Shot Weight</td><td className="px-4 py-3 text-gray-700">GM</td><td className="px-4 py-3 text-gray-700">128</td><td className="px-4 py-3 text-gray-700">126</td><td className="px-4 py-3 text-gray-700">128</td><td className="px-4 py-3 text-gray-700">210</td><td className="px-4 py-3 text-gray-700">200</td><td className="px-4 py-3 text-gray-700">128</td><td className="px-4 py-3 text-gray-700">162</td><td className="px-4 py-3 text-gray-700">160</td><td className="px-4 py-3 text-gray-700">155</td><td className="px-4 py-3 text-gray-700">150</td><td className="px-4 py-3 text-gray-700">104</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Locating Ring Size</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">100</td><td className="px-4 py-3 text-gray-700">100</td><td className="px-4 py-3 text-gray-700">100</td><td className="px-4 py-3 text-gray-700">125</td><td className="px-4 py-3 text-gray-700">100</td><td className="px-4 py-3 text-gray-700">100</td><td className="px-4 py-3 text-gray-700">10</td><td className="px-4 py-3 text-gray-700">110</td><td className="px-4 py-3 text-gray-700">110</td><td className="px-4 py-3 text-gray-700">129</td><td className="px-4 py-3 text-gray-700">100</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Plasticizing Rate</td><td className="px-4 py-3 text-gray-700">GM/SEC</td><td className="px-4 py-3 text-gray-700">14</td><td className="px-4 py-3 text-gray-700">15</td><td className="px-4 py-3 text-gray-700">14</td><td className="px-4 py-3 text-gray-700">15</td><td className="px-4 py-3 text-gray-700">18</td><td className="px-4 py-3 text-gray-700">14</td><td className="px-4 py-3 text-gray-700">23.2</td><td className="px-4 py-3 text-gray-700">17</td><td className="px-4 py-3 text-gray-700">16</td><td className="px-4 py-3 text-gray-700">15</td><td className="px-4 py-3 text-gray-700">16</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Screw Die</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">32</td><td className="px-4 py-3 text-gray-700">36</td><td className="px-4 py-3 text-gray-700">32</td><td className="px-4 py-3 text-gray-700">40</td><td className="px-4 py-3 text-gray-700">42</td><td className="px-4 py-3 text-gray-700">32</td><td className="px-4 py-3 text-gray-700">36</td><td className="px-4 py-3 text-gray-700">35</td><td className="px-4 py-3 text-gray-700">34</td><td className="px-4 py-3 text-gray-700">34</td><td className="px-4 py-3 text-gray-700">32</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Clamp Force</td><td className="px-4 py-3 text-gray-700">TON</td><td className="px-4 py-3 text-gray-700">115</td><td className="px-4 py-3 text-gray-700">140</td><td className="px-4 py-3 text-gray-700">115</td><td className="px-4 py-3 text-gray-700">125</td><td className="px-4 py-3 text-gray-700">120</td><td className="px-4 py-3 text-gray-700">115</td><td className="px-4 py-3 text-gray-700">110</td><td className="px-4 py-3 text-gray-700">100</td><td className="px-4 py-3 text-gray-700">90</td><td className="px-4 py-3 text-gray-700">80</td><td className="px-4 py-3 text-gray-700">75</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Total Connecting Load</td><td className="px-4 py-3 text-gray-700">KW</td><td className="px-4 py-3 text-gray-700">16</td><td className="px-4 py-3 text-gray-700">20</td><td className="px-4 py-3 text-gray-700">16</td><td className="px-4 py-3 text-gray-700">10</td><td className="px-4 py-3 text-gray-700">30</td><td className="px-4 py-3 text-gray-700">16</td><td className="px-4 py-3 text-gray-700">17.3</td><td className="px-4 py-3 text-gray-700">30</td><td className="px-4 py-3 text-gray-700">28</td><td className="px-4 py-3 text-gray-700">26</td><td className="px-4 py-3 text-gray-700">20</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Nozzle Hole Dia</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">4</td><td className="px-4 py-3 text-gray-700">3.5</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Core Pull System</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">NO</td><td className="px-4 py-3 text-gray-700">YES</td><td className="px-4 py-3 text-gray-700">NO</td><td className="px-4 py-3 text-gray-700">NO</td><td className="px-4 py-3 text-gray-700">NO</td><td className="px-4 py-3 text-gray-700">NO</td><td className="px-4 py-3 text-gray-700">YES</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Nozzle Radios</td><td className="px-4 py-3 text-gray-700">-</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td><td className="px-4 py-3 text-gray-700">R-15</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Oil Tank Capacity</td><td className="px-4 py-3 text-gray-700">LTR.</td><td className="px-4 py-3 text-gray-700">160</td><td className="px-4 py-3 text-gray-700">280</td><td className="px-4 py-3 text-gray-700">160</td><td className="px-4 py-3 text-gray-700">285</td><td className="px-4 py-3 text-gray-700">300</td><td className="px-4 py-3 text-gray-700">160</td><td className="px-4 py-3 text-gray-700">180</td><td className="px-4 py-3 text-gray-700">300</td><td className="px-4 py-3 text-gray-700">300</td><td className="px-4 py-3 text-gray-700">250</td><td className="px-4 py-3 text-gray-700">180</td></tr>
+                  <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Max Opening</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">170</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">530</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">640</td><td className="px-4 py-3 text-gray-700">680</td><td className="px-4 py-3 text-gray-700">550</td><td className="px-4 py-3 text-gray-700">460</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

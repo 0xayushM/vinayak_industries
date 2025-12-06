@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 export default function ContactPage() {
   return (
@@ -7,11 +8,26 @@ export default function ContactPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Contact Us</h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
-            Get in touch with our team to discuss your plastic injection molding needs.
+      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/background-tile.jpg"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Us</span>
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl leading-relaxed mb-4">
+            <span className="font-bold text-gray-900">VINAYAK TECHNOPLAST</span>
+          </p>
+          <p className="text-lg text-gray-600 max-w-3xl">
+            One Stop Solution - Plastic Injection Moulded Components, Assemblies & Final Product
           </p>
         </div>
       </section>
@@ -22,53 +38,18 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">REQUEST A QUICK QUOTE</h2>
+              <p className="text-gray-600 mb-6">Fill out the form below and we'll get back to you shortly.</p>
               <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
-                      required
-                    />
-                  </div>
-                </div>
-
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Name (required)
                   </label>
                   <input
-                    type="email"
-                    id="email"
+                    type="text"
+                    id="name"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
                     required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
                   />
                 </div>
 
@@ -84,12 +65,36 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
+                  <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-2">
+                    Country (required)
                   </label>
                   <input
                     type="text"
-                    id="subject"
+                    id="country"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone (required)
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email (required)
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
                     required
                   />
@@ -97,7 +102,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                    Message (required)
                   </label>
                   <textarea
                     id="message"
@@ -118,11 +123,7 @@ export default function ContactPage() {
 
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-              <p className="text-gray-600 mb-8">
-                Our team is ready to help you with your plastic injection molding needs. 
-                Reach out to us through any of the following channels.
-              </p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -134,9 +135,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Address</h3>
-                    <p className="text-gray-600">
-                      Southern California, USA<br />
-                      [Complete Address Here]
+                    <p className="text-gray-600 leading-relaxed">
+                      F-6, DSIDC Industrial Complex, Rohtak Road<br />
+                      Near Udyog Nagar Metro Station<br />
+                      Nangloi, New Delhi-110041, India
                     </p>
                   </div>
                 </div>
@@ -149,10 +151,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">
-                      +1 (XXX) XXX-XXXX<br />
-                      Mon-Fri: 8:00 AM - 5:00 PM PST
-                    </p>
+                    <a href="tel:+919311378904" className="text-gray-600 hover:text-pink-500 transition-colors">
+                      +91 9311378904
+                    </a>
                   </div>
                 </div>
 
@@ -164,36 +165,25 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">
-                      info@vinayakindustries.com<br />
-                      sales@vinayakindustries.com
-                    </p>
+                    <a href="mailto:vinayaktechnoplast@gmail.com" className="text-gray-600 hover:text-pink-500 transition-colors">
+                      vinayaktechnoplast@gmail.com
+                    </a>
                   </div>
                 </div>
               </div>
 
-              {/* Business Hours */}
-              <div className="mt-12 bg-gray-50 rounded-2xl p-6">
-                <h3 className="font-bold text-gray-900 mb-4">Business Hours</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Monday - Friday</span>
-                    <span className="font-medium text-gray-900">8:00 AM - 5:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Saturday</span>
-                    <span className="font-medium text-gray-900">By Appointment</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Sunday</span>
-                    <span className="font-medium text-gray-900">Closed</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Map Placeholder */}
-              <div className="mt-8 bg-gray-200 rounded-2xl h-64 flex items-center justify-center">
-                <p className="text-gray-500">Map Integration</p>
+              {/* Google Map */}
+              <div className="mt-8 rounded-2xl overflow-hidden shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.0234567890123!2d77.0833!3d28.6833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d047309ffffff%3A0x1234567890abcdef!2sF-6%2C%20Delhi%20State%20Industrial%20Development%20Corporation%2C%20Nangloi%2C%20Delhi%2C%20110041!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Vinayak Technoplast Location"
+                ></iframe>
               </div>
             </div>
           </div>
@@ -203,13 +193,16 @@ export default function ContactPage() {
       {/* CTA Section */}
       <section className="py-16 px-6 bg-gradient-to-br from-pink-500 to-pink-600">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl font-bold mb-6">Need a Quick Quote?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
           <p className="text-xl text-pink-100 mb-8">
-            Upload your project specifications and our team will get back to you within 24 hours.
+            Contact us today to discuss your plastic injection molding needs and get a customized solution.
           </p>
-          <button className="bg-white text-pink-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
-            Upload Project Files
-          </button>
+          <a 
+            href="tel:+919311378904"
+            className="inline-block bg-white text-pink-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors"
+          >
+            Call Us Now
+          </a>
         </div>
       </section>
 
