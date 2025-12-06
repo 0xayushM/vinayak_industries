@@ -266,17 +266,9 @@ export default function AboutPage() {
             quality controllers, R & D personnel, packing as well as store experts. We also provide training to team to improvise their skills.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* CEO Profile */}
-            <div className="bg-white rounded-3xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative h-80">
-                <Image 
-                  src="/Sandeep-Agarwal.jpg" 
-                  alt="Mr. Sandeep Agarwal, CEO"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+            <div className="bg-white col-span-2 rounded-3xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Mr. Sandeep Agarwal</h3>
                 <p className="text-pink-500 font-semibold mb-4">CEO</p>
@@ -290,11 +282,11 @@ export default function AboutPage() {
             </div>
 
             {/* Team Structure */}
-            <div className="bg-white rounded-3xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative h-full min-h-[500px]">
+            <div className="bg-white col-span-1 rounded-3xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="relative h-full min-h-[450px]">
                 <Image 
-                  src="/Team-Structure.jpg" 
-                  alt="Team Structure"
+                  src="/sandeep_kalra.jpeg" 
+                  alt="Mr. Sandeep Agarwal, CEO"
                   fill
                   className="object-cover"
                 />
