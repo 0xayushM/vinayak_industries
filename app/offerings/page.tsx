@@ -60,7 +60,13 @@ export default function OfferingsPage() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
+            <motion.div 
+              className="order-2 md:order-1"
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Design & Development of<br />
                 <span className="text-pink-500">Injection Moulds and Dies</span>
@@ -79,8 +85,14 @@ export default function OfferingsPage() {
                   through the development, tooling and production process.
                 </p>
               </div>
-            </div>
-            <div className="order-1 md:order-2">
+            </motion.div>
+            <motion.div 
+              className="order-1 md:order-2"
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
                 <Image 
                   src="/images/offerings/offering-1.jpg"
@@ -89,7 +101,7 @@ export default function OfferingsPage() {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -98,7 +110,12 @@ export default function OfferingsPage() {
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
                 <Image 
                   src="/images/offerings/offering-2.jpg"
@@ -107,8 +124,13 @@ export default function OfferingsPage() {
                   className="object-cover"
                 />
               </div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Injection Moulding of<br />
                 <span className="text-pink-500">Engineering Polymers</span>
@@ -126,7 +148,7 @@ export default function OfferingsPage() {
                   saving you money.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -135,7 +157,13 @@ export default function OfferingsPage() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
+            <motion.div 
+              className="order-2 md:order-1"
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Complete Assembly and Supply<br />
                 <span className="text-pink-500">of Finish Products</span>
@@ -147,8 +175,14 @@ export default function OfferingsPage() {
                   shorten the supply chain, provide turnkey manufacturing, and reduce lead times and overall cost.
                 </p>
               </div>
-            </div>
-            <div className="order-1 md:order-2">
+            </motion.div>
+            <motion.div 
+              className="order-1 md:order-2"
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
                 <Image 
                   src="/images/offerings/offering-3.jpg"
@@ -157,7 +191,7 @@ export default function OfferingsPage() {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
