@@ -99,7 +99,13 @@ export default function CapabilitiesPage() {
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Product Design & Development</h2>
                 
                 <div className="grid md:grid-cols-2 gap-8 mb-12">
-                  <div className="bg-gray-50 rounded-3xl p-8">
+                  <motion.div 
+                    className="bg-gray-50 rounded-3xl p-8"
+                    initial={{ opacity: 0, x: -60 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6 }}
+                  >
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Product Design</h3>
                     <ul className="space-y-4">
                       <li className="flex items-start gap-3">
@@ -127,9 +133,15 @@ export default function CapabilitiesPage() {
                         <span className="text-gray-700"><span className="font-semibold">Delcam / Powershape 5.5</span> : One Station</span>
                       </li>
                     </ul>
-                  </div>
+                  </motion.div>
 
-                  <div className="bg-gray-50 rounded-3xl p-8">
+                  <motion.div 
+                    className="bg-gray-50 rounded-3xl p-8"
+                    initial={{ opacity: 0, x: 60 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6 }}
+                  >
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Product Development</h3>
                     <ul className="space-y-4">
                       <li className="flex items-start gap-3">
@@ -157,12 +169,18 @@ export default function CapabilitiesPage() {
                         <span className="text-gray-700">Capability for <span className="font-semibold">Precision Moulds, Designing Moulds & Delivering Engineering Solutions</span> by using latest Techniques & Technologies available.</span>
                       </li>
                     </ul>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* VMC HAAS and EDM Cards */}
                 <div className="grid md:grid-cols-2 gap-8">
-                  <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow">
+                  <motion.div 
+                    className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow"
+                    initial={{ opacity: 0, y: 60 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: 0 }}
+                  >
                     <div className="relative h-64">
                       <Image 
                         src="/images/manufacturing/manufacturing-1/VMC-HAAS-VF3.jpg"
@@ -183,9 +201,15 @@ export default function CapabilitiesPage() {
                         Send Enquiry
                       </button>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow">
+                  <motion.div 
+                    className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow"
+                    initial={{ opacity: 0, y: 60 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
                     <div className="relative h-64">
                       <Image 
                         src="/images/manufacturing/manufacturing-1/edm-die-machine.jpg"
@@ -208,7 +232,7 @@ export default function CapabilitiesPage() {
                         Send Enquiry
                       </button>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </section>

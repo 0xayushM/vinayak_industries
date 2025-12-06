@@ -145,9 +145,23 @@ export default function AboutPage() {
       {/* Our Commitments */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12">Our Commitments</h2>
+          <motion.h2 
+            className="text-4xl font-bold text-gray-900 mb-12"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Commitments
+          </motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow">
+            <motion.div 
+              className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0 }}
+            >
               <div className="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -155,9 +169,15 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Good Communication</h3>
               <p className="text-gray-600 leading-relaxed">Good communication with customer and team members to improve customer satisfaction</p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow">
+            <motion.div 
+              className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <div className="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -165,9 +185,15 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Equal Opportunity</h3>
               <p className="text-gray-600 leading-relaxed">Equal opportunity at work place</p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow">
+            <motion.div 
+              className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <div className="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -175,9 +201,15 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Skill Development</h3>
               <p className="text-gray-600 leading-relaxed">Skill development and continuous training</p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow">
+            <motion.div 
+              className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <div className="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -185,7 +217,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">First Time Right</h3>
               <p className="text-gray-600 leading-relaxed">First time right every time</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -193,8 +225,22 @@ export default function AboutPage() {
       {/* Quality Policy */}
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12">Quality Policy</h2>
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm">
+          <motion.h2 
+            className="text-4xl font-bold text-gray-900 mb-12"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            Quality Policy
+          </motion.h2>
+          <motion.div 
+            className="bg-white rounded-3xl p-8 md:p-12 shadow-sm"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
                 <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -237,7 +283,7 @@ export default function AboutPage() {
                 <span className="text-gray-900 text-lg leading-relaxed font-semibold">Quality is what we think, act and believe in.</span>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </section>
 
