@@ -9,7 +9,7 @@ const korto = localFont({
 });
 
 const osiris = localFont({
-  src: "../public/fonts/osiris.otf",
+  src: "../public/fonts/Osiris.otf",
   variable: "--font-carbon",
   display: "swap",
 });
