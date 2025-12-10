@@ -39,8 +39,8 @@ export default function CapabilitiesSection() {
     <section className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div className="text-center mb-16" {...fadeInUp}>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Manufacturing <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Capabilities</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
+            Manufacturing <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Capabilities</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             State-of-the-art equipment and advanced manufacturing processes
@@ -69,7 +69,7 @@ export default function CapabilitiesSection() {
 
         <motion.div className="text-center" {...fadeInUp}>
           <Link href="/capabilities">
-            <button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors">
+            <button className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors">
               Explore Our Capabilities
             </button>
           </Link>

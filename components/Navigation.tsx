@@ -3,11 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navigation() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
     { href: "/about", label: "About Us" },
@@ -16,6 +17,19 @@ export default function Navigation() {
     { href: "/product-line", label: "Product Line" },
     { href: "/contact", label: "Contact" },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if scrolled past 60vh (hero section height)
+      const heroHeight = window.innerHeight * 0.6;
+      setIsScrolled(window.scrollY > heroHeight - 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -26,7 +40,9 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white z-50 border-b border-gray-200">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" onClick={closeMenu}>
           <Image
@@ -34,7 +50,9 @@ export default function Navigation() {
             alt="Vinayak Industries Logo"
             width={120}
             height={60}
-            className="object-contain cursor-pointer invert"
+            className={`object-contain cursor-pointer transition-all duration-300 ${
+              isScrolled ? 'brightness-0' : 'brightness-0 invert'
+            }`}
           />
         </Link>
 
@@ -44,20 +62,22 @@ export default function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className={`font-medium transition-colors relative ${
+              className={`font-bold transition-colors relative ${
                 pathname === link.href
-                  ? "text-pink-500"
-                  : "text-gray-800 hover:text-gray-600"
+                  ? "text-amber-500"
+                  : isScrolled 
+                    ? "text-gray-800 hover:text-amber-500" 
+                    : "text-white hover:text-amber-500"
               }`}
             >
               {link.label}
               {pathname === link.href && (
-                <span className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-pink-500"></span>
+                <span className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-amber-500"></span>
               )}
             </Link>
           ))}
           <Link href="/contact">
-            <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2.5 rounded-full font-medium transition-colors">
+            <button className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-2.5 rounded-full font-medium transition-colors">
               Get a Custom Quote
             </button>
           </Link>
@@ -66,7 +86,9 @@ export default function Navigation() {
         {/* Hamburger Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden p-2 text-gray-800 hover:text-pink-500 transition-colors"
+          className={`md:hidden p-2 transition-colors ${
+            isScrolled ? 'text-gray-800 hover:text-amber-500' : 'text-white hover:text-amber-500'
+          }`}
           aria-label="Toggle menu"
         >
           {isMenuOpen ? (
@@ -97,15 +119,15 @@ export default function Navigation() {
               onClick={closeMenu}
               className={`block py-2 font-medium transition-colors ${
                 pathname === link.href
-                  ? "text-pink-500"
-                  : "text-gray-800 hover:text-pink-500"
+                  ? "text-amber-500"
+                  : "text-gray-800 hover:text-amber-500"
               }`}
             >
               {link.label}
             </Link>
           ))}
           <Link href="/contact" onClick={closeMenu} className="block">
-            <button className="w-full bg-pink-500 hover:bg-pink-600 text-white px-6 py-2.5 rounded-full font-medium transition-colors">
+            <button className="w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-colors">
               Get a Custom Quote
             </button>
           </Link>

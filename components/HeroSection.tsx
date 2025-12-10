@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
+    initial: { opacity: 0, y: 40 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
   };
@@ -13,74 +13,88 @@ export default function HeroSection() {
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.15
       }
     }
   };
 
   return (
-    <section className="py-32 px-6 relative overflow-hidden">
+    <section className="h-screen relative overflow-hidden flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/background-tile.jpg"
-          alt="Background"
+          src="/images/bg-image.jpeg"
+          alt="Manufacturing Facility"
           fill
           className="object-cover"
           priority
         />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent" />
       </div>
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 py-12 items-center">
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-          >
-            <motion.h1 
-              className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-4"
-              variants={fadeInUp}
-            >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Vinayak Technoplast</span>
-            </motion.h1>
-            <motion.p 
-              className="text-2xl text-gray-700 font-semibold mb-4"
-              variants={fadeInUp}
-            >
-              One Stop Solution for Plastic Injection Moulding
-            </motion.p>
-            <motion.p 
-              className="text-lg text-gray-600 mb-8 max-w-2xl"
-              variants={fadeInUp}
-            >
-              Specialising in design, mould development and moulding solutions under one roof. 30 years of excellence in Delhi.
-            </motion.p>
-            <motion.button 
-              className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors"
-              variants={fadeInUp}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get a Custom Quote
-            </motion.button>
-          </motion.div>
-          <motion.div 
-            className="relative"
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="aspect-video bg-gray-800 rounded-3xl overflow-hidden relative">
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/lnv8oNVRIi8"
-                title="Vinayak Industries Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </motion.div>
+
+      {/* Diagonal accent shape */}
+      <div className="absolute bottom-0 left-0 right-0 z-10">
+        <svg className="w-full h-32" viewBox="0 0 1440 128" preserveAspectRatio="none">
+          <path d="M0 128L1440 128L1440 64L0 128Z" fill="#1f2937" />
+        </svg>
+      </div>
+
+      {/* Bottom banner */}
+      <div className="absolute bottom-0 left-0 right-0 z-20">
+        <div className="flex items-center">
+          <div className="bg-amber-500 px-8 py-4 ml-auto mr-12 skew-x-[-12deg]">
+            <span className="text-gray-900 font-bold text-xl tracking-wider skew-x-[12deg] inline-block font-[family-name:var(--font-korto)]">
+              VINAYAK TECHNOPLAST
+            </span>
+          </div>
         </div>
+      </div>
+
+      {/* Decorative dots */}
+      <div className="absolute left-8 bottom-32 z-10 grid grid-cols-5 gap-2">
+        {[...Array(25)].map((_, i) => (
+          <div key={i} className="w-2 h-2 rounded-full bg-amber-500/60" />
+        ))}
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 w-full px-8 lg:px-16">
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={staggerContainer}
+          className="max-w-3xl"
+        >
+          <motion.h1 
+            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-amber-500 leading-[1.05] mb-2 tracking-tight font-[family-name:var(--font-carbon)]"
+            variants={fadeInUp}
+          >
+            MANUFACTURING
+          </motion.h1>
+          <motion.h2 
+            className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-8 tracking-tight font-[family-name:var(--font-carbon)]"
+            variants={fadeInUp}
+          >
+            FOR THE FUTURE
+          </motion.h2>
+          
+          <motion.p 
+            className="text-sm md:text-lg text-gray-300 font-medium mb-10 max-w-xl italic tracking-wide font-[family-name:var(--font-korto)]"
+            variants={fadeInUp}
+          >
+            "POWERING EVERYTHING FROM THE ROAD YOU DRIVE ON TO THE APPLIANCES YOU USE DAILY."
+          </motion.p>
+          
+          <motion.button 
+            className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-4 py-2 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-base transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 font-[family-name:var(--font-korto)]"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Get a Custom Quote
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

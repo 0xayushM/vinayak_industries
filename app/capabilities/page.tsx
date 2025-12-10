@@ -35,31 +35,40 @@ export default function CapabilitiesPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden flex items-cente">
+      <section className="h-[60vh] min-h-[400px] relative overflow-hidden flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/background-tile.jpg"
-            alt="Background"
+            src="/images/bg-image.jpeg"
+            alt="Manufacturing Facility"
             fill
             className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent" />
         </div>
+        
+        {/* Bottom accent */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <svg className="w-full h-16" viewBox="0 0 1440 64" preserveAspectRatio="none">
+            <path d="M0 64L1440 64L1440 32L0 64Z" fill="#f9fafb" />
+          </svg>
+        </div>
+
         <motion.div 
-          className="max-w-7xl relative z-10 w-full mx-auto md:py-32"
+          className="max-w-7xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
-            Manufacturing <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Capabilities</span>
+            CAPABILITIES
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl leading-relaxed"
+            className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             State-of-the-art equipment and advanced manufacturing processes to deliver exceptional results.
@@ -77,7 +86,7 @@ export default function CapabilitiesPage() {
                 onClick={() => setActiveTab(index)}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   activeTab === index
-                    ? 'bg-pink-500 text-white shadow-lg'
+                    ? 'bg-amber-500 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
                 }`}
               >
@@ -89,14 +98,14 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* Tab Content */}
-      <div className="min-h-screen">
+      <div className="h-full">
         {/* Tab 1: Product Design & Development */}
         {activeTab === 0 && (
           <div>
             {/* Product Design Section */}
             <section className="py-16 px-6 bg-white">
               <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Product Design & Development</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Product Design & Development</h2>
                 
                 <div className="grid md:grid-cols-2 gap-8 mb-12">
                   <motion.div 
@@ -109,7 +118,7 @@ export default function CapabilitiesPage() {
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Product Design</h3>
                     <ul className="space-y-4">
                       <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                           </svg>
@@ -117,7 +126,7 @@ export default function CapabilitiesPage() {
                         <span className="text-gray-700"><span className="font-semibold">Solid works</span> - Three Stations</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                           </svg>
@@ -125,7 +134,7 @@ export default function CapabilitiesPage() {
                         <span className="text-gray-700"><span className="font-semibold">Auto Cad/Drafting Release 2014</span> : Three Stations</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                           </svg>
@@ -145,7 +154,7 @@ export default function CapabilitiesPage() {
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Product Development</h3>
                     <ul className="space-y-4">
                       <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                           </svg>
@@ -153,7 +162,7 @@ export default function CapabilitiesPage() {
                         <span className="text-gray-700"><span className="font-semibold">Delcam Power Mill 5.5</span> : One station</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                           </svg>
@@ -161,7 +170,7 @@ export default function CapabilitiesPage() {
                         <span className="text-gray-700"><span className="font-semibold">Conventional/Unconventional machines</span> 12 nos.</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                           </svg>
@@ -192,12 +201,12 @@ export default function CapabilitiesPage() {
                     <div className="p-8">
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">VMC HAAS VF3</h3>
                       <ul className="space-y-3 text-gray-600">
-                        <li>• Capacity of Developing <span className="font-semibold text-pink-500">200 Moulds Per Annum</span> (Hot runner/Hot sprue/Three plate, Two plate, Cold Runner)</li>
-                        <li>• Average Lead Time of <span className="font-semibold text-pink-500">4-6 Weeks</span> & Maintenance of Over 50 Moulds</li>
-                        <li>• Capability to manufacture moulds for <span className="font-semibold text-pink-500">10 to 700 Tonnes</span> Injection molding Machines</li>
-                        <li>• Capability to manufacture moulds to deliver accuracy within <span className="font-semibold text-pink-500">2 microns</span></li>
+                        <li>• Capacity of Developing <span className="font-semibold text-amber-500">200 Moulds Per Annum</span> (Hot runner/Hot sprue/Three plate, Two plate, Cold Runner)</li>
+                        <li>• Average Lead Time of <span className="font-semibold text-amber-500">4-6 Weeks</span> & Maintenance of Over 50 Moulds</li>
+                        <li>• Capability to manufacture moulds for <span className="font-semibold text-amber-500">10 to 700 Tonnes</span> Injection molding Machines</li>
+                        <li>• Capability to manufacture moulds to deliver accuracy within <span className="font-semibold text-amber-500">2 microns</span></li>
                       </ul>
-                      <button className="mt-6 bg-pink-500 text-white px-6 py-3 rounded-full font-medium hover:bg-pink-600 transition-colors">
+                      <button className="mt-6 bg-amber-500 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
                         Send Enquiry
                       </button>
                     </div>
@@ -221,14 +230,14 @@ export default function CapabilitiesPage() {
                     <div className="p-8">
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">EDM JOEMAR AZ50TR</h3>
                       <ul className="space-y-3 text-gray-600">
-                        <li>• Development of Moulds increased by <span className="font-semibold text-pink-500">22%</span> in the Financial Year 17-18</li>
+                        <li>• Development of Moulds increased by <span className="font-semibold text-amber-500">22%</span> in the Financial Year 17-18</li>
                         <li>• 01 EDM have been added to the tool room in the financial Year 16-17</li>
-                        <li>• Manpower increase by <span className="font-semibold text-pink-500">two times</span> in the financial year 17-18</li>
+                        <li>• Manpower increase by <span className="font-semibold text-amber-500">two times</span> in the financial year 17-18</li>
                         <li>• Addition of 1 VMC VF2(HAAS) in the financial year 17-18</li>
                         <li>• Expansion of Design & Development Under Process. The proposal is to dedicate 1000 Sq feet to the D & D facility</li>
-                        <li>• Mould Development Capacity will increase by <span className="font-semibold text-pink-500">40%</span> in the financial Year 18-19</li>
+                        <li>• Mould Development Capacity will increase by <span className="font-semibold text-amber-500">40%</span> in the financial Year 18-19</li>
                       </ul>
-                      <button className="mt-6 bg-pink-500 text-white px-6 py-3 rounded-full font-medium hover:bg-pink-600 transition-colors">
+                      <button className="mt-6 bg-amber-500 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
                         Send Enquiry
                       </button>
                     </div>
@@ -243,7 +252,7 @@ export default function CapabilitiesPage() {
         {activeTab === 1 && (
           <section className="py-16 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Manufacturing Shop Floor</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing Shop Floor</h2>
               <p className="text-xl text-gray-600 mb-12">
                 Vinayak Technoplast has a state-of-the-art facility that provides high quality services to its clients in the following services
               </p>
@@ -252,7 +261,7 @@ export default function CapabilitiesPage() {
                 <div>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
@@ -260,23 +269,23 @@ export default function CapabilitiesPage() {
                       <span className="text-gray-700 text-lg">Dedicated Team of Processing Engineers</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg"><span className="font-semibold text-pink-500">30 Years of Experience</span> of Processing Engineering Polymers & Various Polymer Compounds</span>
+                      <span className="text-gray-700 text-lg"><span className="font-semibold text-amber-500">30 Years of Experience</span> of Processing Engineering Polymers & Various Polymer Compounds</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Over <span className="font-semibold text-pink-500">20 CNC operated</span> injection moulding machines ranging from <span className="font-semibold text-pink-500">80~450 Tonnes</span> available for bulk production</span>
+                      <span className="text-gray-700 text-lg">Over <span className="font-semibold text-amber-500">20 CNC operated</span> injection moulding machines ranging from <span className="font-semibold text-amber-500">80~450 Tonnes</span> available for bulk production</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
@@ -284,15 +293,15 @@ export default function CapabilitiesPage() {
                       <span className="text-gray-700 text-lg">Range includes make of over 20 Plastic Injection Molding Machines like <span className="font-semibold">Ferromatik, Toshiba, JSW, Windsor, Nigata, Pratishna & Bole</span></span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Processing Capability Up to <span className="font-semibold text-pink-500">1530 gms</span> Of Shot Weight</span>
+                      <span className="text-gray-700 text-lg">Processing Capability Up to <span className="font-semibold text-amber-500">1530 gms</span> Of Shot Weight</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
@@ -318,7 +327,7 @@ export default function CapabilitiesPage() {
         {activeTab === 2 && (
           <section className="py-16 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Manufacturing and R&D</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing and R&D</h2>
               <div className="bg-gray-50 rounded-3xl p-8 md:p-12 mb-12">
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
                   Vinayak Technoplast engineers have the ability to combine unique ideas and advanced technology into innovative and superior products.
@@ -326,7 +335,7 @@ export default function CapabilitiesPage() {
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                       </svg>
@@ -334,7 +343,7 @@ export default function CapabilitiesPage() {
                     <span className="text-gray-700 text-lg font-semibold">Fully Equipped Area For Assembly & Sub Assemblies</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                       </svg>
@@ -342,7 +351,7 @@ export default function CapabilitiesPage() {
                     <span className="text-gray-700 text-lg font-semibold">Efficient Material Handling System supported by Goods Lift</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                       </svg>
@@ -358,7 +367,7 @@ export default function CapabilitiesPage() {
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="bg-pink-500 text-white">
+                      <tr className="bg-amber-500 text-white">
                         <th className="px-6 py-4 text-left font-semibold">S.No.</th>
                         <th className="px-6 py-4 text-left font-semibold">Machine</th>
                         <th className="px-6 py-4 text-left font-semibold">Make</th>
@@ -392,7 +401,7 @@ export default function CapabilitiesPage() {
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="bg-pink-500 text-white">
+                      <tr className="bg-amber-500 text-white">
                         <th className="px-4 py-3 text-left font-semibold">S. No.</th>
                         <th className="px-4 py-3 text-left font-semibold">Machine</th>
                         <th className="px-4 py-3 text-left font-semibold">Make</th>
@@ -434,7 +443,7 @@ export default function CapabilitiesPage() {
         {activeTab === 3 && (
           <section className="py-16 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Lab & Testing Facilities</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Lab & Testing Facilities</h2>
               <div className="bg-gray-50 rounded-3xl p-8 md:p-12 mb-12">
                 <p className="text-lg text-gray-700 leading-relaxed">
                   Our success in this industry is the result of hard work of manpower. Our team comprises of engineers, technocrats, marketing managers, quality controllers, R & D personnel, packing as well as store experts. We also provide training to team to improvise their skills.
@@ -447,7 +456,7 @@ export default function CapabilitiesPage() {
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
-                      <tr className="bg-pink-500 text-white">
+                      <tr className="bg-amber-500 text-white">
                         <th className="px-6 py-4 text-left font-semibold">S.No.</th>
                         <th className="px-6 py-4 text-left font-semibold">Equipment</th>
                       </tr>
@@ -505,6 +514,18 @@ export default function CapabilitiesPage() {
           </section>
         )}
       </div>
+      {/* CTA Section */}
+      <section className="py-16 px-6 bg-gradient-to-br from-amber-500 to-amber-600">
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <h2 className="text-4xl font-bold mb-6 font-[family-name:var(--font-carbon)]">Need a Custom Product?</h2>
+          <p className="text-xl text-amber-100 mb-8">
+            We specialize in developing custom plastic injection molding solutions tailored to your specific requirements.
+          </p>
+          <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+            Discuss Your Project
+          </button>
+        </div>
+      </section>
 
       <Footer />
     </div>

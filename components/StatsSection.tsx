@@ -19,7 +19,7 @@ export default function StatsSection() {
 
           <div className="text-center">
             <div className="text-5xl font-bold text-gray-900 mb-2">
-              50<span className="text-pink-500">+</span>
+              50<span className="text-amber-500">+</span>
             </div>
             <h3 className="font-bold text-gray-900 text-lg mb-1">Years of industry</h3>
             <p className="text-gray-700">experience</p>

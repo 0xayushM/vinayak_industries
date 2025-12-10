@@ -8,6 +8,12 @@ const korto = localFont({
   display: "swap",
 });
 
+const osiris = localFont({
+  src: "../public/fonts/osiris.otf",
+  variable: "--font-carbon",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Vinayak Industries - Leading Plastic Injection Molding Manufacturer",
   description: "Leading plastic injection molding manufacturer in Southern California with 50+ years of experience",
@@ -26,7 +32,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${korto.variable} antialiased font-sans`}
+        className={`${korto.variable} ${osiris.variable} antialiased`}
+        style={{ fontFamily: 'var(--font-korto)' }}
       >
         {children}
       </body>

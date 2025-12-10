@@ -24,31 +24,40 @@ export default function OfferingsPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden flex items-center">
+      <section className="h-[60vh] min-h-[400px] relative overflow-hidden flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/background-tile.jpg"
-            alt="Background"
+            src="/images/bg-image.jpeg"
+            alt="Manufacturing Facility"
             fill
             className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent" />
         </div>
+        
+        {/* Bottom accent */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <svg className="w-full h-16" viewBox="0 0 1440 64" preserveAspectRatio="none">
+            <path d="M0 64L1440 64L1440 32L0 64Z" fill="#f9fafb" />
+          </svg>
+        </div>
+
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full md:py-32"
+          className="max-w-7xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Offerings</span>
+            OUR OFFERINGS
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl leading-relaxed"
+            className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             Comprehensive plastic injection molding solutions from design to delivery.
@@ -56,155 +65,130 @@ export default function OfferingsPage() {
         </motion.div>
       </section>
 
-      {/* Design & Development */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              className="order-2 md:order-1"
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Design & Development of<br />
-                <span className="text-pink-500">Injection Moulds and Dies</span>
-              </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
-                  We provide our customers with best possible options for their products and components with attention to detail. 
-                  Our team of qualified Product Designers talk to you through every step of the design process to ensure that the 
-                  design best represents your ideas for the product. The design studios are fully equipped with the latest hardware 
-                  equipment and software. A range of tooling and other machines ensure that we deliver the best quality product within 
-                  the fastest possible time.
-                </p>
-                <p>
-                  Vinayak Technoplast is experienced at developing custom molds/die and tools. We have an in-house full fledged ultra 
-                  modern toolroom helping to reduce overall lead times in the supply chain. It also ensures seamless communication 
-                  through the development, tooling and production process.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="order-1 md:order-2"
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
-                <Image 
-                  src="/images/offerings/offering-1.jpg"
-                  alt="Injection Moulds Design"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
+      {/* Design & Development Card */}
+      <section className="py-6 px-6 bg-gray-100">
+        <div className="max-w-8xl mx-auto">
+          <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+            <div className="absolute top-0 right-0 w-[50%] h-full z-0">
+              <Image
+                src="/images/offerings/offering-1.jpg"
+                alt="Injection Moulds Design"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent" />
+            </div>
+            <div className="relative z-10 p-8 lg:p-12">
+              <motion.div 
+                className="max-w-xl"
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                  DESIGN & DEVELOPMENT OF<br />INJECTION MOULDS AND DIES
+                </h2>
+                <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <p>
+                    We provide our customers with best possible options for their products and components with attention to detail. 
+                    Our team of qualified Product Designers talk to you through every step of the design process.
+                  </p>
+                  <p>
+                    Vinayak Technoplast is experienced at developing custom molds/die and tools. We have an in-house full fledged ultra 
+                    modern toolroom helping to reduce overall lead times in the supply chain.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Injection Moulding */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
-                <Image 
-                  src="/images/offerings/offering-2.jpg"
-                  alt="Injection Moulding Engineering Polymer"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Injection Moulding of<br />
-                <span className="text-pink-500">Engineering Polymers</span>
-              </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
-                  Plastic injection moulding remains at the core of our offerings. We are proud to serve the Indian industry by 
-                  producing high quality parts and products at our injection moulding facility.
-                </p>
-                <p>
-                  We deal with materials such as <span className="font-semibold text-gray-900">Polystyrene, Nylon, PC, ABS, PMMA, Polypropylene and SAN</span> for 
-                  injection moulding. We employ a team of experienced and dedicated operators who are adept at using these materials 
-                  and our equipment. All are computer controlled, and give optimal efficiency in set-up, process control and monitoring. 
-                  Our injection molding machines are designed for repeatability to help secure reduced labor costs and lower reject rates, 
-                  saving you money.
-                </p>
-              </div>
-            </motion.div>
+      {/* Injection Moulding Card */}
+      <section className="py-6 px-6 bg-gray-100">
+        <div className="max-w-8xl mx-auto">
+          <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+            <div className="absolute top-0 left-0 w-[50%] h-full z-0">
+              <Image
+                src="/images/offerings/offering-2.jpg"
+                alt="Injection Moulding Engineering Polymer"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-gray-900 via-gray-900/80 to-transparent" />
+            </div>
+            <div className="relative z-10 p-8 lg:p-12 flex justify-end">
+              <motion.div 
+                className="max-w-xl"
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                  INJECTION MOULDING OF<br />ENGINEERING POLYMERS
+                </h2>
+                <div className="space-y-4 text-gray-300 leading-relaxed">
+                  <p>
+                    Plastic injection moulding remains at the core of our offerings. We are proud to serve the Indian industry by 
+                    producing high quality parts and products at our injection moulding facility.
+                  </p>
+                  <p>
+                    We deal with materials such as <span className="font-semibold text-white">Polystyrene, Nylon, PC, ABS, PMMA, Polypropylene and SAN</span>.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Complete Assembly */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              className="order-2 md:order-1"
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Complete Assembly and Supply<br />
-                <span className="text-pink-500">of Finish Products</span>
-              </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
+      {/* Complete Assembly Card */}
+      <section className="py-6 px-6 bg-gray-100">
+        <div className="max-w-8xl mx-auto">
+          <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+            <div className="absolute top-0 right-0 w-[50%] h-full z-0">
+              <Image
+                src="/images/offerings/offering-3.jpg"
+                alt="Complete Product Assembly"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent" />
+            </div>
+            <div className="relative z-10 p-8 lg:p-12">
+              <motion.div 
+                className="max-w-xl"
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                  COMPLETE ASSEMBLY AND<br />SUPPLY OF FINISH PRODUCTS
+                </h2>
+                <p className="text-gray-300 leading-relaxed">
                   It is our endeavor to provide effective services to our customers that allow them to save on time and effort and 
                   hence increase their profitability. We do packaging, assembling, and also perform secondary operations to help 
                   shorten the supply chain, provide turnkey manufacturing, and reduce lead times and overall cost.
                 </p>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="order-1 md:order-2"
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg">
-                <Image 
-                  src="/images/offerings/offering-3.jpg"
-                  alt="Complete Product Assembly"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Moulding Capacities - Table 1 */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Moulding Capacities</h2>
-          <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="overflow-x-auto">
+      <section className="py-6 px-6 bg-gray-100">
+        <div className="max-w-8xl mx-auto">
+          <div className="bg-white rounded-[50px] p-8 lg:p-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">OUR MOULDING CAPACITIES</h2>
+            <div className="rounded-2xl overflow-hidden border border-gray-200">
+              <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-pink-500 text-white">
+                  <tr className="bg-amber-500 text-white">
                     <th className="px-6 py-4 text-left font-semibold">S.No.</th>
                     <th className="px-6 py-4 text-left font-semibold">Moulding Machines</th>
                     <th className="px-6 py-4 text-left font-semibold">Clamp Tonnage (Tones) Max.</th>
@@ -245,19 +229,21 @@ export default function OfferingsPage() {
                 </tbody>
               </table>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Moulding Capacities - Table 2 (Detailed Specs 450T-150T) */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Moulding Capacities</h2>
-          <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
+      <section className="py-6 px-6 bg-gray-100">
+        <div className="max-w-8xl mx-auto">
+          <div className="bg-white rounded-[50px] p-8 lg:p-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">DETAILED SPECIFICATIONS</h2>
+            <div className="rounded-2xl overflow-hidden border border-gray-200">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-pink-500 text-white">
+                  <tr className="bg-amber-500 text-white">
                     <th className="px-4 py-3 text-left font-semibold">Description</th>
                     <th className="px-4 py-3 text-left font-semibold">Unit</th>
                     <th className="px-4 py-3 text-left font-semibold">450 T</th>
@@ -292,19 +278,21 @@ export default function OfferingsPage() {
                 </tbody>
               </table>
             </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Moulding Capacities - Table 3 (Detailed Specs 145T-75T) */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Our Moulding Capacities</h2>
-          <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
+      <section className="py-6 px-6 bg-gray-100">
+        <div className="max-w-8xl mx-auto">
+          <div className="bg-white rounded-[50px] p-8 lg:p-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">MORE SPECIFICATIONS</h2>
+            <div className="rounded-2xl overflow-hidden border border-gray-200">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-pink-500 text-white">
+                  <tr className="bg-amber-500 text-white">
                     <th className="px-4 py-3 text-left font-semibold">Description</th>
                     <th className="px-4 py-3 text-left font-semibold">Unit</th>
                     <th className="px-4 py-3 text-left font-semibold">145 T</th>
@@ -339,21 +327,24 @@ export default function OfferingsPage() {
                   <tr className="hover:bg-gray-50"><td className="px-4 py-3 font-medium text-gray-900">Max Opening</td><td className="px-4 py-3 text-gray-700">MM</td><td className="px-4 py-3 text-gray-700">170</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">530</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">700</td><td className="px-4 py-3 text-gray-700">640</td><td className="px-4 py-3 text-gray-700">680</td><td className="px-4 py-3 text-gray-700">550</td><td className="px-4 py-3 text-gray-700">460</td></tr>
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-pink-500 to-pink-600">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
-          <p className="text-xl text-pink-100 mb-8">
-            Let's discuss how our comprehensive offerings can bring your product vision to life.
-          </p>
-          <button className="bg-white text-pink-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
-            Request a Quote
-          </button>
+      <section className="bg-gray-100">
+        <div className="max-w-8xl mx-auto">
+          <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-8 lg:p-12 text-center">
+            <h2 className="text-4xl font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
+            <p className="text-xl text-amber-100 mb-8 max-w-2xl mx-auto">
+              Let's discuss how our comprehensive offerings can bring your product vision to life.
+            </p>
+            <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+              Request a Quote
+            </button>
+          </div>
         </div>
       </section>
 

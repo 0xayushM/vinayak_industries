@@ -58,31 +58,40 @@ export default function AboutPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white relative overflow-hidden flex items-center">
+      <section className="h-[60vh] min-h-[400px] relative overflow-hidden flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/background-tile.jpg"
-            alt="Background"
+            src="/images/bg-image.jpeg"
+            alt="Manufacturing Facility"
             fill
             className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent" />
         </div>
+        
+        {/* Bottom accent */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
+          <svg className="w-full h-16" viewBox="0 0 1440 64" preserveAspectRatio="none">
+            <path d="M0 64L1440 64L1440 32L0 64Z" fill="#f9fafb" />
+          </svg>
+        </div>
+
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full md:py-32"
+          className="max-w-7xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-600">Vinayak Technoplast</span>
+            ABOUT US
           </motion.h1>
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl leading-relaxed"
+            className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             Specialising in design, mould development and moulding solutions under one roof.
@@ -100,7 +109,7 @@ export default function AboutPage() {
                 onClick={() => setActiveTab(index)}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   activeTab === index
-                    ? 'bg-pink-500 text-white shadow-lg'
+                    ? 'bg-amber-500 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
                 }`}
               >
@@ -112,221 +121,132 @@ export default function AboutPage() {
       </section>
 
       {/* Tab Content */}
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-gray-100">
         {/* Tab 1: Who We Are */}
         {activeTab === 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="py-6 px-6"
           >
-            {/* Who We Are */}
-            <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">Who We Are</h2>
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm">
-            <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
-              <p>
-                Vinayak Technoplast specialises in design, mould development and moulding solutions under one roof.
-                We are professionally managed company led by our chairman <span className="font-semibold text-gray-900">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="font-semibold text-gray-900">IIT, BHU</span>. 
-                We have maintained uniform quality standards and are committed to Customers for giving them timely delivery at most competitive cost. 
-                We have experience of <span className="font-semibold text-pink-500">30 Years</span> and are proud to be one of the top moulders in Delhi. We have Strategically located manufacturing unit spanning <span className="font-semibold text-pink-500">35000 Sq Ft</span> manufacturing area.
-              </p>
-              <p>
-                Vinayak Technoplast not only supplies to the OE market suppliers, we are well-established providers to the aftermarket as well. 
-                We have a well established base in plastic technology. Over the years, Vinayak Technoplast has maintained its close contact with its customers 
-                by interacting with them through international exhibitions, trade shows, personal meetings & technical meets.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Who We Are + Commitments Combined Card */}
+            <div className="max-w-8xl mx-auto mb-6">
+              <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+                {/* Background Image */}
+                <div className="absolute top-0 right-0 w-[50%] h-[60%] z-0">
+                  <Image
+                    src="/images/bg-image.jpeg"
+                    alt="Manufacturing Facility"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900" />
+                </div>
 
-      {/* Our Commitments */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold text-gray-900 mb-12"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Commitments
-          </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div 
-              className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0 }}
-            >
-              <div className="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
+                <div className="relative z-10 p-8 lg:p-12">
+                  {/* Who We Are Section */}
+                  <h2 className="text-4xl md:text-5xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)]">WHO WE ARE</h2>
+                  <div className="max-w-2xl space-y-4 text-gray-300 leading-relaxed mb-8">
+                    <p>
+                      Vinayak Technoplast specialises in design, mould development and moulding solutions under one roof.
+                      We are professionally managed company led by our chairman <span className="font-semibold text-white">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="font-semibold text-white">IIT, BHU</span>. 
+                    </p>
+                    <p>
+                      We have experience of <span className="font-semibold text-amber-500">30 Years</span> and are proud to be one of the top moulders in Delhi with a <span className="font-semibold text-amber-500">35,000 Sq Ft</span> facility.
+                    </p>
+                  </div>
+
+                  {/* Commitments Grid */}
+                  <h3 className="text-2xl font-bold text-white mb-6 font-[family-name:var(--font-carbon)]">OUR COMMITMENTS</h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {[
+                      { icon: "💬", title: "Good Communication", desc: "With customer and team members" },
+                      { icon: "👥", title: "Equal Opportunity", desc: "At work place" },
+                      { icon: "📚", title: "Skill Development", desc: "Continuous training" },
+                      { icon: "✅", title: "First Time Right", desc: "Every time" }
+                    ].map((item, index) => (
+                      <motion.div 
+                        key={index}
+                        className="bg-white/10 backdrop-blur-sm border border-white/20 p-5 rounded-2xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                      >
+                        <div className="text-3xl mb-3">{item.icon}</div>
+                        <h3 className="text-base font-bold text-white mb-1">{item.title}</h3>
+                        <p className="text-gray-400 text-sm">{item.desc}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Good Communication</h3>
-              <p className="text-gray-600 leading-relaxed">Good communication with customer and team members to improve customer satisfaction</p>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <div className="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+            {/* Quality Policy Card - Now White */}
+            <div className="max-w-8xl mx-auto mb-6">
+              <div className="bg-white rounded-[50px] p-8 lg:p-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">QUALITY POLICY</h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    "Vinayak Technoplast is committed to produce and supply quality products to meet our customer needs.",
+                    "We shall continuously strive to improve the effectiveness of our Quality Management System.",
+                    "We shall train and motivate our employees for self and continual improvement.",
+                    "We are conscious of our responsibility towards safety, health and environment.",
+                    "Quality is what we think, act and believe in."
+                  ].map((policy, index) => (
+                    <motion.div 
+                      key={index}
+                      className="flex items-start gap-4"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
+                      <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className={`text-gray-700 leading-relaxed ${index === 4 ? 'font-semibold text-gray-900' : ''}`}>{policy}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Equal Opportunity</h3>
-              <p className="text-gray-600 leading-relaxed">Equal opportunity at work place</p>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
+            {/* Achievements Card - Now Dark */}
+            <div className="max-w-8xl mx-auto">
+              <div className="relative rounded-[50px] overflow-hidden bg-gray-900 p-8 lg:p-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-8">ACHIEVEMENTS</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    { icon: "🔧", text: "Expand Tool Room with Effective Manpower" },
+                    { icon: "⚡", text: "Addition of New sub Processes, Assembly for Electrical Accessories" },
+                    { icon: "💻", text: "Work under process upgradation to ERP System" },
+                    { icon: "⭐", text: "Get Higher Rank in Quality by All Customers" },
+                    { icon: "📈", text: "Achieved a sales growth of 25%" },
+                    { icon: "🤝", text: "Successfully join new company JAY USHIN" },
+                    { icon: "🔬", text: "Add ISI Lab For Electrical Accessories" },
+                    { icon: "✅", text: "All work done as per ISO/T.S. (I.A.T.F.)" }
+                  ].map((item, index) => (
+                    <motion.div 
+                      key={index}
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 p-5 rounded-2xl"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                    >
+                      <div className="text-3xl mb-3">{item.icon}</div>
+                      <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Skill Development</h3>
-              <p className="text-gray-600 leading-relaxed">Skill development and continuous training</p>
-            </motion.div>
-
-            <motion.div 
-              className="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <div className="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">First Time Right</h3>
-              <p className="text-gray-600 leading-relaxed">First time right every time</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quality Policy */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold text-gray-900 mb-12"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            Quality Policy
-          </motion.h2>
-          <motion.div 
-            className="bg-white rounded-3xl p-8 md:p-12 shadow-sm"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 text-lg leading-relaxed">Vinayak Technoplast is committed to produce and supply quality products to meet our customer needs.</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 text-lg leading-relaxed">We shall continuously strive to improve the effectiveness of our Quality Management System.</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 text-lg leading-relaxed">We shall train and motivate our employees for self and continual improvement.</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-700 text-lg leading-relaxed">We are conscious of our responsibility towards safety, health and environment.</span>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-gray-900 text-lg leading-relaxed font-semibold">Quality is what we think, act and believe in.</span>
-              </li>
-            </ul>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Achievements */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12">Achievements</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🔧</div>
-              <p className="text-gray-700 leading-relaxed">Expand Tool Room with Effective Manpower</p>
             </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">⚡</div>
-              <p className="text-gray-700 leading-relaxed">Addition of New sub Processes, Assembly for Electrical Accessories</p>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">💻</div>
-              <p className="text-gray-700 leading-relaxed">Work under process upgradation to ERP System integrating the Information flow of all three Plants</p>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">⭐</div>
-              <p className="text-gray-700 leading-relaxed">Get Higher Rank in Quality by All Customers</p>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">📈</div>
-              <p className="text-gray-700 leading-relaxed">Achieved a sales growth of 25%</p>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🤝</div>
-              <p className="text-gray-700 leading-relaxed">Successfully join new company JAY USHIN</p>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">🔬</div>
-              <p className="text-gray-700 leading-relaxed">Add ISI Lab For Electrical Accessories</p>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">✅</div>
-              <p className="text-gray-700 leading-relaxed">All work done as per ISO/T.S. (I.A.T.F.)</p>
-            </div>
-          </div>
-        </div>
-      </section>
           </motion.div>
         )}
 
@@ -336,43 +256,46 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="py-6 px-6"
           >
-          <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Management Team</h2>
-          <p className="text-gray-600 mb-12 leading-relaxed text-lg max-w-4xl">
-            We are professionally managed company led by our chairman <span className="font-semibold text-gray-900">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="font-semibold text-gray-900">IIT BHU</span>.
-            The team works together with our customers to bring a product from concept, through design and testing, into final production. 
-            Our success in this industry is the result of hard work of manpower. Our team comprises of engineers, technocrats, marketing managers, 
-            quality controllers, R & D personnel, packing as well as store experts. We also provide training to team to improvise their skills.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            {/* CEO Profile */}
-            <div className="bg-white col-span-2 rounded-3xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Mr. Sandeep Agarwal</h3>
-                <p className="text-pink-500 font-semibold mb-4">CEO</p>
-                <p className="text-gray-600 leading-relaxed">
-                  At Vinayak Technoplast, we don’t compete on the cheapest price. We compete on the lowest failure rate. Led by CEO Sandeep Agarwal, who brings over 21 years of hands-on experience in precision injection molding, we focus on engineering reliability into every tool and every part. Over the years, we have seen countless manufacturers lose time and money to poorly designed molds, cheap steel, inefficient cooling, and rushed tooling logic. Our approach is different: we diagnose the root causes of warpage, flashing, and part failure, and then engineer molds with proper venting, optimized gating, and advanced cooling solutions that consistently reduce cycle times by 20 to 30 percent. This commitment to performance and predictability has made us a trusted Tier-1 partner for industry leaders including Maruti Suzuki, Hyundai, RR Kabel, and top brands across the Automotive, Pharma, Kitchenware, and Electrical sectors. If you are looking for manufacturing that delivers certainty and not surprises, you are in the right place.
+            <div className="max-w-8xl mx-auto">
+              {/* Single merged card */}
+              <div className="bg-gray-900 rounded-[50px] p-8 lg:p-12">
+                {/* Heading inside card */}
+                <h2 className="text-4xl md:text-5xl font-bold text-amber-500 mb-2 font-[family-name:var(--font-carbon)]">MANAGEMENT TEAM</h2>
+                <p className="text-gray-400 mb-8">
+                  We are professionally managed company led by our chairman <span className="text-white font-semibold">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="text-white font-semibold">IIT BHU</span>.
                 </p>
-              </div>
-            </div>
 
-            {/* Team Structure */}
-            <div className="bg-white col-span-1 rounded-3xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative h-full min-h-[450px]">
-                <Image 
-                  src="/sandeep_kalra.jpeg" 
-                  alt="Mr. Sandeep Agarwal, CEO"
-                  fill
-                  className="object-cover"
-                />
+                {/* Content grid with image card inside */}
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  {/* Image inside a card */}
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-4 overflow-hidden">
+                    <div className="rounded-2xl overflow-hidden h-[450px]">
+                      <Image
+                        src="/sandeep_kalra.jpeg"
+                        alt="Mr. Sandeep Agarwal, CEO"
+                        width={600}
+                        height={450}
+                        className="object-cover object-top w-full h-full"
+                      />
+                    </div>
+                  </div>
+
+                  {/* About content */}
+                  <div className="flex flex-col justify-center">
+                    <h3 className="text-3xl font-bold text-white mb-2">Mr. Sandeep Agarwal</h3>
+                    <p className="text-amber-500 font-semibold text-lg mb-6">CEO</p>
+                    <p className="text-gray-300 leading-relaxed mb-4">
+                      At Vinayak Technoplast, we don't compete on the cheapest price. We compete on the lowest failure rate. Led by CEO Sandeep Agarwal, who brings over 21 years of hands-on experience in precision injection molding, we focus on engineering reliability into every tool and every part.
+                    </p>
+                    <p className="text-gray-400 leading-relaxed">
+                      Our approach is different: we diagnose the root causes of warpage, flashing, and part failure, and then engineer molds with proper venting, optimized gating, and advanced cooling solutions that consistently reduce cycle times by 20 to 30 percent. This commitment to performance and predictability has made us a trusted Tier-1 partner for industry leaders including Maruti Suzuki, Hyundai, RR Kabel, and top brands across the Automotive, Pharma, Kitchenware, and Electrical sectors.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
           </motion.div>
         )}
 
@@ -382,28 +305,36 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="py-6 px-6"
           >
-          <section className="py-16 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Infrastructure</h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Strategically located manufacturing unit spanning <span className="font-semibold text-pink-500">35,000 Sq Ft</span> manufacturing area.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {infrastructureImages.map((image, index) => (
-              <div key={index} className="relative h-64 rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all">
-                <Image 
-                  src={image} 
-                  alt={`Infrastructure ${index + 1}`}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
+            <div className="max-w-8xl mx-auto">
+              <div className="bg-white rounded-[50px] p-8 lg:p-12">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">INFRASTRUCTURE</h2>
+                <p className="text-xl text-gray-600 mb-8">
+                  Strategically located manufacturing unit spanning <span className="font-semibold text-amber-500">35,000 Sq Ft</span> manufacturing area.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {infrastructureImages.map((image, index) => (
+                    <motion.div 
+                      key={index} 
+                      className="relative h-56 rounded-2xl overflow-hidden hover:shadow-lg transition-all"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.03 }}
+                    >
+                      <Image 
+                        src={image} 
+                        alt={`Infrastructure ${index + 1}`}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
           </motion.div>
         )}
       </div>

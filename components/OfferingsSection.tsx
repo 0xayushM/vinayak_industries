@@ -2,83 +2,166 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function OfferingsSection() {
   const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
+    initial: { opacity: 0, y: 40 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.3 },
+    viewport: { once: true, amount: 0.2 },
     transition: { duration: 0.6 }
   };
 
-  const offerings = [
+  const equipment = [
+    { range: "60-220 tons", qty: 8 },
+    { range: "250-450 tons", qty: 6 },
+    { range: "500-650 tons", qty: 4 },
+  ];
+
+  const advantages = [
     {
-      title: "Design & Development",
-      description: "Expert design and development of injection moulds and dies with advanced CAD/CAM technology.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      )
+      number: "1",
+      title: "Expert R&D Team",
+      description: "Our dedicated R&D team, comprised of over 40 professionals, provides personalized, one-on-one service to meet your specific needs."
     },
     {
-      title: "Plastic Injection Moulding",
-      description: "High-precision plastic injection moulding with machines ranging from 60 to 650 tons capacity.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-        </svg>
-      )
+      number: "2",
+      title: "Cost-Effective Solutions",
+      description: "Achieve substantial savings of 30-50% with our optimized production processes, making your projects more economical."
     },
     {
-      title: "Assembly & Finishing",
-      description: "Complete assembly services and finishing solutions for final product delivery.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-        </svg>
-      )
+      number: "3",
+      title: "Quick Turnaround",
+      description: "For time-sensitive projects, we excel in delivering rapid production turnaround times, ensuring your deadlines are met."
     }
   ];
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-gray-800 to-gray-900 text-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <motion.div className="text-center mb-16" {...fadeInUp}>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-500">Offerings</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Comprehensive plastic injection molding solutions from design to delivery
-          </p>
-        </motion.div>
+    <section className="py-6 px-6">
+      {/* Combined Card with Background Image */}
+      <div className="max-w-8xl mx-auto">
+        <div className="relative rounded-[50px] overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/bg-image.jpeg"
+              alt="Manufacturing Facility"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70" />
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {offerings.map((offering, index) => (
-            <motion.div
-              key={index}
-              className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl hover:shadow-lg transition-all border border-white/20"
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <div className="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center text-white mb-6">
-                {offering.icon}
+          {/* Content */}
+          <div className="relative z-10 p-8 lg:p-12">
+            {/* Equipment Section */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+              {/* Left Content */}
+              <motion.div {...fadeInUp}>
+                <h2 className="text-4xl md:text-5xl font-bold text-white font-[family-name:var(--font-carbon)] mb-6">
+                  Our Equipment
+                </h2>
+                <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                  Our facility houses 18 injection molding machines ranging from 60 to 650 tons, 
+                  allowing us to handle a wide variety of project sizes and complexities.
+                </p>
+
+                {/* Equipment Grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  {equipment.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
+                      <p className="text-amber-500 text-xs font-medium mb-1">Tonnage Range</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-white font-bold text-lg">{item.range}</span>
+                        <div className="bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                          Qty: {item.qty}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Right - Tonnage Badge */}
+              <motion.div 
+                className="flex justify-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="relative">
+                  {/* Laurel wreath SVG */}
+                  <svg className="w-64 h-64 text-amber-500/80" viewBox="0 0 200 200" fill="currentColor">
+                    <path d="M100 180c-5-10-15-25-35-35 5 0 15 5 25 15-10-15-15-30-15-45 5 10 15 25 25 35-5-15-5-35 0-50 5 15 10 35 10 50 10-15 20-30 30-40-5 20-10 40-20 55 15-10 25-20 35-25-15 15-30 30-45 40 15 0 30-5 45-10-20 10-40 15-55 10z" transform="translate(0,10)"/>
+                    <path d="M100 180c5-10 15-25 35-35-5 0-15 5-25 15 10-15 15-30 15-45-5 10-15 25-25 35 5-15 5-35 0-50-5 15-10 35-10 50-10-15-20-30-30-40 5 20 10 40 20 55-15-10-25-20-35-25 15 15 30 30 45 40-15 0-30-5-45-10 20 10 40 15 55 10z" transform="translate(0,10)"/>
+                  </svg>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="text-6xl font-bold text-white font-[family-name:var(--font-carbon)]">650</span>
+                    <span className="text-amber-500 text-lg font-medium">Tonnage (tons)</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Divider */}
+            <div className="border-t border-white/20 mb-12"></div>
+
+            {/* Advantages Section */}
+            <div>
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-carbon)] mb-8"
+                {...fadeInUp}
+              >
+                Our Main Advantages
+              </motion.h2>
+
+              <div className="grid md:grid-cols-4 gap-6">
+                {advantages.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div>
+                        <h3 className="font-bold text-white mb-2">{item.title}</h3>
+                        <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
+                      </div>
+                      <span className="text-5xl font-bold text-white/20">{item.number}</span>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* CTA Card */}
+                <motion.div
+                  className="bg-gradient-to-br from-amber-500 to-amber-600 p-6 rounded-2xl text-white"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <h3 className="font-bold text-xl mb-4">Discover Our Complete Equipment List</h3>
+                  <Link href="/capabilities">
+                    <button className="bg-white text-amber-600 px-6 py-2.5 rounded-full font-medium text-sm hover:bg-gray-100 transition-colors">
+                      View Capabilities
+                    </button>
+                  </Link>
+                </motion.div>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{offering.title}</h3>
-              <p className="text-gray-300 leading-relaxed mb-6">{offering.description}</p>
-            </motion.div>
-          ))}
+            </div>
+          </div>
         </div>
-
-        <motion.div className="text-center" {...fadeInUp}>
-          <Link href="/offerings">
-            <button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors">
-              View All Offerings
-            </button>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

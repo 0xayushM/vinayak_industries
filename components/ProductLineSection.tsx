@@ -2,101 +2,103 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductLineSection() {
   const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
+    initial: { opacity: 0, y: 40 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.3 },
+    viewport: { once: true, amount: 0.2 },
     transition: { duration: 0.6 }
   };
 
-  const categories = [
+  const products = [
     {
-      name: "Automotive Exterior Parts",
-      description: "Head lamps, indicators, wheel covers, and more",
-      icon: "🚗",
-      color: "from-blue-500 to-blue-600"
+      name: "MEDICAL INDUSTRY COMPONENTS",
+      description: "Critical items such as suction units, PC jars, needle cutters (Nil-Sharps), etc. ensuring strict adherence to quality standards for our medical partners"
     },
     {
-      name: "Household Products",
-      description: "Wide range of household plastic items",
-      icon: "🏠",
-      color: "from-green-500 to-green-600"
+      name: "MASS CONSUMER PRODUCTS",
+      description: "Such as switches, energy meters, LED light housings, and multi-plugs."
     },
     {
-      name: "Electrical Parts",
-      description: "Precision electrical components",
-      icon: "⚡",
-      color: "from-purple-500 to-purple-600"
+      name: "AUTOMOTIVE EXTERIOR PARTS",
+      description: "High-precision parts such as visors, headlamps, tail lamps, reflectors, etc, serving two-wheelers, four-wheelers, and tractors"
     },
     {
-      name: "Power Tool Parts",
-      description: "Durable power tool components",
-      icon: "🔧",
-      color: "from-orange-500 to-orange-600"
-    },
-    {
-      name: "Medical Industry",
-      description: "High-quality medical components",
-      icon: "🏥",
-      color: "from-pink-500 to-pink-600"
+      name: "PRECISION INDUSTRIAL COMPONENTS",
+      description: "Mechanical and technical parts for industrial machinery, vehicles, or heavy equipment."
     }
   ];
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-gray-800 to-gray-900 text-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <motion.div className="text-center mb-16" {...fadeInUp}>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-500">Product Line</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Diverse range of plastic injection molded products serving multiple industries
-          </p>
-        </motion.div>
+    <section className="py-6 px-6">
+      <div className="max-w-8xl mx-auto">
+        <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+          {/* Background Image - Top Right Corner Only */}
+          <div className="absolute top-0 right-0 w-[70%] h-[55%] z-0">
+            <Image
+              src="/images/bg-image.jpeg"
+              alt="Manufacturing Facility"
+              fill
+              className="object-cover object-top"
+            />
+            {/* Gradient overlays to blend into dark background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-900" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-tl from-gray-900/80 via-transparent to-transparent" />
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {categories.slice(0, 3).map((category, index) => (
-            <motion.div
-              key={index}
-              className={`bg-white/10 border border-white/20 rounded-2xl p-8 text-white hover:shadow-xl transition-all`}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <div className="text-5xl mb-4">{category.icon}</div>
-              <h3 className="text-2xl font-bold mb-3">{category.name}</h3>
-              <p className="text-white/90">{category.description}</p>
-            </motion.div>
-          ))}
+          {/* Decorative dots */}
+          <div className="absolute top-8 right-8 grid grid-cols-5 gap-2 z-10">
+            {[...Array(25)].map((_, i) => (
+              <div key={i} className="w-2 h-2 rounded-full bg-amber-500/60" />
+            ))}
+          </div>
+
+          {/* Diagonal accent lines */}
+          <div className="absolute top-[40%] left-0 w-[45%] h-[2px] bg-gradient-to-r from-amber-500/50 to-transparent transform -rotate-12 z-5" />
+          <div className="absolute top-[45%] left-0 w-[35%] h-[2px] bg-gradient-to-r from-amber-500/30 to-transparent transform -rotate-12 z-5" />
+
+          {/* Content */}
+          <div className="relative z-10 p-8 lg:p-12">
+            {/* Top Section - Title and Products */}
+            <div className="grid gap-8 mb-12">
+              {/* Left Column - Title */}
+              <motion.div {...fadeInUp} className="lg:col-span-2">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)] leading-tight">
+                  OUR CORE PRODUCTS
+                </h2>
+                <p className="text-gray-300 max-w-xl leading-relaxed text-sm">
+                  We produce a wide range of high-quality products designed to meet the needs of industry and business (B2B) customers. Each of our products is developed through a precision manufacturing process and rigorous quality testing.
+                </p>
+              </motion.div>
+
+              {/* Right Columns - Products Grid */}
+              <div className="lg:col-span-2 grid md:grid-cols-2 gap-x-12 gap-y-6">
+                {products.map((product, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <div className="flex items-start gap-3 mb-2">
+                      <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[12px] border-l-amber-500 border-b-[8px] border-b-transparent mt-1 flex-shrink-0" />
+                      <h3 className="text-amber-500 font-bold text-sm tracking-wide">
+                        {product.name}
+                      </h3>
+                    </div>
+                    <p className="max-w-xl text-gray-400 text-sm leading-relaxed pl-5">
+                      {product.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
-          {categories.slice(3).map((category, index) => (
-            <motion.div
-              key={index}
-              className={`bg-white/10 border border-white/20 rounded-2xl p-8 text-white hover:shadow-xl transition-all`}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <div className="text-5xl mb-4">{category.icon}</div>
-              <h3 className="text-2xl font-bold mb-3">{category.name}</h3>
-              <p className="text-white/90">{category.description}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div className="text-center" {...fadeInUp}>
-          <Link href="/product-line">
-            <button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors">
-              View All Products
-            </button>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

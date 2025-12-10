@@ -46,10 +46,10 @@ export default function AdvantagesSection() {
           />
         ))}
         
-        <div className="bg-pink-500 rounded-2xl p-8 text-white flex items-center justify-center">
+        <div className="bg-amber-500 rounded-2xl p-8 text-white flex items-center justify-center">
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-2">Discover Our<br />Complete<br />Equipment List</h3>
-            <button className="mt-4 text-pink-500 bg-white px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
+            <button className="mt-4 text-amber-500 bg-white px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
               View List
             </button>
           </div>
