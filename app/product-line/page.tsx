@@ -110,13 +110,13 @@ export default function ProductLinePage() {
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             PRODUCT LINE
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-base md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             Diverse range of plastic injection molded products serving multiple industries with precision and quality.
@@ -125,14 +125,14 @@ export default function ProductLinePage() {
       </section>
 
       {/* Tabs Navigation */}
-      <section className="py-8 px-6 bg-gray-50 sticky top-20 z-10 border-b">
+      <section className="py-8 px-6 bg-gray-50 md:sticky top-20 z-10 border-b">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-4">
             {categories.map((category, index) => (
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`px-6 py-3 rounded-full font-medium transition-all ${
+                className={`px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg rounded-full font-medium transition-all ${
                   activeTab === index
                     ? 'bg-amber-500 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'

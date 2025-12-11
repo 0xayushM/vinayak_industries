@@ -22,7 +22,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="h-[60vh] min-h-[400px] relative overflow-hidden flex items-center">
         {/* Background Image */}
@@ -36,7 +36,7 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent" />
         </div>
-        
+
         {/* Bottom accent */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
           <svg className="w-full h-16" viewBox="0 0 1440 64" preserveAspectRatio="none">
@@ -44,20 +44,20 @@ export default function ContactPage() {
           </svg>
         </div>
 
-        <motion.div 
+        <motion.div
           className="max-w-7xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
-          <motion.h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+          <motion.h1
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             CONTACT US
           </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+          <motion.p
+            className="text-sm md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             One Stop Solution - Plastic Injection Moulded Components, Assemblies & Final Product
@@ -66,21 +66,21 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-6 px-6 bg-gray-100">
+      <section className="p-3 md:p-6 bg-gray-100">
         <div className="max-w-8xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
-            
+
 
             {/* Contact Information Card */}
-            <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+            <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
               <div className="absolute bottom-0 right-0 w-full h-[60%] z-0">
                 <Image src="/images/bg-image.jpeg" alt="Manufacturing Facility" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-gray-900" />
               </div>
               <div className="relative z-10 p-6 h-full flex flex-col">
                 <h2 className="text-3xl font-bold text-amber-50 p-6 font-[family-name:var(--font-carbon)] mb-8">CONTACT INFORMATION</h2>
-                
-                <div className="space-y-6 px-6 flex-grow">
+
+                <div className="space-y-6 px-2 md:px-6 flex-grow">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
                       <svg className="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,7 +90,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-1">Address</h3>
-                      <p className="text-gray-400 leading-relaxed text-sm">
+                      <p className="text-gray-100 leading-relaxed text-sm">
                         F-6, DSIDC Industrial Complex, Rohtak Road<br />
                         Near Udyog Nagar Metro Station<br />
                         Nangloi, New Delhi-110041, India
@@ -106,7 +106,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-1">Phone</h3>
-                      <a href="tel:+919311378904" className="text-gray-400 hover:text-amber-500 transition-colors">+91 9311378904</a>
+                      <a href="tel:+919311378904" className="text-gray-100 hover:text-amber-500 transition-colors">+91 9311378904</a>
                     </div>
                   </div>
 
@@ -118,29 +118,17 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-1">Email</h3>
-                      <a href="mailto:vinayaktechnoplast@gmail.com" className="text-gray-400 hover:text-amber-500 transition-colors">vinayaktechnoplast@gmail.com</a>
+                      <a href="mailto:vinayaktechnoplast@gmail.com" className="text-gray-100 hover:text-amber-500 text-sm md:text-base transition-colors">vinayaktechnoplast@gmail.com</a>
                     </div>
                   </div>
                 </div>
 
-                {/* Map */}
-                <div className="mt-6 rounded-2xl overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.0234567890123!2d77.0833!3d28.6833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d047309ffffff%3A0x1234567890abcdef!2sF-6%2C%20Delhi%20State%20Industrial%20Development%20Corporation%2C%20Nangloi%2C%20Delhi%2C%20110041!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
-                    width="100%"
-                    height="300"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Vinayak Technoplast Location"
-                  ></iframe>
-                </div>
+
               </div>
             </div>
 
             {/* Contact Form Card */}
-            <div className="bg-white rounded-[50px] p-8 lg:p-12">
+            <div className="bg-white rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
               <h2 className="text-3xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-2">REQUEST A QUICK QUOTE</h2>
               <p className="text-gray-600 mb-6">Fill out the form below and we'll get back to you shortly.</p>
               <form className="space-y-5">
@@ -177,6 +165,23 @@ export default function ContactPage() {
                 </button>
               </form>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <div className="w-full">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.0234567890123!2d77.0833!3d28.6833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d047309ffffff%3A0x1234567890abcdef!2sF-6%2C%20Delhi%20State%20Industrial%20Development%20Corporation%2C%20Nangloi%2C%20Delhi%2C%20110041!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Vinayak Technoplast Location"
+            ></iframe>
           </div>
         </div>
       </section>

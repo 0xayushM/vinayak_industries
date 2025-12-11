@@ -62,13 +62,13 @@ export default function CapabilitiesPage() {
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             CAPABILITIES
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-base md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             State-of-the-art equipment and advanced manufacturing processes to deliver exceptional results.
@@ -77,14 +77,14 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* Tabs Navigation */}
-      <section className="py-8 px-6 bg-gray-50 sticky top-20 z-10 border-b border-gray-200">
+      <section className="py-8 px-6 bg-gray-50 md:sticky top-20 z-10 border-b border-gray-200">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-4">
             {tabs.map((tab, index) => (
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`px-6 py-3 rounded-full font-medium transition-all ${
+                className={`px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg rounded-full font-medium transition-all ${
                   activeTab === index
                     ? 'bg-amber-500 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'

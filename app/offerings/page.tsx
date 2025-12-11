@@ -66,9 +66,9 @@ export default function OfferingsPage() {
       </section>
 
       {/* Design & Development Card */}
-      <section className="py-6 px-6 bg-gray-100">
+      <section className="p-3 md:p-6 bg-gray-100">
         <div className="max-w-8xl mx-auto">
-          <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+          <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
             <div className="absolute top-0 right-0 w-[50%] h-full z-0">
               <Image
                 src="/images/offerings/offering-1.jpg"
@@ -86,7 +86,7 @@ export default function OfferingsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                <h2 className="text-2xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
                   DESIGN & DEVELOPMENT OF<br />INJECTION MOULDS AND DIES
                 </h2>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
@@ -106,9 +106,9 @@ export default function OfferingsPage() {
       </section>
 
       {/* Injection Moulding Card */}
-      <section className="py-6 px-6 bg-gray-100">
+      <section className="p-3 md:p-6 bg-gray-100">
         <div className="max-w-8xl mx-auto">
-          <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+          <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
             <div className="absolute top-0 left-0 w-[50%] h-full z-0">
               <Image
                 src="/images/offerings/offering-2.jpg"
@@ -126,7 +126,7 @@ export default function OfferingsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                <h2 className="text-2xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
                   INJECTION MOULDING OF<br />ENGINEERING POLYMERS
                 </h2>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
@@ -145,9 +145,9 @@ export default function OfferingsPage() {
       </section>
 
       {/* Complete Assembly Card */}
-      <section className="py-6 px-6 bg-gray-100">
+      <section className="p-3 md:p-6 bg-gray-100">
         <div className="max-w-8xl mx-auto">
-          <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+          <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
             <div className="absolute top-0 right-0 w-[50%] h-full z-0">
               <Image
                 src="/images/offerings/offering-3.jpg"
@@ -165,7 +165,7 @@ export default function OfferingsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                <h2 className="text-2xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
                   COMPLETE ASSEMBLY AND<br />SUPPLY OF FINISH PRODUCTS
                 </h2>
                 <p className="text-gray-300 leading-relaxed">
@@ -180,10 +180,10 @@ export default function OfferingsPage() {
       </section>
 
       {/* Moulding Capacities - Table 1 */}
-      <section className="py-6 px-6 bg-gray-100">
+      <section className="p-3 md:p-6 bg-gray-100">
         <div className="max-w-8xl mx-auto">
-          <div className="bg-white rounded-[50px] p-8 lg:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">OUR MOULDING CAPACITIES</h2>
+          <div className="bg-white rounded-[40px] md:rounded-[50px] p-4 lg:p-12">
+            <h2 className="text-2xl md:text-4xl p-4 font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">OUR MOULDING CAPACITIES</h2>
             <div className="rounded-2xl overflow-hidden border border-gray-200">
               <div className="overflow-x-auto">
               <table className="w-full">
@@ -235,10 +235,10 @@ export default function OfferingsPage() {
       </section>
 
       {/* Moulding Capacities - Table 2 (Detailed Specs 450T-150T) */}
-      <section className="py-6 px-6 bg-gray-100">
+      <section className="p-3 md:p-6 bg-gray-100">
         <div className="max-w-8xl mx-auto">
-          <div className="bg-white rounded-[50px] p-8 lg:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">DETAILED SPECIFICATIONS</h2>
+          <div className="bg-white rounded-[40px] md:rounded-[50px] p-4 lg:p-12">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 p-4 font-[family-name:var(--font-carbon)] mb-8">DETAILED SPECIFICATIONS</h2>
             <div className="rounded-2xl overflow-hidden border border-gray-200">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -284,10 +284,10 @@ export default function OfferingsPage() {
       </section>
 
       {/* Moulding Capacities - Table 3 (Detailed Specs 145T-75T) */}
-      <section className="py-6 px-6 bg-gray-100">
+      <section className="p-3 md:p-6 bg-gray-100">
         <div className="max-w-8xl mx-auto">
-          <div className="bg-white rounded-[50px] p-8 lg:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">MORE SPECIFICATIONS</h2>
+          <div className="bg-white rounded-[40px] md:rounded-[50px] p-4 lg:p-12">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 p-4 font-[family-name:var(--font-carbon)] mb-8">MORE SPECIFICATIONS</h2>
             <div className="rounded-2xl overflow-hidden border border-gray-200">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
