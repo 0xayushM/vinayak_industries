@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { HiChatBubbleLeftRight, HiUsers, HiAcademicCap, HiCheckBadge, HiWrench, HiBolt, HiComputerDesktop, HiStar, HiArrowTrendingUp, HiBeaker, HiCheckCircle, HiUserGroup } from "react-icons/hi2";
+import CTASection from "@/components/CTASection";
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -54,7 +56,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="h-full bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -85,13 +87,13 @@ export default function AboutPage() {
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             ABOUT US
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-base md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             Specialising in design, mould development and moulding solutions under one roof.
@@ -100,14 +102,14 @@ export default function AboutPage() {
       </section>
 
       {/* Tabs Navigation */}
-      <section className="py-8 px-6 bg-gray-50 sticky top-20 z-10 border-b border-gray-200">
+      <section className="py-8 px-6 bg-gray-50 md:sticky top-20 z-10 border-b border-gray-200">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap gap-4">
             {tabs.map((tab, index) => (
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`px-6 py-3 rounded-full font-medium transition-all ${
+                className={`md:px-6 md:py-4 px-3 py-2 rounded-full text-sm md:text-lg font-medium transition-all ${
                   activeTab === index
                     ? 'bg-amber-500 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
@@ -121,18 +123,18 @@ export default function AboutPage() {
       </section>
 
       {/* Tab Content */}
-      <div className="min-h-screen bg-gray-100">
+      <div className="h-full bg-gray-100">
         {/* Tab 1: Who We Are */}
         {activeTab === 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="py-6 px-6"
+            className="py-3 px-3 md:py-6 md:px-6"
           >
             {/* Who We Are + Commitments Combined Card */}
             <div className="max-w-8xl mx-auto mb-6">
-              <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+              <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
                 {/* Background Image */}
                 <div className="absolute top-0 right-0 w-[50%] h-[60%] z-0">
                   <Image
@@ -147,8 +149,8 @@ export default function AboutPage() {
 
                 <div className="relative z-10 p-8 lg:p-12">
                   {/* Who We Are Section */}
-                  <h2 className="text-4xl md:text-5xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)]">WHO WE ARE</h2>
-                  <div className="max-w-2xl space-y-4 text-gray-300 leading-relaxed mb-8">
+                  <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)]">WHO WE ARE</h2>
+                  <div className="text-sm md:text-base max-w-2xl space-y-4 text-gray-300 leading-relaxed mb-8">
                     <p>
                       Vinayak Technoplast specialises in design, mould development and moulding solutions under one roof.
                       We are professionally managed company led by our chairman <span className="font-semibold text-white">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="font-semibold text-white">IIT, BHU</span>. 
@@ -162,10 +164,10 @@ export default function AboutPage() {
                   <h3 className="text-2xl font-bold text-white mb-6 font-[family-name:var(--font-carbon)]">OUR COMMITMENTS</h3>
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
-                      { icon: "💬", title: "Good Communication", desc: "With customer and team members" },
-                      { icon: "👥", title: "Equal Opportunity", desc: "At work place" },
-                      { icon: "📚", title: "Skill Development", desc: "Continuous training" },
-                      { icon: "✅", title: "First Time Right", desc: "Every time" }
+                      { icon: HiChatBubbleLeftRight, title: "Good Communication", desc: "With customer and team members" },
+                      { icon: HiUsers, title: "Equal Opportunity", desc: "At work place" },
+                      { icon: HiAcademicCap, title: "Skill Development", desc: "Continuous training" },
+                      { icon: HiCheckBadge, title: "First Time Right", desc: "Every time" }
                     ].map((item, index) => (
                       <motion.div 
                         key={index}
@@ -175,7 +177,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                       >
-                        <div className="text-3xl mb-3">{item.icon}</div>
+                        <item.icon className="text-3xl mb-3 text-amber-500" />
                         <h3 className="text-base font-bold text-white mb-1">{item.title}</h3>
                         <p className="text-gray-400 text-sm">{item.desc}</p>
                       </motion.div>
@@ -187,7 +189,7 @@ export default function AboutPage() {
 
             {/* Quality Policy Card - Now White */}
             <div className="max-w-8xl mx-auto mb-6">
-              <div className="bg-white rounded-[50px] p-8 lg:p-12">
+              <div className="bg-white rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">QUALITY POLICY</h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
@@ -219,18 +221,18 @@ export default function AboutPage() {
 
             {/* Achievements Card - Now Dark */}
             <div className="max-w-8xl mx-auto">
-              <div className="relative rounded-[50px] overflow-hidden bg-gray-900 p-8 lg:p-12">
+              <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900 p-8 lg:p-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-8">ACHIEVEMENTS</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {[
-                    { icon: "🔧", text: "Expand Tool Room with Effective Manpower" },
-                    { icon: "⚡", text: "Addition of New sub Processes, Assembly for Electrical Accessories" },
-                    { icon: "💻", text: "Work under process upgradation to ERP System" },
-                    { icon: "⭐", text: "Get Higher Rank in Quality by All Customers" },
-                    { icon: "📈", text: "Achieved a sales growth of 25%" },
-                    { icon: "🤝", text: "Successfully join new company JAY USHIN" },
-                    { icon: "🔬", text: "Add ISI Lab For Electrical Accessories" },
-                    { icon: "✅", text: "All work done as per ISO/T.S. (I.A.T.F.)" }
+                    { icon: HiWrench, text: "Expand Tool Room with Effective Manpower" },
+                    { icon: HiBolt, text: "Addition of New sub Processes, Assembly for Electrical Accessories" },
+                    { icon: HiComputerDesktop, text: "Work under process upgradation to ERP System" },
+                    { icon: HiStar, text: "Get Higher Rank in Quality by All Customers" },
+                    { icon: HiArrowTrendingUp, text: "Achieved a sales growth of 25%" },
+                    { icon: HiUserGroup, text: "Successfully join new company JAY USHIN" },
+                    { icon: HiBeaker, text: "Add ISI Lab For Electrical Accessories" },
+                    { icon: HiCheckCircle, text: "All work done as per ISO/T.S. (I.A.T.F.)" }
                   ].map((item, index) => (
                     <motion.div 
                       key={index}
@@ -240,7 +242,7 @@ export default function AboutPage() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
-                      <div className="text-3xl mb-3">{item.icon}</div>
+                      <item.icon className="text-3xl mb-3 text-amber-500" />
                       <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
                     </motion.div>
                   ))}
@@ -256,22 +258,22 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="py-6 px-6"
+            className="py-3 px-3 md:py-6 md:px-6"
           >
             <div className="max-w-8xl mx-auto">
               {/* Single merged card */}
-              <div className="bg-gray-900 rounded-[50px] p-8 lg:p-12">
+              <div className="bg-gray-900 rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
                 {/* Heading inside card */}
-                <h2 className="text-4xl md:text-5xl font-bold text-amber-500 mb-2 font-[family-name:var(--font-carbon)]">MANAGEMENT TEAM</h2>
-                <p className="text-gray-400 mb-8">
+                <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-2 font-[family-name:var(--font-carbon)]">MANAGEMENT TEAM</h2>
+                <p className="text-sm md:text-base text-gray-400 mb-8">
                   We are professionally managed company led by our chairman <span className="text-white font-semibold">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="text-white font-semibold">IIT BHU</span>.
                 </p>
 
                 {/* Content grid with image card inside */}
-                <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="grid md:grid-cols-3 gap-8 items-center">
                   {/* Image inside a card */}
-                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-4 overflow-hidden">
-                    <div className="rounded-2xl overflow-hidden h-[450px]">
+                  <div className="md:col-span-1  overflow-hidden">
+                    <div className="rounded-lg md:rounded-2xl overflow-hidden h-[450px]">
                       <Image
                         src="/sandeep_kalra.jpeg"
                         alt="Mr. Sandeep Agarwal, CEO"
@@ -283,7 +285,8 @@ export default function AboutPage() {
                   </div>
 
                   {/* About content */}
-                  <div className="flex flex-col justify-center">
+                  <div className="md:col-span-2 ">
+                    <div className="flex flex-col justify-center">
                     <h3 className="text-3xl font-bold text-white mb-2">Mr. Sandeep Agarwal</h3>
                     <p className="text-amber-500 font-semibold text-lg mb-6">CEO</p>
                     <p className="text-gray-300 leading-relaxed mb-4">
@@ -292,6 +295,7 @@ export default function AboutPage() {
                     <p className="text-gray-400 leading-relaxed">
                       Our approach is different: we diagnose the root causes of warpage, flashing, and part failure, and then engineer molds with proper venting, optimized gating, and advanced cooling solutions that consistently reduce cycle times by 20 to 30 percent. This commitment to performance and predictability has made us a trusted Tier-1 partner for industry leaders including Maruti Suzuki, Hyundai, RR Kabel, and top brands across the Automotive, Pharma, Kitchenware, and Electrical sectors.
                     </p>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -305,12 +309,12 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="py-6 px-6"
+            className="md:p-6 p-3"
           >
             <div className="max-w-8xl mx-auto">
-              <div className="bg-white rounded-[50px] p-8 lg:p-12">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">INFRASTRUCTURE</h2>
-                <p className="text-xl text-gray-600 mb-8">
+              <div className="bg-white md:rounded-[50px] rounded-[40px] p-6 lg:p-12">
+                <h2 className="text-2xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">INFRASTRUCTURE</h2>
+                <p className="text-sm md:text-xl text-gray-600 mb-8">
                   Strategically located manufacturing unit spanning <span className="font-semibold text-amber-500">35,000 Sq Ft</span> manufacturing area.
                 </p>
                 
@@ -338,7 +342,7 @@ export default function AboutPage() {
           </motion.div>
         )}
       </div>
-
+      <CTASection/>
       <Footer />
     </div>
   );

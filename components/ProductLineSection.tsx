@@ -32,9 +32,9 @@ export default function ProductLineSection() {
   ];
 
   return (
-    <section className="py-6 px-6">
+    <section className="md:py-6 md:px-6 px-3 py-3">
       <div className="max-w-8xl mx-auto">
-        <div className="relative rounded-[50px] overflow-hidden bg-gray-900">
+        <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
           {/* Background Image - Top Right Corner Only */}
           <div className="absolute top-0 right-0 w-[70%] h-[55%] z-0">
             <Image

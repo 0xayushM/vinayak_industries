@@ -41,7 +41,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom banner */}
-      <div className="absolute bottom-0 left-0 right-0 z-20">
+      <div className="hidden md:block absolute bottom-0 left-0 right-0 z-20">
         <div className="flex items-center">
           <div className="bg-amber-500 px-8 py-4 ml-auto mr-12 skew-x-[-12deg]">
             <span className="text-gray-900 font-bold text-xl tracking-wider skew-x-[12deg] inline-block font-[family-name:var(--font-korto)]">
@@ -59,7 +59,7 @@ export default function HeroSection() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 w-full px-8 lg:px-16">
+      <div className="relative z-10 w-full px-6 lg:px-16">
         <motion.div
           initial="initial"
           animate="animate"

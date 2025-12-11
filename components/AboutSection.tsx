@@ -69,14 +69,14 @@ export default function AboutSection() {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-6">
               About<br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Vinayak</span>
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
               We are a professionally managed company led by Mr. Arjun Kumar Agarwal, Mechanical Engineer from IIT-BHU. With 30 years of experience, we ensure consistent quality, timely delivery, and competitive pricing making us one of Delhi's leading moulders.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
               Our strategically located manufacturing unit spans <span className="font-semibold text-amber-500">35,000 Sq Ft</span>, equipped with state-of-the-art facilities for design, mould development, and production.
             </p>
             <Link href="/about">
-              <button className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors">
+              <button className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 md:px-8 md:py-4 rounded-full font-medium text-sm md:text-lg transition-colors">
                 Learn More About Us
               </button>
             </Link>
@@ -85,7 +85,7 @@ export default function AboutSection() {
           {/* Video Section */}
           <motion.div
             className="relative"
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8 }}

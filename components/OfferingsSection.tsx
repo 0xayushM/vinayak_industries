@@ -37,10 +37,10 @@ export default function OfferingsSection() {
   ];
 
   return (
-    <section className="py-6 px-6">
+    <section className="md:py-6 md:px-6 px-3">
       {/* Combined Card with Background Image */}
       <div className="max-w-8xl mx-auto">
-        <div className="relative rounded-[50px] overflow-hidden">
+        <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -67,7 +67,7 @@ export default function OfferingsSection() {
                 </p>
 
                 {/* Equipment Grid */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   {equipment.map((item, index) => (
                     <motion.div
                       key={index}
