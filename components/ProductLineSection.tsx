@@ -38,7 +38,7 @@ export default function ProductLineSection() {
           {/* Background Image - Top Right Corner Only */}
           <div className="absolute top-0 right-0 w-[70%] h-[55%] z-0">
             <Image
-              src="/images/bg-image.jpeg"
+              src="/images/bg-image.png"
               alt="Manufacturing Facility"
               fill
               className="object-cover object-top"

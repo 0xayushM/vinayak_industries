@@ -64,7 +64,7 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/bg-image.jpeg"
+            src="/images/bg-image.png"
             alt="Manufacturing Facility"
             fill
             className="object-cover"
@@ -138,7 +138,7 @@ export default function AboutPage() {
                 {/* Background Image */}
                 <div className="absolute top-0 right-0 w-[50%] h-[60%] z-0">
                   <Image
-                    src="/images/bg-image.jpeg"
+                    src="/images/bg-image.png"
                     alt="Manufacturing Facility"
                     fill
                     className="object-cover"

@@ -15,6 +15,7 @@ export default function Navigation() {
     { href: "/offerings", label: "Offerings" },
     { href: "/capabilities", label: "Manufacturing Capabilities" },
     { href: "/product-line", label: "Product Line" },
+    { href: "/ev", label: "EV" },
     { href: "/contact", label: "Contact" },
   ];
 

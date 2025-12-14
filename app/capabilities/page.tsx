@@ -3,6 +3,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -39,7 +40,7 @@ export default function CapabilitiesPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/bg-image.jpeg"
+            src="/images/bg-image.png"
             alt="Manufacturing Facility"
             fill
             className="object-cover"
@@ -521,9 +522,11 @@ export default function CapabilitiesPage() {
           <p className="text-xl text-amber-100 mb-8">
             We specialize in developing custom plastic injection molding solutions tailored to your specific requirements.
           </p>
-          <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
-            Discuss Your Project
-          </button>
+          <Link href="/contact">
+            <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+              Discuss Your Project
+            </button>
+          </Link>
         </div>
       </section>
 

@@ -28,7 +28,7 @@ export default function ContactPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/bg-image.jpeg"
+            src="/images/bg-image.png"
             alt="Manufacturing Facility"
             fill
             className="object-cover"
@@ -74,7 +74,7 @@ export default function ContactPage() {
             {/* Contact Information Card */}
             <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
               <div className="absolute bottom-0 right-0 w-full h-[60%] z-0">
-                <Image src="/images/bg-image.jpeg" alt="Manufacturing Facility" fill className="object-cover" />
+                <Image src="/images/bg-image.png" alt="Manufacturing Facility" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-gray-900" />
               </div>
               <div className="relative z-10 p-6 h-full flex flex-col">

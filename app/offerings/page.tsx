@@ -3,6 +3,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function OfferingsPage() {
@@ -28,7 +29,7 @@ export default function OfferingsPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/bg-image.jpeg"
+            src="/images/bg-image.png"
             alt="Manufacturing Facility"
             fill
             className="object-cover"
@@ -341,9 +342,11 @@ export default function OfferingsPage() {
             <p className="text-xl text-amber-100 mb-8 max-w-2xl mx-auto">
               Let's discuss how our comprehensive offerings can bring your product vision to life.
             </p>
-            <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
-              Request a Quote
-            </button>
+            <Link href="/contact">
+              <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+                Request a Quote
+              </button>
+            </Link>
           </div>
         </div>
       </section>

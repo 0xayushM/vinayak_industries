@@ -23,7 +23,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/bg-image.jpeg"
+          src="/images/bg-image.png"
           alt="Manufacturing Facility"
           fill
           className="object-cover"
