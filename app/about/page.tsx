@@ -60,7 +60,7 @@ export default function AboutPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="h-[60vh] min-h-[400px] relative overflow-hidden flex items-center">
+      <section className="h-[60vh] min-h-[400px] relative overflow-hidden flex items-center z-0">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -101,29 +101,31 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* Tabs Navigation */}
-      <section className="py-8 px-6 bg-gray-50 md:sticky top-20 z-10 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap gap-4">
-            {tabs.map((tab, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveTab(index)}
-                className={`md:px-6 md:py-4 px-3 py-2 rounded-full text-sm md:text-lg font-medium transition-all ${
-                  activeTab === index
-                    ? 'bg-amber-500 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+      {/* Tabs and Content Container */}
+      <div className="relative">
+        {/* Tabs Navigation */}
+        <section className="py-8 px-6 bg-gray-50 md:sticky top-20 z-30 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-wrap gap-4">
+              {tabs.map((tab, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTab(index)}
+                  className={`md:px-6 md:py-4 px-3 py-2 rounded-full text-sm md:text-lg font-medium transition-all ${
+                    activeTab === index
+                      ? 'bg-amber-500 text-white shadow-lg'
+                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Tab Content */}
-      <div className="h-full bg-gray-100">
+        {/* Tab Content */}
+        <div className="h-full bg-gray-100">
         {/* Tab 1: Who We Are */}
         {activeTab === 0 && (
           <motion.div
@@ -147,7 +149,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900" />
                 </div>
 
-                <div className="relative z-10 p-8 lg:p-12">
+                <div className="relative z-[1] p-8 lg:p-12">
                   {/* Who We Are Section */}
                   <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)]">WHO WE ARE</h2>
                   <div className="text-sm md:text-base max-w-2xl space-y-4 text-gray-300 leading-relaxed mb-8">
@@ -341,6 +343,7 @@ export default function AboutPage() {
             </div>
           </motion.div>
         )}
+        </div>
       </div>
       <CTASection/>
       <Footer />
