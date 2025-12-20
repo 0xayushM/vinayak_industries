@@ -10,7 +10,7 @@ const BrandsCarousel = () => {
   });
 
   return (
-    <section className="py-16 bg-gray-50 overflow-hidden w-full">
+    <section className="py-8 overflow-hidden w-full">
       <div className="w-full">
         <h2 className="font-[family-name:var(--font-carbon)] text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
           Our Trusted Partners
