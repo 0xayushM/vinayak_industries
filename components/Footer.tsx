@@ -15,9 +15,6 @@ export default function Footer() {
               height={75}
               className="object-contain mb-6 brightness-0 invert"
             />
-            <p className="text-gray-400 text-sm leading-relaxed">
-             We are a professionally managed company led by Mr. Arjun Kumar Agarwal, Mechanical Engineer from IIT-BHU. With 30 years of experience, we ensure consistent quality, timely delivery, and competitive pricing making us one of Delhi’s leading moulders.
-            </p>
           </div>
 
           {/* Manufacturing Capabilities */}
@@ -87,7 +84,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 mt-8">
           <p className="text-gray-400 text-sm text-center">
-            Vinayak Technoplast © 2019. All rights reserved.
+            Vinayak Technoplast © 2025. All rights reserved.
           </p>
         </div>
       </div>

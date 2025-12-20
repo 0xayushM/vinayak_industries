@@ -11,46 +11,100 @@ export default function AboutSection() {
 
   const highlights = [
     {
-      icon: (
-        <svg className="w-12 h-12 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-      title: "Made in India",
-      subtitle: "Quality Products"
+      title: "Engineering Precision",
+      number: "3",
+      unit: "Decades",
+      description: "Over 30 years of specialized experience in precision injection molding. Our engineering team has mastered the art of producing complex components with tight tolerances for demanding industries."
     },
     {
-      icon: <span className="text-4xl font-bold text-teal-600">30+</span>,
-      title: "Years of industry",
-      subtitle: "experience"
+      title: "Parts Delivered",
+      number: "100M+",
+      unit: "Components",
+      description: "We have successfully manufactured and delivered over 100 million precision-molded parts to automotive, medical, and industrial clients, maintaining consistent quality throughout."
     },
     {
-      icon: (
-        <svg className="w-12 h-12 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
-      title: "Family-owned",
-      subtitle: "Company"
+      title: "Quality Pass Rate",
+      number: "99.9%",
+      unit: "First-Time Right",
+      description: "Our rigorous quality control processes ensure that 99.8% of our parts pass inspection on the first attempt, minimizing waste and ensuring reliability for our clients."
     },
     {
-      icon: (
-        <svg className="w-12 h-12 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-      title: "Turnkey",
-      subtitle: "Manufacturing"
+      title: "Zero-Defect OEMs",
+      number: "5+",
+      unit: "Tier-1 Partners",
+      description: "We maintain zero-defect delivery records with 5+ major OEMs in automotive and medical sectors, demonstrating our commitment to excellence and reliability."
     },
     {
-      icon: (
-        <svg className="w-12 h-12 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      title: "Large Tonnage",
-      subtitle: "up to 650"
+      title: "Max Clamping Force",
+      number: "850T",
+      unit: "Tonnage",
+      description: "Our heavy-duty 850-ton injection molding machines enable us to produce large, complex parts that many competitors cannot handle, giving you access to advanced manufacturing capabilities."
+    },
+    {
+      title: "High-Performance Machines",
+      number: "60+",
+      unit: "Units",
+      description: "Our facility houses 60+ injection molding machines ranging from 75 to 850 tonnes, allowing us to handle projects of any size and complexity with optimal efficiency."
+    },
+    {
+      title: "Engineering Polymers",
+      number: "PA66",
+      unit: "PC/ABS/PBT",
+      description: "We specialize in engineering-grade polymers including PA66, Polycarbonate, ABS, and PBT, ensuring your components meet the highest performance standards for demanding applications."
+    },
+    {
+      title: "Multi-Cavity Production",
+      number: "High",
+      unit: "Volume",
+      description: "Our multi-cavity mold capabilities enable high-volume production runs with consistent quality across all cavities, reducing per-unit costs while maintaining precision."
+    },
+    {
+      title: "Toolroom Lead Time",
+      number: "4-6",
+      unit: "Weeks",
+      description: "Our in-house toolroom delivers rapid mold development in just 4-6 weeks, significantly faster than industry standards, helping you get to market quickly."
+    },
+    {
+      title: "Production Cycles",
+      number: "24/7",
+      unit: "Operations",
+      description: "We operate round-the-clock production cycles to meet tight deadlines and high-volume demands, ensuring your orders are completed on time, every time."
+    },
+    {
+      title: "Faster Tooling",
+      number: "30%",
+      unit: "Time Savings",
+      description: "Our optimized tooling processes are 30% faster than industry averages, reducing your time-to-market and giving you a competitive edge in your industry."
+    },
+    {
+      title: "In-House Capabilities",
+      number: "Full",
+      unit: "Turnkey",
+      description: "From mold design and maintenance to production and quality control, everything is handled in-house, reducing lead times and ensuring seamless communication throughout your project."
+    },
+    {
+      title: "Manufacturing Facility",
+      number: "35,000",
+      unit: "Sq. Ft.",
+      description: "Our strategically located 35,000 sq. ft. facility in Delhi NCR is equipped with state-of-the-art infrastructure for design, mold development, and high-volume production."
+    },
+    {
+      title: "Strategic Location",
+      number: "Delhi",
+      unit: "NCR",
+      description: "Located in the heart of India's industrial hub, our Delhi NCR facility offers excellent connectivity and logistics advantages for timely delivery across India and export markets."
+    },
+    {
+      title: "Quality Certified",
+      number: "ISO",
+      unit: "9001:2015",
+      description: "We are ISO 9001:2015 certified, demonstrating our commitment to international quality management standards and continuous improvement in all our processes."
+    },
+    {
+      title: "Industry Trust",
+      number: "Auto",
+      unit: "& Medical",
+      description: "Trusted by leading automotive and medical device manufacturers, we understand the stringent requirements of regulated industries and deliver components that meet or exceed specifications."
     }
   ];
 
@@ -70,10 +124,7 @@ export default function AboutSection() {
               About<br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Vinayak</span>
             </h2>
             <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
-              We are a professionally managed company led by Mr. Arjun Kumar Agarwal, Mechanical Engineer from IIT-BHU. With 30 years of experience, we ensure consistent quality, timely delivery, and competitive pricing making us one of Delhi's leading moulders.
-            </p>
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
-              Our strategically located manufacturing unit spans <span className="font-semibold text-amber-500">35,000 Sq Ft</span>, equipped with state-of-the-art facilities for design, mould development, and production.
+              Vinayak Technoplast is a premier one-stop ecosystem for the global plastic manufacturing industry. Inspired by the engineering vision of Mr. Arjun Kumar Agarwal (IIT-BHU), we transcend traditional moulding to deliver high-precision, turnkey solutions from concept design to final assembly all under one 35,000 sq. ft. roof.
             </p>
             <Link href="/about">
               <button className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 md:px-8 md:py-4 rounded-full font-medium text-sm md:text-lg transition-colors">
@@ -128,24 +179,68 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Highlights Bar */}
-        <section className="py-12 px-6 bg-white border-b border-gray-100">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        {/* Infographics Section */}
+        <section className="py-16 md:px-6 px-3 bg-gradient-to-b from-white to-gray-50">
+          <div className="max-w-8xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-3">
+                Why Industry Leaders Choose Us
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Proven capabilities backed by real metrics
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {highlights.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="text-center"
-                  initial={{ opacity: 0, y: 20 }}
+                  className="relative bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden group cursor-pointer"
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
                 >
-                  <div className="flex justify-center mb-3">
-                    {item.icon}
+                  {/* Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-amber-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Animated Border Gradient */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-amber-400 via-orange-500 to-amber-600 -z-10" style={{ padding: '2px' }}>
+                    <div className="absolute inset-[2px] bg-white rounded-2xl"></div>
                   </div>
-                  <h3 className="font-bold text-gray-900">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.subtitle}</p>
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Title */}
+                    <h3 className="text-amber-600 group-hover:text-amber-700 font-bold text-sm mb-4 uppercase tracking-wide transition-colors duration-300">
+                      {item.title}
+                    </h3>
+
+                    {/* Large Number */}
+                    <div className="mb-2">
+                      <span className="text-5xl md:text-6xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amber-600 group-hover:to-orange-600 font-[family-name:var(--font-carbon)] leading-none transition-all duration-300">
+                        {item.number}
+                      </span>
+                    </div>
+
+                    {/* Unit */}
+                    <div className="mb-4">
+                      <span className="text-sm font-semibold text-gray-600 group-hover:text-amber-700 transition-colors duration-300">
+                        {item.unit}
+                      </span>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-600 group-hover:text-gray-700 leading-relaxed transition-colors duration-300">
+                      {item.description}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>

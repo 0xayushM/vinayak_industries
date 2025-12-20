@@ -154,11 +154,7 @@ export default function AboutPage() {
                   <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)]">WHO WE ARE</h2>
                   <div className="text-sm md:text-base max-w-2xl space-y-4 text-gray-300 leading-relaxed mb-8">
                     <p>
-                      Vinayak Technoplast specialises in design, mould development and moulding solutions under one roof.
-                      We are professionally managed company led by our chairman <span className="font-semibold text-white">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="font-semibold text-white">IIT, BHU</span>. 
-                    </p>
-                    <p>
-                      We have experience of <span className="font-semibold text-amber-500">30 Years</span> and are proud to be one of the top moulders in Delhi with a <span className="font-semibold text-amber-500">35,000 Sq Ft</span> facility.
+                      Vinayak Technoplast is a premier one-stop ecosystem for the global plastic manufacturing industry. Inspired by the engineering vision of Mr. Arjun Kumar Agarwal (IIT-BHU), we transcend traditional moulding to deliver high-precision, turnkey solutions from concept design to final assembly all under one 35,000 sq. ft. roof.
                     </p>
                   </div>
 
