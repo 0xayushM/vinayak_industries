@@ -13,9 +13,10 @@ export default function OfferingsSection() {
   };
 
   const equipment = [
-    { range: "60-220 tons", qty: 8 },
+    { range: "60-220 tons", qty: 20 },
     { range: "250-450 tons", qty: 6 },
-    { range: "500-650 tons", qty: 4 },
+    { range: "500-700 tons", qty: 4 },
+    { range: "850 tons", qty: 1 }
   ];
 
   const advantages = [

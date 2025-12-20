@@ -190,40 +190,49 @@ export default function OfferingsPage() {
               <table className="w-full">
                 <thead>
                   <tr className="bg-amber-500 text-white">
-                    <th className="px-6 py-4 text-left font-semibold">S.No.</th>
-                    <th className="px-6 py-4 text-left font-semibold">Moulding Machines</th>
-                    <th className="px-6 py-4 text-left font-semibold">Clamp Tonnage (Tones) Max.</th>
-                    <th className="px-6 py-4 text-left font-semibold">Shot Wt. (gms)</th>
+                    <th className="px-6 py-4 text-left font-semibold">SR. NO.</th>
+                    <th className="px-6 py-4 text-left font-semibold">CLAMP TONNAGE TONNES (MAX)</th>
+                    <th className="px-6 py-4 text-left font-semibold">MOULDING MACHINE MAKES</th>
+                    <th className="px-6 py-4 text-left font-semibold">SHOT WEIGHT (GMS)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {[
-                    { no: 1, machine: "Ferromatik Milacron", tonnage: 450, shot: 1530 },
-                    { no: 2, machine: "Bole", tonnage: 350, shot: 1000 },
-                    { no: 3, machine: "JSW", tonnage: 250, shot: 600 },
-                    { no: 4, machine: "Windsor", tonnage: 230, shot: 750 },
-                    { no: 5, machine: "Toshiba", tonnage: 220, shot: 402 },
-                    { no: 6, machine: "JSW", tonnage: 200, shot: 215 },
-                    { no: 7, machine: "Kawaguchi", tonnage: 190, shot: 260 },
-                    { no: 8, machine: "Ferromatik Milacron", tonnage: 170, shot: 355 },
-                    { no: 9, machine: "Ferromatik Milacron", tonnage: 150, shot: 303 },
-                    { no: 10, machine: "Bole", tonnage: 160, shot: 250 },
-                    { no: 11, machine: "Ferromatik Milacron", tonnage: 145, shot: 150 },
-                    { no: 12, machine: "Ferromatik Milacron", tonnage: 140, shot: 140 },
-                    { no: 13, machine: "Ferromatik Milacron", tonnage: 135, shot: 135 },
-                    { no: 14, machine: "Toshiba", tonnage: 125, shot: 210 },
-                    { no: 15, machine: "Nigata", tonnage: 120, shot: 200 },
-                    { no: 16, machine: "Ferromatik Milacron", tonnage: 115, shot: 128 },
-                    { no: 17, machine: "Toshiba", tonnage: 110, shot: 162 },
-                    { no: 18, machine: "Pratishna", tonnage: 100, shot: 160 },
-                    { no: 19, machine: "Pratishna", tonnage: 90, shot: 155 },
-                    { no: 20, machine: "Sperry", tonnage: 80, shot: 150 },
-                    { no: 21, machine: "Swift", tonnage: 75, shot: 104 },
+                    { no: 1, tonnage: "850 T", machine: "HAITIAN", shot: 4500 },
+                    { no: 2, tonnage: "700 T", machine: "HAITIAN", shot: 2500 },
+                    { no: 3, tonnage: "650 T", machine: "SHIBAURA", shot: 2870 },
+                    { no: 4, tonnage: "550 T", machine: "HAITIAN", shot: 2000 },
+                    { no: 5, tonnage: "450 T", machine: "MILACRON", shot: 1530 },
+                    { no: 6, tonnage: "450 T", machine: "MILACRON", shot: 1530 },
+                    { no: 7, tonnage: "350 T", machine: "BOLE", shot: 1000 },
+                    { no: 8, tonnage: "250 T", machine: "JSW", shot: 600 },
+                    { no: 9, tonnage: "235 T", machine: "SHIBAURA", shot: 470 },
+                    { no: 10, tonnage: "225 T", machine: "SHIBAURA", shot: 430 },
+                    { no: 11, tonnage: "220 T", machine: "TOSHIBA", shot: 402 },
+                    { no: 12, tonnage: "170 T", machine: "MILACRON", shot: 355 },
+                    { no: 13, tonnage: "160 T", machine: "BOLE", shot: 250 },
+                    { no: 14, tonnage: "155 T", machine: "TOSHIBA", shot: 230 },
+                    { no: 15, tonnage: "150 T", machine: "MILACRON", shot: 303 },
+                    { no: 16, tonnage: "150 T", machine: "SHIBAURA", shot: 210 },
+                    { no: 17, tonnage: "145 T", machine: "MILACRON", shot: 150 },
+                    { no: 18, tonnage: "140 T", machine: "MILACRON", shot: 140 },
+                    { no: 19, tonnage: "135 T", machine: "MILACRON", shot: 135 },
+                    { no: 20, tonnage: "125 T", machine: "TOSHIBA", shot: 210 },
+                    { no: 21, tonnage: "120 T", machine: "NIGATA", shot: 200 },
+                    { no: 22, tonnage: "120 T", machine: "SHIBAURA", shot: 162 },
+                    { no: 23, tonnage: "115 T", machine: "MILACRON", shot: 128 },
+                    { no: 24, tonnage: "110 T", machine: "TOSHIBA", shot: 162 },
+                    { no: 25, tonnage: "105 T", machine: "L&T", shot: 162 },
+                    { no: 26, tonnage: "100 T", machine: "PRATISHNA", shot: 160 },
+                    { no: 27, tonnage: "100 T", machine: "SHIBAURA", shot: 110 },
+                    { no: 28, tonnage: "90 T", machine: "PRATISHNA", shot: 155 },
+                    { no: 29, tonnage: "80 T", machine: "SPEERY", shot: 150 },
+                    { no: 30, tonnage: "75 T", machine: "SWIFT", shot: 104 },
                   ].map((row) => (
                     <tr key={row.no} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4 text-gray-900">{row.no}</td>
-                      <td className="px-6 py-4 text-gray-900 font-medium">{row.machine}</td>
                       <td className="px-6 py-4 text-gray-700">{row.tonnage}</td>
+                      <td className="px-6 py-4 text-gray-900 font-medium">{row.machine}</td>
                       <td className="px-6 py-4 text-gray-700">{row.shot}</td>
                     </tr>
                   ))}
