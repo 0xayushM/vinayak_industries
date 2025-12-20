@@ -300,6 +300,43 @@ export default function AboutPage() {
                   </div>
                   </div>
                 </div>
+
+                {/* Team Members Grid */}
+                <div className="mt-12 pt-12 border-t border-white/10">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 font-[family-name:var(--font-carbon)]">OUR TEAM</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {[
+                      { name: "Mr. Bholanath Nayak", role: "Plant Head", image: "/team/Bhola Sir.jpg" },
+                      { name: "Mr. Shambhu Nath", role: "Accounts Head", image: "/team/Shambhu.jpg" },
+                      { name: "Mr. Sonu Malik", role: "Operations Head", image: "/team/Sonuji.jpg" },
+                      { name: "Mr. Karan Dhingra", role: "Division Head", image: "/team/karan.jpeg" },
+                      { name: "Mr. Puran Chand", role: "Design and Development", image: "/team/Puran Chand Ji.jpg" },
+                      { name: "Mr. Nirmal", role: "Store Head", image: "/team/Nirmalji.jpg" },
+                      { name: "Mr. Anil Tanwar", role: "Inventory Head", image: "/team/Anilji.JPG" },
+                      { name: "Mr. Shubham", role: "QMS Head", image: "/team/Shubhamji.jpg" },
+                    ].map((member, index) => (
+                      <motion.div
+                        key={index}
+                        className="text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                      >
+                        <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-white">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover object-top"
+                          />
+                        </div>
+                        <h4 className="text-white font-bold text-sm md:text-lg mb-1">{member.name}</h4>
+                        <p className="text-amber-500 text-xs md:text-sm font-medium uppercase tracking-wide">{member.role}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

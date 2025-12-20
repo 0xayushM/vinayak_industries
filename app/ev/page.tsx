@@ -6,8 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { HiOutlineCog6Tooth, HiOutlineBolt, HiOutlineShieldCheck, HiOutlineCpuChip } from "react-icons/hi2";
+import { useState } from "react";
 
 export default function EVPage() {
+  const [showAllImages, setShowAllImages] = useState(false);
+  
   const evImages = [
     "/images/ev/img1.jpeg",
     "/images/ev/img2.jpeg",
@@ -365,7 +368,7 @@ export default function EVPage() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {evImages.slice(0, 16).map((image, index) => (
+            {(showAllImages ? evImages : evImages.slice(0, 16)).map((image, index) => (
               <motion.div
                 key={index}
                 className="relative aspect-square rounded-xl overflow-hidden bg-slate-800/50 hover:shadow-xl hover:shadow-indigo-500/20 transition-all cursor-pointer group"
@@ -392,11 +395,12 @@ export default function EVPage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <Link href="/product-line">
-              <button className="border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white px-8 py-3 rounded-full font-medium transition-all">
-                View All Products
-              </button>
-            </Link>
+            <button 
+              onClick={() => setShowAllImages(!showAllImages)}
+              className="border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white px-8 py-3 rounded-full font-medium transition-all"
+            >
+              {showAllImages ? 'Show Less' : 'View All Products'}
+            </button>
           </motion.div>
         </div>
       </section>
