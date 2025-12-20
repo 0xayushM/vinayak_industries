@@ -91,28 +91,26 @@ export default function OfferingsSection() {
 
               {/* Right - Tonnage Badge */}
               <motion.div 
-                className="flex justify-center"
+                className="flex justify-center h-full items-end"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="relative">
-                  {/* Laurel wreath SVG */}
-                  <svg className="w-64 h-64 text-amber-500/80" viewBox="0 0 200 200" fill="currentColor">
-                    <path d="M100 180c-5-10-15-25-35-35 5 0 15 5 25 15-10-15-15-30-15-45 5 10 15 25 25 35-5-15-5-35 0-50 5 15 10 35 10 50 10-15 20-30 30-40-5 20-10 40-20 55 15-10 25-20 35-25-15 15-30 30-45 40 15 0 30-5 45-10-20 10-40 15-55 10z" transform="translate(0,10)"/>
-                    <path d="M100 180c5-10 15-25 35-35-5 0-15 5-25 15 10-15 15-30 15-45-5 10-15 25-25 35 5-15 5-35 0-50-5 15-10 35-10 50-10-15-20-30-30-40 5 20 10 40 20 55-15-10-25-20-35-25 15 15 30 30 45 40-15 0-30-5-45-10 20 10 40 15 55 10z" transform="translate(0,10)"/>
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-6xl font-bold text-white font-[family-name:var(--font-carbon)]">650</span>
-                    <span className="text-amber-500 text-lg font-medium">Tonnage (tons)</span>
-                  </div>
+                <div className="relative w-64 h-64">
+                  <Image
+                    src="/tonnage.png"
+                    alt="650 Tonnage"
+                    fill
+                    className="object-contain"
+                    unoptimized
+                  />
                 </div>
               </motion.div>
             </div>
 
             {/* Divider */}
-            <div className="border-t border-white/20 mb-12"></div>
+            {/* <div className="border-t border-white/20 mb-12"></div> */}
 
             {/* Advantages Section */}
             <div>
@@ -123,7 +121,7 @@ export default function OfferingsSection() {
                 Our Main Advantages
               </motion.h2>
 
-              <div className="grid md:grid-cols-4 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {advantages.map((item, index) => (
                   <motion.div
                     key={index}
