@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Play } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import StatsCarousel from "./StatsCarousel";
 
 export default function AboutSection() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,7 +27,7 @@ export default function AboutSection() {
       title: "Quality Pass Rate",
       number: "99.9%",
       unit: "First-Time Right",
-      description: "Our rigorous quality control processes ensure that 99.8% of our parts pass inspection on the first attempt, minimizing waste and ensuring reliability for our clients."
+      description: "Our rigorous quality control processes ensure that 99.9% of our parts pass inspection on the first attempt, minimizing rejections and ensuring reliability for our clients."
     },
     {
       title: "Zero-Defect OEMs",
@@ -38,19 +39,19 @@ export default function AboutSection() {
       title: "Max Clamping Force",
       number: "850T",
       unit: "Tonnage",
-      description: "Our heavy-duty 850-ton injection molding machines enable us to produce large, complex parts that many competitors cannot handle, giving you access to advanced manufacturing capabilities."
+      description: "Our heavy-duty 850-ton and many other injection molding machines enable us to produce large, complex parts that many competitors cannot handle, giving you access to advanced manufacturing capabilities."
     },
     {
       title: "High-Performance Machines",
-      number: "60+",
+      number: "30+",
       unit: "Units",
-      description: "Our facility houses 60+ injection molding machines ranging from 75 to 850 tonnes, allowing us to handle projects of any size and complexity with optimal efficiency."
+      description: "Our facility houses 30+ injection molding machines ranging from 60 to 850 tonnes, allowing us to handle projects of any size and complexity with optimal efficiency."
     },
     {
       title: "Engineering Polymers",
       number: "PA66",
       unit: "PC/ABS/PBT",
-      description: "We specialize in engineering-grade polymers including PA66, Polycarbonate, ABS, and PBT, ensuring your components meet the highest performance standards for demanding applications."
+      description: "We specialize in engineering-grade polymers including PA66, Polycarbonate, ABS and PBT, ensuring your components meet the highest performance standards for demanding applications."
     },
     {
       title: "Multi-Cavity Production",
@@ -66,7 +67,7 @@ export default function AboutSection() {
     },
     {
       title: "Production Cycles",
-      number: "24/7",
+      number: "24x7",
       unit: "Operations",
       description: "We operate round-the-clock production cycles to meet tight deadlines and high-volume demands, ensuring your orders are completed on time, every time."
     },
@@ -80,7 +81,7 @@ export default function AboutSection() {
       title: "In-House Capabilities",
       number: "Full",
       unit: "Turnkey",
-      description: "From mold design and maintenance to production and quality control, everything is handled in-house, reducing lead times and ensuring seamless communication throughout your project."
+      description: "From mold design and maintenance to production and assemblies, everything is handled in-house, reducing lead times and ensuring seamless communication throughout your project."
     },
     {
       title: "Manufacturing Facility",
@@ -103,8 +104,8 @@ export default function AboutSection() {
     {
       title: "Industry Trust",
       number: "Auto",
-      unit: "& Medical",
-      description: "Trusted by leading automotive and medical device manufacturers, we understand the stringent requirements of regulated industries and deliver components that meet or exceed specifications."
+      unit: "Medical and Others",
+      description: "Trusted by leading automotive, medical device and other manufacturers, we understand the stringent requirements of regulated industries and deliver components that meet or exceed specifications."
     }
   ];
 
@@ -124,7 +125,7 @@ export default function AboutSection() {
               About<br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Vinayak</span>
             </h2>
             <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
-              Vinayak Technoplast is a premier one-stop ecosystem for the global plastic manufacturing industry. Inspired by the engineering vision of Mr. Arjun Kumar Agarwal (IIT-BHU), we transcend traditional moulding to deliver high-precision, turnkey solutions from concept design to final assembly all under one 35,000 sq. ft. roof.
+              Vinayak Technoplast is a premier one-stop ecosystem for the global plastic manufacturing industry. Inspired by the engineering vision of Mr. Arjun Kumar Agarwal (IIT-BHU) and driven by Mr. Sandeep Agarwal, we transcend traditional moulding to deliver high-precision, turnkey solutions from concept design to final assemblies all under one roof.
             </p>
             <Link href="/about">
               <button className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 md:px-8 md:py-4 rounded-full font-medium text-sm md:text-lg transition-colors">
@@ -179,73 +180,8 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Infographics Section */}
-        <section className="py-16 md:px-6 px-3 bg-gradient-to-b from-white to-gray-50">
-          <div className="max-w-8xl mx-auto">
-            <motion.div
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-3">
-                Why Industry Leaders Choose Us
-              </h2>
-              <p className="text-gray-600 text-lg">
-                Proven capabilities backed by real metrics
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {highlights.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="relative bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden group cursor-pointer"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                >
-                  {/* Gradient Overlay on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-amber-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  {/* Animated Border Gradient */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-amber-400 via-orange-500 to-amber-600 -z-10" style={{ padding: '2px' }}>
-                    <div className="absolute inset-[2px] bg-white rounded-2xl"></div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {/* Title */}
-                    <h3 className="text-amber-600 group-hover:text-amber-700 font-bold text-sm mb-4 uppercase tracking-wide transition-colors duration-300">
-                      {item.title}
-                    </h3>
-
-                    {/* Large Number */}
-                    <div className="mb-2">
-                      <span className="text-5xl md:text-6xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amber-600 group-hover:to-orange-600 font-[family-name:var(--font-carbon)] leading-none transition-all duration-300">
-                        {item.number}
-                      </span>
-                    </div>
-
-                    {/* Unit */}
-                    <div className="mb-4">
-                      <span className="text-sm font-semibold text-gray-600 group-hover:text-amber-700 transition-colors duration-300">
-                        {item.unit}
-                      </span>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-sm text-gray-600 group-hover:text-gray-700 leading-relaxed transition-colors duration-300">
-                      {item.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Infographics Carousel Section */}
+        <StatsCarousel highlights={highlights} />
       </div>
     </section>
   );

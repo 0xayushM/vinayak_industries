@@ -154,7 +154,7 @@ export default function AboutPage() {
                   <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)]">WHO WE ARE</h2>
                   <div className="text-sm md:text-base max-w-2xl space-y-4 text-gray-300 leading-relaxed mb-8">
                     <p>
-                      Vinayak Technoplast is a premier one-stop ecosystem for the global plastic manufacturing industry. Inspired by the engineering vision of Mr. Arjun Kumar Agarwal (IIT-BHU), we transcend traditional moulding to deliver high-precision, turnkey solutions from concept design to final assembly all under one 35,000 sq. ft. roof.
+                      Vinayak Technoplast is a premier one-stop ecosystem for the global plastic manufacturing industry. Inspired by the engineering vision of Mr. Arjun Kumar Agarwal (IIT-BHU) and driven by Mr. Sandeep Agarwal, we transcend traditional moulding to deliver high-precision, turnkey solutions from concept design to final assemblies all under one roof.
                     </p>
                   </div>
 
@@ -228,9 +228,9 @@ export default function AboutPage() {
                     { icon: HiComputerDesktop, text: "Work under process upgradation to ERP System" },
                     { icon: HiStar, text: "Get Higher Rank in Quality by All Customers" },
                     { icon: HiArrowTrendingUp, text: "Achieved a sales growth of 25%" },
-                    { icon: HiUserGroup, text: "Successfully join new company JAY USHIN" },
+                    { icon: HiUserGroup, text: "Onboarding additional 20% customers every year" },
                     { icon: HiBeaker, text: "Add ISI Lab For Electrical Accessories" },
-                    { icon: HiCheckCircle, text: "All work done as per ISO/T.S. (I.A.T.F.)" }
+                    { icon: HiCheckCircle, text: "All work done as per ISO, T.S. (I.A.T.F.)" }
                   ].map((item, index) => (
                     <motion.div 
                       key={index}
@@ -264,7 +264,7 @@ export default function AboutPage() {
                 {/* Heading inside card */}
                 <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-2 font-[family-name:var(--font-carbon)]">MANAGEMENT TEAM</h2>
                 <p className="text-sm md:text-base text-gray-400 mb-8">
-                  We are professionally managed company led by our chairman <span className="text-white font-semibold">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="text-white font-semibold">IIT BHU</span>.
+                  We are professionally managed company envisioned by our chairman <span className="text-white font-semibold">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="text-white font-semibold">IIT BHU</span>.
                 </p>
 
                 {/* Content grid with image card inside */}
@@ -319,7 +319,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                       >
-                        <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 bg-white">
+                        <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-4 bg-white">
                           <Image
                             src={member.image}
                             alt={member.name}

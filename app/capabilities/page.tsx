@@ -108,79 +108,7 @@ export default function CapabilitiesPage() {
               <div className="max-w-7xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Product Design & Development</h2>
                 
-                <div className="grid md:grid-cols-2 gap-8 mb-12">
-                  <motion.div 
-                    className="bg-gray-50 rounded-3xl p-8"
-                    initial={{ opacity: 0, x: -60 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Product Design</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-700"><span className="font-semibold">Solid works</span> - Three Stations</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-700"><span className="font-semibold">Auto Cad/Drafting Release 2014</span> : Three Stations</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-700"><span className="font-semibold">Delcam / Powershape 5.5</span> : One Station</span>
-                      </li>
-                    </ul>
-                  </motion.div>
-
-                  <motion.div 
-                    className="bg-gray-50 rounded-3xl p-8"
-                    initial={{ opacity: 0, x: 60 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Product Development</h3>
-                    <ul className="space-y-4">
-                      <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-700"><span className="font-semibold">Delcam Power Mill 5.5</span> : One station</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-700"><span className="font-semibold">Conventional/Unconventional machines</span> 12 nos.</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-700">Capability for <span className="font-semibold">Precision Moulds, Designing Moulds & Delivering Engineering Solutions</span> by using latest Techniques & Technologies available.</span>
-                      </li>
-                    </ul>
-                  </motion.div>
-                </div>
+                
 
                 {/* VMC HAAS and EDM Cards */}
                 <div className="grid md:grid-cols-2 gap-8">
@@ -204,8 +132,6 @@ export default function CapabilitiesPage() {
                       <ul className="space-y-3 text-gray-600">
                         <li>• Capacity of Developing <span className="font-semibold text-amber-500">200 Moulds Per Annum</span> (Hot runner/Hot sprue/Three plate, Two plate, Cold Runner)</li>
                         <li>• Average Lead Time of <span className="font-semibold text-amber-500">4-6 Weeks</span> & Maintenance of Over 50 Moulds</li>
-                        <li>• Capability to manufacture moulds for <span className="font-semibold text-amber-500">10 to 700 Tonnes</span> Injection molding Machines</li>
-                        <li>• Capability to manufacture moulds to deliver accuracy within <span className="font-semibold text-amber-500">2 microns</span></li>
                       </ul>
                       <button className="mt-6 bg-amber-500 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
                         Send Enquiry
@@ -231,13 +157,9 @@ export default function CapabilitiesPage() {
                     <div className="p-8">
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">EDM JOEMAR AZ50TR</h3>
                       <ul className="space-y-3 text-gray-600">
-                        <li>• Development of Moulds increased by <span className="font-semibold text-amber-500">22%</span> in the Financial Year 17-18</li>
-                        <li>• 01 EDM have been added to the tool room in the financial Year 16-17</li>
-                        <li>• Manpower increase by <span className="font-semibold text-amber-500">two times</span> in the financial year 17-18</li>
-                        <li>• Addition of 1 VMC VF2(HAAS) in the financial year 17-18</li>
-                        <li>• Expansion of Design & Development Under Process. The proposal is to dedicate 1000 Sq feet to the D & D facility</li>
-                        <li>• Mould Development Capacity will increase by <span className="font-semibold text-amber-500">40%</span> in the financial Year 18-19</li>
-                      </ul>
+                        <li>• Capability to manufacture moulds for <span className="font-semibold text-amber-500">10 to 700 Tonnes</span> Injection molding Machines</li>
+                        <li>• Capability to manufacture moulds to deliver accuracy within <span className="font-semibold text-amber-500">2 microns</span></li>
+                     </ul>
                       <button className="mt-6 bg-amber-500 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
                         Send Enquiry
                       </button>
@@ -255,7 +177,7 @@ export default function CapabilitiesPage() {
             <div className="max-w-7xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing Shop Floor</h2>
               <p className="text-xl text-gray-600 mb-12">
-                Vinayak Technoplast has a state-of-the-art facility that provides high quality services to its clients in the following services
+                Vinayak Technoplast has a state-of-the-art facility that provides high quality services to its clients in the following areas.
               </p>
 
               <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
@@ -283,7 +205,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Over <span className="font-semibold text-amber-500">20 CNC operated</span> injection moulding machines ranging from <span className="font-semibold text-amber-500">80~450 Tonnes</span> available for bulk production</span>
+                      <span className="text-gray-700 text-lg">Over <span className="font-semibold text-amber-500">30 PLC operated</span> injection moulding machines ranging from <span className="font-semibold text-amber-500">60~850 Tonnes</span> available for bulk production</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -291,7 +213,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Range includes make of over 20 Plastic Injection Molding Machines like <span className="font-semibold">Ferromatik, Toshiba, JSW, Windsor, Nigata, Pratishna & Bole</span></span>
+                      <span className="text-gray-700 text-lg">Range includes make of over 30 Plastic Injection Molding Machines like <span className="font-semibold">Ferromatik, Toshiba, L&T, Shibaura and Bole</span></span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -299,7 +221,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Processing Capability Up to <span className="font-semibold text-amber-500">1530 gms</span> Of Shot Weight</span>
+                      <span className="text-gray-700 text-lg">Processing Capability Up to <span className="font-semibold text-amber-500">4000 gms</span> Of Shot Weight</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -307,7 +229,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">All Machines are CNC Controlled & Fitted With Hopper Dryers & Loaders</span>
+                      <span className="text-gray-700 text-lg">All Machines are PLC Controlled & Fitted With Hopper Dryers & Loaders</span>
                     </li>
                   </ul>
                 </div>
@@ -363,39 +285,6 @@ export default function CapabilitiesPage() {
               </div>
 
               {/* Quality Checks Table */}
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">We thrive to achieve Highest Standards in Business with latest quality checks</h3>
-              <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden mb-12">
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="bg-amber-500 text-white">
-                        <th className="px-6 py-4 text-left font-semibold">S.No.</th>
-                        <th className="px-6 py-4 text-left font-semibold">Machine</th>
-                        <th className="px-6 py-4 text-left font-semibold">Make</th>
-                        <th className="px-6 py-4 text-left font-semibold">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                      {[
-                        { no: 1, machine: "Height Gauge", make: "Mitutoyo", desc: "300 mm, 600 mm" },
-                        { no: 2, machine: "Bore Gauge", make: "Mitutoyo", desc: "6-100 mm, 10-18.5 mm, 18-35 mm, 50-150 mm" },
-                        { no: 3, machine: "Vernier Caliper", make: "Mitutoyo", desc: "200 mm, 300 mm, 600 mm" },
-                        { no: 4, machine: "Micrometers", make: "Mitutoyo", desc: "0-25 mm, 25-50 mm, 0-150 mm" },
-                        { no: 5, machine: "Slip Gauge Set", make: "Mitutoyo", desc: "0.5-100mm" },
-                        { no: 6, machine: "Rockwell Hardness Tester", make: "Fine Instruments", desc: "Upto 70 HRC" },
-                      ].map((row) => (
-                        <tr key={row.no} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-6 py-4 text-gray-900">{row.no}</td>
-                          <td className="px-6 py-4 text-gray-900 font-medium">{row.machine}</td>
-                          <td className="px-6 py-4 text-gray-700">{row.make}</td>
-                          <td className="px-6 py-4 text-gray-700">{row.desc}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
               {/* Tooling Technology Table */}
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Highest Standards in Tooling With Latest Technology</h3>
               <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
@@ -453,7 +342,7 @@ export default function CapabilitiesPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Lab & Testing Facilities</h2>
               <div className="bg-gray-50 rounded-3xl p-8 md:p-12 mb-12">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Our success in this industry is the result of hard work of manpower. Our team comprises of engineers, technocrats, marketing managers, quality controllers, R & D personnel, packing as well as store experts. We also provide training to team to improvise their skills.
+                  Our success in this industry is the result of hard work of manpower. Our team comprises of engineers, technocrats, marketing managers, quality controllers, R & D personnel, packing as well as store experts. We also provide continuous training to team to improvise their skills.
                 </p>
               </div>
 
