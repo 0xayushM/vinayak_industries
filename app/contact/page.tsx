@@ -106,7 +106,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-1">Phone</h3>
-                      <a href="tel:+919311378904" className="text-gray-100 hover:text-amber-500 transition-colors">+91 9311378904</a>
+                      <a href="tel:+919311378904" className="text-gray-100 hover:text-amber-500 transition-colors">+91 9311378904</a>,  
+                       <a href="tel:+919311378904" className="text-gray-100 hover:text-amber-500 transition-colors"> +91 9999394814</a>
                     </div>
                   </div>
 
@@ -118,7 +119,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-1">Email</h3>
-                      <a href="mailto:vinayaktechnoplast@gmail.com" className="text-gray-100 hover:text-amber-500 text-sm md:text-base transition-colors">vinayaktechnoplast@gmail.com</a>
+                      <a href="mailto:sales@vinayaktechnoplast.com" className="text-gray-100 hover:text-amber-500 text-sm md:text-base transition-colors">sales@vinayaktechnoplast.com</a>
                     </div>
                   </div>
                 </div>

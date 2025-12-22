@@ -87,26 +87,16 @@ const BlogSection = () => {
 
           {/* Right side - Scrollable carousel (span-2) */}
           <div className="lg:col-span-2 relative">
-            {/* Navigation Arrows */}
-            {/* <button
-              onClick={() => scroll('left')}
-              className="absolute -left-12 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
-              aria-label="Scroll left"
-            >
-              <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            
+            {/* Navigation Arrow - Right Only */}
             <button
               onClick={() => scroll('right')}
-              className="absolute -right-5 md:-right-12 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+              className="absolute -right-5 md:-right-12 top-1/2 -translate-y-1/2 z-10 bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
               aria-label="Scroll right"
             >
-              <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </button> */}
+            </button>
 
             <div ref={scrollContainerRef} className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
               {blogPosts.map((post, index) => (

@@ -49,7 +49,7 @@ export default function Navigation() {
           <Image
             src="/logo/logo1.png"
             alt="Vinayak Industries Logo"
-            width={120}
+            width={140}
             height={60}
             className={`object-contain cursor-pointer transition-all duration-300 ${
               isScrolled ? 'brightness-0' : 'brightness-0 invert'

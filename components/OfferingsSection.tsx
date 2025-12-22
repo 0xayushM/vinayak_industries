@@ -15,7 +15,7 @@ export default function OfferingsSection() {
   const equipment = [
     { range: "60-220 tons", qty: 20 },
     { range: "250-450 tons", qty: 6 },
-    { range: "500-700 tons", qty: 4 },
+    { range: "500-700 tons", qty: 3 },
     { range: "850 tons", qty: 1 }
   ];
 
@@ -63,7 +63,7 @@ export default function OfferingsSection() {
                   Our Equipment
                 </h2>
                 <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                  Our facility houses 18 injection molding machines ranging from 60 to 650 tons, 
+                  Our facility houses 30 injection molding machines ranging from 60 to 850 tons, 
                   allowing us to handle a wide variety of project sizes and complexities.
                 </p>
 
