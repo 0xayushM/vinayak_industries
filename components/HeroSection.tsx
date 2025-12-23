@@ -46,7 +46,7 @@ export default function HeroSection() {
             }
           }}
         >
-          <source src="/videos/VinayakIntro.mp4" type="video/mp4" />
+          <source src="/video.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent" />
