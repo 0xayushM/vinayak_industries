@@ -12,12 +12,6 @@ export default function AboutSection() {
 
   const highlights = [
     {
-      title: "Engineering Precision",
-      number: "3",
-      unit: "Decades",
-      description: "Over 30 years of specialized experience in precision injection molding. Our engineering team has mastered the art of producing complex components with tight tolerances for demanding industries."
-    },
-    {
       title: "Parts Delivered",
       number: "100M+",
       unit: "Components",
@@ -30,16 +24,16 @@ export default function AboutSection() {
       description: "Our rigorous quality control processes ensure that 99.9% of our parts pass inspection on the first attempt, minimizing rejections and ensuring reliability for our clients."
     },
     {
-      title: "Zero-Defect OEMs",
-      number: "5+",
-      unit: "Tier-1 Partners",
-      description: "We maintain zero-defect delivery records with 5+ major OEMs in automotive and medical sectors, demonstrating our commitment to excellence and reliability."
-    },
-    {
       title: "Max Clamping Force",
       number: "850T",
       unit: "Tonnage",
       description: "Our heavy-duty 850-ton and many other injection molding machines enable us to produce large, complex parts that many competitors cannot handle, giving you access to advanced manufacturing capabilities."
+    },
+    {
+      title: "Manufacturing Facility",
+      number: "35,000",
+      unit: "Sq. Ft.",
+      description: "Our strategically located 35,000 sq. ft. facility in Delhi NCR is equipped with state-of-the-art infrastructure for design, mold development, and high-volume production."
     },
     {
       title: "High-Performance Machines",
@@ -48,16 +42,16 @@ export default function AboutSection() {
       description: "Our facility houses 30+ injection molding machines ranging from 60 to 850 tonnes, allowing us to handle projects of any size and complexity with optimal efficiency."
     },
     {
-      title: "Engineering Polymers",
-      number: "PA66",
-      unit: "PC/ABS/PBT",
-      description: "We specialize in engineering-grade polymers including PA66, Polycarbonate, ABS and PBT, ensuring your components meet the highest performance standards for demanding applications."
+      title: "Zero-Defect OEMs",
+      number: "5+",
+      unit: "Tier-1 Partners",
+      description: "We maintain zero-defect delivery records with 5+ major OEMs in automotive and medical sectors, demonstrating our commitment to excellence and reliability."
     },
     {
-      title: "Multi-Cavity Production",
-      number: "High",
-      unit: "Volume",
-      description: "Our multi-cavity mold capabilities enable high-volume production runs with consistent quality across all cavities, reducing per-unit costs while maintaining precision."
+      title: "Engineering Precision",
+      number: "3",
+      unit: "Decades",
+      description: "Over 30 years of specialized experience in precision injection molding. Our engineering team has mastered the art of producing complex components with tight tolerances for demanding industries."
     },
     {
       title: "Toolroom Lead Time",
@@ -66,28 +60,22 @@ export default function AboutSection() {
       description: "Our in-house toolroom delivers rapid mold development in just 4-6 weeks, significantly faster than industry standards, helping you get to market quickly."
     },
     {
-      title: "Production Cycles",
-      number: "24x7",
-      unit: "Operations",
-      description: "We operate round-the-clock production cycles to meet tight deadlines and high-volume demands, ensuring your orders are completed on time, every time."
-    },
-    {
       title: "Faster Tooling",
       number: "30%",
       unit: "Time Savings",
       description: "Our optimized tooling processes are 30% faster than industry averages, reducing your time-to-market and giving you a competitive edge in your industry."
     },
     {
+      title: "Production Cycles",
+      number: "24x7",
+      unit: "Operations",
+      description: "We operate round-the-clock production cycles to meet tight deadlines and high-volume demands, ensuring your orders are completed on time, every time."
+    },
+    {
       title: "In-House Capabilities",
       number: "Full",
       unit: "Turnkey",
       description: "From mold design and maintenance to production and assemblies, everything is handled in-house, reducing lead times and ensuring seamless communication throughout your project."
-    },
-    {
-      title: "Manufacturing Facility",
-      number: "35,000",
-      unit: "Sq. Ft.",
-      description: "Our strategically located 35,000 sq. ft. facility in Delhi NCR is equipped with state-of-the-art infrastructure for design, mold development, and high-volume production."
     },
     {
       title: "Strategic Location",

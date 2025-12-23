@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 interface Highlight {
@@ -17,36 +16,24 @@ interface StatsCarouselProps {
 }
 
 export default function StatsCarousel({ highlights }: StatsCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSet, setCurrentSet] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const cardsPerView = 4;
-  const totalSlides = Math.ceil(highlights.length / cardsPerView);
+  const itemsPerSet = 8;
+  const totalSets = Math.ceil(highlights.length / itemsPerSet);
 
   useEffect(() => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % totalSlides);
-    }, 4000);
+      setCurrentSet((prev) => (prev + 1) % totalSets);
+    }, 6000);
 
     return () => clearInterval(interval);
-  }, [isPaused, totalSlides]);
+  }, [isPaused, totalSets]);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  const getCurrentCards = () => {
-    const startIdx = currentIndex * cardsPerView;
-    return highlights.slice(startIdx, startIdx + cardsPerView);
+  const getCurrentItems = () => {
+    const startIdx = currentSet * itemsPerSet;
+    return highlights.slice(startIdx, startIdx + itemsPerSet);
   };
 
   return (
@@ -72,24 +59,24 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Carousel Container */}
+          {/* Grid Container - 2 rows of 4 */}
           <div className="overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
-                key={currentIndex}
+                key={currentSet}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.5 }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
               >
-                {getCurrentCards().map((item, index) => (
+                {getCurrentItems().map((item, index) => (
                   <motion.div
-                    key={`${currentIndex}-${index}`}
+                    key={`${currentSet}-${index}`}
                     className="relative bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden group cursor-pointer"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
                   >
                     {/* Gradient Overlay on Hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-amber-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -131,34 +118,18 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
             </AnimatePresence>
           </div>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 bg-white hover:bg-amber-500 text-gray-800 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 group z-10"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 bg-white hover:bg-amber-500 text-gray-800 hover:text-white rounded-full p-3 shadow-lg transition-all duration-300 group z-10"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-
           {/* Dots Indicator */}
           <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: totalSlides }).map((_, index) => (
+            {Array.from({ length: totalSets }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => goToSlide(index)}
+                onClick={() => setCurrentSet(index)}
                 className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex
+                  index === currentSet
                     ? 'bg-amber-500 w-8 h-2'
                     : 'bg-gray-300 hover:bg-gray-400 w-2 h-2'
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
+                aria-label={`Go to set ${index + 1}`}
               />
             ))}
           </div>
@@ -170,8 +141,8 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
                 className="h-full bg-amber-500"
                 initial={{ width: '0%' }}
                 animate={{ width: '100%' }}
-                transition={{ duration: 4, ease: 'linear' }}
-                key={currentIndex}
+                transition={{ duration: 6, ease: 'linear' }}
+                key={currentSet}
               />
             </div>
           )}

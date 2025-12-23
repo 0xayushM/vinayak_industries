@@ -22,7 +22,7 @@ const BrandsCarousel = () => {
               {[...brands, ...brands].map((brand, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-40 h-24 relative bg-white p-4 flex items-center justify-center"
+                  className="flex-shrink-0 w-56 h-36 relative bg-white p-4 flex items-center justify-center"
                 >
                   <Image
                     src={brand}
