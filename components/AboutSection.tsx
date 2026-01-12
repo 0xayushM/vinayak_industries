@@ -47,7 +47,7 @@ export default function AboutSection() {
                 <>
                   {/* Video Thumbnail */}
                   <Image
-                    src="/images/infrastructure/Vinayak-Technoplast1.jpg"
+                    src="/images/infrastructure/Vinayak_Technoplast1.png"
                     alt="Vinayak Industries Factory"
                     fill
                     className="object-cover"

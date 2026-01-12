@@ -57,7 +57,7 @@ export default function CapabilitiesPage() {
         </div>
 
         <motion.div 
-          className="max-w-8xl mx-auto relative z-10 w-full px-6"
+          className="max-w-7xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}

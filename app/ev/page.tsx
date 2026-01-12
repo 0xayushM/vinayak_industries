@@ -83,7 +83,7 @@ export default function EVPage() {
           </svg>
         </div>
 
-        <div className="max-w-8xl mx-auto relative z-10 w-full px-6 py-32">
+        <div className="max-w-7xl mx-auto relative z-10 w-full px-6 py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <motion.div
@@ -160,7 +160,7 @@ export default function EVPage() {
           backgroundSize: '50px 50px'
         }} />
 
-        <div className="max-w-8xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -212,7 +212,7 @@ export default function EVPage() {
           </svg>
         </div>
 
-        <div className="max-w-8xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Wireframe Image */}
             <motion.div
@@ -319,7 +319,7 @@ export default function EVPage() {
       <section className="py-24 px-6" style={{
         background: 'linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%)'
       }}>
-        <div className="max-w-8xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
