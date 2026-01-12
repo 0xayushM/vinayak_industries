@@ -53,7 +53,7 @@ export default function ProductLinePage() {
         </div>
 
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-8xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
@@ -75,7 +75,7 @@ export default function ProductLinePage() {
 
       {/* Tabs Navigation */}
       <section className="py-8 px-6 bg-gray-50 md:sticky top-20 z-10 border-b">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="flex flex-wrap gap-4">
             {categories.map((category, index) => (
               <button
@@ -96,7 +96,7 @@ export default function ProductLinePage() {
 
       {/* Tab Content */}
       <section className="pb-8 px-6 bg-gray-50 h-full">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           {categories.map((category, categoryIndex) => (
             activeTab === categoryIndex && (
               <div key={categoryIndex}>

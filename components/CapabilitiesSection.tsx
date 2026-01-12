@@ -37,7 +37,7 @@ export default function CapabilitiesSection() {
 
   return (
     <section className="py-20 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-8xl mx-auto">
         <motion.div className="text-center mb-16" {...fadeInUp}>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
             Manufacturing <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Capabilities</span>

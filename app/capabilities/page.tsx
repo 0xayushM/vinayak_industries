@@ -57,7 +57,7 @@ export default function CapabilitiesPage() {
         </div>
 
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-8xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
@@ -79,7 +79,7 @@ export default function CapabilitiesPage() {
 
       {/* Tabs Navigation */}
       <section className="py-8 px-6 bg-gray-50 md:sticky top-20 z-10 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="flex flex-wrap gap-4">
             {tabs.map((tab, index) => (
               <button
@@ -105,7 +105,7 @@ export default function CapabilitiesPage() {
           <div>
             {/* Product Design Section */}
             <section className="py-16 px-6 bg-white">
-              <div className="max-w-7xl mx-auto">
+              <div className="max-w-8xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Product Design & Development</h2>
                 
                 
@@ -174,7 +174,7 @@ export default function CapabilitiesPage() {
         {/* Tab 2: Manufacturing Shop Floor */}
         {activeTab === 1 && (
           <section className="py-16 px-6 bg-white">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-8xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing Shop Floor</h2>
               <p className="text-xl text-gray-600 mb-12">
                 Vinayak Technoplast has a state-of-the-art facility that provides high quality services to its clients in the following areas.
@@ -249,7 +249,7 @@ export default function CapabilitiesPage() {
         {/* Tab 3: Manufacturing and R&D */}
         {activeTab === 2 && (
           <section className="py-16 px-6 bg-white">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-8xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing and R&D</h2>
               <div className="bg-gray-50 rounded-3xl p-8 md:p-12 mb-12">
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -338,7 +338,7 @@ export default function CapabilitiesPage() {
         {/* Tab 4: Lab & Testing Facilities */}
         {activeTab === 3 && (
           <section className="py-16 px-6 bg-white">
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-8xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Lab & Testing Facilities</h2>
               <div className="bg-gray-50 rounded-3xl p-8 md:p-12 mb-12">
                 <p className="text-lg text-gray-700 leading-relaxed">

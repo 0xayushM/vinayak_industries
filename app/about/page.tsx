@@ -62,7 +62,7 @@ export default function AboutPage() {
         </div>
 
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-8xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
@@ -86,7 +86,7 @@ export default function AboutPage() {
       <div className="relative">
         {/* Tabs Navigation */}
         <section className="py-8 px-6 bg-gray-50 md:sticky top-20 z-30 border-b border-gray-200">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-8xl mx-auto">
             <div className="flex flex-wrap gap-4">
               {tabs.map((tab, index) => (
                 <button
@@ -116,7 +116,7 @@ export default function AboutPage() {
             className="py-3 px-3 md:py-6 md:px-6"
           >
             {/* Who We Are + Commitments Combined Card */}
-            <div className="max-w-7xl mx-auto mb-6">
+            <div className="max-w-8xl mx-auto mb-6">
               <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
                 {/* Background Image */}
                 <div className="absolute top-0 right-0 w-[50%] h-[60%] z-0">
@@ -167,7 +167,7 @@ export default function AboutPage() {
             </div>
 
             {/* Quality Policy Card - Now White */}
-            <div className="max-w-7xl mx-auto mb-6">
+            <div className="max-w-8xl mx-auto mb-6">
               <div className="bg-white rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">QUALITY POLICY</h2>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -199,7 +199,7 @@ export default function AboutPage() {
             </div>
 
             {/* Achievements Card - Now Dark */}
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-8xl mx-auto">
               <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900 p-8 lg:p-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-8">ACHIEVEMENTS</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -239,7 +239,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="py-3 px-3 md:py-6 md:px-6"
           >
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-8xl mx-auto">
               {/* Single merged card */}
               <div className="bg-gray-900 rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
                 {/* Heading inside card */}
@@ -360,7 +360,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="md:p-6 p-3"
           >
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-8xl mx-auto">
               <div className="bg-white md:rounded-[50px] rounded-[40px] p-6 lg:p-12">
                 <h2 className="text-2xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">INFRASTRUCTURE</h2>
                 <p className="text-sm md:text-xl text-gray-600 mb-8">

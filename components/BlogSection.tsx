@@ -42,7 +42,7 @@ const BlogSection = () => {
 
   return (
     <section className="py-16 px-8 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-8xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Left side - Heading (span-1) */}
           <motion.div

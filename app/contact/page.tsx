@@ -45,7 +45,7 @@ export default function ContactPage() {
         </div>
 
         <motion.div
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-8xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
@@ -67,7 +67,7 @@ export default function ContactPage() {
 
       {/* Contact Form & Info */}
       <section className="p-3 md:p-6 bg-gray-100">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
 
 
@@ -189,7 +189,7 @@ export default function ContactPage() {
 
       {/* CTA Section */}
       <section className="bg-gray-100">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-8 lg:p-12 text-center">
             <h2 className="text-4xl font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
             <p className="text-xl text-amber-100 mb-8 max-w-2xl mx-auto">

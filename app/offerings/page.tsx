@@ -46,7 +46,7 @@ export default function OfferingsPage() {
         </div>
 
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-8xl mx-auto relative z-10 w-full px-6"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
@@ -68,7 +68,7 @@ export default function OfferingsPage() {
 
       {/* Design & Development Card */}
       <section className="p-3 md:p-6 bg-gray-100">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
             <div className="absolute top-0 right-0 w-[50%] h-full z-0">
               <Image
@@ -108,7 +108,7 @@ export default function OfferingsPage() {
 
       {/* Injection Moulding Card */}
       <section className="p-3 md:p-6 bg-gray-100">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
             <div className="absolute top-0 left-0 w-[50%] h-full z-0">
               <Image
@@ -147,7 +147,7 @@ export default function OfferingsPage() {
 
       {/* Complete Assembly Card */}
       <section className="p-3 md:p-6 bg-gray-100">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
             <div className="absolute top-0 right-0 w-[50%] h-full z-0">
               <Image
@@ -182,7 +182,7 @@ export default function OfferingsPage() {
 
       {/* Moulding Capacities - Table 1 */}
       <section className="p-3 md:p-6 bg-gray-100">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-8xl mx-auto">
           <div className="bg-white rounded-[40px] md:rounded-[50px] p-4 lg:p-12">
             <h2 className="text-2xl md:text-4xl p-4 font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">OUR MOULDING CAPACITIES</h2>
             <div className="rounded-2xl overflow-hidden border border-gray-200">
