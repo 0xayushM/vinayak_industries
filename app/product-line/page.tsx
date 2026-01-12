@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import productLineData from '@/data/product-line-categories.json';
 
 export default function ProductLinePage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -24,78 +25,7 @@ export default function ProductLinePage() {
     }
   };
 
-  const categories = [
-    {
-      name: "Automotive Exterior Parts",
-      folder: "category-1",
-      images: [
-        "automotive-1.png",
-        "automotive-2.png",
-        "automotive-3.png",
-        "automotive-4.png",
-        "automotive-5.png",
-        "automotive-6.png",
-        "automotive-7.png",
-        "automotive-8.png",
-        "automotive-9.jpg"
-      ],
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      name: "Household Products",
-      folder: "category-2",
-      images: [
-        "household-1.png",
-        "household-2.png",
-        "household-3.png",
-        "household-4.png",
-        "household-5.png",
-        "household-6.png",
-        "household-7.png",
-        "household-8.png",
-        "household-9.png",
-        "household-10.png",
-        "household-11.png",
-        "household-12.png",
-        "household-13.png",
-        "household-14.png",
-        "household-15.png",
-        "household-16.png",
-        "household-17.jpg",
-      ],
-      color: "from-green-500 to-green-600"
-    },
-    {
-      name: "Electrical Parts",
-      folder: "category-3",
-      images: Array.from({ length: 6 }, (_, i) => `part-${i + 1}.png`),
-      color: "from-purple-500 to-purple-600"
-    },
-    {
-      name: "Power Tool Parts",
-      folder: "category-4",
-      images: Array.from({ length: 5 }, (_, i) => `Power-Tool-Parts-${i + 1}.png`),
-      color: "from-orange-500 to-orange-600"
-    },
-    {
-      name: "Medical Industry",
-      folder: "category-5",
-      images: [
-        "Medical-Industry-1.png",
-        "Medical-Industry-2.png",
-        "Medical-Industry-3.png",
-        "Medical-Industry-4.png",
-        "Medical-Industry-5.png",
-        "Medical-Industry-6.png",
-        "Medical-Industry-7.png",
-        "Medical-Industry-8.png",
-        "Medical-Industry-9.png",
-        "Medical-Industry-10.png",
-        "Medical-Industry-11.png"
-      ],
-      color: "from-amber-500 to-amber-600"
-    }
-  ];
+  const categories = productLineData.categories;
 
   return (
     <div className="min-h-screen bg-white">
@@ -177,7 +107,7 @@ export default function ProductLinePage() {
                       className="group relative aspect-square bg-white rounded-2xl overflow-hidden hover:shadow-md transition-all cursor-pointer border border-gray-200"
                     >
                       <Image
-                        src={`/images/product-line/${category.folder}/${image}`}
+                        src={image}
                         alt={`${category.name} - ${imageIndex + 1}`}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-300"

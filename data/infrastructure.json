@@ -1,0 +1,52 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "image": "/images/infrastructure/Vinayak_Technoplast1.png",
+      "title": "Manufacturing Facility",
+      "description": "State-of-the-art manufacturing facility"
+    },
+    {
+      "id": 2,
+      "image": "/images/infrastructure/Vinayak_Technoplast2.png",
+      "title": "Production Floor",
+      "description": "Advanced production floor with modern equipment"
+    },
+    {
+      "id": 3,
+      "image": "/images/infrastructure/Vinayak_Technoplast3.png",
+      "title": "Quality Control",
+      "description": "Quality control and testing area"
+    },
+    {
+      "id": 4,
+      "image": "/images/infrastructure/Vinayak_Technoplast4.png",
+      "title": "Warehouse",
+      "description": "Spacious warehouse and storage facility"
+    },
+    {
+      "id": 5,
+      "image": "/images/infrastructure/Vinayak_Technoplast5.png",
+      "title": "Assembly Line",
+      "description": "Efficient assembly line operations"
+    },
+    {
+      "id": 6,
+      "image": "/images/infrastructure/Vinayak_Technoplast6.png",
+      "title": "Machinery",
+      "description": "High-precision injection molding machinery"
+    },
+    {
+      "id": 7,
+      "image": "/images/infrastructure/Vinayak_Technoplast7.png",
+      "title": "Facility Overview",
+      "description": "Overview of our manufacturing facility"
+    },
+    {
+      "id": 8,
+      "image": "/images/infrastructure/Vinayak_Technoplast8.jpeg",
+      "title": "Operations",
+      "description": "Daily operations and workflow"
+    }
+  ]
+}

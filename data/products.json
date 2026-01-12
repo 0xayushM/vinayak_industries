@@ -1,0 +1,20 @@
+{
+  "products": [
+    {
+      "name": "MEDICAL INDUSTRY COMPONENTS",
+      "description": "Critical items such as suction units, PC jars, needle cutters (Nil-Sharps), etc. ensuring strict adherence to quality standards for our medical partners"
+    },
+    {
+      "name": "MASS CONSUMER PRODUCTS",
+      "description": "Such as switches, energy meters, LED light housings, and multi-plugs."
+    },
+    {
+      "name": "AUTOMOTIVE EXTERIOR PARTS",
+      "description": "High-precision parts such as visors, headlamps, tail lamps, reflectors, etc, serving two-wheelers, four-wheelers, and tractors"
+    },
+    {
+      "name": "PRECISION INDUSTRIAL COMPONENTS",
+      "description": "Mechanical and technical parts for industrial machinery, vehicles, or heavy equipment."
+    }
+  ]
+}

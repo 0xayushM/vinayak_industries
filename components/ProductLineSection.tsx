@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import productsData from '@/data/products.json';
 
 export default function ProductLineSection() {
   const fadeInUp = {
@@ -12,24 +13,7 @@ export default function ProductLineSection() {
     transition: { duration: 0.6 }
   };
 
-  const products = [
-    {
-      name: "MEDICAL INDUSTRY COMPONENTS",
-      description: "Critical items such as suction units, PC jars, needle cutters (Nil-Sharps), etc. ensuring strict adherence to quality standards for our medical partners"
-    },
-    {
-      name: "MASS CONSUMER PRODUCTS",
-      description: "Such as switches, energy meters, LED light housings, and multi-plugs."
-    },
-    {
-      name: "AUTOMOTIVE EXTERIOR PARTS",
-      description: "High-precision parts such as visors, headlamps, tail lamps, reflectors, etc, serving two-wheelers, four-wheelers, and tractors"
-    },
-    {
-      name: "PRECISION INDUSTRIAL COMPONENTS",
-      description: "Mechanical and technical parts for industrial machinery, vehicles, or heavy equipment."
-    }
-  ];
+  const products = productsData.products;
 
   return (
     <section className="md:py-6 md:px-6 px-3 py-3">

@@ -1,0 +1,74 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "name": "Anil Ji",
+      "image": "/team/Anilji.JPG",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 2,
+      "name": "Bhola Sir",
+      "image": "/team/Bhola Sir.jpg",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 3,
+      "name": "Nirmal Ji",
+      "image": "/team/Nirmalji.jpg",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 4,
+      "name": "Puran Chand Ji",
+      "image": "/team/Puran Chand Ji.jpg",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 5,
+      "name": "Shambhu",
+      "image": "/team/Shambhu.jpg",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 6,
+      "name": "Shubham Ji",
+      "image": "/team/Shubhamji.jpg",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 7,
+      "name": "Sonu Ji",
+      "image": "/team/Sonuji.jpg",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 8,
+      "name": "Karan",
+      "image": "/team/karan.jpeg",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 9,
+      "name": "Sandeep Kalra",
+      "image": "/team/sandeep_kalra.jpeg",
+      "position": "Team Member",
+      "department": ""
+    },
+    {
+      "id": 10,
+      "name": "Sunny",
+      "image": "/team/sunny.jpeg",
+      "position": "Team Member",
+      "department": ""
+    }
+  ]
+}

@@ -7,44 +7,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { HiOutlineCog6Tooth, HiOutlineBolt, HiOutlineShieldCheck, HiOutlineCpuChip } from "react-icons/hi2";
 import { useState } from "react";
+import evData from '@/data/ev.json';
 
 export default function EVPage() {
   const [showAllImages, setShowAllImages] = useState(false);
   
-  const evImages = [
-    "/images/ev/img1.jpeg",
-    "/images/ev/img2.jpeg",
-    "/images/ev/img3.jpeg",
-    "/images/ev/img4.jpeg",
-    "/images/ev/img5.jpeg",
-    "/images/ev/img6.jpeg",
-    "/images/ev/img7.jpeg",
-    "/images/ev/img8.jpeg",
-    "/images/ev/img9.jpeg",
-    "/images/ev/img10.jpeg",
-    "/images/ev/img11.jpeg",
-    "/images/ev/img12.jpeg",
-    "/images/ev/img13.jpeg",
-    "/images/ev/img14.jpeg",
-    "/images/ev/img15.jpeg",
-    "/images/ev/img16.jpeg",
-    "/images/ev/img17.jpeg",
-    "/images/ev/img18.jpeg",
-    "/images/ev/img19.jpeg",
-    "/images/ev/img20.jpeg",
-    "/images/ev/img21.jpeg",
-    "/images/ev/img22.jpeg",
-    "/images/ev/img23.jpeg",
-    "/images/ev/img24.jpeg",
-    "/images/ev/img25.jpeg",
-    "/images/ev/img26.jpeg",
-    "/images/ev/img27.jpeg",
-    "/images/ev/img28.jpeg",
-    "/images/ev/img29.jpeg",
-    "/images/ev/img30.jpeg",
-    "/images/ev/img31.jpeg",
-    "/images/ev/img32.jpeg",
-  ];
+  const evImages = evData.images;
 
   const features = [
     {
@@ -368,7 +336,7 @@ export default function EVPage() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {(showAllImages ? evImages : evImages.slice(0, 16)).map((image, index) => (
+            {(showAllImages ? evImages : evImages.slice(0, 16)).map((item, index) => (
               <motion.div
                 key={index}
                 className="relative aspect-square rounded-xl overflow-hidden bg-slate-800/50 hover:shadow-xl hover:shadow-indigo-500/20 transition-all cursor-pointer group"
@@ -378,8 +346,8 @@ export default function EVPage() {
                 transition={{ duration: 0.3, delay: index * 0.03 }}
               >
                 <Image
-                  src={image}
-                  alt={`EV Component ${index + 1}`}
+                  src={item.image}
+                  alt={item.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />

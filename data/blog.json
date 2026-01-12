@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Blog Post Title",
+      "image": "/images/blog/blog1.png",
+      "excerpt": "Short excerpt of the blog post...",
+      "content": "You Don't Reduce Costs by Changing Vendors. You Reduce Costs by Changing Design. In manufacturing, cost reduction is often approached by changing suppliers or negotiating prices. But real, sustainable savings begin much earlier...",
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_you-dont-reduce-cost-by-changing-vendors-activity-7407371083084902401-D6uw"
+    },
+    {
+      "id": 2,
+      "title": "Blog Post Title",
+      "image": "/images/blog/blog2.png",
+      "excerpt": "Short excerpt of the blog post...",
+      "content": "Full content of the blog post will be displayed here. This text will be clamped and show ...more at the end if it's too long.",
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_you-dont-reduce-cost-by-changing-vendors-activity-7407371083084902401-D6uw"
+    },
+    {
+      "id": 3,
+      "title": "Blog Post Title",
+      "image": "/images/blog/blog3.png",
+      "excerpt": "Short excerpt of the blog post...",
+      "content": "Full content of the blog post will be displayed here. This text will be clamped and show ...more at the end if it's too long.",
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_you-dont-reduce-cost-by-changing-vendors-activity-7407371083084902401-D6uw"
+    }
+  ]
+}

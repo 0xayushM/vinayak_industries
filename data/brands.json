@@ -1,0 +1,24 @@
+{
+  "brands": [
+    { "id": 1, "image": "/images/brands/img1.png", "name": "Brand 1" },
+    { "id": 2, "image": "/images/brands/img2.png", "name": "Brand 2" },
+    { "id": 3, "image": "/images/brands/img3.jpeg", "name": "Brand 3" },
+    { "id": 4, "image": "/images/brands/img4.jpeg", "name": "Brand 4" },
+    { "id": 5, "image": "/images/brands/img5.jpeg", "name": "Brand 5" },
+    { "id": 6, "image": "/images/brands/img6.jpeg", "name": "Brand 6" },
+    { "id": 7, "image": "/images/brands/img7.png", "name": "Brand 7" },
+    { "id": 8, "image": "/images/brands/img8.png", "name": "Brand 8" },
+    { "id": 9, "image": "/images/brands/img9.jpeg", "name": "Brand 9" },
+    { "id": 10, "image": "/images/brands/img10.jpeg", "name": "Brand 10" },
+    { "id": 11, "image": "/images/brands/img11.png", "name": "Brand 11" },
+    { "id": 12, "image": "/images/brands/img12.png", "name": "Brand 12" },
+    { "id": 13, "image": "/images/brands/img13.png", "name": "Brand 13" },
+    { "id": 14, "image": "/images/brands/img14.jpeg", "name": "Brand 14" },
+    { "id": 15, "image": "/images/brands/img15.png", "name": "Brand 15" },
+    { "id": 16, "image": "/images/brands/img16.jpeg", "name": "Brand 16" },
+    { "id": 17, "image": "/images/brands/img17.png", "name": "Brand 17" },
+    { "id": 18, "image": "/images/brands/img18.png", "name": "Brand 18" },
+    { "id": 19, "image": "/images/brands/img19.jpeg", "name": "Brand 19" },
+    { "id": 20, "image": "/images/brands/img20.png", "name": "Brand 20" }
+  ]
+}

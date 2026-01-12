@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import offeringsData from '@/data/offerings.json';
 
 export default function OfferingsSection() {
   const fadeInUp = {
@@ -12,30 +13,8 @@ export default function OfferingsSection() {
     transition: { duration: 0.6 }
   };
 
-  const equipment = [
-    { range: "60-220 tons", qty: 20 },
-    { range: "250-450 tons", qty: 6 },
-    { range: "500-700 tons", qty: 3 },
-    { range: "850 tons", qty: 1 }
-  ];
-
-  const advantages = [
-    {
-      number: "1",
-      title: "Expert R&D Team",
-      description: "Our dedicated R&D team, comprised of over 40 professionals, provides personalized, one-on-one service to meet your specific needs."
-    },
-    {
-      number: "2",
-      title: "Cost-Effective Solutions",
-      description: "Achieve substantial savings of 30-50% with our optimized production processes, making your projects more economical."
-    },
-    {
-      number: "3",
-      title: "Quick Turnaround",
-      description: "For time-sensitive projects, we excel in delivering rapid production turnaround times, ensuring your deadlines are met."
-    }
-  ];
+  const equipment = offeringsData.equipment;
+  const advantages = offeringsData.advantages;
 
   return (
     <section className="md:py-6 md:px-6 px-3">

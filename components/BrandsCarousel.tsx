@@ -1,13 +1,10 @@
 'use client';
 
 import Image from 'next/image';
+import brandsData from '@/data/brands.json';
 
 const BrandsCarousel = () => {
-  const brands = Array.from({ length: 20 }, (_, i) => {
-    const num = i + 1;
-    const ext = [3, 4, 5, 6, 9, 10, 14, 16, 19].includes(num) ? 'jpeg' : 'png';
-    return `/images/brands/img${num}.${ext}`;
-  });
+  const brands = brandsData.brands;
 
   return (
     <section className="py-8 overflow-hidden w-full">
@@ -25,8 +22,8 @@ const BrandsCarousel = () => {
                   className="flex-shrink-0 w-56 h-36 relative bg-white p-4 flex items-center justify-center"
                 >
                   <Image
-                    src={brand}
-                    alt={`Brand ${(index % brands.length) + 1}`}
+                    src={brand.image}
+                    alt={brand.name}
                     fill
                     className="object-contain p-2"
                     sizes="160px"

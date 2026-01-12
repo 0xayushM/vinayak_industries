@@ -7,6 +7,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { HiChatBubbleLeftRight, HiUsers, HiAcademicCap, HiCheckBadge, HiWrench, HiBolt, HiComputerDesktop, HiStar, HiArrowTrendingUp, HiBeaker, HiCheckCircle, HiUserGroup } from "react-icons/hi2";
 import CTASection from "@/components/CTASection";
+import teamData from '@/data/team.json';
+import infrastructureData from '@/data/infrastructure.json';
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -31,16 +33,8 @@ export default function AboutPage() {
     }
   };
 
-  const infrastructureImages = [
-    "/images/infrastructure/Vinayak_Technoplast1.png",
-    "/images/infrastructure/Vinayak_Technoplast2.png",
-    "/images/infrastructure/Vinayak_Technoplast3.png",
-    "/images/infrastructure/Vinayak_Technoplast4.png",
-    "/images/infrastructure/Vinayak_Technoplast5.png",
-    "/images/infrastructure/Vinayak_Technoplast6.png",
-    "/images/infrastructure/Vinayak_Technoplast7.png",
-    "/images/infrastructure/Vinayak_Technoplast8.jpeg"
-  ];
+  const infrastructureImages = infrastructureData.images;
+  const teamMembers = teamData.members;
 
   return (
     <div className="h-full bg-white">
@@ -374,7 +368,7 @@ export default function AboutPage() {
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {infrastructureImages.map((image, index) => (
+                  {infrastructureImages.map((item, index) => (
                     <motion.div 
                       key={index} 
                       className="relative h-56 rounded-2xl overflow-hidden hover:shadow-lg transition-all"
@@ -384,8 +378,8 @@ export default function AboutPage() {
                       transition={{ duration: 0.3, delay: index * 0.03 }}
                     >
                       <Image 
-                        src={image} 
-                        alt={`Infrastructure ${index + 1}`}
+                        src={item.image} 
+                        alt={item.title}
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-300"
                       />

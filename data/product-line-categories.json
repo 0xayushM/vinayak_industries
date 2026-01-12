@@ -1,0 +1,73 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Automotive Components",
+      "description": "High-precision automotive exterior and interior parts",
+      "slug": "automotive",
+      "images": [
+        "/images/product-line/category-1/automotive-1.png",
+        "/images/product-line/category-1/automotive-2.png",
+        "/images/product-line/category-1/automotive-3.png",
+        "/images/product-line/category-1/automotive-4.png",
+        "/images/product-line/category-1/automotive-5.png",
+        "/images/product-line/category-1/automotive-6.png",
+        "/images/product-line/category-1/automotive-7.png",
+        "/images/product-line/category-1/automotive-8.png",
+        "/images/product-line/category-1/automotive-9.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Household Products",
+      "description": "Consumer household and appliance components",
+      "slug": "household",
+      "images": [
+        "/images/product-line/category-2/household-1.png",
+        "/images/product-line/category-2/household-2.png",
+        "/images/product-line/category-2/household-3.png",
+        "/images/product-line/category-2/household-4.png",
+        "/images/product-line/category-2/household-5.png",
+        "/images/product-line/category-2/household-6.png",
+        "/images/product-line/category-2/household-7.png",
+        "/images/product-line/category-2/household-8.png",
+        "/images/product-line/category-2/household-9.png",
+        "/images/product-line/category-2/household-10.png",
+        "/images/product-line/category-2/household-11.png",
+        "/images/product-line/category-2/household-12.png",
+        "/images/product-line/category-2/household-13.png",
+        "/images/product-line/category-2/household-14.png",
+        "/images/product-line/category-2/household-15.png",
+        "/images/product-line/category-2/household-16.png",
+        "/images/product-line/category-2/household-17.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Industrial Parts",
+      "description": "Precision industrial and mechanical components",
+      "slug": "industrial",
+      "images": [
+        "/images/product-line/category-3/part-1.png",
+        "/images/product-line/category-3/part-2.png",
+        "/images/product-line/category-3/part-3.png",
+        "/images/product-line/category-3/part-4.png",
+        "/images/product-line/category-3/part-5.png",
+        "/images/product-line/category-3/part-6.png"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Power Tool Parts",
+      "description": "Durable components for power tools and equipment",
+      "slug": "power-tools",
+      "images": [
+        "/images/product-line/category-4/Power-Tool-Parts-1.png",
+        "/images/product-line/category-4/Power-Tool-Parts-2.png",
+        "/images/product-line/category-4/Power-Tool-Parts-3.png",
+        "/images/product-line/category-4/Power-Tool-Parts-4.png",
+        "/images/product-line/category-4/Power-Tool-Parts-5.png"
+      ]
+    }
+  ]
+}
