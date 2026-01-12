@@ -116,7 +116,7 @@ const BlogSection = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                         
                         {/* Tap/Hover overlay */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                        {/* <div className="absolute bottom-0 left-0 right-0 p-6">
                           <div className="text-center">
                             <span className="hidden md:inline-block text-white font-semibold text-sm">
                               Hover me
@@ -125,7 +125,7 @@ const BlogSection = () => {
                               Tap me
                             </span>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
 

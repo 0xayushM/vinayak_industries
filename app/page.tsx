@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import StatsSection from "@/components/StatsSection";
 import BrandsCarousel from "@/components/BrandsCarousel";
 import OfferingsSection from "@/components/OfferingsSection";
 import ProductLineSection from "@/components/ProductLineSection";
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <BrandsCarousel />
       <AboutSection />
+      <StatsSection />
       <OfferingsSection />
       <ProductLineSection />
       <BlogSection />

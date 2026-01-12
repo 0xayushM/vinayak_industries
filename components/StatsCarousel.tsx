@@ -18,15 +18,20 @@ interface StatsCarouselProps {
 export default function StatsCarousel({ highlights }: StatsCarouselProps) {
   const [currentSet, setCurrentSet] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const itemsPerSet = 8;
   const totalSets = Math.ceil(highlights.length / itemsPerSet);
 
   useEffect(() => {
-    if (isPaused) return;
+    setIsInitialLoad(false);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused || totalSets <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentSet((prev) => (prev + 1) % totalSets);
-    }, 6000);
+    }, 5500);
 
     return () => clearInterval(interval);
   }, [isPaused, totalSets]);
@@ -34,6 +39,14 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
   const getCurrentItems = () => {
     const startIdx = currentSet * itemsPerSet;
     return highlights.slice(startIdx, startIdx + itemsPerSet);
+  };
+
+  const goToPrevious = () => {
+    setCurrentSet((prev) => (prev - 1 + totalSets) % totalSets);
+  };
+
+  const goToNext = () => {
+    setCurrentSet((prev) => (prev + 1) % totalSets);
   };
 
   return (
@@ -55,28 +68,53 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
         </motion.div>
 
         <div 
-          className="relative"
+          className="relative px-1"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
+          {/* Navigation Arrows */}
+          {totalSets > 1 && (
+            <>
+              <button
+                onClick={goToPrevious}
+                className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                aria-label="Previous set"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              <button
+                onClick={goToNext}
+                className="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                aria-label="Next set"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </>
+          )}
+
           {/* Grid Container - 2 rows of 4 */}
-          <div className="overflow-hidden">
+          <div>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSet}
-                initial={{ opacity: 0, x: 100 }}
+                initial={isInitialLoad ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.4 }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
               >
                 {getCurrentItems().map((item, index) => (
                   <motion.div
                     key={`${currentSet}-${index}`}
                     className="relative bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden group cursor-pointer"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={isInitialLoad ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
+                    transition={{ duration: 0.3, delay: isInitialLoad ? 0 : (index % 4) * 0.05 }}
                   >
                     {/* Gradient Overlay on Hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-amber-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -133,19 +171,6 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
               />
             ))}
           </div>
-
-          {/* Progress Bar */}
-          {!isPaused && (
-            <div className="mt-4 h-1 bg-gray-200 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full bg-amber-500"
-                initial={{ width: '0%' }}
-                animate={{ width: '100%' }}
-                transition={{ duration: 6, ease: 'linear' }}
-                key={currentSet}
-              />
-            </div>
-          )}
         </div>
 
         {/* View All Button */}

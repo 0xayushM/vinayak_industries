@@ -1,62 +1,92 @@
+import StatsCarousel from "./StatsCarousel";
+
 export default function StatsSection() {
-  return (
-    <section className="py-12 px-6 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-          <div className="text-center">
-            <div className="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full overflow-hidden">
-                <svg viewBox="0 0 60 40" className="w-full h-full">
-                  <rect x="10" y="5" width="40" height="25" fill="#dc2626" rx="2"/>
-                  <rect x="10" y="5" width="40" height="10" fill="#ffffff" rx="2"/>
-                  <rect x="10" y="20" width="40" height="10" fill="#ffffff" rx="2"/>
-                </svg>
-              </div>
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg mb-1">Made in</h3>
-            <p className="text-gray-700">USA Plastics</p>
-          </div>
+  const highlights = [
+    {
+      title: "Parts Delivered",
+      number: "100M+",
+      unit: "Components",
+      description: "We have successfully manufactured and delivered over 100 million precision-molded parts to automotive, medical, and industrial clients, maintaining consistent quality throughout."
+    },
+    {
+      title: "Quality Pass Rate",
+      number: "99.9%",
+      unit: "First-Time Right",
+      description: "Our rigorous quality control processes ensure that 99.9% of our parts pass inspection on the first attempt, minimizing rejections and ensuring reliability for our clients."
+    },
+    {
+      title: "Max Clamping Force",
+      number: "850T",
+      unit: "Tonnage",
+      description: "Our heavy-duty 850-ton and many other injection molding machines enable us to produce large, complex parts that many competitors cannot handle, giving you access to advanced manufacturing capabilities."
+    },
+    {
+      title: "Manufacturing Facility",
+      number: "35,000",
+      unit: "Sq. Ft.",
+      description: "Our strategically located 35,000 sq. ft. facility in Delhi NCR is equipped with state-of-the-art infrastructure for design, mold development, and high-volume production."
+    },
+    {
+      title: "High-Performance Machines",
+      number: "30+",
+      unit: "Units",
+      description: "Our facility houses 30+ injection molding machines ranging from 60 to 850 tonnes, allowing us to handle projects of any size and complexity with optimal efficiency."
+    },
+    {
+      title: "Zero-Defect OEMs",
+      number: "5+",
+      unit: "Tier-1 Partners",
+      description: "We maintain zero-defect delivery records with 5+ major OEMs in automotive and medical sectors, demonstrating our commitment to excellence and reliability."
+    },
+    {
+      title: "Engineering Precision",
+      number: "3",
+      unit: "Decades",
+      description: "Over 30 years of specialized experience in precision injection molding. Our engineering team has mastered the art of producing complex components with tight tolerances for demanding industries."
+    },
+    {
+      title: "Toolroom Lead Time",
+      number: "4-6",
+      unit: "Weeks",
+      description: "Our in-house toolroom delivers rapid mold development in just 4-6 weeks, significantly faster than industry standards, helping you get to market quickly."
+    },
+    {
+      title: "Faster Tooling",
+      number: "30%",
+      unit: "Time Savings",
+      description: "Our optimized tooling processes are 30% faster than industry averages, reducing your time-to-market and giving you a competitive edge in your industry."
+    },
+    {
+      title: "Production Cycles",
+      number: "24x7",
+      unit: "Operations",
+      description: "We operate round-the-clock production cycles to meet tight deadlines and high-volume demands, ensuring your orders are completed on time, every time."
+    },
+    {
+      title: "In-House Capabilities",
+      number: "Full",
+      unit: "Turnkey",
+      description: "From mold design and maintenance to production and assemblies, everything is handled in-house, reducing lead times and ensuring seamless communication throughout your project."
+    },
+    {
+      title: "Strategic Location",
+      number: "Delhi",
+      unit: "NCR",
+      description: "Located in the heart of India's industrial hub, our Delhi NCR facility offers excellent connectivity and logistics advantages for timely delivery across India and export markets."
+    },
+    {
+      title: "Quality Certified",
+      number: "ISO",
+      unit: "9001:2015",
+      description: "We are ISO 9001:2015 certified, demonstrating our commitment to international quality management standards and continuous improvement in all our processes."
+    },
+    {
+      title: "Industry Trust",
+      number: "Auto",
+      unit: "Medical and Others",
+      description: "Trusted by leading automotive, medical device and other manufacturers, we understand the stringent requirements of regulated industries and deliver components that meet or exceed specifications."
+    }
+  ];
 
-          <div className="text-center">
-            <div className="text-5xl font-bold text-gray-900 mb-2">
-              50<span className="text-amber-500">+</span>
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg mb-1">Years of industry</h3>
-            <p className="text-gray-700">experience</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-10 h-10 text-gray-800">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg mb-1">Family-owned</h3>
-            <p className="text-gray-700">Company</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-10 h-10 text-gray-800">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg mb-1">Turnkey</h3>
-            <p className="text-gray-700">Manufacturing</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-10 h-10 text-gray-800">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg mb-1">Large Tonnage</h3>
-            <p className="text-gray-700">up to 2800</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <StatsCarousel highlights={highlights} />;
 }
