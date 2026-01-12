@@ -51,7 +51,7 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
 
   return (
     <section className="py-16 md:px-6 px-3 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-8xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}

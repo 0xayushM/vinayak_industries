@@ -254,7 +254,7 @@ export default function AboutPage() {
                   <div className="md:col-span-1  overflow-hidden">
                     <div className="rounded-lg md:rounded-2xl overflow-hidden h-[450px]">
                       <Image
-                        src="/sandeep_kalra.jpeg"
+                        src="/team/sandeep_kalra.jpeg"
                         alt="Mr. Sandeep Agarwal, CEO"
                         width={600}
                         height={450}

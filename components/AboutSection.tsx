@@ -18,7 +18,7 @@ export default function AboutSection() {
 
   return (
     <section className="pt-20 pb-6 px-6 bg-white">
-      <div className="max-w-8xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeInUp}>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-6">
