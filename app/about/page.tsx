@@ -75,7 +75,7 @@ export default function AboutPage() {
         
         {/* Bottom accent */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg className="w-full h-16" viewBox="0 0 1440 64" preserveAspectRatio="none">
+          <svg className="w-full h-16" viewBox="0 0 0 0" preserveAspectRatio="none">
             <path d="M0 64L1440 64L1440 32L0 64Z" fill="#f9fafb" />
           </svg>
         </div>
@@ -258,7 +258,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="py-3 px-3 md:py-6 md:px-6"
           >
-            <div className="max-w-8xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               {/* Single merged card */}
               <div className="bg-gray-900 rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
                 {/* Heading inside card */}
@@ -267,7 +267,7 @@ export default function AboutPage() {
                   We are professionally managed company envisioned by our chairman <span className="text-white font-semibold">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="text-white font-semibold">IIT BHU</span>.
                 </p>
 
-                {/* Content grid with image card inside */}
+                {/* Content grid with image card inside - CEO */}
                 <div className="grid md:grid-cols-3 gap-8 items-center">
                   {/* Image inside a card */}
                   <div className="md:col-span-1  overflow-hidden">
@@ -292,6 +292,39 @@ export default function AboutPage() {
                     </p>
                     <p className="text-gray-400 leading-relaxed">
                       Our approach is different: we diagnose the root causes of warpage, flashing, and part failure, and then engineer molds with proper venting, optimized gating, and advanced cooling solutions that consistently reduce cycle times by 20 to 30 percent. This commitment to performance and predictability has made us a trusted Tier-1 partner for industry leaders including Maruti Suzuki, Hyundai, RR Kabel, and top brands across the Automotive, Pharma, Kitchenware, and Electrical sectors.
+                    </p>
+                  </div>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="my-12 border-t border-white/10"></div>
+
+                {/* Content grid with image card inside - Chairman */}
+                <div className="grid md:grid-cols-3 gap-8 items-center">
+                  {/* Image inside a card */}
+                  <div className="md:col-span-1 overflow-hidden">
+                    <div className="rounded-lg md:rounded-2xl overflow-hidden h-[450px] bg-white">
+                      <Image
+                        src="/team/sunny.jpeg"
+                        alt="Mr. Sunny Kalra, Chief of Growth Staff"
+                        width={600}
+                        height={450}
+                        className="object-cover object-top w-full h-full"
+                      />
+                    </div>
+                  </div>
+
+                  {/* About content */}
+                  <div className="md:col-span-2">
+                    <div className="flex flex-col justify-center">
+                    <h3 className="text-3xl font-bold text-white mb-2">Mr. Sunny Kalra</h3>
+                    <p className="text-amber-500 font-semibold text-lg mb-6">Chief of Growth Staff</p>
+                    <p className="text-gray-300 leading-relaxed mb-4">
+                      As Chief of Growth Staff at Vinayak Technoplast, Sunny Kalra drives strategic expansion and business development initiatives. With his deep understanding of market dynamics and customer needs, he has been instrumental in establishing key partnerships and expanding our presence across diverse industry sectors.
+                    </p>
+                    <p className="text-gray-400 leading-relaxed">
+                      His innovative approach to business growth, combined with a strong focus on customer satisfaction and operational excellence, has positioned Vinayak Technoplast as a preferred partner for leading OEMs. Under his leadership, the company continues to explore new markets and strengthen relationships with clients across automotive, medical, electrical, and consumer goods industries.
                     </p>
                   </div>
                   </div>
