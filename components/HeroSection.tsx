@@ -63,7 +63,7 @@ export default function HeroSection() {
       <div className="hidden md:block absolute bottom-0 left-0 right-0 z-20">
         <div className="flex items-center">
           <div className="bg-amber-500 px-8 py-4 ml-auto mr-12 skew-x-[-12deg]">
-            <span className="text-gray-900 font-bold text-xl tracking-wider skew-x-[12deg] inline-block font-[family-name:var(--font-korto)]">
+            <span className="text-gray-900 font-bold text-xl tracking-wider skew-x-[12deg] inline-block font-[family-name:var(--font-carbon)]">
               VINAYAK TECHNOPLAST
             </span>
           </div>
