@@ -38,6 +38,7 @@ export default function HeroSection() {
           loop
           muted
           playsInline
+          poster="/images/bg-image.jpeg"
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover"
           onLoadedMetadata={() => {
             const video = document.querySelector('video');

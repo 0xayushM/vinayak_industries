@@ -32,27 +32,14 @@ export default function AboutPage() {
   };
 
   const infrastructureImages = [
-    "/images/infrastructure/Vinayak-Technoplast1.jpg",
-    "/images/infrastructure/Vinayak-Technoplast2.jpg",
-    "/images/infrastructure/Vinayak-Technoplast3.jpg",
-    "/images/infrastructure/Vinayak-Technoplast4.jpg",
-    "/images/infrastructure/Vinayak-Technoplast5.jpg",
-    "/images/infrastructure/Vinayak-Technoplast6.jpg",
-    "/images/infrastructure/Vinayak-Technoplast7.jpg",
-    "/images/infrastructure/Vinayak-Technoplast8.jpg",
-    "/images/infrastructure/Vinayak-Technoplast10.jpg",
-    "/images/infrastructure/Vinayak-Technoplast11.jpg",
-    "/images/infrastructure/Vinayak-Technoplast12.jpg",
-    "/images/infrastructure/Vinayak-Technoplast13.jpg",
-    "/images/infrastructure/Vinayak-Technoplast14.jpg",
-    "/images/infrastructure/Vinayak-Technoplast15.jpg",
-    "/images/infrastructure/Vinayak-Technoplast16.jpg",
-    "/images/infrastructure/Vinayak-Technoplast17.jpg",
-    "/images/infrastructure/Vinayak-Technoplast18.jpg",
-    "/images/infrastructure/Vinayak-Technoplast19.jpg",
-    "/images/infrastructure/Vinayak-Technoplast20.jpg",
-    "/images/infrastructure/Vinayak-Technoplast21.jpg",
-    "/images/infrastructure/Vinayak-Technoplast22.jpg",
+    "/images/infrastructure/Vinayak_Technoplast1.png",
+    "/images/infrastructure/Vinayak_Technoplast2.png",
+    "/images/infrastructure/Vinayak_Technoplast3.png",
+    "/images/infrastructure/Vinayak_Technoplast4.png",
+    "/images/infrastructure/Vinayak_Technoplast5.png",
+    "/images/infrastructure/Vinayak_Technoplast6.png",
+    "/images/infrastructure/Vinayak_Technoplast7.png",
+    "/images/infrastructure/Vinayak_Technoplast8.jpeg"
   ];
 
   return (
@@ -135,7 +122,7 @@ export default function AboutPage() {
             className="py-3 px-3 md:py-6 md:px-6"
           >
             {/* Who We Are + Commitments Combined Card */}
-            <div className="max-w-8xl mx-auto mb-6">
+            <div className="max-w-7xl mx-auto mb-6">
               <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
                 {/* Background Image */}
                 <div className="absolute top-0 right-0 w-[50%] h-[60%] z-0">
@@ -186,7 +173,7 @@ export default function AboutPage() {
             </div>
 
             {/* Quality Policy Card - Now White */}
-            <div className="max-w-8xl mx-auto mb-6">
+            <div className="max-w-7xl mx-auto mb-6">
               <div className="bg-white rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">QUALITY POLICY</h2>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -218,7 +205,7 @@ export default function AboutPage() {
             </div>
 
             {/* Achievements Card - Now Dark */}
-            <div className="max-w-8xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900 p-8 lg:p-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-8">ACHIEVEMENTS</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -379,7 +366,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="md:p-6 p-3"
           >
-            <div className="max-w-8xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               <div className="bg-white md:rounded-[50px] rounded-[40px] p-6 lg:p-12">
                 <h2 className="text-2xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">INFRASTRUCTURE</h2>
                 <p className="text-sm md:text-xl text-gray-600 mb-8">

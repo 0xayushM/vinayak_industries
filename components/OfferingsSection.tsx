@@ -40,7 +40,7 @@ export default function OfferingsSection() {
   return (
     <section className="md:py-6 md:px-6 px-3">
       {/* Combined Card with Background Image */}
-      <div className="max-w-8xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
