@@ -2,27 +2,51 @@
   "posts": [
     {
       "id": 1,
-      "title": "Blog Post Title",
+      "title": "Reduce costs by changing design",
       "image": "/images/blog/blog1.png",
       "excerpt": "Short excerpt of the blog post...",
-      "content": "You Don't Reduce Costs by Changing Vendors. You Reduce Costs by Changing Design. In manufacturing, cost reduction is often approached by changing suppliers or negotiating prices. But real, sustainable savings begin much earlier...",
-      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_you-dont-reduce-cost-by-changing-vendors-activity-7407371083084902401-D6uw"
+      "content": "You Don’t Reduce Costs by Changing Vendors. You Reduce Costs by Changing Design. In manufacturing, cost reduction is often approached by changing suppliers or negotiating prices.",
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_you-dont-reduce-cost-by-changing-vendors-activity-7407371083084902401-D6uw?utm_source=share&utm_medium=member_desktop&rcm=ACoAADKJPxUBx2kZxhuvJIIRWVY3k2JFJv-hdN8"
     },
     {
       "id": 2,
-      "title": "Blog Post Title",
+      "title": "Our Engineering gets smarter",
       "image": "/images/blog/blog2.png",
       "excerpt": "Short excerpt of the blog post...",
-      "content": "Full content of the blog post will be displayed here. This text will be clamped and show ...more at the end if it's too long.",
-      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_you-dont-reduce-cost-by-changing-vendors-activity-7407371083084902401-D6uw"
+      "content": "FWhen parts get complex, engineering has to get smarter.From heat-resistant components and high-strength functional parts to precision tolerances and aesthetic interiors.",
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_when-the-part-get-tough-our-engineering-activity-7406314310689255424-HCbM?utm_source=share&utm_medium=member_desktop&rcm=ACoAADKJPxUBx2kZxhuvJIIRWVY3k2JFJv-hdN8"
     },
     {
       "id": 3,
-      "title": "Blog Post Title",
+      "title": "Automotive Exterior parts",
       "image": "/images/blog/blog3.png",
       "excerpt": "Short excerpt of the blog post...",
-      "content": "Full content of the blog post will be displayed here. This text will be clamped and show ...more at the end if it's too long.",
-      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_you-dont-reduce-cost-by-changing-vendors-activity-7407371083084902401-D6uw"
+      "content": "Strong, reliable exterior parts aren’t just a feature - they define the performance and life of every vehicle. At Vinayak Technoplast, we specialise in manufacturing high-precision automotive exterior components",
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_vinayaktechnoplast-automotiveparts-exteriorparts-activity-7405230203142197248--O4Y?utm_source=share&utm_medium=member_desktop&rcm=ACoAADKJPxUBx2kZxhuvJIIRWVY3k2JFJv-hdN8"
+    },
+    {
+      "id": 4,
+      "title": "Cycle Time Reduction",
+      "image": "/images/blog/blog4.png",
+      "excerpt": "Short excerpt of the blog post...",
+      "content": "Faster production means nothing if quality suffers. In injection moulding, reducing cycle time often comes with hidden risks warpage, flash, dimensional errors, and higher rejection rates.",
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_cycle-time-reduction-activity-7416441107258982401-xIQM?utm_source=share&utm_medium=member_desktop&rcm=ACoAADKJPxUBx2kZxhuvJIIRWVY3k2JFJv-hdN8"
+    },
+    {
+        "id": 5,
+        "title": "Electrical Equipment Failures",
+        "image": "/images/blog/blog5.png",
+        "excerpt": "Short excerpt of the blog post...",
+        "content": "Over 60% of electrical equipment failures are linked to components that don’t meet performance requirements. When one part fails, entire systems stop impacting safety, productivity, and reliability.",
+        "link": "https://www.linkedin.com/posts/vinayaktechnoplast_electrical-equipment-failures-are-linked-activity-7414938701962633216-U04i?utm_source=share&utm_medium=member_desktop&rcm=ACoAADKJPxUBx2kZxhuvJIIRWVY3k2JFJv-hdN8"
+    },
+    {
+        "id": 6,
+        "title": "India adds 5000+ hospitals",
+        "image": "/images/blog/blog6.png",
+        "excerpt": "Short excerpt of the blog post...",
+        "content": "India adds 5,000+ hospitals every year. Behind every new hospital are hundreds of machines from diagnostics to life-support systems that must perform flawlessly, every single day.",
+        "link": "https://www.linkedin.com/posts/vinayaktechnoplast_india-adds-5000-new-hospitals-every-year-activity-7413474900918636544-mq1r?utm_source=share&utm_medium=member_desktop&rcm=ACoAADKJPxUBx2kZxhuvJIIRWVY3k2JFJv-hdN8"
     }
   ]
 }
