@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import VisitorTracker from "@/components/VisitorTracker";
 
 const korto = localFont({
   src: "../public/fonts/Korto.ttf",
@@ -35,6 +36,7 @@ export default function RootLayout({
         className={`${korto.variable} ${osiris.variable} antialiased`}
         style={{ fontFamily: 'var(--font-korto)' }}
       >
+        <VisitorTracker />
         {children}
       </body>
     </html>
