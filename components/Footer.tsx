@@ -5,18 +5,26 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid lg:grid-cols-3 gap-12 mb-12">
+        <div className="grid lg:grid-cols-3 md:gap-12 gap-6 md:mb-12">
           {/* Company Info */}
-          <div>
+          <div className="hidden md:block">
             <Image
               src="/logo/logo1.png"
               alt="Vinayak Technoplast Logo"
-              width={240}
+              width={200}
               height={75}
               className="object-contain mb-6 brightness-0 invert"
             />
           </div>
-
+          <div className="block md:hidden">
+            <Image
+              src="/logo/logo1.png"
+              alt="Vinayak Technoplast Logo"
+              width={150}
+              height={75}
+              className="object-contain mb-6 brightness-0 invert"
+            />
+          </div>
           {/* Manufacturing Capabilities */}
           <div>
             <h3 className="text-lg font-bold mb-6">Manufacturing Capabilities</h3>
