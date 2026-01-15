@@ -17,11 +17,33 @@ const osiris = localFont({
 
 export const metadata: Metadata = {
   title: "Vinayak Technoplast - Leading Plastic Injection Molding Manufacturer",
-  description: "Leading plastic injection molding manufacturer",
+  description: "Tier-1 injection molding facility catering to Automotive, Pharma, Kitchenware, and Electrical giants. ISO 9001:2015 certified manufacturer in New Delhi, India.",
   icons: {
     icon: "/logo/logo.png",
     shortcut: "/logo/logo.png",
     apple: "/logo/logo.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.vinayaktechnoplast.com",
+    siteName: "Vinayak Technoplast",
+    title: "Vinayak Technoplast - Leading Plastic Injection Molding Manufacturer",
+    description: "Tier-1 injection molding facility catering to Automotive, Pharma, Kitchenware, and Electrical giants. ISO 9001:2015 certified manufacturer in New Delhi, India.",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Vinayak Technoplast Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vinayak Technoplast - Leading Plastic Injection Molding Manufacturer",
+    description: "Tier-1 injection molding facility catering to Automotive, Pharma, Kitchenware, and Electrical giants. ISO 9001:2015 certified manufacturer in New Delhi, India.",
+    images: ["/logo/logo.png"],
   },
 };
 
