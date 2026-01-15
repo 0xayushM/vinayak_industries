@@ -17,7 +17,7 @@ const osiris = localFont({
 
 export const metadata: Metadata = {
   title: "Vinayak Industries - Leading Plastic Injection Molding Manufacturer",
-  description: "Leading plastic injection molding manufacturer in Southern California with 50+ years of experience",
+  description: "Leading plastic injection molding manufacturer",
   icons: {
     icon: "/logo/logo.png",
     shortcut: "/logo/logo.png",
