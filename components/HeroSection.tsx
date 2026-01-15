@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award, ChevronDown, TrendingUp, Users, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function HeroSection() {
   const fadeInUp = {
@@ -114,64 +115,31 @@ export default function HeroSection() {
           >
             Precision moulds and injection molding solutions powering everything from automotive components to consumer appliances. Trusted by industry leaders worldwide.
           </motion.p>
-
-          {/* Stats Row */}
-          {/* <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8 max-w-3xl"
-            variants={fadeInUp}
-          >
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="flex items-center gap-2 mb-1">
-                <TrendingUp className="w-4 h-4 text-amber-400" />
-                <span className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-carbon)]">30+</span>
-              </div>
-              <p className="text-xs md:text-sm text-gray-300">Years Experience</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="flex items-center gap-2 mb-1">
-                <Users className="w-4 h-4 text-amber-400" />
-                <span className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-carbon)]">100M+</span>
-              </div>
-              <p className="text-xs md:text-sm text-gray-300">Parts Delivered</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="flex items-center gap-2 mb-1">
-                <CheckCircle className="w-4 h-4 text-amber-400" />
-                <span className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-carbon)]">99.9%</span>
-              </div>
-              <p className="text-xs md:text-sm text-gray-300">Quality Rate</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="flex items-center gap-2 mb-1">
-                <Award className="w-4 h-4 text-amber-400" />
-                <span className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-carbon)]">850T</span>
-              </div>
-              <p className="text-xs md:text-sm text-gray-300">Max Capacity</p>
-            </div>
-          </motion.div> */}
-          
-          {/* CTA Buttons */}
           <motion.div
             className="flex flex-col sm:flex-row gap-4"
             variants={fadeInUp}
           >
-            <motion.button 
-              className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 font-[family-name:var(--font-korto)] group inline-flex items-center justify-center gap-2"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Get a Custom Quote
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </motion.button>
-            <motion.button 
-              className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all font-[family-name:var(--font-korto)]"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Explore Capabilities
-            </motion.button>
+            <Link href="/contact">
+              <motion.button 
+                className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 font-[family-name:var(--font-korto)] group inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Get a Custom Quote
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </motion.button>
+            </Link>
+            <Link href="/capabilities">
+              <motion.button 
+                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all font-[family-name:var(--font-korto)] w-full sm:w-auto"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Explore Capabilities
+              </motion.button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

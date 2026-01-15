@@ -65,7 +65,7 @@ const BlogSection = () => {
             {/* Navigation Arrows - Left and Right */}
             <button
               onClick={() => scroll('left')}
-              className="absolute -left-5 md:-left-12 top-1/2 -translate-y-1/2 z-10 bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+              className="absolute -left-5 lg:-left-12 top-1/2 -translate-y-1/2 z-10 bg-amber-500 hover:bg-amber-600 text-white p-1 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
               aria-label="Scroll left"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ const BlogSection = () => {
             
             <button
               onClick={() => scroll('right')}
-              className="absolute -right-5 md:-right-12 top-1/2 -translate-y-1/2 z-10 bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+              className="absolute -right-5 lg:-right-12 top-1/2 -translate-y-1/2 z-10 bg-amber-500 hover:bg-amber-600 text-white p-1 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
               aria-label="Scroll right"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -49,7 +49,7 @@ export default function Navigation() {
           <Image
             src="/logo/logo1.png"
             alt="Vinayak Industries Logo"
-            width={140}
+            width={100}
             height={60}
             className={`object-contain cursor-pointer transition-all duration-300 ${
               isScrolled ? 'brightness-0' : 'brightness-0 invert'
@@ -58,7 +58,7 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -87,7 +87,7 @@ export default function Navigation() {
         {/* Hamburger Button */}
         <button
           onClick={toggleMenu}
-          className={`md:hidden p-2 transition-colors ${
+          className={`lg:hidden p-2 transition-colors ${
             isScrolled ? 'text-gray-800 hover:text-amber-500' : 'text-white hover:text-amber-500'
           }`}
           aria-label="Toggle menu"
@@ -108,7 +108,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-white border-t border-gray-200 transition-all duration-300 ease-in-out ${
+        className={`lg:hidden bg-white border-t border-gray-200 transition-all duration-300 ease-in-out ${
           isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >

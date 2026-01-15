@@ -19,12 +19,31 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
   const [currentSet, setCurrentSet] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
-  const itemsPerSet = 8;
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const getItemsPerSet = () => {
+    if (windowWidth < 768) return 1; // Mobile: 1 card
+    if (windowWidth < 1024) return 2; // Tablet: 2 cards in single row
+    return 8; // Desktop: 8 cards (2x4)
+  };
+
+  const itemsPerSet = getItemsPerSet();
   const totalSets = Math.ceil(highlights.length / itemsPerSet);
 
   useEffect(() => {
     setIsInitialLoad(false);
   }, []);
+
+  useEffect(() => {
+    setCurrentSet(0);
+  }, [itemsPerSet]);
 
   useEffect(() => {
     if (isPaused || totalSets <= 1) return;
@@ -77,7 +96,7 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
             <>
               <button
                 onClick={goToPrevious}
-                className="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 z-20 bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                className="absolute -left-2 lg:-left-16 top-1/2 -translate-y-1/2 z-20 bg-amber-500 hover:bg-amber-600 text-white p-1 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
                 aria-label="Previous set"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +106,7 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
               
               <button
                 onClick={goToNext}
-                className="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 z-20 bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-lg transition-all hover:scale-110"
+                className="absolute -right-2 lg:-right-16 top-1/2 -translate-y-1/2 z-20 bg-amber-500 hover:bg-amber-600 text-white p-1 md:p-3 rounded-full shadow-lg transition-all hover:scale-110"
                 aria-label="Next set"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +125,7 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.4 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
               >
                 {getCurrentItems().map((item, index) => (
                   <motion.div
