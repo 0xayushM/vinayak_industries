@@ -85,6 +85,18 @@ export default function StatsSection() {
       number: "Auto",
       unit: "Medical and Others",
       description: "Trusted by leading automotive, medical device and other manufacturers, we understand the stringent requirements of regulated industries and deliver components that meet or exceed specifications."
+    },
+    {
+      title: "Material Expertise",
+      number: "50+",
+      unit: "Polymer Types",
+      description: "We work with over 50 different polymer materials including engineering plastics, thermoplastics, and specialty compounds, ensuring the perfect material selection for your specific application requirements."
+    },
+    {
+      title: "Client Retention",
+      number: "95%",
+      unit: "Repeat Business",
+      description: "Our 95% client retention rate reflects our commitment to quality, reliability, and exceptional service. Long-term partnerships built on trust and consistent performance are the foundation of our success."
     }
   ];
 

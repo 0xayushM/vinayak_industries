@@ -29,8 +29,8 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
   }, []);
 
   const getItemsPerSet = () => {
-    if (windowWidth < 768) return 1; // Mobile: 1 card
-    if (windowWidth < 1024) return 2; // Tablet: 2 cards in single row
+    if (windowWidth < 768) return 4; // Mobile: 4 cards in single row
+    if (windowWidth < 1024) return 4; // Tablet: 4 cards in 2x2 grid
     return 8; // Desktop: 8 cards (2x4)
   };
 
@@ -125,7 +125,7 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.4 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
               >
                 {getCurrentItems().map((item, index) => (
                   <motion.div
