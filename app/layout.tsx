@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import VisitorTracker from "@/components/VisitorTracker";
+import Script from "next/script";
 
 const korto = localFont({
   src: "../public/fonts/Korto.ttf",
@@ -58,6 +59,14 @@ export default function RootLayout({
         className={`${korto.variable} ${osiris.variable} antialiased`}
         style={{ fontFamily: 'var(--font-korto)' }}
       >
+        <Script id="apollo-tracker" strategy="afterInteractive">
+          {`
+            function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+            o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+            o.onload=function(){window.trackingFunctions.onLoad({appId:"69c2849cd2c4040015ed6ff6"})},
+            document.head.appendChild(o)}initApollo();
+          `}
+        </Script>
         <VisitorTracker />
         {children}
       </body>
