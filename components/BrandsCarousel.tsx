@@ -2,54 +2,50 @@
 
 import Image from 'next/image';
 import brandsData from '@/data/brands.json';
+import LogoLoop from './LogoLoop';
 
 const BrandsCarousel = () => {
   const brands = brandsData.brands;
 
+  const brandLogos = brands.map((brand) => ({
+    src: brand.image,
+    alt: brand.name,
+    width: 224,
+    height: 144,
+  }));
+
   return (
-    <section className="py-8 overflow-hidden w-full">
-      <div className="w-full">
-        <h2 className="font-[family-name:var(--font-carbon)] text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+    <section className="py-8 w-full">
+      <div className="w-full flex flex-col gap-4">
+        <h2 className="font-[family-name:var(--font-carbon)] text-3xl md:text-4xl font-bold text-center my-12 text-gray-900">
           Our Trusted Partners
         </h2>
         
-        <div className="relative w-full">
-          <div className="flex overflow-hidden">
-            <div className="flex gap-8 animate-scroll">
-              {[...brands, ...brands].map((brand, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-56 h-36 relative bg-white p-4 flex items-center justify-center"
-                >
-                  <Image
-                    src={brand.image}
-                    alt={brand.name}
-                    fill
-                    className="object-contain p-2"
-                    sizes="160px"
-                    unoptimized
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        <LogoLoop
+          logos={brandLogos}
+          speed={80}
+          direction="left"
+          logoHeight={100}
+          gap={45}
+          pauseOnHover
+          scaleOnHover
+          fadeOut
+          fadeOutColor="#ffffff"
+          ariaLabel="Our trusted brand partners"
+        />
+        <LogoLoop
+          logos={brandLogos}
+          speed={80}
+          direction="right"
+          logoHeight={100}
+          gap={45}
+          pauseOnHover
+          scaleOnHover
+          fadeOut
+          fadeOutColor="#ffffff"
+          ariaLabel="Our trusted brand partners"
+        />
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .animate-scroll {
-          animation: scroll 60s linear infinite;
-        }
-      `}</style>
     </section>
   );
 };
