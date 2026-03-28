@@ -4,11 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import DownloadDialog from "./DownloadDialog";
+import { Download } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const navLinks = [
     { href: "/about", label: "About Us" },
@@ -77,6 +80,17 @@ export default function Navigation() {
               )}
             </Link>
           ))}
+          <button
+            onClick={() => setIsDialogOpen(true)}
+            className={`font-bold transition-colors flex items-center gap-2 ${
+              isScrolled 
+                ? "text-gray-800 hover:text-amber-500" 
+                : "text-white hover:text-amber-500"
+            }`}
+          >
+            <Download className="w-4 h-4" />
+            Download Brochure
+          </button>
           <Link href="/contact">
             <button className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-2.5 rounded-full font-medium transition-colors">
               Get a Custom Quote
@@ -127,6 +141,16 @@ export default function Navigation() {
               {link.label}
             </Link>
           ))}
+          <button
+            onClick={() => {
+              setIsDialogOpen(true);
+              closeMenu();
+            }}
+            className="w-full text-left py-2 font-medium text-gray-800 hover:text-amber-500 transition-colors flex items-center gap-2"
+          >
+            <Download className="w-4 h-4" />
+            Download Brochure
+          </button>
           <Link href="/contact" onClick={closeMenu} className="block">
             <button className="w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-colors">
               Get a Custom Quote
@@ -134,6 +158,8 @@ export default function Navigation() {
           </Link>
         </div>
       </div>
+      
+      <DownloadDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
     </nav>
   );
 }

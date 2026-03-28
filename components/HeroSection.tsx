@@ -1,10 +1,14 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Award, ChevronDown, TrendingUp, Users, CheckCircle } from "lucide-react";
+import { Award, ChevronDown, TrendingUp, Users, CheckCircle, Download } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import DownloadDialog from "./DownloadDialog";
 
 export default function HeroSection() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const fadeInUp = {
     initial: { opacity: 0, y: 40 },
     animate: { opacity: 1, y: 0 },
@@ -131,15 +135,15 @@ export default function HeroSection() {
                 </svg>
               </motion.button>
             </Link>
-            <Link href="/capabilities">
-              <motion.button 
-                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all font-[family-name:var(--font-korto)] w-full sm:w-auto"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Explore Capabilities
-              </motion.button>
-            </Link>
+            <motion.button 
+              onClick={() => setIsDialogOpen(true)}
+              className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all font-[family-name:var(--font-korto)] w-full sm:w-auto inline-flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Download className="w-4 h-4" />
+              Download Brochure
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
@@ -154,6 +158,8 @@ export default function HeroSection() {
         <span className="text-white/60 group-hover:text-white/90 text-xs font-semibold tracking-widest transition-colors">SCROLL DOWN</span>
         <ChevronDown className="w-6 h-6 text-amber-500 group-hover:text-amber-400 transition-colors" />
       </motion.div>
+      
+      <DownloadDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
     </section>
   );
 }

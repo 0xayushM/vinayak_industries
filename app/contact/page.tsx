@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -32,28 +31,23 @@ export default function ContactPage() {
     setSubmitStatus(null);
 
     try {
-      const { data, error } = await supabase
-        .from('contact_submissions')
-        .insert([
-          {
-            name: formData.name,
-            company: formData.company,
-            phone: formData.phone,
-            email: formData.email,
-            country: formData.country,
-            message: formData.message,
-            submitted_at: new Date().toISOString()
-          }
-        ]);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
 
       setSubmitStatus({
         type: 'success',
         message: 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.'
       });
       
-      // Reset form
       setFormData({
         name: '',
         company: '',
