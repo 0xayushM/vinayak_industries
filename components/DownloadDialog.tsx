@@ -37,20 +37,13 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
         apiKey: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY
       });
 
-      // Send to BrewMyAgent
-      const endpoint = process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT || '';
-      const apiKey = process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY || '';
-      
-      console.log('Using endpoint:', endpoint);
-      console.log('Using API key:', apiKey ? 'Present' : 'Missing');
-      
-      const brewMyAgentResponse = await fetch(endpoint, {
+      // Send to BrewMyAgent via secure API route
+      const brewMyAgentResponse = await fetch('/api/brewmy-agent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          api_key: apiKey,
           form_name: 'download_dialog',
           data: formData
         }),
