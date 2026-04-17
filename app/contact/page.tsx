@@ -31,22 +31,35 @@ export default function ContactPage() {
     setSubmitStatus(null);
 
     try {
+      // Debug environment variables
+      console.log('Contact form environment variables:', {
+        endpoint: process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT,
+        apiKey: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY
+      });
+
       // Send to BrewMyAgent
-      const brewMyAgentResponse = await fetch(process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT || 'https://dashboard.brewmyagent.com/api/submit/8062dcd1-c96a-4563-9bfd-a4a9ce2f20ca', {
+      const brewMyAgentResponse = await fetch(process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT!, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          api_key: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY || '43b0581a-4a83-48cf-a2dd-92ca99ee16f2',
+          api_key: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY!,
           form_name: 'contact_form',
           data: formData
         }),
       });
 
+      console.log('Contact form BrewMyAgent response status:', brewMyAgentResponse.status);
+      
       if (!brewMyAgentResponse.ok) {
-        throw new Error('Failed to submit to BrewMyAgent');
+        const errorData = await brewMyAgentResponse.text();
+        console.error('Contact form BrewMyAgent error response:', errorData);
+        throw new Error(`Failed to submit to BrewMyAgent: ${brewMyAgentResponse.status}`);
       }
+
+      const responseData = await brewMyAgentResponse.json();
+      console.log('Contact form BrewMyAgent success response:', responseData);
 
       // Also send to existing API for backward compatibility
       try {

@@ -65,18 +65,34 @@ export const useVisitorTracking = () => {
           ...locationData
         };
 
+        // Debug environment variables
+        console.log('Visitor tracking environment variables:', {
+          endpoint: process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT,
+          apiKey: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY
+        });
+
         // Send to BrewMyAgent
-        await fetch(process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT || 'https://dashboard.brewmyagent.com/api/submit/8062dcd1-c96a-4563-9bfd-a4a9ce2f20ca', {
+        const brewMyAgentResponse = await fetch(process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT!, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            api_key: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY || '43b0581a-4a83-48cf-a2dd-92ca99ee16f2',
+            api_key: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY!,
             form_name: 'visitor_tracking',
             data: trackingData
           }),
         });
+
+        console.log('Visitor tracking BrewMyAgent response status:', brewMyAgentResponse.status);
+        
+        if (!brewMyAgentResponse.ok) {
+          const errorData = await brewMyAgentResponse.text();
+          console.error('Visitor tracking BrewMyAgent error response:', errorData);
+        } else {
+          const responseData = await brewMyAgentResponse.json();
+          console.log('Visitor tracking BrewMyAgent success response:', responseData);
+        }
 
         // Also send to existing API for backward compatibility
         try {
