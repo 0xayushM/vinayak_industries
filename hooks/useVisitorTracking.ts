@@ -65,14 +65,32 @@ export const useVisitorTracking = () => {
           ...locationData
         };
 
-        // Send to API
-        await fetch('/api/track-visitor', {
+        // Send to BrewMyAgent
+        await fetch(process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT || 'https://dashboard.brewmyagent.com/api/submit/8062dcd1-c96a-4563-9bfd-a4a9ce2f20ca', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(trackingData),
+          body: JSON.stringify({
+            api_key: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY || '43b0581a-4a83-48cf-a2dd-92ca99ee16f2',
+            form_name: 'visitor_tracking',
+            data: trackingData
+          }),
         });
+
+        // Also send to existing API for backward compatibility
+        try {
+          await fetch('/api/track-visitor', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(trackingData),
+          });
+        } catch (error) {
+          console.error('Error sending to existing API:', error);
+          // Continue even if existing API fails
+        }
       } catch (error) {
         console.error('Error tracking visitor:', error);
       }

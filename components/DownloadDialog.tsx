@@ -31,16 +31,35 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('/api/subscribe', {
+      // Send to BrewMyAgent
+      const brewMyAgentResponse = await fetch(process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT || 'https://dashboard.brewmyagent.com/api/submit/8062dcd1-c96a-4563-9bfd-a4a9ce2f20ca', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          api_key: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY || '43b0581a-4a83-48cf-a2dd-92ca99ee16f2',
+          form_name: 'download_dialog',
+          data: formData
+        }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to subscribe');
+      if (!brewMyAgentResponse.ok) {
+        throw new Error('Failed to submit to BrewMyAgent');
+      }
+
+      // Also send to existing API for backward compatibility
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+      } catch (error) {
+        console.error('Error sending to existing API:', error);
+        // Continue even if existing API fails
       }
 
       setSubmitStatus({
