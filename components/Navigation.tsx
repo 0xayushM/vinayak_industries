@@ -16,8 +16,9 @@ export default function Navigation() {
   const navLinks = [
     { href: "/about", label: "About Us" },
     { href: "/offerings", label: "Offerings" },
-    { href: "/capabilities", label: "Manufacturing Capabilities" },
-    { href: "/product-line", label: "Product Line" },
+    { href: "/capabilities", label: "Capabilities" },
+    { href: "/product-line", label: "Products" },
+    { href: "/moulding", label: "Moulding" },
     { href: "/ev", label: "EV" },
     { href: "/contact", label: "Contact" },
   ];
