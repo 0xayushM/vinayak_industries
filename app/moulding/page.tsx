@@ -17,6 +17,11 @@ import {
   HiOutlineWrenchScrewdriver,
   HiOutlineArrowsPointingOut,
   HiOutlineClock,
+  HiOutlinePencilSquare,
+  HiOutlineCpuChip,
+  HiOutlineSquares2X2,
+  HiOutlineRectangleGroup,
+  HiOutlineCircleStack,
 } from "react-icons/hi2";
 
 export default function MouldingPage() {
@@ -41,57 +46,83 @@ export default function MouldingPage() {
     },
   };
 
-  // 4-step injection moulding process
+  // 6-step mould manufacturing process
   const processSteps = [
     {
       no: "01",
-      icon: HiOutlineCog8Tooth,
-      title: "Clamping",
-      tag: "Mould Closes",
-      desc: "The two mould halves are securely closed and held under high tonnage by our clamping unit — ensuring a leak-free seal before molten polymer enters the cavity.",
+      icon: HiOutlinePencilSquare,
+      title: "DFM Review",
+      tag: "Design Analysis",
+      desc: "Every project starts with a thorough Design for Manufacturability review. We analyse your 3D model for parting-line feasibility, draft angles, sink marks, warp risk and undercuts — catching problems in CAD before a gram of steel is touched.",
       highlights: [
-        "75 T to 850 T clamping force",
-        "Precision parallel platens",
-        "Mould safety sensors",
+        "Parting line & gate point optimisation",
+        "Draft angle & undercut analysis",
+        "Mould-flow simulation review",
       ],
       image: "/images/moulding/moulding_1.jpg",
     },
     {
       no: "02",
-      icon: HiOutlineFire,
-      title: "Injection",
-      tag: "Polymer Flows",
-      desc: "Engineering-grade pellets are melted in our heated barrel and injected into the mould at precisely controlled pressure, temperature and shot weight — filling 95–99% of the cavity uniformly.",
+      icon: HiOutlineCpuChip,
+      title: "CAD / CAM",
+      tag: "Mould Engineering",
+      desc: "The complete mould — cavity, core, runner system, cooling channels and ejection layout — is designed in 3D CAD. Our CAM engineers then generate precision tool-paths for every VMC operation, ensuring zero ambiguity on the shop floor.",
       highlights: [
-        "Up to 4,500 g shot weight",
-        "Closed-loop pressure control",
-        "Optimised gating geometry",
+        "Hot runner manifold design",
+        "Balanced runner & cooling systems",
+        "Full CAM tool-path generation",
       ],
       image: "/images/moulding/moulding_2.jpg",
     },
     {
       no: "03",
-      icon: HiOutlineSparkles,
-      title: "Cooling",
-      tag: "Part Solidifies",
-      desc: "Optimised cooling channels and balanced gating solidify the part to dimensional accuracy. Our process engineers fine-tune cycle times to consistently shave 20–30%.",
+      icon: HiOutlineCog8Tooth,
+      title: "CNC Milling",
+      tag: "HAAS VMC",
+      desc: "Cavity and core blocks are machined on our HAAS VF-2 and VF-3 vertical machining centres. High-speed spindles and rigid fixturing hold dimensional accuracy through the entire cut, leaving only fine detail work for the EDM stage.",
       highlights: [
-        "20–30% shorter cycle times",
-        "Conformal cooling design",
-        "Stable dimensional accuracy",
+        "HAAS VF-2 & VF-3 VMC",
+        "Up to 1000 × 508 × 500 mm travel",
+        "±5 µ roughing-stage accuracy",
+      ],
+      image: "/images/manufacturing/manufacturing-1/VMC-HAAS-VF3.jpg",
+    },
+    {
+      no: "04",
+      icon: HiOutlineFire,
+      title: "EDM & Wire-Cut",
+      tag: "Spark Erosion",
+      desc: "Sharp corners, deep ribs, texture patterns and complex profiles are burnt in by our Electronica EDM machines. Wire-cut handles precision parting-line details. Together they take cavities to the final ±2 µ tolerance specification.",
+      highlights: [
+        "3 × Electronica EDM units",
+        "±2 µ spark-erosion accuracy",
+        "Wire-cut for parting lines",
+      ],
+      image: "/images/manufacturing/manufacturing-1/edm-die-machine.jpg",
+    },
+    {
+      no: "05",
+      icon: HiOutlineSparkles,
+      title: "Assembly & Finish",
+      tag: "Mould Benching",
+      desc: "Cavity inserts, core inserts, ejector plates, guide pillars, slides and hot-runner manifolds are assembled and fitted to spec. Surface finish is applied cavity-by-cavity to the Ra value your part demands.",
+      highlights: [
+        "Hardened inserts & guided ejection",
+        "Slide & lifter mechanisms",
+        "Surface finish to Ra 0.8 µ",
       ],
       image: "/images/moulding/moulding_3.jpg",
     },
     {
-      no: "04",
-      icon: HiOutlineCubeTransparent,
-      title: "Ejection",
-      tag: "Part Released",
-      desc: "Ejector pins lift the finished, cooled component cleanly out of the mould — ready for in-line inspection, secondary operations, or assembly under one roof.",
+      no: "06",
+      icon: HiOutlineShieldCheck,
+      title: "T1 Trial",
+      tag: "First Shots",
+      desc: "The completed mould goes onto one of our in-house injection machines for T1 shots. Parts are dimensionally checked against your drawing. Process parameters are locked, documented, and any corrections are completed in-house — typically within 24–48 hours.",
       highlights: [
-        "Damage-free ejection",
-        "In-line visual inspection",
-        "Secondary ops under one roof",
+        "In-house T1 on our press fleet",
+        "CMM dimensional inspection",
+        "Corrections within 24–48 hours",
       ],
       image: "/images/moulding/moudling_4.jpg",
     },
@@ -100,8 +131,6 @@ export default function MouldingPage() {
   // Scroll-driven step advancement
   useEffect(() => {
     const unsubscribe = cycleProgress.on("change", (latest) => {
-      // Bias slightly so each step occupies an even slice and the last step
-      // stays active until the section fully exits.
       const idx = Math.min(
         processSteps.length - 1,
         Math.max(0, Math.floor(latest * processSteps.length))
@@ -111,56 +140,70 @@ export default function MouldingPage() {
     return () => unsubscribe();
   }, [cycleProgress, processSteps.length]);
 
-  // Engineering polymers we run
-  const materials = [
+  // Mould types manufactured
+  const mouldTypes = [
     {
-      code: "ABS",
-      name: "Acrylonitrile Butadiene Styrene",
-      desc: "Tough, rigid engineering thermoplastic with excellent impact, stress and heat resistance. Ideal for automotive interiors, electrical housings and consumer goods.",
+      icon: HiOutlineSquares2X2,
+      type: "Two-Plate Mould",
+      tag: "Most Common",
+      desc: "Standard split-line mould where runner and part eject together. Cost-effective and reliable for straightforward geometries and mid-to-high volume production.",
+      badge: "High-volume",
     },
     {
-      code: "PC",
-      name: "Polycarbonate",
-      desc: "Lightweight, optically clear and exceptionally strong. Often blended with ABS (PC-ABS) for tough, mouldable parts in lighting, electronics and protective covers.",
+      icon: HiOutlineRectangleGroup,
+      type: "Three-Plate Mould",
+      tag: "Multi-cavity",
+      desc: "Three parting surfaces allow the gate to separate automatically from the part. Ideal for centre-gated, multi-cavity layouts where gate location is critical.",
+      badge: "Complex gating",
     },
     {
-      code: "PP",
-      name: "Polypropylene",
-      desc: "Crystalline, flexible and chemically inert. Outstanding fatigue and chemical resistance for kitchenware, packaging, automotive trim and living-hinge parts.",
+      icon: HiOutlineFire,
+      type: "Hot Runner Mould",
+      tag: "Zero Waste",
+      desc: "A heated manifold system keeps the plastic permanently molten in the runner — no cold runners to trim, minimal material waste, and consistent shot-to-shot quality.",
+      badge: "Premium",
     },
     {
-      code: "PA",
-      name: "Nylon (Polyamide)",
-      desc: "High-strength engineering plastic with great wear, friction and heat resistance — engineered for gears, bushings, cable ties and structural automotive parts.",
+      icon: HiOutlineBolt,
+      type: "Hot Sprue Mould",
+      tag: "Single Point",
+      desc: "A single heated nozzle feeds the cavity directly, eliminating the cold slug and reducing cycle time. A cost-effective step up from cold runner for mid-volume runs.",
+      badge: "Mid-volume",
     },
     {
-      code: "PMMA",
-      name: "Acrylic",
-      desc: "Glass-clear, weather-stable and scratch-resistant. The polymer of choice for lenses, light pipes, lamp covers and aesthetic interior trims.",
+      icon: HiOutlineCircleStack,
+      type: "Cold Runner Mould",
+      tag: "Versatile",
+      desc: "Conventional runner system compatible with all engineering resins. Straightforward to maintain and modify — the workhorse for engineering polymer applications.",
+      badge: "All materials",
     },
     {
-      code: "POM",
-      name: "Acetal / Delrin",
-      desc: "Low-friction, dimensionally stable engineering polymer for precision mechanical components — switches, pumps, gears and fittings.",
-    },
-    {
-      code: "PS",
-      name: "Polystyrene",
-      desc: "Cost-effective, easy-flowing thermoplastic for high-volume consumer and electrical parts where rigidity and finish matter.",
-    },
-    {
-      code: "SAN",
-      name: "Styrene Acrylonitrile",
-      desc: "Transparent, heat- and chemical-resistant — a workhorse for kitchenware, appliance lenses and durable display components.",
+      icon: HiOutlineWrenchScrewdriver,
+      type: "Insert & Overmould",
+      tag: "Multi-material",
+      desc: "Metal inserts are placed in the cavity before each shot, or a secondary material is overmoulded onto a substrate. Reduces assembly operations and improves part strength.",
+      badge: "Speciality",
     },
   ];
 
   // Capabilities / metrics
   const stats = [
-    { value: "850 T", label: "Largest clamping tonnage" },
-    { value: "30+", label: "Moulding machines" },
-    { value: "35,000", label: "Sq. ft. plant area" },
-    { value: "± 2 µ", label: "Tooling accuracy" },
+    { value: "200+", label: "Moulds per year", sublabel: "Manufacturing capacity" },
+    { value: "4–6 wk", label: "Average lead time", sublabel: "Design to T1 trial" },
+    { value: "±2 µ", label: "Tooling accuracy", sublabel: "EDM spark erosion" },
+    { value: "50+", label: "Moulds maintained", sublabel: "Active mould bank" },
+  ];
+
+  // Tool room machines
+  const toolRoomMachines = [
+    { category: "VMC", make: "HAAS", model: "VF-2", travel: "762 × 406 × 508 mm" },
+    { category: "VMC", make: "HAAS", model: "VF-3", travel: "1000 × 508 × 500 mm" },
+    { category: "VMC", make: "BFW", model: "1577", travel: "1500 × 700 × 700 mm" },
+    { category: "EDM", make: "Electronica", model: "5535", travel: "550 × 350 mm" },
+    { category: "EDM", make: "Electronica", model: "EB1510N", travel: "1500 × 1000 × 600 mm" },
+    { category: "EDM", make: "JOEMARS", model: "AZ50TR", travel: "400 × 400 × 300 mm" },
+    { category: "Wire-Cut", make: "Electronica", model: "Sprintcut", travel: "400 × 300 × 225 mm" },
+    { category: "ZMC", make: "Electronica", model: "—", travel: "1500 × 1200 × 600 mm" },
   ];
 
   // Industries served
@@ -168,22 +211,22 @@ export default function MouldingPage() {
     {
       icon: HiOutlineBolt,
       title: "Automotive",
-      desc: "Tier-1 supplier of moulded components to Maruti Suzuki, Hyundai and leading auto OEMs.",
+      desc: "Complex interior and underbody moulds for Tier-1 suppliers to Maruti Suzuki, Hyundai and leading Indian OEMs.",
     },
     {
       icon: HiOutlineShieldCheck,
       title: "Electrical",
-      desc: "Switches, sockets and accessories for industry leaders including RR Kabel.",
+      desc: "Precision socket, switch and accessory moulds meeting BIS dimensional tolerances — supplied to RR Kabel and others.",
     },
     {
       icon: HiOutlineBeaker,
       title: "Pharma & Medical",
-      desc: "Precision components manufactured to strict cleanliness and tolerance standards.",
+      desc: "Cleanroom-compatible moulds with polished cavities and validated first-article reports for medical components.",
     },
     {
       icon: HiOutlineCubeTransparent,
       title: "Kitchenware",
-      desc: "Aesthetic, food-safe parts engineered for everyday durability and finish quality.",
+      desc: "High-cavity, high-gloss consumer moulds with long service life and short changeover — built for shift-after-shift production.",
     },
   ];
 
@@ -191,23 +234,23 @@ export default function MouldingPage() {
   const differentiators = [
     {
       icon: HiOutlineWrenchScrewdriver,
-      title: "In-house Tool Room",
-      desc: "Mould design, manufacturing and trial — all under one roof, dramatically cutting lead times.",
+      title: "Full In-House Tool Room",
+      desc: "VMC HAAS, 3× EDM, Wire-Cut and surface grinders — no outsourcing, no waiting on sub-contractors.",
+    },
+    {
+      icon: HiOutlinePencilSquare,
+      title: "DFM Included, No Extra Cost",
+      desc: "We review your part geometry for sink, warp, draft and gate position before locking the design — saving costly corrections later.",
     },
     {
       icon: HiOutlineArrowsPointingOut,
-      title: "10 T to 850 T",
-      desc: "A full spectrum of clamping tonnage to handle micro components through large structural parts.",
+      title: "±2 Micron Accuracy",
+      desc: "Electronica EDM and HAAS VMC deliver mould cavities to sub-2 µ — the precision that eliminates flash and holds tight tolerances over 1M+ shots.",
     },
     {
       icon: HiOutlineClock,
-      title: "20–30% Faster Cycles",
-      desc: "Optimised gating, venting and cooling reduce cycle times without compromising quality.",
-    },
-    {
-      icon: HiOutlineShieldCheck,
-      title: "ISO / IATF Quality",
-      desc: "Every part is produced under ISO 9001:2015 and IATF-aligned process controls.",
+      title: "T1 in 4–6 Weeks",
+      desc: "From signed drawing to first shots — averaged across 200+ moulds delivered per year. We quote lead times we actually hit.",
     },
   ];
 
@@ -215,7 +258,7 @@ export default function MouldingPage() {
     <div className="min-h-screen bg-stone-950">
       <Navigation />
 
-      {/* Hero Section — molten / industrial */}
+      {/* Hero Section */}
       <section
         className="min-h-screen relative overflow-hidden flex items-center"
         style={{
@@ -223,30 +266,28 @@ export default function MouldingPage() {
             "linear-gradient(135deg, #0c0a09 0%, #1c1917 30%, #292524 60%, #44403c 100%)",
         }}
       >
-        {/* Background image — moulding press */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/moulding/moulding_1.jpg"
-            alt="Plastic injection moulding press"
+            src="/images/manufacturing/manufacturing-1/VMC-HAAS-VF3.jpg"
+            alt="Vinayak Technoplast in-house tool room"
             fill
-            className="object-cover opacity-40"
+            className="object-cover opacity-35"
             priority
           />
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(135deg, rgba(12,10,9,0.92) 0%, rgba(28,25,23,0.85) 35%, rgba(120,53,15,0.55) 75%, rgba(220,38,38,0.35) 100%)",
+                "linear-gradient(135deg, rgba(12,10,9,0.93) 0%, rgba(28,25,23,0.85) 35%, rgba(120,53,15,0.55) 75%, rgba(220,38,38,0.35) 100%)",
             }}
           />
         </div>
 
-        {/* Glowing molten orb — top right */}
-        <div className="absolute -top-20 -right-20 w-[420px] h-[420px] rounded-full opacity-50 blur-3xl"
+        <div
+          className="absolute -top-20 -right-20 w-[420px] h-[420px] rounded-full opacity-50 blur-3xl"
           style={{ background: "radial-gradient(circle, #ea580c 0%, #b91c1c 50%, transparent 80%)" }}
         />
 
-        {/* Hot grid lines bottom-left */}
         <div className="absolute bottom-0 left-0 w-72 h-72 opacity-20">
           <svg viewBox="0 0 200 200" className="w-full h-full">
             <defs>
@@ -272,14 +313,14 @@ export default function MouldingPage() {
               className="inline-block px-4 py-1.5 rounded-full border border-orange-500/40 bg-orange-500/10 text-orange-300 text-xs md:text-sm tracking-[0.25em] uppercase mb-6 font-[family-name:var(--font-korto)]"
               variants={fadeInUp}
             >
-              Plastic Injection Moulding
+              Mould Manufacturing · In-House Tool Room
             </motion.span>
 
             <motion.h1
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-[1.05] font-[family-name:var(--font-carbon)]"
               variants={fadeInUp}
             >
-              MOULDED FOR
+              PRECISION MOULDS
             </motion.h1>
             <motion.h2
               className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.05] font-[family-name:var(--font-carbon)]"
@@ -291,38 +332,49 @@ export default function MouldingPage() {
                 backgroundClip: "text",
               }}
             >
-              PRECISION & SCALE
+              BUILT IN-HOUSE
             </motion.h2>
 
             <motion.p
-              className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-10 font-[family-name:var(--font-korto)]"
+              className="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed mb-5 font-[family-name:var(--font-korto)]"
               variants={fadeInUp}
             >
-              For 30+ years Vinayak Technoplast has engineered moulded plastic components for
-              India&rsquo;s most demanding OEMs. From 10 T micro-shots to 850 T structural parts —
-              every cycle backed by an in-house tool room and a 35,000 sq.ft. plant.
+              Vinayak Technoplast designs and manufactures plastic injection moulds entirely
+              in-house — from DFM analysis and CAD/CAM through CNC milling, EDM spark erosion
+              and T1 trial shots. 200+ moulds delivered every year. Lead time 4–6 weeks.
+              Accuracy to ±2 µ.
             </motion.p>
+
+            <motion.div className="flex flex-wrap gap-2 mb-8" variants={fadeInUp}>
+              {["Two-Plate", "Three-Plate", "Hot Runner", "Hot Sprue", "Cold Runner", "Insert / Overmould"].map((t) => (
+                <span
+                  key={t}
+                  className="px-3 py-1 rounded-full bg-white/5 border border-white/15 text-gray-400 text-xs font-[family-name:var(--font-korto)] tracking-wide"
+                >
+                  {t}
+                </span>
+              ))}
+            </motion.div>
 
             <motion.div className="flex flex-wrap gap-4" variants={fadeInUp}>
               <Link href="/contact">
                 <button className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-orange-500/40 font-[family-name:var(--font-korto)]">
-                  Start a Moulding Project
+                  Request a Tooling Quote
                 </button>
               </Link>
-              <Link href="/offerings">
+              <a href="#tool-room">
                 <button className="border-2 border-white/30 hover:border-orange-400 hover:text-orange-300 text-white px-8 py-4 rounded-full font-medium text-lg transition-all font-[family-name:var(--font-korto)]">
-                  View Capacities
+                  See Our Tool Room
                 </button>
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Bottom angled accent strip */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-orange-500 to-red-600" />
       </section>
 
-      {/* Stats Bar — metallic */}
+      {/* Stats Bar */}
       <section className="relative bg-stone-950 py-12 px-6 border-b border-white/5">
         <div className="max-w-8xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -336,10 +388,9 @@ export default function MouldingPage() {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
               >
                 <div
-                  className="text-3xl md:text-5xl font-bold mb-2 font-[family-name:var(--font-carbon)]"
+                  className="text-3xl md:text-5xl font-bold mb-1 font-[family-name:var(--font-carbon)]"
                   style={{
-                    background:
-                      "linear-gradient(135deg, #fbbf24 0%, #f97316 70%, #dc2626 100%)",
+                    background: "linear-gradient(135deg, #fbbf24 0%, #f97316 70%, #dc2626 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -347,8 +398,11 @@ export default function MouldingPage() {
                 >
                   {s.value}
                 </div>
-                <p className="text-gray-400 text-sm md:text-base uppercase tracking-wider font-[family-name:var(--font-korto)]">
+                <p className="text-white text-sm md:text-base font-semibold font-[family-name:var(--font-korto)]">
                   {s.label}
+                </p>
+                <p className="text-gray-500 text-xs uppercase tracking-wider font-[family-name:var(--font-korto)] mt-0.5">
+                  {s.sublabel}
                 </p>
               </motion.div>
             ))}
@@ -356,91 +410,391 @@ export default function MouldingPage() {
         </div>
       </section>
 
-      {/* Process Section — scroll-driven cycle */}
+      {/* Mould Types Section */}
+      <section
+        className="py-24 px-6 relative"
+        style={{ background: "linear-gradient(180deg, #1c1917 0%, #0c0a09 100%)" }}
+      >
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        <div className="max-w-8xl mx-auto relative z-10">
+          <motion.div
+            className="grid md:grid-cols-2 gap-10 items-end mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div>
+              <span className="text-orange-400 text-sm md:text-base tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
+                What We Build
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 font-[family-name:var(--font-carbon)]">
+                MOULD TYPES <span className="text-orange-500">WE MANUFACTURE</span>
+              </h2>
+            </div>
+            <p className="text-gray-400 text-base md:text-lg leading-relaxed font-[family-name:var(--font-korto)]">
+              From simple two-plate moulds to complex hot runner systems — our tool room handles
+              every category. We recommend the right mould type based on your volume, material
+              and part geometry — not on what is easiest for us to build.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {mouldTypes.map((m, i) => (
+              <motion.div
+                key={i}
+                className="group relative bg-stone-900/60 border border-white/10 rounded-2xl p-7 hover:border-orange-500/50 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+              >
+                <div
+                  className="absolute -bottom-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500"
+                  style={{ background: "radial-gradient(circle, rgba(249,115,22,0.6) 0%, transparent 70%)" }}
+                />
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-4">
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(251,191,36,0.15) 0%, rgba(220,38,38,0.15) 100%)",
+                        border: "1px solid rgba(249,115,22,0.3)",
+                      }}
+                    >
+                      <m.icon className="w-6 h-6 text-orange-400" />
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[10px] tracking-wider uppercase font-[family-name:var(--font-korto)]">
+                      {m.badge}
+                    </span>
+                  </div>
+                  <div className="text-[10px] text-orange-400/70 tracking-[0.2em] uppercase mb-1.5 font-[family-name:var(--font-korto)]">
+                    {m.tag}
+                  </div>
+                  <h3 className="text-white font-bold text-lg mb-3 font-[family-name:var(--font-korto)]">
+                    {m.type}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed font-[family-name:var(--font-korto)]">
+                    {m.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mid-page CTA #1 */}
+      <section
+        className="py-14 px-6 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #1c1917 0%, #292524 100%)" }}
+      >
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{ background: "radial-gradient(ellipse at 60% 50%, rgba(234,88,12,0.2) 0%, transparent 70%)" }}
+        />
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-carbon)] mb-2">
+                HAVE A MOULD DESIGN REQUIREMENT?
+              </h3>
+              <p className="text-gray-400 text-base font-[family-name:var(--font-korto)]">
+                Share your 3D model or 2D drawing. We&apos;ll return a DFM report, mould type
+                recommendation and lead time estimate — within 48 hours, no obligation.
+              </p>
+            </div>
+            <Link href="/contact" className="flex-shrink-0">
+              <button className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-400 hover:to-red-500 text-white px-8 py-4 rounded-full font-medium text-base whitespace-nowrap transition-all hover:shadow-lg hover:shadow-orange-500/40 font-[family-name:var(--font-korto)]">
+                Get Free DFM Review
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Tool Room Section */}
+      <section
+        id="tool-room"
+        className="py-24 px-6 relative"
+        style={{ background: "linear-gradient(180deg, #0c0a09 0%, #1c1917 100%)" }}
+      >
+        <div className="max-w-8xl mx-auto relative z-10">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-orange-400 text-sm md:text-base tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
+              In-House Tool Room
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-4 font-[family-name:var(--font-carbon)]">
+              THE MACHINES BEHIND <span className="text-orange-500">EVERY MOULD</span>
+            </h2>
+            <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-[family-name:var(--font-korto)]">
+              We own and operate every machine that touches a mould. No outsourced machining,
+              no waiting on sub-contractors — full control over quality and lead time.
+            </p>
+          </motion.div>
+
+          {/* Key machine showcase */}
+          <div className="grid lg:grid-cols-2 gap-6 mb-10">
+            <motion.div
+              className="group relative bg-stone-900/60 border border-white/10 rounded-3xl overflow-hidden hover:border-orange-500/40 transition-all duration-300"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src="/images/manufacturing/manufacturing-1/VMC-HAAS-VF3.jpg"
+                  alt="VMC HAAS VF3 - CNC Milling"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(12,10,9,0.9) 100%)" }}
+                />
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-300 text-xs tracking-wider uppercase font-[family-name:var(--font-korto)]">
+                  CNC Milling
+                </span>
+              </div>
+              <div className="p-7">
+                <h3 className="text-xl font-bold text-white mb-1 font-[family-name:var(--font-carbon)]">
+                  VMC HAAS VF-2 & VF-3
+                </h3>
+                <p className="text-gray-400 text-sm mb-5 font-[family-name:var(--font-korto)]">
+                  High-speed vertical machining centres for cavity and core milling. Rigid Heidenhain
+                  feedback ensures dimensional accuracy from roughing to semi-finishing.
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { label: "Max travel", value: "1000 × 508 × 500 mm" },
+                    { label: "Accuracy", value: "±5 µ" },
+                    { label: "Spindle speed", value: "8100 RPM" },
+                    { label: "Control", value: "Haas CNC" },
+                  ].map((spec, si) => (
+                    <div key={si} className="bg-white/5 rounded-xl p-3">
+                      <div className="text-[10px] text-orange-400/70 tracking-wider uppercase font-[family-name:var(--font-korto)]">
+                        {spec.label}
+                      </div>
+                      <div className="text-white text-sm font-semibold font-[family-name:var(--font-korto)] mt-0.5">
+                        {spec.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="group relative bg-stone-900/60 border border-white/10 rounded-3xl overflow-hidden hover:border-orange-500/40 transition-all duration-300"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src="/images/manufacturing/manufacturing-1/edm-die-machine.jpg"
+                  alt="EDM Machine - Spark Erosion"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(12,10,9,0.9) 100%)" }}
+                />
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-300 text-xs tracking-wider uppercase font-[family-name:var(--font-korto)]">
+                  EDM / Wire-Cut
+                </span>
+              </div>
+              <div className="p-7">
+                <h3 className="text-xl font-bold text-white mb-1 font-[family-name:var(--font-carbon)]">
+                  Electronica EDM × 3 Units
+                </h3>
+                <p className="text-gray-400 text-sm mb-5 font-[family-name:var(--font-korto)]">
+                  Spark erosion for complex profiles, deep ribs and fine surface textures.
+                  Wire-cut for parting-line details. Together they achieve the final ±2 µ specification.
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { label: "Accuracy", value: "±2 µ" },
+                    { label: "Max table", value: "1500 × 1000 × 600 mm" },
+                    { label: "Pulse generator", value: "Up to 95 A" },
+                    { label: "Wire-cut", value: "Electronica Sprintcut" },
+                  ].map((spec, si) => (
+                    <div key={si} className="bg-white/5 rounded-xl p-3">
+                      <div className="text-[10px] text-orange-400/70 tracking-wider uppercase font-[family-name:var(--font-korto)]">
+                        {spec.label}
+                      </div>
+                      <div className="text-white text-sm font-semibold font-[family-name:var(--font-korto)] mt-0.5">
+                        {spec.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Complete machine list */}
+          <motion.div
+            className="bg-stone-900/40 border border-white/10 rounded-2xl overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="px-6 py-4 border-b border-white/10">
+              <h4 className="text-white font-bold font-[family-name:var(--font-carbon)] tracking-wider">
+                COMPLETE TOOL ROOM EQUIPMENT LIST
+              </h4>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr
+                    style={{ background: "linear-gradient(90deg, rgba(251,191,36,0.08) 0%, rgba(220,38,38,0.08) 100%)" }}
+                  >
+                    {["Machine", "Make", "Model", "Travel / Spec"].map((h) => (
+                      <th
+                        key={h}
+                        className="px-5 py-3 text-left text-orange-400 font-semibold uppercase tracking-wider text-xs font-[family-name:var(--font-korto)]"
+                      >
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {toolRoomMachines.map((m, i) => (
+                    <tr key={i} className="hover:bg-white/5 transition-colors">
+                      <td className="px-5 py-3 text-gray-300 font-medium font-[family-name:var(--font-korto)]">{m.category}</td>
+                      <td className="px-5 py-3 text-gray-400 font-[family-name:var(--font-korto)]">{m.make}</td>
+                      <td className="px-5 py-3 text-gray-400 font-[family-name:var(--font-korto)]">{m.model}</td>
+                      <td className="px-5 py-3 text-gray-400 font-[family-name:var(--font-korto)]">{m.travel}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mid-page CTA #2 — Mould Repair */}
+      <section
+        className="py-14 px-6 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #292524 0%, #1c1917 100%)" }}
+      >
+        <div
+          className="absolute right-0 top-0 bottom-0 w-1/3 opacity-20"
+          style={{ background: "radial-gradient(ellipse at right, rgba(234,88,12,0.4) 0%, transparent 70%)" }}
+        />
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-carbon)] mb-2">
+                NEED A MOULD REPAIRED OR MODIFIED?
+              </h3>
+              <p className="text-gray-400 text-base font-[family-name:var(--font-korto)]">
+                We maintain an active bank of 50+ moulds and take on third-party mould repair,
+                modification and re-qualification work. Turnaround in 24–72 hours for urgent cases.
+              </p>
+            </div>
+            <Link href="/contact" className="flex-shrink-0">
+              <button className="border-2 border-orange-500/60 hover:bg-orange-500/10 text-orange-300 hover:text-orange-200 px-8 py-4 rounded-full font-medium text-base whitespace-nowrap transition-all font-[family-name:var(--font-korto)]">
+                Enquire About Mould Repair
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section — scroll-driven 6-step mould manufacturing */}
       <section
         ref={cycleRef}
         className="relative"
         style={{
           background: "linear-gradient(180deg, #0c0a09 0%, #1c1917 100%)",
-          // 1 viewport for entry/heading + 1 viewport per step
           height: `${100 + processSteps.length * 90}vh`,
         }}
       >
-        {/* Sticky inner viewport — stays pinned while user scrolls through the section */}
         <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
           <div className="max-w-8xl mx-auto px-6 w-full relative z-10">
-            {/* Heading */}
             <motion.div
-              className="text-center mb-10 md:mb-14"
+              className="text-center mb-8 md:mb-10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
               <span className="text-orange-400 text-xs md:text-sm tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
-                The Cycle · Scroll to advance
+                How We Build · Scroll to advance
               </span>
               <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mt-3 font-[family-name:var(--font-carbon)]">
-                FROM PELLET TO <span className="text-orange-500">PRECISION PART</span>
+                FROM DRAWING TO <span className="text-orange-500">FIRST SHOTS</span>
               </h2>
             </motion.div>
 
-            {/* Step Navigator — non-interactive, driven by scroll */}
-            <div className="relative mb-8 md:mb-12">
-              {/* Connecting flow line */}
+            {/* Step Navigator */}
+            <div className="relative mb-6 md:mb-8">
               <div
-                className="absolute top-10 md:top-12 left-[12%] right-[12%] h-[3px] rounded-full"
+                className="absolute top-8 md:top-10 left-[8%] right-[8%] h-[3px] rounded-full"
                 style={{
                   background:
                     "linear-gradient(90deg, rgba(251,191,36,0.4) 0%, rgba(249,115,22,0.4) 50%, rgba(220,38,38,0.4) 100%)",
                 }}
               />
-              {/* Active progress fill — driven by scrollYProgress */}
               <motion.div
-                className="absolute top-10 md:top-12 left-[12%] h-[3px] rounded-full origin-left"
+                className="absolute top-8 md:top-10 left-[8%] h-[3px] rounded-full origin-left"
                 style={{
-                  background:
-                    "linear-gradient(90deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)",
+                  background: "linear-gradient(90deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)",
                   boxShadow: "0 0 12px rgba(249,115,22,0.7)",
-                  width: "76%",
+                  width: "84%",
                   scaleX: cycleProgress,
                 }}
               />
 
-              <div className="grid grid-cols-4 gap-2 md:gap-6 relative z-10">
+              <div className="grid grid-cols-6 gap-1 md:gap-4 relative z-10">
                 {processSteps.map((step, index) => {
                   const isActive = activeStep === index;
                   const isPassed = index <= activeStep;
                   return (
-                    <div
-                      key={index}
-                      className="flex flex-col items-center select-none"
-                    >
-                      {/* Node */}
+                    <div key={index} className="flex flex-col items-center select-none">
                       <div className="relative">
                         <div
-                          className={`relative w-16 h-16 md:w-24 md:h-24 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                          className={`relative w-12 h-12 md:w-20 md:h-20 rounded-xl flex items-center justify-center transition-all duration-500 ${
                             isActive ? "scale-110" : ""
                           }`}
                           style={{
                             background: isPassed
                               ? "linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)"
                               : "rgba(255,255,255,0.04)",
-                            border: isPassed
-                              ? "none"
-                              : "1px solid rgba(255,255,255,0.15)",
-                            boxShadow: isActive
-                              ? "0 0 32px rgba(249,115,22,0.55)"
-                              : "none",
+                            border: isPassed ? "none" : "1px solid rgba(255,255,255,0.15)",
+                            boxShadow: isActive ? "0 0 32px rgba(249,115,22,0.55)" : "none",
                           }}
                         >
                           <step.icon
-                            className={`w-7 h-7 md:w-10 md:h-10 transition-colors duration-300 ${
+                            className={`w-5 h-5 md:w-8 md:h-8 transition-colors duration-300 ${
                               isPassed ? "text-white" : "text-white/50"
                             }`}
                           />
                           <span
-                            className={`absolute -top-2 -right-2 w-6 h-6 md:w-7 md:h-7 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center font-[family-name:var(--font-carbon)] transition-colors ${
+                            className={`absolute -top-2 -right-2 w-5 h-5 md:w-6 md:h-6 rounded-full text-[9px] md:text-[10px] font-bold flex items-center justify-center font-[family-name:var(--font-carbon)] transition-colors ${
                               isPassed
                                 ? "bg-stone-950 text-orange-300 border border-orange-500/60"
                                 : "bg-stone-900 text-white/60 border border-white/15"
@@ -450,22 +804,13 @@ export default function MouldingPage() {
                           </span>
                         </div>
                       </div>
-
-                      {/* Label */}
-                      <div className="mt-3 md:mt-4 text-center">
+                      <div className="mt-2 md:mt-3 text-center">
                         <div
-                          className={`text-xs md:text-lg font-bold uppercase font-[family-name:var(--font-carbon)] transition-colors ${
-                            isActive ? "text-white" : "text-white/50"
+                          className={`text-[9px] md:text-sm font-bold uppercase font-[family-name:var(--font-carbon)] transition-colors leading-tight ${
+                            isActive ? "text-white" : "text-white/40"
                           }`}
                         >
                           {step.title}
-                        </div>
-                        <div
-                          className={`hidden md:block text-[10px] md:text-xs mt-1 tracking-widest uppercase transition-colors font-[family-name:var(--font-korto)] ${
-                            isActive ? "text-orange-400" : "text-white/25"
-                          }`}
-                        >
-                          {step.tag}
                         </div>
                       </div>
                     </div>
@@ -474,15 +819,11 @@ export default function MouldingPage() {
               </div>
             </div>
 
-            {/* Detail Panel — animates as activeStep changes via scroll */}
-            <div className="relative bg-stone-900/50 border border-white/10 rounded-3xl p-5 md:p-10 overflow-hidden">
-              {/* Heat glow */}
+            {/* Detail Panel */}
+            <div className="relative bg-stone-900/50 border border-white/10 rounded-3xl p-5 md:p-8 overflow-hidden">
               <div
                 className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(circle, #ea580c 0%, #b91c1c 50%, transparent 80%)",
-                }}
+                style={{ background: "radial-gradient(circle, #ea580c 0%, #b91c1c 50%, transparent 80%)" }}
               />
 
               <AnimatePresence mode="wait">
@@ -492,9 +833,8 @@ export default function MouldingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4 }}
-                  className="relative z-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-center"
+                  className="relative z-10 grid lg:grid-cols-2 gap-6 lg:gap-10 items-center"
                 >
-                  {/* Image */}
                   <div className="relative aspect-[16/9] lg:aspect-[4/3] rounded-2xl overflow-hidden">
                     <Image
                       src={processSteps[activeStep].image}
@@ -523,18 +863,16 @@ export default function MouldingPage() {
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div>
                     <span className="inline-block px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-300 text-[10px] md:text-xs tracking-[0.2em] uppercase mb-3 md:mb-4 font-[family-name:var(--font-korto)]">
                       Step {processSteps[activeStep].no} · {processSteps[activeStep].tag}
                     </span>
-                    <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-5 font-[family-name:var(--font-carbon)] uppercase">
+                    <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 font-[family-name:var(--font-carbon)] uppercase">
                       {processSteps[activeStep].title}
                     </h3>
-                    <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed mb-5 md:mb-8 font-[family-name:var(--font-korto)]">
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-5 md:mb-6 font-[family-name:var(--font-korto)]">
                       {processSteps[activeStep].desc}
                     </p>
-
                     <ul className="space-y-2 md:space-y-3">
                       {processSteps[activeStep].highlights.map((h, hi) => (
                         <motion.li
@@ -547,8 +885,7 @@ export default function MouldingPage() {
                           <span
                             className="w-2 h-2 rounded-full flex-shrink-0"
                             style={{
-                              background:
-                                "linear-gradient(135deg, #fbbf24 0%, #dc2626 100%)",
+                              background: "linear-gradient(135deg, #fbbf24 0%, #dc2626 100%)",
                               boxShadow: "0 0 8px rgba(249,115,22,0.7)",
                             }}
                           />
@@ -564,94 +901,13 @@ export default function MouldingPage() {
         </div>
       </section>
 
-      {/* Materials Section — engineering polymers */}
-      <section className="py-24 px-6 relative" style={{
-        background: "linear-gradient(180deg, #1c1917 0%, #0c0a09 100%)",
-      }}>
-        {/* Subtle grid */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        <div className="max-w-8xl mx-auto relative z-10">
-          <motion.div
-            className="grid md:grid-cols-2 gap-10 items-end mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div>
-              <span className="text-orange-400 text-sm md:text-base tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
-                Engineering Polymers
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 font-[family-name:var(--font-carbon)]">
-                MATERIALS WE <span className="text-orange-500">MOULD</span>
-              </h2>
-            </div>
-            <p className="text-gray-400 text-base md:text-lg leading-relaxed font-[family-name:var(--font-korto)]">
-              From commodity plastics to high-performance engineering polymers — we run the
-              materials your application demands. Our process engineers tune temperature,
-              pressure and cooling for every resin we touch.
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {materials.map((m, i) => (
-              <motion.div
-                key={i}
-                className="group relative bg-stone-900/60 border border-white/10 rounded-2xl p-6 hover:border-orange-500/50 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-              >
-                {/* Hover heat glow */}
-                <div
-                  className="absolute -bottom-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500"
-                  style={{
-                    background:
-                      "radial-gradient(circle, rgba(249,115,22,0.6) 0%, transparent 70%)",
-                  }}
-                />
-                <div className="relative z-10">
-                  <div
-                    className="text-3xl font-bold mb-2 font-[family-name:var(--font-carbon)]"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #fbbf24 0%, #f97316 70%, #dc2626 100%)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                  >
-                    {m.code}
-                  </div>
-                  <h3 className="text-white font-semibold mb-3 font-[family-name:var(--font-korto)]">
-                    {m.name}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed font-[family-name:var(--font-korto)]">
-                    {m.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Us Section — split layout with image */}
-      <section className="py-24 px-6 relative overflow-hidden" style={{
-        background: "linear-gradient(135deg, #0c0a09 0%, #1c1917 50%, #292524 100%)",
-      }}>
+      {/* Why Us Section */}
+      <section
+        className="py-24 px-6 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #0c0a09 0%, #1c1917 50%, #292524 100%)" }}
+      >
         <div className="max-w-8xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Image side */}
             <motion.div
               className="relative order-2 lg:order-1"
               initial={{ opacity: 0, x: -40 }}
@@ -661,8 +917,8 @@ export default function MouldingPage() {
             >
               <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden">
                 <Image
-                  src="/images/moulding/moulding_2.jpg"
-                  alt="Vinayak Technoplast moulding floor"
+                  src="/images/manufacturing/manufacturing-1/VMC-HAAS-VF3.jpg"
+                  alt="Vinayak Technoplast in-house tool room"
                   fill
                   className="object-cover"
                 />
@@ -674,7 +930,6 @@ export default function MouldingPage() {
                   }}
                 />
               </div>
-              {/* Floating badge */}
               <div className="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 bg-stone-900 border border-orange-500/30 rounded-2xl p-5 md:p-6 max-w-[220px] shadow-2xl">
                 <div
                   className="text-3xl md:text-4xl font-bold mb-1 font-[family-name:var(--font-carbon)]"
@@ -689,12 +944,11 @@ export default function MouldingPage() {
                   200+
                 </div>
                 <p className="text-gray-300 text-xs md:text-sm font-[family-name:var(--font-korto)]">
-                  New moulds delivered every year, average lead time 4–6 weeks.
+                  Moulds delivered annually. Average lead time 4–6 weeks.
                 </p>
               </div>
             </motion.div>
 
-            {/* Content side */}
             <motion.div
               className="order-1 lg:order-2"
               initial={{ opacity: 0, x: 40 }}
@@ -706,14 +960,15 @@ export default function MouldingPage() {
                 Why Vinayak
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-6 font-[family-name:var(--font-carbon)]">
-                NOT THE CHEAPEST PRICE.<br />
-                <span className="text-orange-500">THE LOWEST FAILURE RATE.</span>
+                NOT JUST A MOULDER.<br />
+                <span className="text-orange-500">A MOULD MAKER.</span>
               </h2>
               <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-10 font-[family-name:var(--font-korto)]">
-                Led by CEO Sandeep Agarwal — 21+ years in precision injection moulding —
-                we engineer reliability into every tool and every part. We diagnose root
-                causes of warpage, flashing and part failure, then design moulds with proper
-                venting, optimised gating and advanced cooling.
+                Most injection moulding companies buy their tools from external toolmakers.
+                Vinayak designs and builds every mould in-house — giving us complete control
+                over lead time, accuracy and ongoing maintenance. Our CEO Sandeep Agarwal,
+                with 21+ years in precision moulding, personally oversees DFM analysis on
+                every project.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4">
@@ -742,9 +997,10 @@ export default function MouldingPage() {
       </section>
 
       {/* Industries Section */}
-      <section className="py-24 px-6" style={{
-        background: "linear-gradient(180deg, #1c1917 0%, #0c0a09 100%)",
-      }}>
+      <section
+        className="py-24 px-6"
+        style={{ background: "linear-gradient(180deg, #1c1917 0%, #0c0a09 100%)" }}
+      >
         <div className="max-w-8xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -754,11 +1010,15 @@ export default function MouldingPage() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-orange-400 text-sm md:text-base tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
-              Industries Served
+              Sectors We Serve
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-4 font-[family-name:var(--font-carbon)]">
-              TRUSTED ACROSS <span className="text-orange-500">SECTORS</span>
+              MOULDS BUILT FOR <span className="text-orange-500">EVERY SECTOR</span>
             </h2>
+            <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-[family-name:var(--font-korto)]">
+              From automotive to medical — we manufacture moulds for any industry where
+              precision, repeatability and long tool life matter.
+            </p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -774,8 +1034,7 @@ export default function MouldingPage() {
                 <div
                   className="absolute top-0 left-0 w-full h-1 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                   style={{
-                    background:
-                      "linear-gradient(90deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)",
+                    background: "linear-gradient(90deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)",
                   }}
                 />
                 <ind.icon className="w-12 h-12 text-orange-400 mb-5" />
@@ -791,10 +1050,11 @@ export default function MouldingPage() {
         </div>
       </section>
 
-      {/* Gallery — moulding floor images */}
-      <section className="py-24 px-6" style={{
-        background: "linear-gradient(180deg, #0c0a09 0%, #1c1917 100%)",
-      }}>
+      {/* Gallery */}
+      <section
+        className="py-24 px-6"
+        style={{ background: "linear-gradient(180deg, #0c0a09 0%, #1c1917 100%)" }}
+      >
         <div className="max-w-8xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -804,61 +1064,63 @@ export default function MouldingPage() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-orange-400 text-sm md:text-base tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
-              On The Floor
+              Inside Our Facility
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-4 font-[family-name:var(--font-carbon)]">
-              INSIDE OUR <span className="text-orange-500">MOULDING SHOP</span>
+              THE TOOL ROOM <span className="text-orange-500">IN ACTION</span>
             </h2>
             <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto font-[family-name:var(--font-korto)]">
-              30+ machines, ranging from 75 T to 850 T tonnage, running shift-after-shift in
-              our 35,000 sq.ft. plant.
+              VMC machining centres, EDM spark eroders, wire-cut machines and a full moulding
+              press fleet — all under one roof in our 35,000 sq.ft. plant.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              "/images/moulding/moulding_1.jpg",
-              "/images/moulding/moulding_2.jpg",
-              "/images/moulding/moulding_3.jpg",
-              "/images/moulding/moudling_4.jpg",
-            ].map((src, i) => (
+              { src: "/images/manufacturing/manufacturing-1/VMC-HAAS-VF3.jpg", label: "VMC HAAS VF-3" },
+              { src: "/images/manufacturing/manufacturing-1/edm-die-machine.jpg", label: "EDM Die Machine" },
+              { src: "/images/moulding/moulding_1.jpg", label: "Injection Moulding Press" },
+              { src: "/images/moulding/moulding_2.jpg", label: "Production Floor" },
+              { src: "/images/moulding/moulding_3.jpg", label: "Moulding Operations" },
+              { src: "/images/moulding/moudling_4.jpg", label: "Finished Components" },
+            ].map((item, i) => (
               <motion.div
                 key={i}
-                className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-900 group"
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-900 group"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
               >
                 <Image
-                  src={src}
-                  alt={`Vinayak Technoplast moulding shop ${i + 1}`}
+                  src={item.src}
+                  alt={item.label}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500" />
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
-                    background:
-                      "linear-gradient(135deg, transparent 60%, rgba(249,115,22,0.25) 100%)",
+                    background: "linear-gradient(135deg, transparent 60%, rgba(249,115,22,0.25) 100%)",
                   }}
                 />
+                <div className="absolute bottom-3 left-4 text-white text-xs font-semibold font-[family-name:var(--font-korto)] opacity-80 group-hover:opacity-100 transition-opacity">
+                  {item.label}
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section — molten gradient */}
+      {/* Final CTA Section */}
       <section
         className="py-20 px-6 relative overflow-hidden"
         style={{
-          background:
-            "linear-gradient(135deg, #f59e0b 0%, #ea580c 45%, #b91c1c 100%)",
+          background: "linear-gradient(135deg, #f59e0b 0%, #ea580c 45%, #b91c1c 100%)",
         }}
       >
-        {/* Decorative heat rings */}
         <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full opacity-20 border-2 border-white" />
         <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full opacity-10 border-2 border-white" />
         <div className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full opacity-20 border-2 border-white" />
@@ -871,17 +1133,16 @@ export default function MouldingPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-[family-name:var(--font-carbon)]">
-              Have a part that needs to be moulded right?
+              Ready to commission your next mould?
             </h2>
             <p className="text-lg md:text-xl text-orange-50 mb-10 max-w-2xl mx-auto font-[family-name:var(--font-korto)]">
-              Share your drawing or 3D model. Our engineers will come back with a tooling
-              proposal, the right resin recommendation, and a realistic cycle time — usually
-              within 48 hours.
+              Share your 3D model or drawing. Our engineers will return a tooling proposal,
+              mould type recommendation and lead time estimate — usually within 48 hours.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/contact">
                 <button className="bg-white text-red-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-stone-100 transition-all hover:shadow-xl font-[family-name:var(--font-korto)]">
-                  Request a Quote
+                  Request a Tooling Quote
                 </button>
               </Link>
               <Link href="/capabilities">
