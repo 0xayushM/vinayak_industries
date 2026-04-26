@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import {
   HiOutlineFire,
@@ -253,6 +253,42 @@ export default function MouldingPage() {
       desc: "From signed drawing to first shots — averaged across 200+ moulds delivered per year. We quote lead times we actually hit.",
     },
   ];
+
+  // Portfolio images slider
+  const portfolioImages = [
+    "/images/moulds/img1.jpeg",
+    "/images/moulds/img2.jpeg",
+    "/images/moulds/img3.jpeg",
+    "/images/moulds/img4.jpeg",
+    "/images/moulds/img5.jpeg",
+    "/images/moulds/img6.jpeg",
+    "/images/moulds/img7.jpeg",
+    "/images/moulds/img8.jpeg",
+    "/images/moulds/img9.png",
+    "/images/moulds/img10.png",
+    "/images/moulds/img11.png",
+    "/images/moulds/img12.png",
+    "/images/moulds/img13.png",
+    "/images/moulds/img14.png",
+    "/images/moulds/img15.png",
+    "/images/moulds/img16.png",
+    "/images/moulds/img17.png",
+    "/images/moulds/img18.png",
+  ];
+  const [sliderIndex, setSliderIndex] = useState(0);
+
+  const prevSlide = useCallback(() => {
+    setSliderIndex((i) => (i - 1 + portfolioImages.length) % portfolioImages.length);
+  }, [portfolioImages.length]);
+
+  const nextSlide = useCallback(() => {
+    setSliderIndex((i) => (i + 1) % portfolioImages.length);
+  }, [portfolioImages.length]);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 3000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
 
   return (
     <div className="min-h-screen bg-stone-950">
@@ -1045,6 +1081,112 @@ export default function MouldingPage() {
                   {ind.desc}
                 </p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Slider */}
+      <section
+        className="py-24 px-6 relative overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #1c1917 0%, #0c0a09 100%)" }}
+      >
+        <div className="max-w-8xl mx-auto">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-orange-400 text-sm md:text-base tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
+              What We Make
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 font-[family-name:var(--font-carbon)]">
+              OUR INJECTION MOULDING <span className="text-orange-500">PORTFOLIO</span>
+            </h2>
+          </motion.div>
+
+          <div className="relative flex items-center">
+            {/* Prev Button */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-stone-900/80 border border-white/10 hover:border-orange-500/60 hover:bg-orange-500/10 flex items-center justify-center transition-all text-white hover:text-orange-400 flex-shrink-0"
+              aria-label="Previous"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Slider Track */}
+            <div className="overflow-hidden w-full px-14">
+              <div
+                className="flex items-center gap-3 md:gap-4 transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(calc(-${sliderIndex} * (100% / 5)))` }}
+              >
+                {[...portfolioImages, ...portfolioImages, ...portfolioImages].map((src, i) => {
+                  const normalised = i % portfolioImages.length;
+                  const isCenter = normalised === sliderIndex;
+                  return (
+                    <div
+                      key={i}
+                      onClick={() => setSliderIndex(normalised)}
+                      className="flex-shrink-0 cursor-pointer transition-all duration-500 rounded-2xl overflow-hidden"
+                      style={{
+                        width: "calc(100% / 5 - 12px)",
+                        background: isCenter
+                          ? "linear-gradient(135deg, rgba(251,191,36,0.12) 0%, rgba(220,38,38,0.12) 100%)"
+                          : "rgba(255,255,255,0.04)",
+                        border: isCenter
+                          ? "1px solid rgba(249,115,22,0.5)"
+                          : "1px solid rgba(255,255,255,0.08)",
+                        transform: isCenter ? "scale(1.06)" : "scale(1)",
+                        boxShadow: isCenter ? "0 0 32px rgba(249,115,22,0.25)" : "none",
+                      }}
+                    >
+                      <div className="relative aspect-square">
+                        <Image
+                          src={src}
+                          alt={`Moulded component ${normalised + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Next Button */}
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-stone-900/80 border border-white/10 hover:border-orange-500/60 hover:bg-orange-500/10 flex items-center justify-center transition-all text-white hover:text-orange-400 flex-shrink-0"
+              aria-label="Next"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-8">
+            {portfolioImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setSliderIndex(i)}
+                className="transition-all duration-300 rounded-full"
+                style={{
+                  width: sliderIndex === i ? "24px" : "8px",
+                  height: "8px",
+                  background: sliderIndex === i
+                    ? "linear-gradient(90deg, #fbbf24, #dc2626)"
+                    : "rgba(255,255,255,0.2)",
+                }}
+                aria-label={`Go to slide ${i + 1}`}
+              />
             ))}
           </div>
         </div>
