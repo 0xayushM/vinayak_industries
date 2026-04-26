@@ -276,6 +276,21 @@ export default function MouldingPage() {
     "/images/moulds/img18.png",
   ];
   const [sliderIndex, setSliderIndex] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(5);
+
+  // Responsive slides-per-view
+  useEffect(() => {
+    const update = () => {
+      if (typeof window === "undefined") return;
+      const w = window.innerWidth;
+      if (w < 640) setSlidesPerView(1.4);
+      else if (w < 1024) setSlidesPerView(3);
+      else setSlidesPerView(5);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   const prevSlide = useCallback(() => {
     setSliderIndex((i) => (i - 1 + portfolioImages.length) % portfolioImages.length);
@@ -760,10 +775,127 @@ export default function MouldingPage() {
         </div>
       </section>
 
-      {/* Process Section — scroll-driven 6-step mould manufacturing */}
+      {/* Process Section — MOBILE: stacked list of all steps (no scroll-jacking) */}
+      <section
+        className="md:hidden py-16 px-5 relative"
+        style={{ background: "linear-gradient(180deg, #0c0a09 0%, #1c1917 100%)" }}
+      >
+        <div className="max-w-8xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-orange-400 text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
+              How We Build
+            </span>
+            <h2 className="text-3xl font-bold text-white mt-3 font-[family-name:var(--font-carbon)]">
+              FROM DRAWING TO <span className="text-orange-500">FIRST SHOTS</span>
+            </h2>
+          </div>
+
+          <div className="space-y-5">
+            {processSteps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={index}
+                  className="relative bg-stone-900/60 border border-white/10 rounded-2xl overflow-hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {/* Step image */}
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(12,10,9,0.4) 0%, transparent 50%, rgba(220,38,38,0.3) 100%)",
+                      }}
+                    />
+                    <div
+                      className="absolute bottom-2 right-4 text-6xl font-bold opacity-90 font-[family-name:var(--font-carbon)] leading-none"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #fbbf24 0%, #f97316 60%, #dc2626 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                      }}
+                    >
+                      {step.no}
+                    </div>
+                  </div>
+
+                  {/* Step content */}
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div
+                        className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)",
+                          boxShadow: "0 0 16px rgba(249,115,22,0.4)",
+                        }}
+                      >
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-300 text-[10px] tracking-[0.2em] uppercase font-[family-name:var(--font-korto)]">
+                        Step {step.no} · {step.tag}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-white mb-3 font-[family-name:var(--font-carbon)] uppercase">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4 font-[family-name:var(--font-korto)]">
+                      {step.desc}
+                    </p>
+                    <ul className="space-y-2">
+                      {step.highlights.map((h, hi) => (
+                        <li
+                          key={hi}
+                          className="flex items-center gap-3 text-gray-300 text-sm font-[family-name:var(--font-korto)]"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #fbbf24 0%, #dc2626 100%)",
+                              boxShadow: "0 0 8px rgba(249,115,22,0.7)",
+                            }}
+                          />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Connector to next card */}
+                  {index < processSteps.length - 1 && (
+                    <div
+                      className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[2px] h-3"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(249,115,22,0.7) 0%, transparent 100%)",
+                      }}
+                    />
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section — DESKTOP / TABLET: scroll-driven sticky 6-step mould manufacturing */}
       <section
         ref={cycleRef}
-        className="relative"
+        className="hidden md:block relative"
         style={{
           background: "linear-gradient(180deg, #0c0a09 0%, #1c1917 100%)",
           height: `${100 + processSteps.length * 90}vh`,
@@ -786,17 +918,17 @@ export default function MouldingPage() {
               </h2>
             </motion.div>
 
-            {/* Step Navigator */}
+            {/* Step navigator */}
             <div className="relative mb-6 md:mb-8">
               <div
-                className="absolute top-8 md:top-10 left-[8%] right-[8%] h-[3px] rounded-full"
+                className="absolute top-10 left-[8%] right-[8%] h-[3px] rounded-full"
                 style={{
                   background:
                     "linear-gradient(90deg, rgba(251,191,36,0.4) 0%, rgba(249,115,22,0.4) 50%, rgba(220,38,38,0.4) 100%)",
                 }}
               />
               <motion.div
-                className="absolute top-8 md:top-10 left-[8%] h-[3px] rounded-full origin-left"
+                className="absolute top-10 left-[8%] h-[3px] rounded-full origin-left"
                 style={{
                   background: "linear-gradient(90deg, #fbbf24 0%, #f97316 50%, #dc2626 100%)",
                   boxShadow: "0 0 12px rgba(249,115,22,0.7)",
@@ -805,7 +937,7 @@ export default function MouldingPage() {
                 }}
               />
 
-              <div className="grid grid-cols-6 gap-1 md:gap-4 relative z-10">
+              <div className="grid grid-cols-6 gap-2 md:gap-4 relative z-10">
                 {processSteps.map((step, index) => {
                   const isActive = activeStep === index;
                   const isPassed = index <= activeStep;
@@ -813,7 +945,7 @@ export default function MouldingPage() {
                     <div key={index} className="flex flex-col items-center select-none">
                       <div className="relative">
                         <div
-                          className={`relative w-12 h-12 md:w-20 md:h-20 rounded-xl flex items-center justify-center transition-all duration-500 ${
+                          className={`relative w-16 h-16 lg:w-20 lg:h-20 rounded-xl flex items-center justify-center transition-all duration-500 ${
                             isActive ? "scale-110" : ""
                           }`}
                           style={{
@@ -825,12 +957,12 @@ export default function MouldingPage() {
                           }}
                         >
                           <step.icon
-                            className={`w-5 h-5 md:w-8 md:h-8 transition-colors duration-300 ${
+                            className={`w-7 h-7 lg:w-8 lg:h-8 transition-colors duration-300 ${
                               isPassed ? "text-white" : "text-white/50"
                             }`}
                           />
                           <span
-                            className={`absolute -top-2 -right-2 w-5 h-5 md:w-6 md:h-6 rounded-full text-[9px] md:text-[10px] font-bold flex items-center justify-center font-[family-name:var(--font-carbon)] transition-colors ${
+                            className={`absolute -top-2 -right-2 w-6 h-6 rounded-full text-[10px] font-bold flex items-center justify-center font-[family-name:var(--font-carbon)] transition-colors ${
                               isPassed
                                 ? "bg-stone-950 text-orange-300 border border-orange-500/60"
                                 : "bg-stone-900 text-white/60 border border-white/15"
@@ -840,9 +972,9 @@ export default function MouldingPage() {
                           </span>
                         </div>
                       </div>
-                      <div className="mt-2 md:mt-3 text-center">
+                      <div className="mt-3 text-center">
                         <div
-                          className={`text-[9px] md:text-sm font-bold uppercase font-[family-name:var(--font-carbon)] transition-colors leading-tight ${
+                          className={`text-xs lg:text-sm font-bold uppercase font-[family-name:var(--font-carbon)] transition-colors leading-tight ${
                             isActive ? "text-white" : "text-white/40"
                           }`}
                         >
@@ -1120,21 +1252,24 @@ export default function MouldingPage() {
             </button>
 
             {/* Slider Track */}
-            <div className="overflow-hidden w-full px-14">
+            <div className="overflow-hidden w-full px-12 sm:px-14">
               <div
-                className="flex items-center gap-3 md:gap-4 transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(calc(-${sliderIndex} * (100% / 5)))` }}
+                className="flex items-center gap-2 sm:gap-3 md:gap-4 transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(calc(-${sliderIndex} * (100% / ${slidesPerView})))` }}
               >
                 {[...portfolioImages, ...portfolioImages, ...portfolioImages].map((src, i) => {
                   const normalised = i % portfolioImages.length;
-                  const isCenter = normalised === sliderIndex;
+                  // Highlight slot — on mobile the leftmost visible card is the active one;
+                  // on tablet/desktop the centre card is active.
+                  const offset = slidesPerView <= 2 ? 0 : Math.floor(slidesPerView / 2);
+                  const isCenter = normalised === (sliderIndex + offset) % portfolioImages.length;
                   return (
                     <div
                       key={i}
                       onClick={() => setSliderIndex(normalised)}
                       className="flex-shrink-0 cursor-pointer transition-all duration-500 rounded-2xl overflow-hidden"
                       style={{
-                        width: "calc(100% / 5 - 12px)",
+                        width: `calc(100% / ${slidesPerView} - ${slidesPerView <= 2 ? 8 : 12}px)`,
                         background: isCenter
                           ? "linear-gradient(135deg, rgba(251,191,36,0.12) 0%, rgba(220,38,38,0.12) 100%)"
                           : "rgba(255,255,255,0.04)",
@@ -1172,15 +1307,15 @@ export default function MouldingPage() {
           </div>
 
           {/* Dot indicators */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center flex-wrap gap-1.5 sm:gap-2 mt-6 sm:mt-8 px-4">
             {portfolioImages.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setSliderIndex(i)}
-                className="transition-all duration-300 rounded-full"
+                className={`transition-all duration-300 rounded-full h-1.5 sm:h-2 ${
+                  sliderIndex === i ? "w-5 sm:w-6" : "w-1.5 sm:w-2"
+                }`}
                 style={{
-                  width: sliderIndex === i ? "24px" : "8px",
-                  height: "8px",
                   background: sliderIndex === i
                     ? "linear-gradient(90deg, #fbbf24, #dc2626)"
                     : "rgba(255,255,255,0.2)",
