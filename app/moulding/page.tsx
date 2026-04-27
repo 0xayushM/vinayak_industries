@@ -67,7 +67,7 @@ export default function MouldingPage() {
         "Draft angle & undercut analysis",
         "Mould-flow simulation review",
       ],
-      image: "/images/moulding/moulding_1.jpg",
+      image: "/images/moulding/DAM_Mould.png",
     },
     {
       no: "02",
@@ -80,7 +80,7 @@ export default function MouldingPage() {
         "Balanced runner & cooling systems",
         "Full CAM tool-path generation",
       ],
-      image: "/images/moulding/moulding_2.jpg",
+      image: "/images/moulding/3D_Mould.png",
     },
     {
       no: "03",
@@ -106,7 +106,7 @@ export default function MouldingPage() {
         "±2 µ spark-erosion accuracy",
         "Wire-cut for parting lines",
       ],
-      image: "/images/manufacturing/manufacturing-1/edm-die-machine.jpg",
+      image: "/images/moulding/Joemars_Mould.png",
     },
     {
       no: "05",
@@ -119,7 +119,7 @@ export default function MouldingPage() {
         "Slide & lifter mechanisms",
         "Surface finish to Ra 0.8 µ",
       ],
-      image: "/images/moulding/moulding_3.jpg",
+      image: "/images/moulding/Assembly_Mould.png",
     },
     {
       no: "06",
@@ -132,7 +132,7 @@ export default function MouldingPage() {
         "CMM dimensional inspection",
         "Corrections within 24–48 hours",
       ],
-      image: "/images/moulding/moudling_4.jpg",
+      image: "/images/moulding/T1_Mould.png",
     },
   ];
 
@@ -519,9 +519,9 @@ export default function MouldingPage() {
                 Beyond Moulding
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mt-3 mb-6 leading-tight">
-                We don&apos;t just mould.<br />
+                Unmatched Precision  <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">
-                  We build moulds.
+                  Through Full In-House Tooling.
                 </span>
               </h2>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
@@ -567,7 +567,7 @@ export default function MouldingPage() {
             >
               <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl shadow-gray-900/20">
                 <Image
-                  src="/images/manufacturing/manufacturing-1/VMC-HAAS-VF3.jpg"
+                  src="/images/moulding/Infra_mould.png"
                   alt="Vinayak Technoplast in-house tool room"
                   fill
                   className="object-cover"
@@ -1038,7 +1038,7 @@ export default function MouldingPage() {
             >
               <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-gray-900/20">
                 <Image
-                  src="/images/manufacturing/manufacturing-1/edm-die-machine.jpg"
+                  src="/images/moulding/Joemars_Mould.png"
                   alt="Vinayak Technoplast EDM"
                   fill
                   className="object-cover"
