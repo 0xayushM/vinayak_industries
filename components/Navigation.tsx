@@ -18,7 +18,7 @@ export default function Navigation() {
     { href: "/offerings", label: "Offerings" },
     { href: "/capabilities", label: "Capabilities" },
     { href: "/product-line", label: "Products" },
-    // { href: "/moulding", label: "Moulding" },
+    { href: "/moulding", label: "Tooling" },
     { href: "/ev", label: "EV" },
     { href: "/contact", label: "Contact" },
   ];
