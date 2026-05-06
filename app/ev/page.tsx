@@ -6,13 +6,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { HiOutlineCog6Tooth, HiOutlineBolt, HiOutlineShieldCheck, HiOutlineCpuChip } from "react-icons/hi2";
+import { Download } from "lucide-react";
 import { useState } from "react";
 import evData from '@/data/ev.json';
 
 export default function EVPage() {
   const [showAllImages, setShowAllImages] = useState(false);
-  
+
   const evImages = evData.images;
+
+  const handleDownloadBrochure = () => {
+    const link = document.createElement('a');
+    link.href = '/Vinayak Ev Catalog.pdf';
+    link.download = 'Vinayak Ev Catalog.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const features = [
     {
@@ -112,12 +122,19 @@ export default function EVPage() {
                 Precision-engineered plastic components for the next generation of electric vehicles. 
                 From body panels to interior trims, we deliver excellence.
               </motion.p>
-              <motion.div variants={fadeInUp}>
+              <motion.div className="flex flex-col sm:flex-row gap-4" variants={fadeInUp}>
                 <Link href="/contact">
-                  <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-indigo-500/30">
+                  <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-indigo-500/30 w-full sm:w-auto">
                     Get Started
                   </button>
                 </Link>
+                <button
+                  onClick={handleDownloadBrochure}
+                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-8 py-4 rounded-full font-medium text-lg transition-all inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  <Download className="w-5 h-5" />
+                  Download Brochure
+                </button>
               </motion.div>
             </motion.div>
 

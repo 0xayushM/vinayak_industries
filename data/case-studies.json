@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Hilux Case Study",
+      "client": "Hilux",
+      "image": "",
+      "excerpt": "",
+      "content": "",
+      "tags": [],
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_hilux-case-study-activity-7432765590345351168-91Uc",
+      "embedUrl": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7432765589133225984?compact=1"
+    },
+    {
+      "id": 2,
+      "title": "OmegaStrap Case Study",
+      "client": "OmegaStrap",
+      "image": "",
+      "excerpt": "",
+      "content": "",
+      "tags": [],
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_omegastrap-case-study-activity-7418934899908321281-kSYh",
+      "embedUrl": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7418934898687782912?compact=1"
+    },
+    {
+      "id": 3,
+      "title": "A Vinayak Technoplast Choice",
+      "client": "Vinayak Technoplast",
+      "image": "",
+      "excerpt": "",
+      "content": "",
+      "tags": [],
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_a-vinayak-technoplast-choice-case-study-activity-7408857473287172096-oK31",
+      "embedUrl": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7408857471848464384?compact=1"
+    },
+    {
+      "id": 4,
+      "title": "Partnership for Global Export Excellence",
+      "client": "Global Export Partner",
+      "image": "",
+      "excerpt": "",
+      "content": "",
+      "tags": [],
+      "link": "https://www.linkedin.com/posts/vinayaktechnoplast_partnership-for-global-export-excellence-activity-7402678864956821504-oLSz",
+      "embedUrl": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7402678861756567552?compact=1"
+    }
+  ]
+}

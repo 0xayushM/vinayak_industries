@@ -2,6 +2,7 @@
 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import DownloadDialog from "@/components/DownloadDialog";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
@@ -34,6 +35,7 @@ import {
 
 export default function MouldingPage() {
   const [activeStep, setActiveStep] = useState(0);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const cycleRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: cycleProgress } = useScroll({
     target: cycleRef,
@@ -374,16 +376,15 @@ export default function MouldingPage() {
             </motion.p>
 
             <motion.div className="flex flex-col sm:flex-row gap-4" variants={fadeInUp}>
-              <Link href="/contact">
-                <motion.button
-                  className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 font-[family-name:var(--font-korto)] group inline-flex items-center justify-center gap-2 w-full sm:w-auto"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Request a Tooling Quote
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </Link>
+              <motion.button
+                onClick={() => setIsDialogOpen(true)}
+                className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 font-[family-name:var(--font-korto)] group inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Request a Tooling Quote
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
               <a href="#tool-room">
                 <motion.button
                   className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all font-[family-name:var(--font-korto)] w-full sm:w-auto inline-flex items-center justify-center gap-2"
@@ -550,12 +551,13 @@ export default function MouldingPage() {
                 ))}
               </div>
 
-              <Link href="/contact">
-                <button className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-medium text-sm md:text-lg transition-colors inline-flex items-center gap-2 group">
-                  Discuss Your Mould Project
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-medium text-sm md:text-lg transition-colors inline-flex items-center gap-2 group"
+              >
+                Discuss Your Mould Project
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
 
             <motion.div
@@ -663,12 +665,13 @@ export default function MouldingPage() {
                   recommendation within 48 hours, free of charge.
                 </p>
               </div>
-              <Link href="/contact" className="flex-shrink-0">
-                <button className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-8 py-4 rounded-full font-bold text-base whitespace-nowrap transition-all shadow-lg shadow-amber-500/30 inline-flex items-center gap-2 group">
-                  Get Free DFM Review
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="flex-shrink-0 bg-amber-500 hover:bg-amber-600 text-gray-900 px-8 py-4 rounded-full font-bold text-base whitespace-nowrap transition-all shadow-lg shadow-amber-500/30 inline-flex items-center gap-2 group"
+              >
+                Get Free DFM Review
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </motion.div>
         </div>
@@ -1014,12 +1017,13 @@ export default function MouldingPage() {
                   </p>
                 </div>
               </div>
-              <Link href="/contact" className="flex-shrink-0">
-                <button className="border-2 border-amber-500 hover:bg-amber-500 text-amber-600 hover:text-white px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all inline-flex items-center gap-2 group">
-                  Enquire About Repair
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="flex-shrink-0 border-2 border-amber-500 hover:bg-amber-500 text-amber-600 hover:text-white px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all inline-flex items-center gap-2 group"
+              >
+                Enquire About Repair
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </div>
         </div>
@@ -1178,24 +1182,28 @@ export default function MouldingPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <Link href="/contact">
-                <button className="w-full bg-white text-amber-600 px-8 py-4 rounded-full font-bold text-base hover:bg-gray-100 transition-all shadow-xl inline-flex items-center justify-center gap-2 group">
-                  Request a Tooling Quote
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
-              <Link href="/contact">
-                <button className="w-full bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 rounded-full font-bold text-base transition-colors border-2 border-white inline-flex items-center justify-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  Talk to an Engineer
-                </button>
-              </Link>
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="w-full bg-white text-amber-600 px-8 py-4 rounded-full font-bold text-base hover:bg-gray-100 transition-all shadow-xl inline-flex items-center justify-center gap-2 group"
+              >
+                Request a Tooling Quote
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="w-full bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 rounded-full font-bold text-base transition-colors border-2 border-white inline-flex items-center justify-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Talk to an Engineer
+              </button>
             </motion.div>
           </div>
         </div>
       </section>
 
       <Footer />
+
+      <DownloadDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
     </div>
   );
 }

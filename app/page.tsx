@@ -40,7 +40,7 @@ export default function Home() {
       <StatsSection />
       <OfferingsSection />
       <ProductLineSection />
-      <BlogSection />
+      {/* <BlogSection /> */}
       <CTASection />
       <Footer />
       
