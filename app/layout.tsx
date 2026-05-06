@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import VisitorTracker from "@/components/VisitorTracker";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Script from "next/script";
 
 const korto = localFont({
@@ -74,6 +75,7 @@ export default function RootLayout({
         </Script>
         <VisitorTracker />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

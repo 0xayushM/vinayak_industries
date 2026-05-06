@@ -2,7 +2,7 @@
 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import DownloadDialog from "@/components/DownloadDialog";
+import MouldingInquiryDialog from "@/components/MouldingInquiryDialog";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
@@ -1203,7 +1203,7 @@ export default function MouldingPage() {
 
       <Footer />
 
-      <DownloadDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
+      <MouldingInquiryDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
     </div>
   );
 }
