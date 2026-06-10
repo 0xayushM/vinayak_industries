@@ -92,8 +92,8 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Vinayak Technoplast PPT.pdf';
-    link.download = 'Vinayak_Technoplast_Company_Presentation.pdf';
+    link.href = '/Vinayak_Profile.pdf';
+    link.download = 'Vinayak_Technoplast_Company_Profile.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
