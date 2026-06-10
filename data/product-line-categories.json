@@ -51,7 +51,7 @@
     },
     {
       "id": 2,
-      "name": "Home Appliances",
+      "name": "Household Utilities",
       "description": "Consumer household and appliance components",
       "slug": "home-appliances",
       "images": [
@@ -87,13 +87,7 @@
         "/images/product-line/industrial/part-5.png",
         "/images/product-line/industrial/part-6.png",
         "/images/product-line/industrial/Hinge Base.png",
-        "/images/product-line/industrial/Lever.png",
-        "/images/product-line/industrial/Steel Dustbin Base.png",
-        "/images/product-line/industrial/Steel Dustbin Bucket.png",
-        "/images/product-line/industrial/Steel Dustbin Hinge Top + Lock-1.png",
-        "/images/product-line/industrial/Steel Dustbin Hinge Top + Lock.png",
-        "/images/product-line/industrial/Steel Dustbin Pedal.png",
-        "/images/product-line/industrial/Steel Dustbin Top Ring.png"
+        "/images/product-line/industrial/Lever.png"
       ]
     },
     {
@@ -129,10 +123,7 @@
         "/images/product-line/electrical/Capative Washer M4.png",
         "/images/product-line/electrical/Gland Nut.png",
         "/images/product-line/electrical/Horn Big.png",
-        "/images/product-line/electrical/Innovative Universal Clamp.png",
-        "/images/product-line/electrical/NSV  Clamp.png",
-        "/images/product-line/electrical/Universal Bottom Cover ODC.png",
-        "/images/product-line/electrical/fiber clamp(3 mold similar.png"
+        "/images/product-line/electrical/Universal Bottom Cover ODC.png"
       ]
     },
     {
@@ -175,13 +166,13 @@
     },
     {
       "id": 7,
-      "name": "Fabrications",
-      "description": "Custom fabricated plastic parts and assemblies",
-      "slug": "fabrications",
+      "name": "Telecom",
+      "description": "Telecom clamps and connectivity components",
+      "slug": "telecom",
       "images": [
-        "/images/product-line/fabrications/Cable Tie (Rectangle).png",
-        "/images/product-line/fabrications/Cable Tie (Ribbon)-2.png",
-        "/images/product-line/fabrications/Cable Tie (Triangular).png"
+        "/images/product-line/electrical/NSV  Clamp.png",
+        "/images/product-line/electrical/fiber clamp(3 mold similar.png",
+        "/images/product-line/electrical/Innovative Universal Clamp.png"
       ]
     }
   ]
