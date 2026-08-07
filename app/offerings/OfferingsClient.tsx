@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function OfferingsPage() {
+export default function OfferingsClient() {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -30,7 +30,7 @@ export default function OfferingsPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/bg-image.png"
-            alt="Manufacturing Facility"
+            alt="Vinayak Technoplast injection moulding shop floor in New Delhi"
             fill
             className="object-cover"
             priority

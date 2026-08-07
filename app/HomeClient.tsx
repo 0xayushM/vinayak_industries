@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 import DownloadDialog from "@/components/DownloadDialog";
 import { useState, useEffect } from "react";
 
-export default function Home() {
+export default function HomeClient() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [hasShownPopup, setHasShownPopup] = useState(false);
 

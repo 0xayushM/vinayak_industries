@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function ContactPage() {
+export default function ContactClient() {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -121,7 +121,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/bg-image.png"
-            alt="Manufacturing Facility"
+            alt="Vinayak Technoplast manufacturing plant at Nangloi, New Delhi"
             fill
             className="object-cover"
             priority
@@ -166,7 +166,7 @@ export default function ContactPage() {
             {/* Contact Information Card */}
             <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900">
               <div className="absolute bottom-0 right-0 w-full h-[60%] z-0">
-                <Image src="/images/bg-image.png" alt="Manufacturing Facility" fill className="object-cover" />
+                <Image src="/images/bg-image.png" alt="Vinayak Technoplast manufacturing plant at Nangloi, New Delhi" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-gray-900" />
               </div>
               <div className="relative z-10 p-6 h-full flex flex-col">

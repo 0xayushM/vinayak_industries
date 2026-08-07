@@ -25,7 +25,7 @@ export default function OfferingsSection() {
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/bg-image.png"
-              alt="Manufacturing Facility"
+              alt="Design, tooling and moulding services at Vinayak Technoplast"
               fill
               className="object-cover"
             />

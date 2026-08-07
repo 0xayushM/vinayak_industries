@@ -16,7 +16,7 @@ function getProductName(imagePath: string) {
   return filename.replace(/\.(png|jpe?g|webp)$/i, '').replace(/[-_]/g, ' ');
 }
 
-export default function ProductLinePage() {
+export default function ProductLineClient() {
   const categories = productLineData.categories;
   const ALL_IMAGES = categories.flatMap((c) => c.images.map((img) => ({ img, category: c.name })));
 
@@ -65,7 +65,7 @@ export default function ProductLinePage() {
       {/* Hero */}
       <section className="h-[50vh] min-h-[320px] relative overflow-hidden flex items-center">
         <div className="absolute inset-0 z-0">
-          <Image src="/images/bg-image.png" alt="Manufacturing Facility" fill className="object-cover" priority />
+          <Image src="/images/bg-image.png" alt="Injection moulded component production at Vinayak Technoplast" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent" />
         </div>
         <div className="absolute bottom-0 left-0 right-0 z-10">
