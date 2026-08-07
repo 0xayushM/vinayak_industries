@@ -1133,7 +1133,7 @@ export default function MouldingPage() {
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {industries.map((ind, i) => (
               <motion.div
                 key={i}

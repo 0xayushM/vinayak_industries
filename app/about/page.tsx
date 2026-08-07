@@ -141,7 +141,7 @@ export default function AboutPage() {
 
                   {/* Commitments Grid */}
                   <h3 className="text-subtitle font-bold text-white mb-6 font-[family-name:var(--font-carbon)]">OUR COMMITMENTS</h3>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
                     {[
                       { icon: HiChatBubbleLeftRight, title: "Good Communication", desc: "With customer and team members" },
                       { icon: HiUsers, title: "Equal Opportunity", desc: "At work place" },
@@ -202,7 +202,7 @@ export default function AboutPage() {
             <div className="max-w-8xl mx-auto">
               <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900 p-8 lg:p-12">
                 <h2 className="text-title font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-8">ACHIEVEMENTS</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
                   {[
                     { icon: HiWrench, text: "Expand Tool Room with Effective Manpower" },
                     { icon: HiBolt, text: "Addition of New sub Processes, Assembly for Electrical Accessories" },

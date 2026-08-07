@@ -45,9 +45,13 @@ export default function Navigation() {
     setIsMenuOpen(false);
   };
 
+  // The open mobile panel is white, so the bar above it must go solid too —
+  // otherwise the header floats transparently over the hero behind the panel.
+  const solidHeader = isScrolled || isMenuOpen;
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      solidHeader ? 'bg-white shadow-md' : 'bg-transparent'
     }`}>
       <div className="max-w-8xl mx-auto px-(--spacing-gutter) py-3 2xl:py-4 flex items-center justify-between gap-4">
         <Link href="/" onClick={closeMenu} className="shrink-0">
@@ -57,7 +61,7 @@ export default function Navigation() {
             width={100}
             height={60}
             className={`w-20 xl:w-24 2xl:w-28 h-auto object-contain cursor-pointer transition-all duration-300 ${
-              isScrolled ? 'brightness-0' : 'brightness-0 invert'
+              solidHeader ? 'brightness-0' : 'brightness-0 invert'
             }`}
           />
         </Link>
@@ -106,7 +110,7 @@ export default function Navigation() {
         <button
           onClick={toggleMenu}
           className={`xl:hidden p-2 transition-colors ${
-            isScrolled ? 'text-gray-800 hover:text-amber-500' : 'text-white hover:text-amber-500'
+            solidHeader ? 'text-gray-800 hover:text-amber-500' : 'text-white hover:text-amber-500'
           }`}
           aria-label="Toggle menu"
         >

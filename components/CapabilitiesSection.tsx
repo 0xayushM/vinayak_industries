@@ -47,7 +47,7 @@ export default function CapabilitiesSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-12">
           {capabilities.map((capability, index) => (
             <motion.div
               key={index}
