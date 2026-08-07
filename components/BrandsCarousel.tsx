@@ -17,7 +17,7 @@ const BrandsCarousel = () => {
   return (
     <section className="py-8 w-full">
       <div className="w-full flex flex-col gap-4">
-        <h2 className="font-[family-name:var(--font-carbon)] text-3xl md:text-4xl font-bold text-center my-12 text-gray-900">
+        <h2 className="font-[family-name:var(--font-carbon)] text-title font-bold text-center my-12 text-gray-900">
           Our Trusted Partners
         </h2>
         

@@ -62,19 +62,19 @@ export default function AboutPage() {
         </div>
 
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-7xl mx-auto relative z-10 w-full px-(--spacing-gutter)"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+            className="text-hero font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             ABOUT US
           </motion.h1>
           <motion.p 
-            className="text-base md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-subtitle text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             Specialising in design, mould development and moulding solutions under one roof.
@@ -92,7 +92,7 @@ export default function AboutPage() {
                 <button
                   key={index}
                   onClick={() => setActiveTab(index)}
-                  className={`md:px-6 md:py-4 px-3 py-2 rounded-full text-sm md:text-lg font-medium transition-all ${
+                  className={`md:px-6 md:py-4 px-3 py-2 rounded-full text-lead font-medium transition-all ${
                     activeTab === index
                       ? 'bg-amber-500 text-white shadow-lg'
                       : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
@@ -132,15 +132,15 @@ export default function AboutPage() {
 
                 <div className="relative z-[1] p-8 lg:p-12">
                   {/* Who We Are Section */}
-                  <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)]">WHO WE ARE</h2>
-                  <div className="text-sm md:text-base max-w-2xl space-y-4 text-gray-300 leading-relaxed mb-8">
+                  <h2 className="text-heading font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)]">WHO WE ARE</h2>
+                  <div className="text-copy max-w-2xl space-y-4 text-gray-300 leading-relaxed mb-8">
                     <p>
                       Vinayak Technoplast is a premier one-stop ecosystem for the global plastic manufacturing industry. Inspired by the engineering vision of Mr. Arjun Kumar Agarwal (IIT-BHU) and driven by Mr. Sandeep Agarwal, we transcend traditional moulding to deliver high-precision, turnkey solutions from concept design to final assemblies all under one roof.
                     </p>
                   </div>
 
                   {/* Commitments Grid */}
-                  <h3 className="text-2xl font-bold text-white mb-6 font-[family-name:var(--font-carbon)]">OUR COMMITMENTS</h3>
+                  <h3 className="text-subtitle font-bold text-white mb-6 font-[family-name:var(--font-carbon)]">OUR COMMITMENTS</h3>
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
                       { icon: HiChatBubbleLeftRight, title: "Good Communication", desc: "With customer and team members" },
@@ -156,7 +156,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                       >
-                        <item.icon className="text-3xl mb-3 text-amber-500" />
+                        <item.icon className="text-title mb-3 text-amber-500" />
                         <h3 className="text-base font-bold text-white mb-1">{item.title}</h3>
                         <p className="text-gray-400 text-sm">{item.desc}</p>
                       </motion.div>
@@ -169,7 +169,7 @@ export default function AboutPage() {
             {/* Quality Policy Card - Now White */}
             <div className="max-w-8xl mx-auto mb-6">
               <div className="bg-white rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">QUALITY POLICY</h2>
+                <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">QUALITY POLICY</h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
                     "Vinayak Technoplast is committed to produce and supply quality products to meet our customer needs.",
@@ -201,7 +201,7 @@ export default function AboutPage() {
             {/* Achievements Card - Now Dark */}
             <div className="max-w-8xl mx-auto">
               <div className="relative rounded-[40px] md:rounded-[50px] overflow-hidden bg-gray-900 p-8 lg:p-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-8">ACHIEVEMENTS</h2>
+                <h2 className="text-title font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-8">ACHIEVEMENTS</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {[
                     { icon: HiWrench, text: "Expand Tool Room with Effective Manpower" },
@@ -221,7 +221,7 @@ export default function AboutPage() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
-                      <item.icon className="text-3xl mb-3 text-amber-500" />
+                      <item.icon className="text-title mb-3 text-amber-500" />
                       <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
                     </motion.div>
                   ))}
@@ -243,8 +243,8 @@ export default function AboutPage() {
               {/* Single merged card */}
               <div className="bg-gray-900 rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
                 {/* Heading inside card */}
-                <h2 className="text-3xl md:text-5xl font-bold text-amber-500 mb-2 font-[family-name:var(--font-carbon)]">MANAGEMENT TEAM</h2>
-                <p className="text-sm md:text-base text-gray-400 mb-8">
+                <h2 className="text-heading font-bold text-amber-500 mb-2 font-[family-name:var(--font-carbon)]">MANAGEMENT TEAM</h2>
+                <p className="text-copy text-gray-400 mb-8">
                   We are professionally managed company envisioned by our chairman <span className="text-white font-semibold">Mr. Arjun Kumar Agarwal</span>, Mechanical Engineer from <span className="text-white font-semibold">IIT BHU</span>.
                 </p>
 
@@ -266,8 +266,8 @@ export default function AboutPage() {
                   {/* About content */}
                   <div className="md:col-span-2 ">
                     <div className="flex flex-col justify-center">
-                    <h3 className="text-3xl font-bold text-white mb-2">Mr. Sandeep Agarwal</h3>
-                    <p className="text-amber-500 font-semibold text-lg mb-6">CEO</p>
+                    <h3 className="text-title font-bold text-white mb-2">Mr. Sandeep Agarwal</h3>
+                    <p className="text-amber-500 font-semibold text-lead mb-6">CEO</p>
                     <p className="text-gray-300 leading-relaxed mb-4">
                       At Vinayak Technoplast, we don't compete on the cheapest price. We compete on the lowest failure rate. Led by CEO Sandeep Agarwal, who brings over 21 years of hands-on experience in precision injection molding, we focus on engineering reliability into every tool and every part.
                     </p>
@@ -299,8 +299,8 @@ export default function AboutPage() {
                   {/* About content */}
                   <div className="md:col-span-2">
                     <div className="flex flex-col justify-center">
-                    <h3 className="text-3xl font-bold text-white mb-2">Mr. Sunny Kalra</h3>
-                    <p className="text-amber-500 font-semibold text-lg mb-6">Chief of Growth Staff</p>
+                    <h3 className="text-title font-bold text-white mb-2">Mr. Sunny Kalra</h3>
+                    <p className="text-amber-500 font-semibold text-lead mb-6">Chief of Growth Staff</p>
                     <p className="text-gray-300 leading-relaxed mb-4">
                       As Chief of Growth Staff at Vinayak Technoplast, Sunny Kalra drives strategic expansion and business development initiatives. With his deep understanding of market dynamics and customer needs, he has been instrumental in establishing key partnerships and expanding our presence across diverse industry sectors.
                     </p>
@@ -313,7 +313,7 @@ export default function AboutPage() {
 
                 {/* Team Members Grid */}
                 <div className="mt-12 pt-12 border-t border-white/10">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 font-[family-name:var(--font-carbon)]">OUR TEAM</h3>
+                  <h3 className="text-title font-bold text-white mb-8 font-[family-name:var(--font-carbon)]">OUR TEAM</h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {[
                       { name: "Mr. Bholanath Nayak", role: "Plant Head", image: "/team/Bhola Sir.jpg" },
@@ -341,8 +341,8 @@ export default function AboutPage() {
                             className="object-cover object-top"
                           />
                         </div>
-                        <h4 className="text-white font-bold text-sm md:text-lg mb-1">{member.name}</h4>
-                        <p className="text-amber-500 text-xs md:text-sm font-medium uppercase tracking-wide">{member.role}</p>
+                        <h4 className="text-white font-bold text-lead mb-1">{member.name}</h4>
+                        <p className="text-amber-500 text-copy font-medium uppercase tracking-wide">{member.role}</p>
                       </motion.div>
                     ))}
                   </div>
@@ -362,8 +362,8 @@ export default function AboutPage() {
           >
             <div className="max-w-8xl mx-auto">
               <div className="bg-white md:rounded-[50px] rounded-[40px] p-6 lg:p-12">
-                <h2 className="text-2xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">INFRASTRUCTURE</h2>
-                <p className="text-sm md:text-xl text-gray-600 mb-8">
+                <h2 className="text-heading font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">INFRASTRUCTURE</h2>
+                <p className="text-lead text-gray-600 mb-8">
                   Strategically located manufacturing unit spanning <span className="font-semibold text-amber-500">35,000 Sq Ft</span> manufacturing area.
                 </p>
                 

@@ -46,19 +46,19 @@ export default function OfferingsPage() {
         </div>
 
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-7xl mx-auto relative z-10 w-full px-(--spacing-gutter)"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+            className="text-hero font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             OUR OFFERINGS
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-subtitle text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             Comprehensive plastic injection molding solutions from design to delivery.
@@ -87,7 +87,7 @@ export default function OfferingsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-2xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                <h2 className="text-title font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
                   DESIGN & DEVELOPMENT OF<br />INJECTION MOULDS AND DIES
                 </h2>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
@@ -127,7 +127,7 @@ export default function OfferingsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-2xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                <h2 className="text-title font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
                   INJECTION MOULDING OF<br />ENGINEERING POLYMERS
                 </h2>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
@@ -166,7 +166,7 @@ export default function OfferingsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-2xl md:text-4xl font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
+                <h2 className="text-title font-bold text-amber-500 font-[family-name:var(--font-carbon)] mb-6">
                   COMPLETE ASSEMBLY AND<br />SUPPLY OF FINISH PRODUCTS
                 </h2>
                 <p className="text-gray-300 leading-relaxed">
@@ -184,7 +184,7 @@ export default function OfferingsPage() {
       <section className="p-3 md:p-6 bg-gray-100">
         <div className="max-w-8xl mx-auto">
           <div className="bg-white rounded-[40px] md:rounded-[50px] p-4 lg:p-12">
-            <h2 className="text-2xl md:text-4xl p-4 font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">OUR MOULDING CAPACITIES</h2>
+            <h2 className="text-title p-4 font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-8">OUR MOULDING CAPACITIES</h2>
             <div className="rounded-2xl overflow-hidden border border-gray-200">
               <div className="overflow-x-auto">
               <table className="w-full">
@@ -248,12 +248,12 @@ export default function OfferingsPage() {
       <section className="bg-gray-100">
         <div className="max-w-8xl mx-auto">
           <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-8 lg:p-12 text-center">
-            <h2 className="text-4xl font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
-            <p className="text-xl text-amber-100 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-heading font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
+            <p className="text-lead text-amber-100 mb-8 max-w-2xl mx-auto">
               Let's discuss how our comprehensive offerings can bring your product vision to life.
             </p>
             <Link href="/contact">
-              <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+              <button className="bg-white text-amber-500 px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead hover:bg-gray-100 transition-colors">
                 Request a Quote
               </button>
             </Link>

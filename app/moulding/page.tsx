@@ -320,7 +320,7 @@ export default function MouldingPage() {
         <div className="hidden md:block absolute bottom-0 left-0 right-0 z-20">
           <div className="flex items-center">
             <div className="bg-amber-500 px-8 py-4 ml-auto mr-12 skew-x-[-12deg]">
-              <span className="text-gray-900 font-bold text-xl tracking-wider skew-x-[12deg] inline-block font-[family-name:var(--font-carbon)]">
+              <span className="text-gray-900 font-bold text-lead tracking-wider skew-x-[12deg] inline-block font-[family-name:var(--font-carbon)]">
                 PRECISION TOOLING
               </span>
             </div>
@@ -347,26 +347,26 @@ export default function MouldingPage() {
               variants={fadeInUp}
             >
               <Award className="w-4 h-4 text-amber-400" />
-              <span className="text-amber-400 text-xs md:text-sm font-bold tracking-wider">
+              <span className="text-amber-400 text-copy font-bold tracking-wider">
                 IN-HOUSE TOOL ROOM · ISO 9001:2015
               </span>
             </motion.div>
 
             <motion.h1
-              className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-amber-500 leading-[1.05] mb-2 tracking-tight font-[family-name:var(--font-carbon)]"
+              className="text-hero font-bold text-amber-500 leading-[1.05] mb-2 tracking-tight font-[family-name:var(--font-carbon)]"
               variants={fadeInUp}
             >
               PRECISION MOULDS
             </motion.h1>
             <motion.h2
-              className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-6 tracking-tight font-[family-name:var(--font-carbon)]"
+              className="text-display font-bold text-white leading-[1.05] mb-6 tracking-tight font-[family-name:var(--font-carbon)]"
               variants={fadeInUp}
             >
               ENGINEERED IN-HOUSE
             </motion.h2>
 
             <motion.p
-              className="text-base md:text-xl text-gray-200 font-medium mb-8 max-w-2xl leading-relaxed font-[family-name:var(--font-korto)]"
+              className="text-lead text-gray-200 font-medium mb-8 max-w-2xl leading-relaxed font-[family-name:var(--font-korto)]"
               variants={fadeInUp}
             >
               We design and manufacture plastic injection moulds end-to-end — DFM analysis,
@@ -378,7 +378,7 @@ export default function MouldingPage() {
             <motion.div className="flex flex-col sm:flex-row gap-4" variants={fadeInUp}>
               <motion.button
                 onClick={() => setIsDialogOpen(true)}
-                className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 font-[family-name:var(--font-korto)] group inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-4 py-2.5 lg:px-6 lg:py-3 md:px-10 md:py-4 rounded-full font-bold text-copy transition-all shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 font-[family-name:var(--font-korto)] group inline-flex items-center justify-center gap-2 w-full sm:w-auto"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -387,7 +387,7 @@ export default function MouldingPage() {
               </motion.button>
               <a href="#tool-room">
                 <motion.button
-                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all font-[family-name:var(--font-korto)] w-full sm:w-auto inline-flex items-center justify-center gap-2"
+                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-4 py-2.5 lg:px-6 lg:py-3 md:px-10 md:py-4 rounded-full font-bold text-copy transition-all font-[family-name:var(--font-korto)] w-full sm:w-auto inline-flex items-center justify-center gap-2"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -413,7 +413,7 @@ export default function MouldingPage() {
       </section>
 
       {/* Stats Bar — Minimal dark infographic */}
-      <section className="bg-gray-950 py-12 px-6">
+      <section className="bg-gray-950 py-(--spacing-section-sm) px-(--spacing-gutter)">
         <div className="max-w-7xl mx-auto">
           <div className="rounded-3xl border border-white/10 bg-black px-6 py-8 md:px-8 md:py-10">
             <motion.div
@@ -423,10 +423,10 @@ export default function MouldingPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.45 }}
             >
-              <span className="text-amber-400 text-xs md:text-sm font-bold tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
+              <span className="text-amber-400 text-copy font-bold tracking-[0.3em] uppercase font-[family-name:var(--font-korto)]">
                 Key Metrics
               </span>
-              <h2 className="text-2xl md:text-4xl font-bold text-white mt-3 font-[family-name:var(--font-carbon)]">
+              <h2 className="text-title font-bold text-white mt-3 font-[family-name:var(--font-carbon)]">
                 Moulding performance
               </h2>
             </motion.div>
@@ -441,10 +441,10 @@ export default function MouldingPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: i * 0.05 }}
                 >
-                  <div className="text-3xl md:text-5xl font-bold text-amber-400 font-[family-name:var(--font-carbon)] leading-none mb-2">
+                  <div className="text-heading font-bold text-amber-400 font-[family-name:var(--font-carbon)] leading-none mb-2">
                     {s.value}
                   </div>
-                  <p className="text-white text-sm md:text-base font-semibold font-[family-name:var(--font-korto)]">
+                  <p className="text-white text-copy font-semibold font-[family-name:var(--font-korto)]">
                     {s.label}
                   </p>
                   <p className="text-gray-400 text-[11px] md:text-xs uppercase tracking-wider font-[family-name:var(--font-korto)] mt-1">
@@ -459,7 +459,7 @@ export default function MouldingPage() {
 
       {/* Mould Gallery — Horizontal scroll strip */}
       <section className="bg-gray-950 pb-20 pt-4 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 mb-6">
+        <div className="max-w-7xl mx-auto px-(--spacing-gutter) mb-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -469,7 +469,7 @@ export default function MouldingPage() {
             <span className="text-amber-500 text-sm font-bold tracking-[0.25em] uppercase font-[family-name:var(--font-korto)]">
               Our Work
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 font-[family-name:var(--font-carbon)]">
+            <h2 className="text-title font-bold text-white mt-2 font-[family-name:var(--font-carbon)]">
               MOULDS FROM OUR TOOL ROOM
             </h2>
           </motion.div>
@@ -507,7 +507,7 @@ export default function MouldingPage() {
       </section>
 
       {/* About Mould Capability — homepage AboutSection style */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -519,18 +519,18 @@ export default function MouldingPage() {
               <span className="text-amber-500 text-sm font-bold tracking-[0.25em] uppercase font-[family-name:var(--font-korto)]">
                 Beyond Moulding
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mt-3 mb-6 leading-tight">
+              <h2 className="text-heading font-bold text-gray-900 font-[family-name:var(--font-carbon)] mt-3 mb-6 leading-tight">
                 Unmatched Precision  <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">
                   Through Full In-House Tooling.
                 </span>
               </h2>
-              <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
+              <p className="text-lead text-gray-600 leading-relaxed mb-6">
                 Most injection moulding companies depend on external toolmakers for their moulds —
                 creating delays, quality compromises and finger-pointing when problems arise.
                 Vinayak Technoplast designs and manufactures every mould in-house, end-to-end.
               </p>
-              <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-lead text-gray-600 leading-relaxed mb-8">
                 From DFM analysis on day one through CNC milling, EDM spark erosion and T1
                 validation — we own the entire process. Led personally by CEO Sandeep Agarwal
                 (21+ years in precision moulding), we deliver moulds that hold tight tolerances
@@ -553,7 +553,7 @@ export default function MouldingPage() {
 
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-medium text-sm md:text-lg transition-colors inline-flex items-center gap-2 group"
+                className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2.5 lg:px-6 lg:py-3 md:px-8 md:py-4 rounded-full font-medium text-lead transition-colors inline-flex items-center gap-2 group"
               >
                 Discuss Your Mould Project
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -578,7 +578,7 @@ export default function MouldingPage() {
               </div>
               {/* Floating stat card */}
               <div className="absolute -bottom-6 -left-6 md:-bottom-8 md:-left-8 bg-white rounded-2xl p-5 md:p-6 shadow-2xl border border-gray-100 max-w-[240px]">
-                <div className="text-4xl md:text-5xl font-bold text-amber-500 mb-1 font-[family-name:var(--font-carbon)]">
+                <div className="text-heading font-bold text-amber-500 mb-1 font-[family-name:var(--font-carbon)]">
                   200+
                 </div>
                 <p className="text-gray-700 text-sm font-medium leading-tight">
@@ -591,7 +591,7 @@ export default function MouldingPage() {
       </section>
 
       {/* Mould Types Section */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-14"
@@ -603,10 +603,10 @@ export default function MouldingPage() {
             <span className="text-amber-500 text-sm font-bold tracking-[0.25em] uppercase font-[family-name:var(--font-korto)]">
               What We Build
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-3 mb-4 font-[family-name:var(--font-carbon)]">
+            <h2 className="text-heading font-bold text-gray-900 mt-3 mb-4 font-[family-name:var(--font-carbon)]">
               Mould Types We Manufacture
             </h2>
-            <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 text-lead max-w-2xl mx-auto">
               From simple two-plate tools to complex hot runner systems — our tool room handles
               every category. We recommend the right mould type based on your volume, material
               and part geometry.
@@ -634,7 +634,7 @@ export default function MouldingPage() {
                 <div className="text-[10px] text-amber-500 tracking-[0.2em] uppercase mb-1.5 font-bold font-[family-name:var(--font-korto)]">
                   {m.tag}
                 </div>
-                <h3 className="text-gray-900 font-bold text-xl mb-3 font-[family-name:var(--font-korto)]">
+                <h3 className="text-gray-900 font-bold text-lead mb-3 font-[family-name:var(--font-korto)]">
                   {m.type}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{m.desc}</p>
@@ -657,7 +657,7 @@ export default function MouldingPage() {
             </div>
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6 justify-between relative z-10">
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-carbon)] mb-2">
+                <h3 className="text-title font-bold text-white font-[family-name:var(--font-carbon)] mb-2">
                   Not sure which mould type fits your part?
                 </h3>
                 <p className="text-gray-300 text-base">
@@ -667,7 +667,7 @@ export default function MouldingPage() {
               </div>
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="flex-shrink-0 bg-amber-500 hover:bg-amber-600 text-gray-900 px-8 py-4 rounded-full font-bold text-base whitespace-nowrap transition-all shadow-lg shadow-amber-500/30 inline-flex items-center gap-2 group"
+                className="flex-shrink-0 bg-amber-500 hover:bg-amber-600 text-gray-900 px-5 py-3 lg:px-7 lg:py-3.5 2xl:px-8 2xl:py-4 rounded-full font-bold text-base whitespace-nowrap transition-all shadow-lg shadow-amber-500/30 inline-flex items-center gap-2 group"
               >
                 Get Free DFM Review
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -710,10 +710,10 @@ export default function MouldingPage() {
                 <span className="text-amber-500 text-sm font-bold tracking-[0.25em] uppercase font-[family-name:var(--font-korto)]">
                   In-House Tool Room
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 mb-4 font-[family-name:var(--font-carbon)]">
+                <h2 className="text-heading font-bold text-white mt-3 mb-4 font-[family-name:var(--font-carbon)]">
                   THE MACHINES BEHIND <span className="text-amber-500">EVERY MOULD</span>
                 </h2>
-                <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto">
+                <p className="text-gray-300 text-lead max-w-2xl mx-auto">
                   We own and operate every machine that touches a mould. No outsourced machining,
                   no waiting on sub-contractors — full control over quality and lead time.
                 </p>
@@ -741,7 +741,7 @@ export default function MouldingPage() {
                     </span>
                   </div>
                   <div className="p-7">
-                    <h3 className="text-xl font-bold text-white mb-1 font-[family-name:var(--font-carbon)]">
+                    <h3 className="text-lead font-bold text-white mb-1 font-[family-name:var(--font-carbon)]">
                       VMC HAAS VF-2 & VF-3
                     </h3>
                     <p className="text-gray-400 text-sm mb-5">
@@ -786,7 +786,7 @@ export default function MouldingPage() {
                     </span>
                   </div>
                   <div className="p-7">
-                    <h3 className="text-xl font-bold text-white mb-1 font-[family-name:var(--font-carbon)]">
+                    <h3 className="text-lead font-bold text-white mb-1 font-[family-name:var(--font-carbon)]">
                       Electronica EDM × 3 Units
                     </h3>
                     <p className="text-gray-400 text-sm mb-5">
@@ -870,7 +870,7 @@ export default function MouldingPage() {
         style={{ height: `${100 + processSteps.length * 90}vh` }}
       >
         <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden bg-gray-900">
-          <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+          <div className="max-w-7xl mx-auto px-(--spacing-gutter) w-full relative z-10">
             <motion.div
               className="text-center mb-8 md:mb-10"
               initial={{ opacity: 0, y: 30 }}
@@ -881,7 +881,7 @@ export default function MouldingPage() {
               <span className="text-amber-500 text-sm font-bold tracking-[0.25em] uppercase font-[family-name:var(--font-korto)]">
                 How We Build · Scroll to Advance
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 font-[family-name:var(--font-carbon)]">
+              <h2 className="text-heading font-bold text-white mt-3 font-[family-name:var(--font-carbon)]">
                 FROM DRAWING TO <span className="text-amber-500">FIRST SHOTS</span>
               </h2>
             </motion.div>
@@ -960,7 +960,7 @@ export default function MouldingPage() {
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent" />
-                    <div className="absolute bottom-2 right-4 md:bottom-4 md:right-6 text-6xl md:text-8xl font-bold text-amber-400 opacity-90 font-[family-name:var(--font-carbon)] leading-none">
+                    <div className="absolute bottom-2 right-4 md:bottom-4 md:right-6 text-hero font-bold text-amber-400 opacity-90 font-[family-name:var(--font-carbon)] leading-none">
                       {processSteps[activeStep].no}
                     </div>
                   </div>
@@ -969,17 +969,17 @@ export default function MouldingPage() {
                     <span className="inline-block px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-400 text-[10px] md:text-xs tracking-[0.2em] uppercase mb-3 md:mb-4 font-bold">
                       Step {processSteps[activeStep].no} · {processSteps[activeStep].tag}
                     </span>
-                    <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 font-[family-name:var(--font-carbon)] uppercase">
+                    <h3 className="text-heading font-bold text-white mb-3 md:mb-4 font-[family-name:var(--font-carbon)] uppercase">
                       {processSteps[activeStep].title}
                     </h3>
-                    <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-5 md:mb-6">
+                    <p className="text-gray-300 text-copy leading-relaxed mb-5 md:mb-6">
                       {processSteps[activeStep].desc}
                     </p>
                     <ul className="space-y-2 md:space-y-3">
                       {processSteps[activeStep].highlights.map((h, hi) => (
                         <motion.li
                           key={hi}
-                          className="flex items-center gap-3 text-gray-200 text-sm md:text-base"
+                          className="flex items-center gap-3 text-gray-200 text-copy"
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.3, delay: 0.1 + hi * 0.08 }}
@@ -998,7 +998,7 @@ export default function MouldingPage() {
       </section>
 
       {/* Mid-page CTA — Mould Repair (clean B2B banner) */}
-      <section className="py-14 px-6 bg-gray-50">
+      <section className="py-(--spacing-section-sm) px-(--spacing-gutter) bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-3xl p-8 md:p-10 shadow-lg border border-gray-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-amber-50 to-transparent" />
@@ -1008,10 +1008,10 @@ export default function MouldingPage() {
                   <Wrench className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-2">
+                  <h3 className="text-subtitle font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-2">
                     Need a Mould Repaired or Modified?
                   </h3>
-                  <p className="text-gray-600 text-sm md:text-base">
+                  <p className="text-gray-600 text-copy">
                     We maintain 50+ active moulds and take on third-party repair, modification
                     and re-qualification work. Urgent turnaround in 24–72 hours.
                   </p>
@@ -1019,7 +1019,7 @@ export default function MouldingPage() {
               </div>
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="flex-shrink-0 border-2 border-amber-500 hover:bg-amber-500 text-amber-600 hover:text-white px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all inline-flex items-center gap-2 group"
+                className="flex-shrink-0 border-2 border-amber-500 hover:bg-amber-500 text-amber-600 hover:text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-full font-bold text-sm whitespace-nowrap transition-all inline-flex items-center gap-2 group"
               >
                 Enquire About Repair
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -1030,7 +1030,7 @@ export default function MouldingPage() {
       </section>
 
       {/* Why Vinayak — split layout matching homepage style */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
@@ -1074,13 +1074,13 @@ export default function MouldingPage() {
               <span className="text-amber-500 text-sm font-bold tracking-[0.25em] uppercase font-[family-name:var(--font-korto)]">
                 Why Vinayak Technoplast
               </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-3 mb-6 font-[family-name:var(--font-carbon)] leading-tight">
+              <h2 className="text-heading font-bold text-gray-900 mt-3 mb-6 font-[family-name:var(--font-carbon)] leading-tight">
                 Not just a moulder.<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">
                   A mould maker.
                 </span>
               </h2>
-              <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-10">
+              <p className="text-gray-600 text-lead leading-relaxed mb-10">
                 Most injection moulding companies depend on external toolmakers. We design,
                 manufacture and validate every mould in-house — giving you complete control over
                 lead time, accuracy and ongoing maintenance.
@@ -1112,7 +1112,7 @@ export default function MouldingPage() {
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-14"
@@ -1124,10 +1124,10 @@ export default function MouldingPage() {
             <span className="text-amber-500 text-sm font-bold tracking-[0.25em] uppercase font-[family-name:var(--font-korto)]">
               Sectors We Serve
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-3 mb-4 font-[family-name:var(--font-carbon)]">
+            <h2 className="text-heading font-bold text-gray-900 mt-3 mb-4 font-[family-name:var(--font-carbon)]">
               Moulds Built for Every Sector
             </h2>
-            <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 text-lead max-w-2xl mx-auto">
               From automotive Tier-1s to medical device makers — we manufacture moulds for any
               industry where precision, repeatability and tool life matter.
             </p>
@@ -1146,7 +1146,7 @@ export default function MouldingPage() {
                 <div className="w-14 h-14 rounded-xl bg-amber-50 group-hover:bg-amber-500 flex items-center justify-center mb-5 transition-colors duration-300">
                   <ind.icon className="w-7 h-7 text-amber-500 group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 font-[family-name:var(--font-carbon)] uppercase">
+                <h3 className="text-lead font-bold text-gray-900 mb-3 font-[family-name:var(--font-carbon)] uppercase">
                   {ind.title}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{ind.desc}</p>
@@ -1157,7 +1157,7 @@ export default function MouldingPage() {
       </section>
 
       {/* Final CTA Section — homepage style amber gradient */}
-      <section className="py-20 px-6 bg-gradient-to-br from-amber-500 to-amber-600">
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-gradient-to-br from-amber-500 to-amber-600">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-10 items-center">
             <motion.div
@@ -1167,10 +1167,10 @@ export default function MouldingPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-[family-name:var(--font-carbon)] leading-tight">
+              <h2 className="text-heading font-bold text-white mb-4 font-[family-name:var(--font-carbon)] leading-tight">
                 Ready to commission your next mould?
               </h2>
-              <p className="text-base md:text-lg text-amber-50 leading-relaxed">
+              <p className="text-lead text-amber-50 leading-relaxed">
                 Share your 3D model or 2D drawing. Our engineers will return a complete tooling
                 proposal — mould type, lead time and cost estimate — within 48 hours.
               </p>
@@ -1184,14 +1184,14 @@ export default function MouldingPage() {
             >
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="w-full bg-white text-amber-600 px-8 py-4 rounded-full font-bold text-base hover:bg-gray-100 transition-all shadow-xl inline-flex items-center justify-center gap-2 group"
+                className="w-full bg-white text-amber-600 px-5 py-3 lg:px-7 lg:py-3.5 2xl:px-8 2xl:py-4 rounded-full font-bold text-base hover:bg-gray-100 transition-all shadow-xl inline-flex items-center justify-center gap-2 group"
               >
                 Request a Tooling Quote
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="w-full bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 rounded-full font-bold text-base transition-colors border-2 border-white inline-flex items-center justify-center gap-2"
+                className="w-full bg-amber-700 hover:bg-amber-800 text-white px-5 py-3 lg:px-7 lg:py-3.5 2xl:px-8 2xl:py-4 rounded-full font-bold text-base transition-colors border-2 border-white inline-flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 Talk to an Engineer

@@ -99,7 +99,7 @@ export default function MouldingInquiryDialog({
               <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Wrench className="w-8 h-8 text-amber-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2 font-[family-name:var(--font-carbon)]">
+              <h2 className="text-subtitle font-bold text-gray-900 mb-2 font-[family-name:var(--font-carbon)]">
                 {title}
               </h2>
               <p className="text-gray-600 text-sm">{subtitle}</p>
@@ -186,7 +186,7 @@ export default function MouldingInquiryDialog({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-3 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
+                className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   'Sending...'
@@ -204,13 +204,13 @@ export default function MouldingInquiryDialog({
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-9 h-9 text-green-600" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 font-[family-name:var(--font-carbon)]">
+            <h2 className="text-subtitle font-bold text-gray-900 font-[family-name:var(--font-carbon)]">
               Inquiry Received
             </h2>
             <p className="text-gray-600">{submitStatus?.message}</p>
             <button
               onClick={resetAndClose}
-              className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-colors"
+              className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-full font-medium transition-colors"
             >
               Close
             </button>

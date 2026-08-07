@@ -123,7 +123,7 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
           <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <FileText className="w-8 h-8 text-amber-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Download Company Presentation</h2>
+          <h2 className="text-subtitle font-bold text-gray-900 mb-2">Download Company Presentation</h2>
           <p className="text-gray-600">Get our complete capability deck and company presentation</p>
         </div>
 
@@ -180,7 +180,7 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-3 rounded-full font-medium transition-colors"
+              className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium transition-colors"
             >
               {isSubmitting ? 'Submitting...' : 'Subscribe & Download'}
             </button>
@@ -192,7 +192,7 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
             </div>
             <button
               onClick={handleDownload}
-              className="w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-amber-500 hover:bg-amber-600 text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium transition-colors flex items-center justify-center gap-2"
             >
               <Download className="w-5 h-5" />
               Download Now

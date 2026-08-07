@@ -41,7 +41,7 @@ const BlogSection = () => {
   };
 
   return (
-    <section className="py-16 px-8 bg-gray-50">
+    <section className="py-(--spacing-section) px-8 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           {/* Left side - Heading (span-1) */}
@@ -52,10 +52,10 @@ const BlogSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-1"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
+            <h2 className="text-display font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
               Latest <span className="text-amber-500">Insights</span>
             </h2>
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 text-lead">
               Stay updated with our latest news and insights
             </p>
           </motion.div>
@@ -135,7 +135,7 @@ const BlogSection = () => {
                       onClick={() => handleCardClick(post.link)}
                     >
                       <div className="h-full p-6 flex flex-col">
-                        <h3 className="text-xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-carbon)]">
+                        <h3 className="text-lead font-bold text-gray-900 mb-4 font-[family-name:var(--font-carbon)]">
                           {post.title}
                         </h3>
                         <div className="flex-1 overflow-hidden">

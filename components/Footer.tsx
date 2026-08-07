@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-(--spacing-gutter) py-(--spacing-section)">
         <div className="grid lg:grid-cols-3 md:gap-12 gap-6 md:mb-12">
           {/* Company Info */}
           <div className="hidden md:block">
@@ -27,7 +27,7 @@ export default function Footer() {
           </div>
           {/* Manufacturing Capabilities */}
           <div>
-            <h3 className="text-lg font-bold mb-6">Manufacturing Capabilities</h3>
+            <h3 className="text-lead font-bold mb-6">Manufacturing Capabilities</h3>
             <ul className="space-y-3">
               <li>
                 <Link href="/capabilities" className="text-gray-400 hover:text-amber-500 transition-colors text-sm">
@@ -54,7 +54,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold mb-6">Get in touch</h3>
+            <h3 className="text-lead font-bold mb-6">Get in touch</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <svg className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

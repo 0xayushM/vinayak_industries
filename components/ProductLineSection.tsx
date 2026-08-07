@@ -50,7 +50,7 @@ export default function ProductLineSection() {
             <div className="grid gap-8 mb-12">
               {/* Left Column - Title */}
               <motion.div {...fadeInUp} className="lg:col-span-2">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)] leading-tight">
+                <h2 className="text-display font-bold text-amber-500 mb-6 font-[family-name:var(--font-carbon)] leading-tight">
                   OUR CORE PRODUCTS
                 </h2>
                 <p className="text-gray-300 max-w-xl leading-relaxed text-sm">

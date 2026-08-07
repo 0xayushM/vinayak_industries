@@ -137,19 +137,19 @@ export default function ContactPage() {
         </div>
 
         <motion.div
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-7xl mx-auto relative z-10 w-full px-(--spacing-gutter)"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+            className="text-hero font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             CONTACT US
           </motion.h1>
           <motion.p
-            className="text-sm md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-subtitle text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             One Stop Solution - Plastic Injection Moulded Components, Assemblies & Final Product
@@ -170,7 +170,7 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-gray-900" />
               </div>
               <div className="relative z-10 p-6 h-full flex flex-col">
-                <h2 className="text-3xl font-bold text-amber-50 p-6 font-[family-name:var(--font-carbon)] mb-8">CONTACT INFORMATION</h2>
+                <h2 className="text-title font-bold text-amber-50 p-6 font-[family-name:var(--font-carbon)] mb-8">CONTACT INFORMATION</h2>
 
                 <div className="space-y-6 px-2 md:px-6 flex-grow">
                   <div className="flex items-start gap-4">
@@ -211,7 +211,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-white mb-1">Email</h3>
-                      <a href="mailto:sales@vinayaktechnoplast.com" className="text-gray-100 hover:text-amber-500 text-sm md:text-base transition-colors">sales@vinayaktechnoplast.com</a>
+                      <a href="mailto:sales@vinayaktechnoplast.com" className="text-gray-100 hover:text-amber-500 text-copy transition-colors">sales@vinayaktechnoplast.com</a>
                     </div>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export default function ContactPage() {
 
             {/* Contact Form Card */}
             <div className="bg-white rounded-[40px] md:rounded-[50px] p-8 lg:p-12">
-              <h2 className="text-3xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-2">REQUEST A QUICK QUOTE</h2>
+              <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-2">REQUEST A QUICK QUOTE</h2>
               <p className="text-gray-600 mb-6">Fill out the form below and we'll get back to you shortly.</p>
               
               {submitStatus && (
@@ -308,7 +308,7 @@ export default function ContactPage() {
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-8 py-3.5 rounded-full font-medium text-lg transition-colors"
+                  className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead transition-colors"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
@@ -339,11 +339,11 @@ export default function ContactPage() {
       <section className="bg-gray-100">
         <div className="max-w-8xl mx-auto">
           <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-8 lg:p-12 text-center">
-            <h2 className="text-4xl font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
-            <p className="text-xl text-amber-100 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-heading font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
+            <p className="text-lead text-amber-100 mb-8 max-w-2xl mx-auto">
               Contact us today to discuss your plastic injection molding needs and get a customized solution.
             </p>
-            <a href="tel:+919311378904" className="inline-block bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+            <a href="tel:+919311378904" className="inline-block bg-white text-amber-500 px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead hover:bg-gray-100 transition-colors">
               Call Us Now
             </a>
           </div>

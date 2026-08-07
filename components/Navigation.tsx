@@ -49,53 +49,55 @@ export default function Navigation() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
     }`}>
-      <div className="max-w-8xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" onClick={closeMenu}>
+      <div className="max-w-8xl mx-auto px-(--spacing-gutter) py-3 2xl:py-4 flex items-center justify-between gap-4">
+        <Link href="/" onClick={closeMenu} className="shrink-0">
           <Image
             src="/logo/logo1.png"
             alt="Vinayak Industries Logo"
             width={100}
             height={60}
-            className={`object-contain cursor-pointer transition-all duration-300 ${
+            className={`w-20 xl:w-24 2xl:w-28 h-auto object-contain cursor-pointer transition-all duration-300 ${
               isScrolled ? 'brightness-0' : 'brightness-0 invert'
             }`}
           />
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-8">
+        {/* Desktop Menu — below xl the 8 links + 2 buttons no longer fit, so we
+            fall back to the hamburger rather than letting labels wrap. */}
+        <div className="hidden xl:flex items-center gap-4 2xl:gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`font-bold transition-colors relative ${
+              className={`text-sm 2xl:text-base font-bold whitespace-nowrap transition-colors relative ${
                 pathname === link.href
                   ? "text-amber-500"
-                  : isScrolled 
-                    ? "text-gray-800 hover:text-amber-500" 
+                  : isScrolled
+                    ? "text-gray-800 hover:text-amber-500"
                     : "text-white hover:text-amber-500"
               }`}
             >
               {link.label}
               {pathname === link.href && (
-                <span className="absolute -bottom-[21px] left-0 right-0 h-0.5 bg-amber-500"></span>
+                <span className="absolute -bottom-[18px] 2xl:-bottom-[21px] left-0 right-0 h-0.5 bg-amber-500"></span>
               )}
             </Link>
           ))}
           <button
             onClick={() => setIsDialogOpen(true)}
-            className={`font-bold transition-colors flex items-center gap-2 ${
-              isScrolled 
-                ? "text-gray-800 hover:text-amber-500" 
+            className={`text-sm 2xl:text-base font-bold whitespace-nowrap transition-colors flex items-center gap-1.5 2xl:gap-2 ${
+              isScrolled
+                ? "text-gray-800 hover:text-amber-500"
                 : "text-white hover:text-amber-500"
             }`}
           >
-            <Download className="w-4 h-4" />
-            Download Brochure
+            <Download className="w-4 h-4 shrink-0" />
+            <span className="hidden 2xl:inline">Download Brochure</span>
+            <span className="2xl:hidden">Brochure</span>
           </button>
-          <Link href="/contact">
-            <button className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-2.5 rounded-full font-medium transition-colors">
-              Get a Custom Quote
+          <Link href="/contact" className="shrink-0">
+            <button className="bg-amber-500 hover:bg-amber-600 text-gray-900 text-sm 2xl:text-base px-4 2xl:px-6 py-2 2xl:py-2.5 rounded-full font-medium whitespace-nowrap transition-colors">
+              Get a Quote
             </button>
           </Link>
         </div>
@@ -103,7 +105,7 @@ export default function Navigation() {
         {/* Hamburger Button */}
         <button
           onClick={toggleMenu}
-          className={`lg:hidden p-2 transition-colors ${
+          className={`xl:hidden p-2 transition-colors ${
             isScrolled ? 'text-gray-800 hover:text-amber-500' : 'text-white hover:text-amber-500'
           }`}
           aria-label="Toggle menu"
@@ -124,11 +126,11 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden bg-white border-t border-gray-200 transition-all duration-300 ease-in-out ${
-          isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+        className={`xl:hidden bg-white border-t border-gray-200 transition-all duration-300 ease-in-out overflow-y-auto ${
+          isMenuOpen ? "max-h-[calc(100vh-5rem)] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <div className="px-6 py-4 space-y-4">
+        <div className="px-(--spacing-gutter) py-4 space-y-3">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -154,7 +156,7 @@ export default function Navigation() {
             Download Brochure
           </button>
           <Link href="/contact" onClick={closeMenu} className="block">
-            <button className="w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-full font-medium transition-colors">
+            <button className="w-full bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-full font-medium transition-colors">
               Get a Custom Quote
             </button>
           </Link>

@@ -73,19 +73,19 @@ export default function MediaPage() {
         </div>
 
         <motion.div
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-7xl mx-auto relative z-10 w-full px-(--spacing-gutter)"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+            className="text-hero font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             MEDIA
           </motion.h1>
           <motion.p
-            className="text-base md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-subtitle text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             Stories, insights and updates from inside Vinayak Technoplast — newsletters, case studies and blogs.
@@ -101,7 +101,7 @@ export default function MediaPage() {
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg rounded-full font-medium transition-all ${
+                className={`px-3 py-2 md:px-6 md:py-3 text-lead rounded-full font-medium transition-all ${
                   activeTab === index
                     ? "bg-amber-500 text-white shadow-lg"
                     : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
@@ -118,12 +118,12 @@ export default function MediaPage() {
       <div className="h-full">
         {/* Tab 1: Newsletters */}
         {activeTab === 0 && (
-          <section className="py-16 px-6 bg-white">
+          <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
             <div className="max-w-8xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
+              <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
                 Newsletters
               </h2>
-              <p className="text-lg text-gray-600 mb-12 max-w-3xl">
+              <p className="text-lead text-gray-600 mb-12 max-w-3xl">
                 Quarterly updates from across the business — capacity additions, client wins, R&amp;D progress and shop-floor news.
               </p>
 
@@ -166,12 +166,12 @@ export default function MediaPage() {
 
         {/* Tab 2: Case Studies */}
         {activeTab === 1 && (
-          <section className="py-16 px-6 bg-white">
+          <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
             <div className="max-w-8xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
+              <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
                 Case Studies
               </h2>
-              <p className="text-lg text-gray-600 mb-12 max-w-3xl">
+              <p className="text-lead text-gray-600 mb-12 max-w-3xl">
                 Real engineering challenges solved on our shop floor — measurable improvements in cycle time, quality and tool life.
               </p>
 
@@ -217,7 +217,7 @@ export default function MediaPage() {
                               {item.client}
                             </div>
                           )}
-                          <h3 className="text-2xl font-bold text-gray-900 mb-3 font-[family-name:var(--font-carbon)]">
+                          <h3 className="text-subtitle font-bold text-gray-900 mb-3 font-[family-name:var(--font-carbon)]">
                             {item.title}
                           </h3>
                           <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">{item.excerpt}</p>
@@ -239,12 +239,12 @@ export default function MediaPage() {
 
         {/* Tab 3: Blogs */}
         {activeTab === 2 && (
-          <section className="py-16 px-6 bg-white">
+          <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
             <div className="max-w-8xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
+              <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
                 Blogs
               </h2>
-              <p className="text-lg text-gray-600 mb-12 max-w-3xl">
+              <p className="text-lead text-gray-600 mb-12 max-w-3xl">
                 Thoughts and learnings from our engineering team — on design, manufacturing, materials and the polymer industry.
               </p>
 
@@ -299,7 +299,7 @@ export default function MediaPage() {
                           </div>
                         )}
                         <div className="p-6 flex flex-col flex-1">
-                          <h3 className="text-xl font-bold text-gray-900 mb-3 font-[family-name:var(--font-carbon)]">
+                          <h3 className="text-lead font-bold text-gray-900 mb-3 font-[family-name:var(--font-carbon)]">
                             {item.title}
                           </h3>
                           <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">
@@ -323,16 +323,16 @@ export default function MediaPage() {
       </div>
 
       {/* CTA Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-amber-500 to-amber-600">
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-gradient-to-br from-amber-500 to-amber-600">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl font-bold mb-6 font-[family-name:var(--font-carbon)]">
+          <h2 className="text-heading font-bold mb-6 font-[family-name:var(--font-carbon)]">
             Want stories like these in your inbox?
           </h2>
-          <p className="text-xl text-amber-100 mb-8">
+          <p className="text-lead text-amber-100 mb-8">
             Subscribe to our quarterly newsletter for engineering insights, case studies and updates from our shop floor.
           </p>
           <Link href="/contact">
-            <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-amber-500 px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead hover:bg-gray-100 transition-colors">
               Subscribe Now
             </button>
           </Link>

@@ -21,14 +21,14 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeInUp}>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-6">
+            <h2 className="text-heading font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-6">
               About<br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Vinayak</span>
             </h2>
-            <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
+            <p className="text-lead text-gray-600 leading-relaxed mb-6">
               Vinayak Technoplast is a premier one-stop ecosystem for the global plastic manufacturing industry. Inspired by the engineering vision of Mr. Arjun Kumar Agarwal (IIT-BHU) and driven by Mr. Sandeep Agarwal, we transcend traditional moulding to deliver high-precision, turnkey solutions from concept design to final assemblies all under one roof.
             </p>
             <Link href="/about">
-              <button className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 md:px-8 md:py-4 rounded-full font-medium text-sm md:text-lg transition-colors">
+              <button className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 md:px-8 md:py-4 rounded-full font-medium text-lead transition-colors">
                 Learn More About Us
               </button>
             </Link>

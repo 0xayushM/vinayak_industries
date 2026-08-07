@@ -93,7 +93,7 @@ export default function EVPage() {
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10 w-full px-6 py-32">
+        <div className="max-w-7xl mx-auto relative z-10 w-full px-(--spacing-gutter) py-(--spacing-section)">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <motion.div
@@ -102,21 +102,21 @@ export default function EVPage() {
               variants={staggerContainer}
             >
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+                className="text-display font-bold text-white mb-4 leading-tight font-[family-name:var(--font-carbon)]"
                 variants={fadeInUp}
               >
                 WHEN THE PART<br />
                 GETS TOUGH,
               </motion.h1>
               <motion.h2 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-indigo-400 mb-8 leading-tight font-[family-name:var(--font-carbon)]"
+                className="text-display font-bold text-indigo-400 mb-8 leading-tight font-[family-name:var(--font-carbon)]"
                 variants={fadeInUp}
               >
                 OUR ENGINEERING<br />
                 GETS SMARTER
               </motion.h2>
               <motion.p 
-                className="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed mb-8 font-[family-name:var(--font-korto)]"
+                className="text-lead text-gray-300 max-w-xl leading-relaxed mb-8 font-[family-name:var(--font-korto)]"
                 variants={fadeInUp}
               >
                 Precision-engineered plastic components for the next generation of electric vehicles. 
@@ -124,13 +124,13 @@ export default function EVPage() {
               </motion.p>
               <motion.div className="flex flex-col sm:flex-row gap-4" variants={fadeInUp}>
                 <Link href="/contact">
-                  <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-indigo-500/30 w-full sm:w-auto">
+                  <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-3 lg:px-7 lg:py-3.5 2xl:px-8 2xl:py-4 rounded-full font-medium text-lead transition-all hover:shadow-lg hover:shadow-indigo-500/30 w-full sm:w-auto">
                     Get Started
                   </button>
                 </Link>
                 <button
                   onClick={handleDownloadBrochure}
-                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-8 py-4 rounded-full font-medium text-lg transition-all inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-5 py-3 lg:px-7 lg:py-3.5 2xl:px-8 2xl:py-4 rounded-full font-medium text-lead transition-all inline-flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   <Download className="w-5 h-5" />
                   Download Brochure
@@ -153,7 +153,7 @@ export default function EVPage() {
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
               }}
             >
-              <div className="relative w-full aspect-[4/5] lg:aspect-square scale-125">
+              <div className="relative w-full aspect-[4/5] lg:aspect-square scale-100 lg:scale-110 2xl:scale-125">
                 <Image
                   src="/images/wireframes/EV Wireframe (1).png"
                   alt="EV Wireframe"
@@ -168,7 +168,7 @@ export default function EVPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 px-6 relative" style={{
+      <section className="py-(--spacing-section) px-(--spacing-gutter) relative" style={{
         background: 'linear-gradient(180deg, #1e1b4b 0%, #0f172a 100%)'
       }}>
         {/* Grid pattern overlay */}
@@ -185,10 +185,10 @@ export default function EVPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-[family-name:var(--font-carbon)]">
+            <h2 className="text-heading font-bold text-white mb-4 font-[family-name:var(--font-carbon)]">
               EV COMPONENT EXPERTISE
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lead max-w-2xl mx-auto">
               Specialized manufacturing capabilities for electric vehicle applications
             </p>
           </motion.div>
@@ -206,7 +206,7 @@ export default function EVPage() {
                 <div className="w-16 h-16 rounded-full border-2 border-white/30 flex items-center justify-center mb-6 group-hover:border-indigo-400 transition-colors">
                   <feature.icon className="w-8 h-8 text-white group-hover:text-indigo-400 transition-colors" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 font-[family-name:var(--font-carbon)]">
+                <h3 className="text-lead font-bold text-white mb-3 font-[family-name:var(--font-carbon)]">
                   {feature.title}
                 </h3>
                 <p className="text-gray-400 text-sm">
@@ -219,7 +219,7 @@ export default function EVPage() {
       </section>
 
       {/* Challenges Section with Wireframe */}
-      <section className="py-24 px-6 relative overflow-hidden" style={{
+      <section className="py-(--spacing-section) px-(--spacing-gutter) relative overflow-hidden" style={{
         background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%)'
       }}>
         {/* Geometric accents */}
@@ -247,7 +247,7 @@ export default function EVPage() {
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
               }}
             >
-              <div className="relative w-full aspect-[4/3] scale-150">
+              <div className="relative w-full aspect-[4/3] scale-110 lg:scale-125 2xl:scale-150">
                 <Image
                   src="/images/wireframes/EV Wireframe (3).png"
                   alt="EV Wireframe Side View"
@@ -300,13 +300,13 @@ export default function EVPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-[family-name:var(--font-carbon)]">
+              <h2 className="text-heading font-bold text-white mb-4 font-[family-name:var(--font-carbon)]">
                 EACH COMES WITH
               </h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-indigo-400 mb-8 font-[family-name:var(--font-carbon)]">
+              <h3 className="text-heading font-bold text-indigo-400 mb-8 font-[family-name:var(--font-carbon)]">
                 UNIQUE CHALLENGES
               </h3>
-              <p className="text-gray-300 text-lg mb-10 leading-relaxed">
+              <p className="text-gray-300 text-lead mb-10 leading-relaxed">
                 EV components demand exceptional engineering precision. Our team tackles complex 
                 manufacturing challenges to deliver parts that meet the rigorous standards of 
                 the electric vehicle industry.
@@ -333,7 +333,7 @@ export default function EVPage() {
       </section>
 
       {/* EV Parts Gallery Section */}
-      <section className="py-24 px-6" style={{
+      <section className="py-(--spacing-section) px-(--spacing-gutter)" style={{
         background: 'linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%)'
       }}>
         <div className="max-w-7xl mx-auto">
@@ -344,10 +344,10 @@ export default function EVPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-[family-name:var(--font-carbon)]">
+            <h2 className="text-heading font-bold text-white mb-4 font-[family-name:var(--font-carbon)]">
               EV PARTS GALLERY
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lead max-w-2xl mx-auto">
               Explore our comprehensive range of precision-molded EV components
             </p>
           </motion.div>
@@ -382,7 +382,7 @@ export default function EVPage() {
           >
             <button 
               onClick={() => setShowAllImages(!showAllImages)}
-              className="border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white px-8 py-3 rounded-full font-medium transition-all"
+              className="border-2 border-indigo-400 text-indigo-400 hover:bg-indigo-400 hover:text-white px-5 py-2.5 lg:px-7 lg:py-3 rounded-full font-medium transition-all"
             >
               {showAllImages ? 'Show Less' : 'View All Products'}
             </button>
@@ -391,7 +391,7 @@ export default function EVPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 relative overflow-hidden" style={{
+      <section className="py-(--spacing-section) px-(--spacing-gutter) relative overflow-hidden" style={{
         background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)'
       }}>
         {/* Decorative elements */}
@@ -411,15 +411,15 @@ export default function EVPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-[family-name:var(--font-carbon)]">
+            <h2 className="text-heading font-bold text-white mb-6 font-[family-name:var(--font-carbon)]">
               Ready to Power Your EV Project?
             </h2>
-            <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
+            <p className="text-lead text-indigo-100 mb-10 max-w-2xl mx-auto">
               Partner with us for precision-engineered plastic components that meet the demanding 
               standards of the electric vehicle industry.
             </p>
             <Link href="/contact">
-              <button className="bg-white text-indigo-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all hover:shadow-xl">
+              <button className="bg-white text-indigo-600 px-10 py-4 rounded-full font-bold text-lead hover:bg-gray-100 transition-all hover:shadow-xl">
                 Start Your Project
               </button>
             </Link>

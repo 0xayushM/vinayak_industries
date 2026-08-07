@@ -69,7 +69,7 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
   };
 
   return (
-    <section className="py-16 md:px-6 px-3 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-(--spacing-section) md:px-6 px-3 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-12"
@@ -78,10 +78,10 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-3">
+          <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-3">
             Why Industry Leaders Choose Us
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-lead">
             Proven capabilities backed by real metrics
           </p>
         </motion.div>
@@ -152,7 +152,7 @@ export default function StatsCarousel({ highlights }: StatsCarouselProps) {
 
                       {/* Large Number */}
                       <div className="mb-2">
-                        <span className="text-5xl md:text-6xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amber-600 group-hover:to-orange-600 font-[family-name:var(--font-carbon)] leading-none transition-all duration-300">
+                        <span className="text-display font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amber-600 group-hover:to-orange-600 font-[family-name:var(--font-carbon)] leading-none transition-all duration-300">
                           {item.number}
                         </span>
                       </div>

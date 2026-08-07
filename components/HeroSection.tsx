@@ -69,7 +69,7 @@ export default function HeroSection() {
       <div className="hidden md:block absolute bottom-0 left-0 right-0 z-20">
         <div className="flex items-center">
           <div className="bg-amber-500 px-8 py-4 ml-auto mr-12 skew-x-[-12deg]">
-            <span className="text-gray-900 font-bold text-xl tracking-wider skew-x-[12deg] inline-block font-[family-name:var(--font-carbon)]">
+            <span className="text-gray-900 font-bold text-lead tracking-wider skew-x-[12deg] inline-block font-[family-name:var(--font-carbon)]">
               VINAYAK TECHNOPLAST
             </span>
           </div>
@@ -97,24 +97,24 @@ export default function HeroSection() {
             variants={fadeInUp}
           >
             <Award className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-400 text-xs md:text-sm font-bold tracking-wider">ISO 9001:2015 CERTIFIED</span>
+            <span className="text-amber-400 text-copy font-bold tracking-wider">ISO 9001:2015 CERTIFIED</span>
           </motion.div>
 
           <motion.h1 
-            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-amber-500 leading-[1.05] mb-2 tracking-tight font-[family-name:var(--font-carbon)]"
+            className="text-hero font-bold text-amber-500 leading-[1.05] mb-2 tracking-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             MANUFACTURING
           </motion.h1>
           <motion.h2 
-            className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-6 tracking-tight font-[family-name:var(--font-carbon)]"
+            className="text-display font-bold text-white leading-[1.05] mb-6 tracking-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             FOR THE FUTURE
           </motion.h2>
           
           <motion.p 
-            className="text-base md:text-xl text-gray-200 font-medium mb-8 max-w-2xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-lead text-gray-200 font-medium mb-8 max-w-2xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             Precision moulds and injection molding solutions powering everything from automotive components to consumer appliances. Trusted by industry leaders worldwide.
@@ -125,7 +125,7 @@ export default function HeroSection() {
           >
             <Link href="/contact">
               <motion.button 
-                className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 font-[family-name:var(--font-korto)] group inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="bg-amber-500 hover:bg-amber-600 text-gray-900 px-4 py-2.5 lg:px-6 lg:py-3 md:px-10 md:py-4 rounded-full font-bold text-copy transition-all shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 font-[family-name:var(--font-korto)] group inline-flex items-center justify-center gap-2 w-full sm:w-auto"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -137,7 +137,7 @@ export default function HeroSection() {
             </Link>
             <motion.button 
               onClick={() => setIsDialogOpen(true)}
-              className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-base transition-all font-[family-name:var(--font-korto)] w-full sm:w-auto inline-flex items-center justify-center gap-2"
+              className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border-2 border-white/30 hover:border-white/50 text-white px-4 py-2.5 lg:px-6 lg:py-3 md:px-10 md:py-4 rounded-full font-bold text-copy transition-all font-[family-name:var(--font-korto)] w-full sm:w-auto inline-flex items-center justify-center gap-2"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >

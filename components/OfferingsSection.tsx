@@ -38,10 +38,10 @@ export default function OfferingsSection() {
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
               {/* Left Content */}
               <motion.div {...fadeInUp}>
-                <h2 className="text-4xl md:text-5xl font-bold text-white font-[family-name:var(--font-carbon)] mb-6">
+                <h2 className="text-heading font-bold text-white font-[family-name:var(--font-carbon)] mb-6">
                   Our Equipment
                 </h2>
-                <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                <p className="text-gray-300 text-lead mb-8 leading-relaxed">
                   Our facility houses 30 injection molding machines ranging from 60 to 850 tons, 
                   allowing us to handle a wide variety of project sizes and complexities.
                 </p>
@@ -59,7 +59,7 @@ export default function OfferingsSection() {
                     >
                       <p className="text-amber-500 text-xs font-medium mb-1">Tonnage Range</p>
                       <div className="flex items-center justify-between">
-                        <span className="text-white font-bold text-lg">{item.range}</span>
+                        <span className="text-white font-bold text-lead">{item.range}</span>
                         <div className="bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                           Qty: {item.qty}
                         </div>
@@ -95,7 +95,7 @@ export default function OfferingsSection() {
             {/* Advantages Section */}
             <div>
               <motion.h2 
-                className="text-3xl md:text-4xl font-bold text-white font-[family-name:var(--font-carbon)] mb-8"
+                className="text-title font-bold text-white font-[family-name:var(--font-carbon)] mb-8"
                 {...fadeInUp}
               >
                 Our Main Advantages
@@ -116,7 +116,7 @@ export default function OfferingsSection() {
                         <h3 className="font-bold text-white mb-2">{item.title}</h3>
                         <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
                       </div>
-                      <span className="text-5xl font-bold text-white/20">{item.number}</span>
+                      <span className="text-display font-bold text-white/20">{item.number}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -129,9 +129,9 @@ export default function OfferingsSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <h3 className="font-bold text-xl mb-4">Discover Our Complete Equipment List</h3>
+                  <h3 className="font-bold text-lead mb-4">Discover Our Complete Equipment List</h3>
                   <Link href="/capabilities">
-                    <button className="bg-white text-amber-600 px-6 py-2.5 rounded-full font-medium text-sm hover:bg-gray-100 transition-colors">
+                    <button className="bg-white text-amber-600 px-4 py-2 lg:px-6 lg:py-2.5 rounded-full font-medium text-sm hover:bg-gray-100 transition-colors">
                       View Capabilities
                     </button>
                   </Link>

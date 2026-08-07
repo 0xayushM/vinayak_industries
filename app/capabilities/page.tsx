@@ -57,19 +57,19 @@ export default function CapabilitiesPage() {
         </div>
 
         <motion.div 
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-7xl mx-auto relative z-10 w-full px-(--spacing-gutter)"
           initial="initial"
           animate="animate"
           variants={staggerContainer}
         >
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
+            className="text-hero font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]"
             variants={fadeInUp}
           >
             CAPABILITIES
           </motion.h1>
           <motion.p 
-            className="text-base md:text-2xl text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
+            className="text-subtitle text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
             State-of-the-art equipment and advanced manufacturing processes to deliver exceptional results.
@@ -85,7 +85,7 @@ export default function CapabilitiesPage() {
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`px-3 py-2 md:px-6 md:py-3 text-sm md:text-lg rounded-full font-medium transition-all ${
+                className={`px-3 py-2 md:px-6 md:py-3 text-lead rounded-full font-medium transition-all ${
                   activeTab === index
                     ? 'bg-amber-500 text-white shadow-lg'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
@@ -104,9 +104,9 @@ export default function CapabilitiesPage() {
         {activeTab === 0 && (
           <div>
             {/* Product Design Section */}
-            <section className="py-16 px-6 bg-white">
+            <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
               <div className="max-w-8xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Product Design & Development</h2>
+                <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Product Design & Development</h2>
                 
                 
 
@@ -128,12 +128,12 @@ export default function CapabilitiesPage() {
                       />
                     </div>
                     <div className="p-8">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">VMC HAAS VF3</h3>
+                      <h3 className="text-subtitle font-bold text-gray-900 mb-4">VMC HAAS VF3</h3>
                       <ul className="space-y-3 text-gray-600">
                         <li>• Capacity of Developing <span className="font-semibold text-amber-500">200 Moulds Per Annum</span> (Hot runner/Hot sprue/Three plate, Two plate, Cold Runner)</li>
                         <li>• Average Lead Time of <span className="font-semibold text-amber-500">4-6 Weeks</span> & Maintenance of Over 50 Moulds</li>
                       </ul>
-                      <button className="mt-6 bg-amber-500 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
+                      <button className="mt-6 bg-amber-500 text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
                         Send Enquiry
                       </button>
                     </div>
@@ -155,12 +155,12 @@ export default function CapabilitiesPage() {
                       />
                     </div>
                     <div className="p-8">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">EDM JOEMAR AZ50TR</h3>
+                      <h3 className="text-subtitle font-bold text-gray-900 mb-4">EDM JOEMAR AZ50TR</h3>
                       <ul className="space-y-3 text-gray-600">
                         <li>• Capability to manufacture moulds for <span className="font-semibold text-amber-500">10 to 700 Tonnes</span> Injection molding Machines</li>
                         <li>• Capability to manufacture moulds to deliver accuracy within <span className="font-semibold text-amber-500">2 microns</span></li>
                      </ul>
-                      <button className="mt-6 bg-amber-500 text-white px-6 py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
+                      <button className="mt-6 bg-amber-500 text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
                         Send Enquiry
                       </button>
                     </div>
@@ -173,10 +173,10 @@ export default function CapabilitiesPage() {
 
         {/* Tab 2: Manufacturing Shop Floor */}
         {activeTab === 1 && (
-          <section className="py-16 px-6 bg-white">
+          <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
             <div className="max-w-8xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing Shop Floor</h2>
-              <p className="text-xl text-gray-600 mb-12">
+              <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing Shop Floor</h2>
+              <p className="text-lead text-gray-600 mb-12">
                 Vinayak Technoplast has a state-of-the-art facility that provides high quality services to its clients in the following areas.
               </p>
 
@@ -189,7 +189,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Dedicated Team of Processing Engineers</span>
+                      <span className="text-gray-700 text-lead">Dedicated Team of Processing Engineers</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -197,7 +197,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg"><span className="font-semibold text-amber-500">30 Years of Experience</span> of Processing Engineering Polymers & Various Polymer Compounds</span>
+                      <span className="text-gray-700 text-lead"><span className="font-semibold text-amber-500">30 Years of Experience</span> of Processing Engineering Polymers & Various Polymer Compounds</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -205,7 +205,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Over <span className="font-semibold text-amber-500">30 PLC operated</span> injection moulding machines ranging from <span className="font-semibold text-amber-500">60~850 Tonnes</span> available for bulk production</span>
+                      <span className="text-gray-700 text-lead">Over <span className="font-semibold text-amber-500">30 PLC operated</span> injection moulding machines ranging from <span className="font-semibold text-amber-500">60~850 Tonnes</span> available for bulk production</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -213,7 +213,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Range includes make of over 30 Plastic Injection Molding Machines like <span className="font-semibold">Ferromatik, Toshiba, L&T, Shibaura and Bole</span></span>
+                      <span className="text-gray-700 text-lead">Range includes make of over 30 Plastic Injection Molding Machines like <span className="font-semibold">Ferromatik, Toshiba, L&T, Shibaura and Bole</span></span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -221,7 +221,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">Processing Capability Up to <span className="font-semibold text-amber-500">4000 gms</span> Of Shot Weight</span>
+                      <span className="text-gray-700 text-lead">Processing Capability Up to <span className="font-semibold text-amber-500">4000 gms</span> Of Shot Weight</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -229,7 +229,7 @@ export default function CapabilitiesPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-gray-700 text-lg">All Machines are PLC Controlled & Fitted With Hopper Dryers & Loaders</span>
+                      <span className="text-gray-700 text-lead">All Machines are PLC Controlled & Fitted With Hopper Dryers & Loaders</span>
                     </li>
                   </ul>
                 </div>
@@ -248,11 +248,11 @@ export default function CapabilitiesPage() {
 
         {/* Tab 3: Manufacturing and R&D */}
         {activeTab === 2 && (
-          <section className="py-16 px-6 bg-white">
+          <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
             <div className="max-w-8xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing and R&D</h2>
+              <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Manufacturing and R&D</h2>
               <div className="bg-gray-50 rounded-3xl p-8 md:p-12 mb-12">
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                <p className="text-lead text-gray-700 leading-relaxed mb-6">
                   Vinayak Technoplast engineers have the ability to combine unique ideas and advanced technology into innovative and superior products.
                   And, along the way, Vinayak Technoplast has built a reputation for uncompromising quality. The Vinayak Technoplast development facilities consist of design and research engineering, product manufacturing and Testing laboratory. The development team works together with our customers to bring a product from concept, through design and testing, into final production.
                 </p>
@@ -263,7 +263,7 @@ export default function CapabilitiesPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-gray-700 text-lg font-semibold">Fully Equipped Area For Assembly & Sub Assemblies</span>
+                    <span className="text-gray-700 text-lead font-semibold">Fully Equipped Area For Assembly & Sub Assemblies</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -271,7 +271,7 @@ export default function CapabilitiesPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-gray-700 text-lg font-semibold">Efficient Material Handling System supported by Goods Lift</span>
+                    <span className="text-gray-700 text-lead font-semibold">Efficient Material Handling System supported by Goods Lift</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
@@ -279,14 +279,14 @@ export default function CapabilitiesPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-gray-700 text-lg font-semibold">Motor Driven Over Head Cranes</span>
+                    <span className="text-gray-700 text-lead font-semibold">Motor Driven Over Head Cranes</span>
                   </li>
                 </ul>
               </div>
 
               {/* Quality Checks Table */}
               {/* Tooling Technology Table */}
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Highest Standards in Tooling With Latest Technology</h3>
+              <h3 className="text-subtitle font-bold text-gray-900 mb-6">Highest Standards in Tooling With Latest Technology</h3>
               <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
@@ -337,17 +337,17 @@ export default function CapabilitiesPage() {
 
         {/* Tab 4: Lab & Testing Facilities */}
         {activeTab === 3 && (
-          <section className="py-16 px-6 bg-white">
+          <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
             <div className="max-w-8xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Lab & Testing Facilities</h2>
+              <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] font-[family-name:var(--font-carbon)] mb-8">Lab & Testing Facilities</h2>
               <div className="bg-gray-50 rounded-3xl p-8 md:p-12 mb-12">
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <p className="text-lead text-gray-700 leading-relaxed">
                   Our success in this industry is the result of hard work of manpower. Our team comprises of engineers, technocrats, marketing managers, quality controllers, R & D personnel, packing as well as store experts. We also provide continuous training to team to improvise their skills.
                 </p>
               </div>
 
               {/* Testing Equipment Table */}
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Testing Equipment in our Plant</h3>
+              <h3 className="text-subtitle font-bold text-gray-900 mb-6">Testing Equipment in our Plant</h3>
               <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden mb-12">
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -381,7 +381,7 @@ export default function CapabilitiesPage() {
               </div>
 
               {/* Equipment Images */}
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">Our Testing Equipment</h3>
+              <h3 className="text-subtitle font-bold text-gray-900 mb-8">Our Testing Equipment</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   { name: "Deep Freezer", url: "/images/manufacturing/manufacturing-4/Deep-Freezer.jpg" },
@@ -401,7 +401,7 @@ export default function CapabilitiesPage() {
                       />
                     </div>
                     <div className="p-4">
-                      <h4 className="text-lg font-semibold text-gray-900">{item.name}</h4>
+                      <h4 className="text-lead font-semibold text-gray-900">{item.name}</h4>
                     </div>
                   </div>
                 ))}
@@ -411,14 +411,14 @@ export default function CapabilitiesPage() {
         )}
       </div>
       {/* CTA Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-amber-500 to-amber-600">
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-gradient-to-br from-amber-500 to-amber-600">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl font-bold mb-6 font-[family-name:var(--font-carbon)]">Need a Custom Product?</h2>
-          <p className="text-xl text-amber-100 mb-8">
+          <h2 className="text-heading font-bold mb-6 font-[family-name:var(--font-carbon)]">Need a Custom Product?</h2>
+          <p className="text-lead text-amber-100 mb-8">
             We specialize in developing custom plastic injection molding solutions tailored to your specific requirements.
           </p>
           <Link href="/contact">
-            <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-amber-500 px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead hover:bg-gray-100 transition-colors">
               Discuss Your Project
             </button>
           </Link>

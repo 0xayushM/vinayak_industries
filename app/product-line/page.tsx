@@ -74,15 +74,15 @@ export default function ProductLinePage() {
           </svg>
         </div>
         <motion.div
-          className="max-w-7xl mx-auto relative z-10 w-full px-6"
+          className="max-w-7xl mx-auto relative z-10 w-full px-(--spacing-gutter)"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]">
+          <h1 className="text-hero font-bold text-amber-500 mb-4 leading-tight font-[family-name:var(--font-carbon)]">
             PRODUCT LINE
           </h1>
-          <p className="text-base md:text-xl text-white max-w-2xl leading-relaxed">
+          <p className="text-lead text-white max-w-2xl leading-relaxed">
             Diverse range of plastic injection molded products serving multiple industries with precision and quality.
           </p>
         </motion.div>
@@ -167,7 +167,7 @@ export default function ProductLinePage() {
           {/* Header bar */}
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-xl font-bold text-gray-900 font-[family-name:var(--font-carbon)]">{activeName}</h2>
+              <h2 className="text-lead font-bold text-gray-900 font-[family-name:var(--font-carbon)]">{activeName}</h2>
               <p className="text-sm text-gray-500 mt-0.5">
                 {activeImages.length} product{activeImages.length !== 1 ? 's' : ''}
                 {totalPages > 1 && ` · Page ${currentPage} of ${totalPages}`}
@@ -245,14 +245,14 @@ export default function ProductLinePage() {
       </div>
 
       {/* CTA */}
-      <section className="py-16 px-6 bg-gradient-to-br from-amber-500 to-amber-600 mt-8">
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-gradient-to-br from-amber-500 to-amber-600 mt-8">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl font-bold mb-6 font-[family-name:var(--font-carbon)]">Need a Custom Product?</h2>
-          <p className="text-xl text-amber-100 mb-8">
+          <h2 className="text-heading font-bold mb-6 font-[family-name:var(--font-carbon)]">Need a Custom Product?</h2>
+          <p className="text-lead text-amber-100 mb-8">
             We specialize in developing custom plastic injection molding solutions tailored to your specific requirements.
           </p>
           <Link href="/contact">
-            <button className="bg-white text-amber-500 px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-amber-500 px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead hover:bg-gray-100 transition-colors">
               Discuss Your Project
             </button>
           </Link>
