@@ -48,7 +48,7 @@ export default function AboutSection() {
                   {/* Video Thumbnail */}
                   <Image
                     src="/images/infrastructure/Vinayak_Technoplast1.png"
-                    alt="Vinayak Technoplast injection moulding factory, Nangloi, New Delhi"
+                    alt="Vinayak Industries Factory"
                     fill
                     className="object-cover"
                   />

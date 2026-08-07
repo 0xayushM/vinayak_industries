@@ -10,7 +10,7 @@ import CTASection from "@/components/CTASection";
 import teamData from '@/data/team.json';
 import infrastructureData from '@/data/infrastructure.json';
 
-export default function AboutClient() {
+export default function AboutPage() {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
@@ -46,7 +46,7 @@ export default function AboutClient() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/bg-image.png"
-            alt="Vinayak Technoplast manufacturing facility, New Delhi"
+            alt="Manufacturing Facility"
             fill
             className="object-cover"
             priority
@@ -122,7 +122,7 @@ export default function AboutClient() {
                 <div className="absolute top-0 right-0 w-[50%] h-[60%] z-0">
                   <Image
                     src="/images/bg-image.png"
-                    alt="Vinayak Technoplast manufacturing facility, New Delhi"
+                    alt="Manufacturing Facility"
                     fill
                     className="object-cover"
                   />

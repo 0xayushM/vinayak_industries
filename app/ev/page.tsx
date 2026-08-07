@@ -10,7 +10,7 @@ import { Download } from "lucide-react";
 import { useState } from "react";
 import evData from '@/data/ev.json';
 
-export default function EvClient() {
+export default function EVPage() {
   const [showAllImages, setShowAllImages] = useState(false);
 
   const evImages = evData.images;
@@ -156,7 +156,7 @@ export default function EvClient() {
               <div className="relative w-full aspect-[4/5] lg:aspect-square scale-125">
                 <Image
                   src="/images/wireframes/EV Wireframe (1).png"
-                  alt="Electric vehicle wireframe showing injection moulded body and battery components"
+                  alt="EV Wireframe"
                   fill
                   className="object-contain"
                   priority
@@ -398,7 +398,7 @@ export default function EvClient() {
         <div className="absolute top-0 right-0 w-96 h-96 opacity-20">
           <Image
             src="/images/wireframes/EV Wireframe (2).png"
-            alt="Vinayak Technoplast EV component manufacturing background"
+            alt=""
             fill
             className="object-contain opacity-30"
           />

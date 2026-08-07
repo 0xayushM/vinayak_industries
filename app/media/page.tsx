@@ -24,7 +24,7 @@ interface MediaItem {
   tags?: string[];
 }
 
-export default function MediaClient() {
+export default function MediaPage() {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = ["Newsletters", "Case Studies", "Blogs"];
@@ -57,7 +57,7 @@ export default function MediaClient() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/bg-image.png"
-            alt="Vinayak Technoplast press coverage and newsletters"
+            alt="Vinayak Technoplast Media"
             fill
             className="object-cover"
             priority

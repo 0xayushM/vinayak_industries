@@ -27,28 +27,28 @@ export default function Footer() {
           </div>
           {/* Manufacturing Capabilities */}
           <div>
-            <h3 className="text-lg font-bold mb-6">Explore</h3>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
-              {[
-                { href: "/moulding", label: "Injection Moulding" },
-                { href: "/capabilities", label: "Capabilities" },
-                { href: "/product-line", label: "Product Line" },
-                { href: "/ev", label: "EV Components" },
-                { href: "/offerings", label: "Offerings" },
-                { href: "/about", label: "About Us" },
-                { href: "/blog", label: "Blog" },
-                { href: "/media", label: "Media" },
-                { href: "/contact", label: "Contact" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-amber-500 transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h3 className="text-lg font-bold mb-6">Manufacturing Capabilities</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/capabilities" className="text-gray-400 hover:text-amber-500 transition-colors text-sm">
+                  Product Design & Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/capabilities" className="text-gray-400 hover:text-amber-500 transition-colors text-sm">
+                  Manufacturing Shop Floor
+                </Link>
+              </li>
+              <li>
+                <Link href="/capabilities" className="text-gray-400 hover:text-amber-500 transition-colors text-sm">
+                  Manufacturing and R&D
+                </Link>
+              </li>
+              <li>
+                <Link href="/capabilities" className="text-gray-400 hover:text-amber-500 transition-colors text-sm">
+                  Lab & Testing Facilities
+                </Link>
+              </li>
             </ul>
           </div>
 

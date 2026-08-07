@@ -20,7 +20,6 @@ export default function Navigation() {
     { href: "/product-line", label: "Products" },
     { href: "/moulding", label: "Moulds" },
     { href: "/ev", label: "EV" },
-    { href: "/blog", label: "Blog" },
     { href: "/media", label: "Media" },
     { href: "/contact", label: "Contact" },
   ];

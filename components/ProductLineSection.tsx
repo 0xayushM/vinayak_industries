@@ -23,7 +23,7 @@ export default function ProductLineSection() {
           <div className="absolute top-0 right-0 w-[70%] h-[55%] z-0">
             <Image
               src="/images/bg-image.png"
-              alt="Range of injection moulded components manufactured by Vinayak Technoplast"
+              alt="Manufacturing Facility"
               fill
               className="object-cover object-top"
             />

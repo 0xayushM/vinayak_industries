@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function CapabilitiesClient() {
+export default function CapabilitiesPage() {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
@@ -41,7 +41,7 @@ export default function CapabilitiesClient() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/bg-image.png"
-            alt="Injection moulding machines on the Vinayak Technoplast shop floor"
+            alt="Manufacturing Facility"
             fill
             className="object-cover"
             priority

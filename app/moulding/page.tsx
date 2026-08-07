@@ -33,7 +33,7 @@ import {
   Signal,
 } from "lucide-react";
 
-export default function MouldingClient() {
+export default function MouldingPage() {
   const [activeStep, setActiveStep] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const cycleRef = useRef<HTMLDivElement>(null);
