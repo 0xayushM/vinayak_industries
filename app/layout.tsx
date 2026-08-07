@@ -4,14 +4,101 @@ import "./globals.css";
 import VisitorTracker from "@/components/VisitorTracker";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Script from "next/script";
-import {
-  SITE_URL,
-  SITE_NAME,
-  DEFAULT_OG_IMAGE,
-  organizationSchema,
-  localBusinessSchema,
-  websiteSchema,
-} from "@/lib/seo";
+
+const SITE_URL = "https://www.vinayaktechnoplast.com";
+const SITE_NAME = "Vinayak Technoplast";
+const DEFAULT_OG_IMAGE = "/logo/logo.png";
+
+const ORG = {
+  legalName: "Vinayak Technoplast Pvt. Ltd.",
+  email: "sales@vinayaktechnoplast.com",
+  phones: ["+91-9311378904", "+91-9999394814"],
+  street: "F-6, DSIDC Industrial Complex, Rohtak Road, Nangloi",
+  locality: "New Delhi",
+  region: "Delhi",
+  postalCode: "110041",
+  country: "IN",
+  latitude: 28.6833,
+  longitude: 77.0833,
+  linkedin: "https://www.linkedin.com/company/vinayaktechnoplast",
+};
+
+const postalAddress = {
+  "@type": "PostalAddress" as const,
+  streetAddress: ORG.street,
+  addressLocality: ORG.locality,
+  addressRegion: ORG.region,
+  postalCode: ORG.postalCode,
+  addressCountry: ORG.country,
+};
+
+function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: SITE_NAME,
+    legalName: ORG.legalName,
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/logo/logo.png` },
+    description:
+      "Tier-1 plastic injection moulding manufacturer in New Delhi, India. In-house tool room, 650-tonne press capacity and ISO 9001:2015 certified production for automotive, EV, electrical, medical and appliance OEMs.",
+    email: ORG.email,
+    telephone: ORG.phones[0],
+    address: postalAddress,
+    sameAs: [ORG.linkedin],
+    contactPoint: ORG.phones.map((telephone) => ({
+      "@type": "ContactPoint",
+      telephone,
+      contactType: "sales",
+      email: ORG.email,
+      areaServed: "IN",
+      availableLanguage: ["en", "hi"],
+    })),
+  };
+}
+
+function localBusinessSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Manufacturer",
+    "@id": `${SITE_URL}/#business`,
+    name: SITE_NAME,
+    image: `${SITE_URL}/images/infrastructure/Vinayak_Technoplast1.png`,
+    url: SITE_URL,
+    telephone: ORG.phones[0],
+    email: ORG.email,
+    address: postalAddress,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: ORG.latitude,
+      longitude: ORG.longitude,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    ],
+    hasCredential: "ISO 9001:2015",
+    areaServed: { "@type": "Country", name: "India" },
+    parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
+function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: SITE_NAME,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en-IN",
+  };
+}
 
 const korto = localFont({
   src: "../public/fonts/Korto.ttf",
