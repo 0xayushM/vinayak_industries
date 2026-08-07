@@ -38,7 +38,12 @@ export const useVisitorTracking = () => {
         // Get location data from IP geolocation API
         let locationData = {};
         try {
-          const geoResponse = await fetch('https://ipapi.co/json/');
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 5000);
+          const geoResponse = await fetch('https://ipapi.co/json/', {
+            signal: controller.signal,
+          });
+          clearTimeout(timeoutId);
           if (geoResponse.ok) {
             const geoData = await geoResponse.json();
             locationData = {
@@ -51,7 +56,7 @@ export const useVisitorTracking = () => {
             };
           }
         } catch (error) {
-          console.error('Error fetching geolocation:', error);
+          console.warn('Geolocation lookup skipped:', error instanceof Error ? error.message : 'unknown error');
         }
 
         // Prepare tracking data
