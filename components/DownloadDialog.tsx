@@ -60,6 +60,18 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
       const responseData = await brewMyAgentResponse.json();
       console.log('BrewMyAgent success response:', responseData);
 
+      // Send the outreach email in the background; don't block the download on it
+      fetch('/api/send-profile-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: formData.name, email: formData.email }),
+        keepalive: true,
+      }).catch((error) => {
+        console.error('Error sending outreach email:', error);
+      });
+
       // Also send to existing API for backward compatibility
       try {
         const response = await fetch('/api/subscribe', {
