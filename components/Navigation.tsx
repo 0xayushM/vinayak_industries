@@ -7,7 +7,11 @@ import { useState, useEffect } from "react";
 import DownloadDialog from "./DownloadDialog";
 import { Download } from "lucide-react";
 
-export default function Navigation() {
+/**
+ * solidAfter: scroll distance in px after which the bar turns solid white.
+ * Defaults to just before the end of the 60vh dark hero most pages have.
+ */
+export default function Navigation({ solidAfter }: { solidAfter?: number } = {}) {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,14 +32,14 @@ export default function Navigation() {
     const handleScroll = () => {
       // Check if scrolled past 60vh (hero section height)
       const heroHeight = window.innerHeight * 0.6;
-      setIsScrolled(window.scrollY > heroHeight - 100);
+      setIsScrolled(window.scrollY > (solidAfter ?? heroHeight - 100));
     };
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial state
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [solidAfter]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

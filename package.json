@@ -23,7 +23,7 @@
     "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "baseline-browser-mapping": "^2.10.10",
+    "baseline-browser-mapping": "^2.11.27",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

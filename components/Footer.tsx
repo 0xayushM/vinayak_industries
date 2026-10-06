@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 export default function Footer() {
   return (
@@ -92,7 +93,12 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 mt-8">
           <p className="text-gray-400 text-sm text-center">
-            Vinayak Technoplast © 2025. All rights reserved.
+            Vinayak Technoplast © {new Date().getFullYear()}. All rights reserved. ·{' '}
+            <Link href="/privacy" className="hover:text-amber-500 transition-colors">
+              Privacy policy
+            </Link>{' '}
+            ·{' '}
+            <CookieSettingsButton className="hover:text-amber-500 transition-colors" />
           </p>
         </div>
       </div>

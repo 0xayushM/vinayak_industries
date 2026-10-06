@@ -4,6 +4,10 @@ import "./globals.css";
 import VisitorTracker from "@/components/VisitorTracker";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Script from "next/script";
+import ConsentAndTags from "@/components/ConsentAndTags";
+
+// Set NEXT_PUBLIC_GTM_ID (e.g. GTM-XXXXXXX) in Vercel to switch on Google Tag Manager.
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 const korto = localFont({
   src: "../public/fonts/Korto.ttf",
@@ -60,31 +64,30 @@ export default function RootLayout({
         className={`${korto.variable} ${osiris.variable} antialiased`}
         style={{ fontFamily: 'var(--font-korto)' }}
       >
-        <Script id="apollo-tracker" strategy="afterInteractive">
+        {/* Google Consent Mode v2: everything denied until the visitor accepts (or restores an earlier "accept") */}
+        <Script id="consent-default" strategy="beforeInteractive">
           {`
-            function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
-            o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-            o.onload=function(){window.trackingFunctions.onLoad({appId:"69c2849cd2c4040015ed6ff6"})},
-            document.head.appendChild(o)}initApollo();
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            var granted = false;
+            try { granted = localStorage.getItem('vt_consent') === 'granted'; } catch (e) {}
+            var s = granted ? 'granted' : 'denied';
+            gtag('consent', 'default', {
+              ad_storage: s, ad_user_data: s, ad_personalization: s, analytics_storage: s,
+              functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500
+            });
           `}
         </Script>
-        <Script id="reb2b-tracker" strategy="afterInteractive">
-          {`
-            !function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("R6G5YH871V65");
-          `}
-        </Script>
-        <Script id="microsoft-clarity" strategy="afterInteractive">
-          {`
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "xypkl0pwhk");
-          `}
-        </Script>
+        {GTM_ID && (
+          <Script id="gtm" strategy="afterInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
+          </Script>
+        )}
         <VisitorTracker />
         {children}
         <WhatsAppButton />
+        <ConsentAndTags />
       </body>
     </html>
   );

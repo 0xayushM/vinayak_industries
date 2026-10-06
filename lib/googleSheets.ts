@@ -30,5 +30,5 @@ export async function appendToSheet(values: string[][], sheetRange: string = 'Sh
 }
 
 export async function appendVisitorTracking(values: string[][]) {
-  return appendToSheet(values, 'Visitor Tracking!A:R');
+  return appendToSheet(values, 'Visitor Tracking!A:V');
 }

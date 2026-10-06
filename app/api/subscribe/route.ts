@@ -14,7 +14,8 @@ export async function POST(request: NextRequest) {
     }
 
     const timestamp = new Date().toISOString();
-    const values = [[timestamp, name, email, phone, 'Company Presentation Download']];
+    // Leading apostrophe keeps phone numbers as text in Sheets
+    const values = [[timestamp, name, email, `'${String(phone).trim()}`, 'Company Presentation Download']];
 
     await appendToSheet(values, 'Subscribers!A:E');
 

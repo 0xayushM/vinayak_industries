@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { X, Send, CheckCircle2, Wrench } from 'lucide-react';
+import { submitLead } from '@/lib/tracking';
 
 interface MouldingInquiryDialogProps {
   isOpen: boolean;
@@ -51,18 +52,20 @@ export default function MouldingInquiryDialog({
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('/api/brewmy-agent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          form_name: 'moulding_inquiry',
-          data: formData,
-        }),
+      const ok = await submitLead({
+        formName: 'moulding_inquiry',
+        sheetEndpoint: '/api/contact',
+        sheetBody: {
+          name: formData.name,
+          company: formData.company,
+          phone: formData.phone,
+          email: formData.email,
+          message: formData.projectDetails || '(no project details given)',
+          source: 'moulding_inquiry',
+        },
+        agentData: formData,
       });
-
-      if (!response.ok) {
-        throw new Error(`Request failed: ${response.status}`);
-      }
+      if (!ok) throw new Error('Lead could not be saved');
 
       setSubmitStatus({
         type: 'success',

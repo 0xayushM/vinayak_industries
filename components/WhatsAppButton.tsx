@@ -11,7 +11,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-5 right-5 z-50 group"
+      className="fixed bottom-5 right-5 z-50 group [body[data-quote-form]_&]:max-md:hidden"
     >
       <span className="absolute inset-0 rounded-full bg-green-500 opacity-60" />
       <span className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] hover:bg-[#1ebe5b] text-white shadow-lg shadow-green-500/30 transition-transform duration-200 group-hover:scale-110">

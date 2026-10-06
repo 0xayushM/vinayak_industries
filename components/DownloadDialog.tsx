@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { X, Download, FileText } from 'lucide-react';
+import { submitLead, trackEvent } from '@/lib/tracking';
 
 interface DownloadDialogProps {
   isOpen: boolean;
@@ -31,34 +32,13 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
     setSubmitStatus(null);
 
     try {
-      // Debug environment variables
-      console.log('Environment variables:', {
-        endpoint: process.env.NEXT_PUBLIC_BREW_MY_AGENT_ENDPOINT,
-        apiKey: process.env.NEXT_PUBLIC_BREW_MY_AGENT_API_KEY
+      const ok = await submitLead({
+        formName: 'download_dialog',
+        sheetEndpoint: '/api/subscribe',
+        sheetBody: formData,
+        agentData: formData,
       });
-
-      // Send to BrewMyAgent via secure API route
-      const brewMyAgentResponse = await fetch('/api/brewmy-agent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          form_name: 'download_dialog',
-          data: formData
-        }),
-      });
-
-      console.log('BrewMyAgent response status:', brewMyAgentResponse.status);
-      
-      if (!brewMyAgentResponse.ok) {
-        const errorData = await brewMyAgentResponse.text();
-        console.error('BrewMyAgent error response:', errorData);
-        throw new Error(`Failed to submit to BrewMyAgent: ${brewMyAgentResponse.status}`);
-      }
-
-      const responseData = await brewMyAgentResponse.json();
-      console.log('BrewMyAgent success response:', responseData);
+      if (!ok) throw new Error('Lead could not be saved');
 
       // Send the outreach email in the background; don't block the download on it
       fetch('/api/send-profile-email', {
@@ -71,20 +51,6 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
       }).catch((error) => {
         console.error('Error sending outreach email:', error);
       });
-
-      // Also send to existing API for backward compatibility
-      try {
-        const response = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-      } catch (error) {
-        console.error('Error sending to existing API:', error);
-        // Continue even if existing API fails
-      }
 
       setSubmitStatus({
         type: 'success',
@@ -103,6 +69,7 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
   };
 
   const handleDownload = () => {
+    trackEvent('deck_download');
     const link = document.createElement('a');
     link.href = '/Vinayak_Profile.pdf';
     link.download = 'Vinayak_Technoplast_Company_Profile.pdf';

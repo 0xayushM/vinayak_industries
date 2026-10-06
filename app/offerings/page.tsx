@@ -245,19 +245,17 @@ export default function OfferingsPage() {
       </section>
       
       {/* CTA Section */}
-      <section className="bg-gray-100">
-        <div className="max-w-8xl mx-auto">
-          <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-8 lg:p-12 text-center">
-            <h2 className="text-heading font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
-            <p className="text-lead text-amber-100 mb-8 max-w-2xl mx-auto">
-              Let's discuss how our comprehensive offerings can bring your product vision to life.
-            </p>
-            <Link href="/contact">
-              <button className="bg-white text-amber-500 px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead hover:bg-gray-100 transition-colors">
-                Request a Quote
-              </button>
-            </Link>
-          </div>
+      <section className="py-(--spacing-section) px-(--spacing-gutter) bg-gradient-to-br from-amber-500 to-amber-600">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-heading font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
+          <p className="text-lead text-amber-100 mb-8 max-w-2xl mx-auto">
+            Let's discuss how our comprehensive offerings can bring your product vision to life.
+          </p>
+          <Link href="/contact">
+            <button className="bg-white text-amber-500 px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead hover:bg-gray-100 transition-colors">
+              Request a Quote
+            </button>
+          </Link>
         </div>
       </section>
 
