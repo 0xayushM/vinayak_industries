@@ -1,20 +1,18 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, FileText, Mail, MessageSquare, Package, Phone, PhoneCall, Plus, Wrench, X, type LucideIcon } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import Honeypot from '@/components/Honeypot';
 import InquirySheet from '@/components/InquirySheet';
-import { submitLead, trackEvent } from '@/lib/tracking';
+import { primeFormGuard, submitLead, trackEvent } from '@/lib/tracking';
 import {
-  DRAWING_OPTIONS,
   EMPTY_DRAFT,
   INQUIRY_TYPES,
   PHONE_RE,
-  QUANTITIES,
-  TIMELINES,
   buildDrawingWhatsAppHref,
   buildSheetMessage,
   buildWhatsAppHref,
@@ -23,13 +21,12 @@ import {
   inquiryOf,
   loadDraft,
   saveDraft,
-  specParts,
   type InquiryId,
   type QuoteDraft,
 } from '@/lib/quote';
 
 const TYPE_ICONS: Record<InquiryId, LucideIcon> = { quote: FileText, mould: Wrench, sample: Package, other: MessageSquare };
-const STEP_LABELS = ['Need', 'Details', 'Contact'];
+const STEP_LABELS = ['Need', 'Contact'];
 const RESCUE_SEEN_KEY = 'vt_quote_rescue';
 const stepHint = 'mt-1 text-sm text-gray-600 md:mt-2 md:text-base';
 
@@ -43,13 +40,16 @@ const stepVariants = {
 const inputClass =
   'w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none text-gray-900 placeholder:text-gray-400';
 const primaryButton =
-  'max-md:h-13 inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-gray-900 px-6 py-3 rounded-full font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2';
+  'inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-gray-900 px-6 py-3 rounded-full font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2';
 const backButton =
-  'inline-flex shrink-0 items-center justify-center gap-2 px-4 py-3 rounded-full font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 max-md:h-13 max-md:w-12 max-md:px-0 max-md:bg-gray-100';
-// Phones: the step's buttons stick to the bottom of the screen, so the next action is always visible
-// without scrolling. From md up it is an ordinary row at the end of the step.
-const actionBar =
-  'sticky bottom-0 z-10 -mx-5 mt-4 flex items-center gap-2 bg-white px-5 pb-4 pt-2 before:absolute before:inset-x-0 before:-top-4 before:h-4 before:bg-gradient-to-t before:from-white before:to-transparent md:static md:mx-0 md:mt-7 md:gap-3 md:p-0 md:before:hidden';
+  'inline-flex shrink-0 items-center justify-center gap-2 px-4 py-3 rounded-full font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500';
+// Phones get these actions from the fixed bottom bar instead, so the row is hidden there
+const actionRow = 'mt-7 flex items-center gap-3 max-md:hidden';
+const barSideButton =
+  'flex h-14 w-14 shrink-0 flex-col items-center justify-center gap-0.5 rounded-2xl text-[11px] font-medium text-gray-700 transition-colors active:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500';
+const barPrimaryButton =
+  'flex h-14 min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-amber-500 px-5 text-base font-bold text-gray-900 shadow-lg shadow-amber-500/40 transition-colors active:bg-amber-600 disabled:bg-gray-300 disabled:shadow-none focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2';
+const FORM_ID = 'quote-form';
 
 export default function QuoteBuilder() {
   const [draft, setDraft] = useState<QuoteDraft>(EMPTY_DRAFT);
@@ -62,6 +62,7 @@ export default function QuoteBuilder() {
   const [rescueOpen, setRescueOpen] = useState(false);
   const [formInView, setFormInView] = useState(true);
   const [noteOpen, setNoteOpen] = useState(false); // phones: the optional note starts collapsed
+  const [honeypot, setHoneypot] = useState('');
 
   const cardRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -97,6 +98,7 @@ export default function QuoteBuilder() {
       /* storage blocked */
     }
     hydrated.current = true;
+    primeFormGuard();
   }, []);
 
   useEffect(() => {
@@ -153,11 +155,12 @@ export default function QuoteBuilder() {
     return () => io.disconnect();
   }, []);
 
-  // Lets the floating WhatsApp button step aside on phones while the form (which has its own WhatsApp link) is on screen
+  // Phones: while the bottom bar is shown, the site's floating WhatsApp button docks into the bar's right end
+  // (see WhatsAppButton) so it stays reachable without covering the form
   useEffect(() => {
-    document.body.toggleAttribute('data-quote-form', formInView);
+    document.body.toggleAttribute('data-quote-form', !sent);
     return () => document.body.removeAttribute('data-quote-form');
-  }, [formInView]);
+  }, [sent]);
 
   const markStarted = () => {
     if (formStarted.current) return;
@@ -224,11 +227,9 @@ export default function QuoteBuilder() {
           ...contact,
           message: draft.message.trim(),
           inquiryType: type.label,
-          quantity: draft.quantity,
-          timeline: draft.timeline,
-          drawing: draft.drawing,
           callbackRequested: callback ? 'yes' : 'no',
         },
+        honeypot,
       });
       if (!ok) throw new Error('Lead could not be saved');
 
@@ -259,7 +260,15 @@ export default function QuoteBuilder() {
   };
 
   const showNote = type?.id === 'other' || noteOpen;
-  const detailsEmpty = !draft.message.trim() && specParts(draft).every((p) => !p.value);
+  // What the phone bottom bar's main button does right now
+  const awayFromForm = !formInView;
+  const barBack = !!type && !awayFromForm && step > 0;
+  const barSubmits = !!type && !awayFromForm && step === 1;
+  const bar = !type
+    ? { label: 'Request a quote', action: () => chooseType('quote') }
+    : awayFromForm
+      ? { label: 'Finish my inquiry', action: backToForm }
+      : { label: 'Continue', action: () => goTo(1) };
   const sentFirstName = sent?.name.trim().split(/\s+/)[0] || '';
 
   const errorAlert = (
@@ -280,14 +289,14 @@ export default function QuoteBuilder() {
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900/90 to-gray-900/70" />
         </div>
 
-        <div className="relative z-10 mx-auto grid max-w-8xl gap-5 px-(--spacing-gutter) pb-(--spacing-section-sm) pt-[5.5rem] md:gap-8 md:pt-28 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-12 xl:pt-32">
+        <div className="relative z-10 mx-auto grid max-w-8xl gap-5 px-(--spacing-gutter) pb-(--spacing-section-sm) pt-20 md:gap-8 md:pt-28 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-12 xl:pt-32">
           <header className="lg:col-span-5">
             <p className="hidden text-sm font-medium uppercase tracking-[0.2em] text-amber-500 md:block">Contact us</p>
             <h1 className="text-title font-bold text-white md:mt-3 md:text-display font-[family-name:var(--font-carbon)]">
               REQUEST A <span className="text-amber-500">QUOTE</span>
             </h1>
             <p className="mt-2 max-w-md text-copy text-gray-200 md:mt-4 md:text-lead">
-              Three quick steps, about a minute. Our sales team replies within one working day.
+              <span className="max-md:hidden">Two quick steps, about a minute. </span>Our sales team replies within one working day.
             </p>
           </header>
 
@@ -297,12 +306,15 @@ export default function QuoteBuilder() {
             className="scroll-mt-[4.5rem] rounded-[28px] bg-white p-5 md:scroll-mt-24 md:rounded-[40px] md:p-10 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1 lg:min-h-[640px] lg:self-start"
           >
             <form
+              id={FORM_ID}
+              className="relative"
               onFocus={markStarted}
               onSubmit={(e) => {
                 e.preventDefault();
                 send(false);
               }}
             >
+              <Honeypot value={honeypot} onChange={setHoneypot} />
               {!sent && (
                 <>
                   <ol className="flex items-center gap-2 text-sm">
@@ -389,7 +401,7 @@ export default function QuoteBuilder() {
                           className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 font-medium text-white transition-colors hover:bg-gray-800"
                         >
                           <FaWhatsapp className="h-5 w-5 text-[#25D366]" aria-hidden="true" />
-                          {sent.drawing === 'Yes' ? 'Send your drawing on WhatsApp' : 'Share a drawing or photo on WhatsApp'}
+                          Share a drawing or photo on WhatsApp
                         </a>
                         <Link
                           href="/product-line"
@@ -406,111 +418,65 @@ export default function QuoteBuilder() {
                   ) : step === 0 || !type ? (
                     <>
                       <StepHeading focusOnMount={focusHeading}>What do you need?</StepHeading>
-                      <p className={stepHint}>Pick one to start. You can change it later.</p>
-                      <div role="group" aria-label="What do you need?" className="mt-4 grid grid-cols-2 gap-2.5 md:mt-6 md:gap-3">
-                        {INQUIRY_TYPES.map((t) => {
+                      <p className={stepHint}>Tap to start. Takes about a minute.</p>
+
+                      {/* One filled button for the main job of the page; the other requests stay available but quieter */}
+                      <motion.button
+                        type="button"
+                        aria-pressed={draft.inquiryType === 'quote'}
+                        onClick={() => chooseType('quote')}
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`group mt-4 flex w-full items-center gap-3.5 rounded-2xl bg-amber-500 p-4 text-left text-gray-900 shadow-lg shadow-amber-500/30 transition-colors hover:bg-amber-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 md:mt-6 md:gap-4 md:p-5 ${
+                          draft.inquiryType === 'quote' ? 'ring-2 ring-gray-900 ring-offset-2' : ''
+                        }`}
+                      >
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900 text-amber-500">
+                          <FileText className="h-6 w-6" aria-hidden="true" />
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block text-lg font-bold leading-tight md:text-xl">Request a quote</span>
+                          <span className="mt-0.5 block text-sm text-gray-900/80">Pricing for your part or drawing</span>
+                        </span>
+                        <motion.span
+                          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-900 text-white"
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                        >
+                          <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                        </motion.span>
+                      </motion.button>
+
+                      <p className="mt-3 text-sm font-medium text-gray-500 md:mt-6">Or something else</p>
+                      <div className="mt-2 grid grid-cols-3 gap-2 md:gap-3">
+                        {INQUIRY_TYPES.filter((t) => t.id !== 'quote').map((t) => {
                           const Icon = TYPE_ICONS[t.id];
                           const selected = draft.inquiryType === t.id;
                           return (
-                            <motion.button
+                            <button
                               key={t.id}
                               type="button"
                               aria-pressed={selected}
                               onClick={() => chooseType(t.id)}
-                              whileHover={{ y: -3 }}
-                              whileTap={{ scale: 0.98 }}
-                              className={`group flex flex-col items-start gap-2.5 rounded-2xl border p-3.5 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 sm:flex-row sm:gap-4 sm:p-4 md:p-5 ${
-                                selected ? 'border-amber-500 bg-amber-50' : 'border-gray-200 bg-white hover:border-amber-500'
+                              className={`group flex flex-col items-start gap-1.5 rounded-2xl border p-2.5 text-left md:gap-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 md:p-4 ${
+                                selected ? 'border-gray-900 bg-gray-50' : 'border-gray-200 bg-white hover:border-gray-900'
                               }`}
                             >
-                              <span
-                                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${
-                                  selected ? 'bg-amber-500 text-gray-900' : 'bg-gray-100 text-gray-700 group-hover:bg-amber-500 group-hover:text-gray-900'
-                                }`}
-                              >
-                                <Icon className="h-5 w-5" aria-hidden="true" />
+                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gray-100 md:h-9 md:w-9 text-gray-700 transition-colors group-hover:bg-gray-900 group-hover:text-white">
+                                <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
                               </span>
-                              <span>
-                                <span className="block text-sm font-semibold leading-snug text-gray-900 sm:text-base">{t.label}</span>
-                                <span className="mt-1 hidden text-sm text-gray-600 sm:block">{t.hint}</span>
+                              <span className="block text-[13px] font-semibold leading-snug text-gray-900 md:text-sm">
+                                <span className="md:hidden">{t.short}</span>
+                                <span className="hidden md:inline">{t.label}</span>
                               </span>
-                            </motion.button>
+                              <span className="hidden text-xs leading-snug text-gray-600 md:block">{t.hint}</span>
+                            </button>
                           );
                         })}
                       </div>
                     </>
-                  ) : step === 1 ? (
-                    <>
-                      <StepHeading focusOnMount={focusHeading}>{type.detailsTitle}</StepHeading>
-                      <p className={stepHint}>
-                        {type.id === 'other' ? 'A line or two is enough.' : 'Tap what you know. All optional.'}
-                      </p>
-
-                      {type.id !== 'other' && (
-                        <>
-                          <Chips legend="Estimated quantity" options={QUANTITIES} value={draft.quantity} onChange={(v) => setField('quantity', v)} />
-                          <Chips legend="When do you need it?" options={TIMELINES} value={draft.timeline} onChange={(v) => setField('timeline', v)} />
-                          <Chips
-                            inline
-                            legend="Drawing or 3D model?"
-                            options={DRAWING_OPTIONS}
-                            value={draft.drawing}
-                            onChange={(v) => setField('drawing', v)}
-                          />
-                          {draft.drawing === 'Yes' && (
-                            <p className="mt-2 text-sm text-gray-600 max-md:hidden">Good. Send this first and we will ask for the file by email or WhatsApp.</p>
-                          )}
-                        </>
-                      )}
-
-                      {!showNote && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setNoteOpen(true);
-                            requestAnimationFrame(() => document.getElementById('message')?.focus());
-                          }}
-                          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 underline md:hidden"
-                        >
-                          <Plus className="h-4 w-4" aria-hidden="true" />
-                          Add a note (optional)
-                        </button>
-                      )}
-                      <div className={`mt-4 md:mt-5 ${showNote ? '' : 'max-md:hidden'}`}>
-                        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-700 md:mb-2">
-                          {type.id === 'other' ? 'Your message' : 'Anything else we should know?'}
-                        </label>
-                        <textarea
-                          id="message"
-                          rows={type.id === 'other' ? 4 : 3}
-                          value={draft.message}
-                          onChange={(e) => setField('message', e.target.value)}
-                          placeholder={type.placeholder}
-                          className={`${inputClass} resize-none`}
-                        />
-                        {type.id !== 'other' && <p className="mt-1.5 text-xs text-gray-500">Helpful to include: material, size or weight, colour.</p>}
-                      </div>
-
-                      <div className={actionBar}>
-                        <button type="button" onClick={() => goTo(0)} className={backButton}>
-                          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                          <span className="max-md:sr-only">Back</span>
-                        </button>
-                        <button type="button" onClick={() => goTo(2)} className={`${primaryButton} flex-1 text-lead`}>
-                          {detailsEmpty ? 'Skip for now' : 'Continue'}
-                          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                        </button>
-                      </div>
-                    </>
                   ) : (
                     <>
-                      <p className="mb-4 hidden flex-wrap gap-1.5 text-xs md:flex lg:hidden">
-                        {[type.label, ...specParts(draft).map((p) => p.value)].filter(Boolean).map((v) => (
-                          <span key={v} className="rounded-full bg-gray-100 px-2.5 py-1 text-gray-700">
-                            {v}
-                          </span>
-                        ))}
-                      </p>
                       <StepHeading focusOnMount={focusHeading}>Who do we reply to?</StepHeading>
                       <p className={stepHint}>Last step. We reply within one working day.</p>
 
@@ -560,10 +526,42 @@ export default function QuoteBuilder() {
                         />
                       </div>
 
+                      {!showNote && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setNoteOpen(true);
+                            requestAnimationFrame(() => document.getElementById('message')?.focus());
+                          }}
+                          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 underline md:hidden"
+                        >
+                          <Plus className="h-4 w-4" aria-hidden="true" />
+                          Add a message (optional)
+                        </button>
+                      )}
+                      <div className={`mt-4 ${showNote ? '' : 'max-md:hidden'}`}>
+                        <label htmlFor="message" className="mb-1 block text-[13px] font-medium text-gray-700 md:mb-2 md:text-sm">
+                          {type.id === 'other' ? 'Your message' : 'Tell us about it (optional)'}
+                        </label>
+                        <textarea
+                          id="message"
+                          rows={3}
+                          value={draft.message}
+                          onChange={(e) => setField('message', e.target.value)}
+                          placeholder={type.placeholder}
+                          className={`${inputClass} resize-none`}
+                        />
+                        {type.id !== 'other' && (
+                          <p className="mt-1.5 text-xs text-gray-500 max-md:hidden">
+                            Helpful to include: material, size or weight, quantity and timeline. Have a drawing? Mention it and we will ask for it.
+                          </p>
+                        )}
+                      </div>
+
                       {failed && !rescueOpen && <div className="mt-5">{errorAlert}</div>}
 
-                      <div className={actionBar}>
-                        <button type="button" onClick={() => goTo(1)} className={backButton}>
+                      <div className={actionRow}>
+                        <button type="button" onClick={() => goTo(0)} className={backButton}>
                           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                           <span className="max-md:sr-only">Back</span>
                         </button>
@@ -572,7 +570,7 @@ export default function QuoteBuilder() {
                         </button>
                       </div>
 
-                      <ul className="mt-1 flex flex-wrap justify-center gap-x-5 gap-y-1 text-xs text-gray-500 md:mt-5">
+                      <ul className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-1 text-xs text-gray-500 md:mt-5">
                         <li>✓ ISO 9001:2015 certified</li>
                         <li>✓ In-house tool room</li>
                         <li>✓ Your details stay confidential</li>
@@ -592,18 +590,8 @@ export default function QuoteBuilder() {
                       className="inline-flex items-center gap-2 font-medium text-gray-800 transition-colors hover:text-[#128C7E]"
                     >
                       <FaWhatsapp className="h-5 w-5 text-[#25D366]" aria-hidden="true" />
-                      {type ? 'Send these answers on WhatsApp instead' : 'Prefer WhatsApp? Chat with our sales team'}
+                      {type ? 'Send this on WhatsApp instead' : 'Prefer WhatsApp? Chat with our sales team'}
                     </a>
-                    {type && step === 1 && (
-                      <button
-                        type="button"
-                        onClick={() => setRescueOpen(true)}
-                        className="inline-flex items-center gap-2 font-medium text-gray-800 transition-colors hover:text-amber-600"
-                      >
-                        <PhoneCall className="h-4 w-4" aria-hidden="true" />
-                        Short on time? Ask for a call back
-                      </button>
-                    )}
                   </div>
                 </div>
               )}
@@ -641,22 +629,19 @@ export default function QuoteBuilder() {
         </div>
       </section>
 
-      {/* Follows the visitor down the page while an inquiry is unfinished. Leaves room for the WhatsApp button. */}
+      {/* Desktop: follows the visitor down the page while an inquiry is unfinished */}
       <AnimatePresence>
         {inProgress && !formInView && !rescueOpen && (
           <motion.div
-            className="fixed bottom-5 left-4 right-24 z-40 sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
+            className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 max-md:hidden"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 24 }}
             transition={{ duration: 0.2 }}
           >
             <div className="flex items-center gap-4 rounded-full bg-gray-900 py-2 pl-5 pr-2 text-sm text-white shadow-2xl ring-1 ring-white/10">
-              <span className="min-w-0 flex-1 truncate">
-                <span className="sm:hidden">Inquiry saved</span>
-                <span className="hidden sm:inline">
-                  Your inquiry is saved <span className="text-gray-400">· step {step + 1} of 3</span>
-                </span>
+              <span className="whitespace-nowrap">
+                Your inquiry is saved <span className="text-gray-400">· step {step + 1} of 2</span>
               </span>
               <button
                 type="button"
@@ -670,7 +655,45 @@ export default function QuoteBuilder() {
         )}
       </AnimatePresence>
 
-      {/* Call-back shortcut: shown on exit intent, or from the link on the details step */}
+      {/* Phones: a fixed bottom bar whose largest button is always the next thing to do, wherever the visitor has scrolled */}
+      {!sent && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white px-3 pb-[max(0.625rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-10px_30px_-14px_rgb(0_0_0/0.35)] md:hidden">
+          {/* Right padding is the slot the WhatsApp button docks into */}
+          <div className="flex items-center gap-1.5 pr-16">
+            {barBack ? (
+              <button type="button" onClick={() => goTo(step - 1)} className={barSideButton}>
+                <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+                Back
+              </button>
+            ) : (
+              <a href="tel:+919311378904" className={barSideButton}>
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                Call
+              </a>
+            )}
+
+            {barSubmits ? (
+              <button type="submit" form={FORM_ID} disabled={sending} className={barPrimaryButton}>
+                {sending ? 'Sending...' : type?.cta}
+              </button>
+            ) : (
+              <button type="button" onClick={bar.action} className={barPrimaryButton}>
+                <span className="truncate">{bar.label}</span>
+                <motion.span
+                  className="shrink-0"
+                  animate={type ? { x: 0 } : { x: [0, 5, 0] }}
+                  transition={type ? { duration: 0.2 } : { duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                </motion.span>
+              </button>
+            )}
+
+          </div>
+        </div>
+      )}
+
+      {/* Call-back shortcut, shown on exit intent */}
       <dialog
         ref={dialogRef}
         aria-labelledby="rescue-title"
@@ -777,46 +800,6 @@ function StepHeading({
     <h2 ref={ref} tabIndex={-1} className={`text-xl font-bold uppercase text-gray-900 outline-none md:text-title font-[family-name:var(--font-carbon)] ${className}`}>
       {children}
     </h2>
-  );
-}
-
-function Chips({
-  legend,
-  options,
-  value,
-  onChange,
-  inline = false,
-}: {
-  legend: string;
-  options: string[];
-  value: string;
-  onChange: (value: string) => void;
-  /** Phones only: put the question and its options on one line */
-  inline?: boolean;
-}) {
-  const labelId = useId();
-  return (
-    <div role="group" aria-labelledby={labelId} className={`mt-4 md:mt-5 ${inline ? 'max-md:flex max-md:items-center max-md:justify-between max-md:gap-3' : ''}`}>
-      <p id={labelId} className={`text-sm font-medium text-gray-700 md:mb-2 ${inline ? '' : 'mb-1.5'}`}>
-        {legend}
-      </p>
-      <div className={`flex flex-wrap gap-1.5 md:gap-2 ${inline ? 'shrink-0' : ''}`}>
-        {options.map((o) => (
-          <motion.button
-            key={o}
-            type="button"
-            aria-pressed={value === o}
-            onClick={() => onChange(value === o ? '' : o)}
-            whileTap={{ scale: 0.95 }}
-            className={`rounded-full border px-3 py-2 text-[13px] font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 md:px-4 md:py-2.5 md:text-sm ${
-              value === o ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-300 bg-white text-gray-700 hover:border-gray-900'
-            }`}
-          >
-            {o}
-          </motion.button>
-        ))}
-      </div>
-    </div>
   );
 }
 

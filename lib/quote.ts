@@ -6,32 +6,32 @@ export const INQUIRY_TYPES = [
   {
     id: 'quote',
     label: 'Quote for a part',
+    short: 'Quote',
     hint: 'You have a part or a drawing and need pricing.',
-    detailsTitle: 'About the part',
     cta: 'Get my quote',
     placeholder: 'e.g. Polyamide connector housing, approx. 25 g, black. Need samples in 3 weeks.',
   },
   {
     id: 'mould',
     label: 'New mould development',
+    short: 'New mould',
     hint: 'Design, tooling, trials and production.',
-    detailsTitle: 'About the mould',
     cta: 'Get my quote',
     placeholder: 'e.g. 4-cavity mould for a PP cap. We need design support, trials and production.',
   },
   {
     id: 'sample',
     label: 'Samples / prototype',
+    short: 'Samples',
     hint: 'A small batch to check fit before tooling.',
-    detailsTitle: 'About the samples',
     cta: 'Get my quote',
     placeholder: 'e.g. Need 200 prototype pieces of an ABS enclosure to validate fit before tooling.',
   },
   {
     id: 'other',
     label: 'Something else',
+    short: 'Something else',
     hint: 'Tell us and we will route it to the right person.',
-    detailsTitle: 'How can we help?',
     cta: 'Send my inquiry',
     placeholder: 'Tell us what you need and we will route it to the right person.',
   },
@@ -39,17 +39,10 @@ export const INQUIRY_TYPES = [
 
 export type InquiryId = (typeof INQUIRY_TYPES)[number]['id'];
 
-export const QUANTITIES = ['Not sure yet', 'Under 5,000', '5,000 – 50,000', '50,000 – 5 lakh', 'Over 5 lakh'];
-export const TIMELINES = ['As soon as possible', 'Within a month', '1 – 3 months', 'Just exploring'];
-export const DRAWING_OPTIONS = ['Yes', 'Not yet'];
-
 export const PHONE_RE = /^[0-9+()\-\s]{7,}$/;
 
 export type QuoteDraft = {
   inquiryType: InquiryId | '';
-  quantity: string;
-  timeline: string;
-  drawing: string;
   message: string;
   name: string;
   company: string;
@@ -60,9 +53,6 @@ export type QuoteDraft = {
 
 export const EMPTY_DRAFT: QuoteDraft = {
   inquiryType: '',
-  quantity: '',
-  timeline: '',
-  drawing: '',
   message: '',
   name: '',
   company: '',
@@ -75,23 +65,9 @@ export function inquiryOf(d: QuoteDraft) {
   return INQUIRY_TYPES.find((t) => t.id === d.inquiryType);
 }
 
-/** The tap-to-answer fields, in the order they are asked. Hidden for "Something else". */
-export function specParts(d: QuoteDraft): { label: string; value: string }[] {
-  if (d.inquiryType === 'other') return [];
-  return [
-    { label: 'Quantity', value: d.quantity },
-    { label: 'Timeline', value: d.timeline },
-    { label: 'Drawing', value: d.drawing },
-  ];
-}
-
-/** Message stored in the sheet: the tapped answers in brackets, then the visitor's own words. */
+/** Message stored in the sheet: what they asked for in brackets, then the visitor's own words. */
 export function buildSheetMessage(d: QuoteDraft, callback = false) {
-  const tags = [
-    callback ? 'Callback request' : '',
-    inquiryOf(d)?.label || '',
-    ...specParts(d).map((p) => (p.value ? `${p.label === 'Quantity' ? 'Qty' : p.label}: ${p.value}` : '')),
-  ].filter(Boolean);
+  const tags = [callback ? 'Callback request' : '', inquiryOf(d)?.label || ''].filter(Boolean);
   return `[${tags.join(' · ')}] ${d.message.trim()}`.trim();
 }
 
@@ -104,7 +80,6 @@ export function buildWhatsAppHref(d: QuoteDraft) {
     ? [
         'Hello Vinayak Technoplast, I would like to send an inquiry.',
         `Need: ${type.label}`,
-        ...specParts(d).filter((p) => p.value).map((p) => `${p.label}: ${p.value}`),
         d.message.trim() ? `Details: ${d.message.trim()}` : '',
         d.name.trim() ? `Name: ${d.name.trim()}${d.company.trim() ? `, ${d.company.trim()}` : ''}` : '',
       ].filter(Boolean)
@@ -160,8 +135,8 @@ export function loadDraft(): { draft: QuoteDraft; step: number } | null {
     for (const k of Object.keys(EMPTY_DRAFT) as (keyof QuoteDraft)[]) {
       if (typeof saved.draft[k] === 'string') (draft as Record<string, string>)[k] = saved.draft[k];
     }
-    const step = saved.step === 1 || saved.step === 2 ? saved.step : 1;
-    return { draft, step };
+    // A draft only exists once a request type is chosen, so it always resumes on the contact step
+    return { draft, step: 1 };
   } catch {
     return null;
   }

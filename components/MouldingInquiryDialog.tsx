@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { X, Send, CheckCircle2, Wrench } from 'lucide-react';
-import { submitLead } from '@/lib/tracking';
+import { primeFormGuard, submitLead } from '@/lib/tracking';
+import Honeypot from '@/components/Honeypot';
 
 interface MouldingInquiryDialogProps {
   isOpen: boolean;
@@ -27,6 +28,11 @@ export default function MouldingInquiryDialog({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
+
+  useEffect(() => {
+    if (isOpen) primeFormGuard();
+  }, [isOpen]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -64,6 +70,7 @@ export default function MouldingInquiryDialog({
           source: 'moulding_inquiry',
         },
         agentData: formData,
+        honeypot,
       });
       if (!ok) throw new Error('Lead could not be saved');
 
@@ -109,6 +116,7 @@ export default function MouldingInquiryDialog({
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              <Honeypot value={honeypot} onChange={setHoneypot} />
               {submitStatus && submitStatus.type === 'error' && (
                 <div className="p-3 rounded-xl bg-red-50 text-red-800 border border-red-200 text-sm">
                   {submitStatus.message}

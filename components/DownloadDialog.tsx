@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { X, Download, FileText } from 'lucide-react';
-import { submitLead, trackEvent } from '@/lib/tracking';
+import { guardedPost, primeFormGuard, submitLead, trackEvent } from '@/lib/tracking';
+import Honeypot from '@/components/Honeypot';
 
 interface DownloadDialogProps {
   isOpen: boolean;
@@ -18,6 +19,11 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
   const [canDownload, setCanDownload] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
+
+  useEffect(() => {
+    if (isOpen) primeFormGuard();
+  }, [isOpen]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -37,18 +43,12 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
         sheetEndpoint: '/api/subscribe',
         sheetBody: formData,
         agentData: formData,
+        honeypot,
       });
       if (!ok) throw new Error('Lead could not be saved');
 
       // Send the outreach email in the background; don't block the download on it
-      fetch('/api/send-profile-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: formData.name, email: formData.email }),
-        keepalive: true,
-      }).catch((error) => {
+      guardedPost('/api/send-profile-email', { name: formData.name, email: formData.email }, honeypot).catch((error) => {
         console.error('Error sending outreach email:', error);
       });
 
@@ -108,6 +108,7 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
 
         {!canDownload ? (
           <form onSubmit={handleSubmit} className="space-y-4">
+            <Honeypot value={honeypot} onChange={setHoneypot} />
             {submitStatus && submitStatus.type === 'error' && (
               <div className="p-3 rounded-xl bg-red-50 text-red-800 border border-red-200 text-sm">
                 {submitStatus.message}

@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const NEXT_STEPS = [
   {
     title: "You send the brief",
-    text: "Three quick steps. You do not need a drawing or exact numbers to start.",
+    text: "Two quick steps. You do not need a drawing or exact numbers to start.",
   },
   {
     title: "We reply within one working day",
@@ -38,8 +38,9 @@ export default function ContactPage() {
     transition: { duration: 0.5 }
   };
 
+  // Bottom padding on phones keeps the footer clear of the fixed quote bar
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900 max-md:pb-[4.75rem]">
       {/* The form sits at the top of the page, so the bar goes solid as soon as the visitor scrolls */}
       <Navigation solidAfter={24} />
 
@@ -156,7 +157,7 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-heading font-bold mb-6 text-white font-[family-name:var(--font-carbon)]">Ready to Start Your Project?</h2>
           <p className="text-lead text-amber-100 mb-8 max-w-2xl mx-auto">
-            Tell us what you need in three quick steps, or call and talk to our sales team directly.
+            Tell us what you need in two quick steps, or call and talk to our sales team directly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#quote" className="inline-block bg-white text-amber-500 px-5 py-2.5 lg:px-7 lg:py-3 2xl:px-8 2xl:py-3.5 rounded-full font-medium text-lead hover:bg-gray-100 transition-colors">

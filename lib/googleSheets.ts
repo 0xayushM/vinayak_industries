@@ -1,6 +1,15 @@
 import { google } from 'googleapis';
 
-export async function appendToSheet(values: string[][], sheetRange: string = 'Sheet1!A:G') {
+/**
+ * Rows are written as USER_ENTERED, so a cell starting with = + - or @ would run as a formula.
+ * Visitor-supplied text gets a leading apostrophe instead, which Sheets shows as plain text.
+ */
+function asPlainText(cell: string) {
+  return /^[=+\-@\t\r]/.test(cell) ? `'${cell}` : cell;
+}
+
+export async function appendToSheet(rows: string[][], sheetRange: string = 'Sheet1!A:G') {
+  const values = rows.map((row) => row.map((cell) => (typeof cell === 'string' ? asPlainText(cell) : cell)));
   try {
     const auth = new google.auth.GoogleAuth({
       credentials: {

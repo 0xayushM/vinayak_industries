@@ -1,11 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendProfileOutreachEmail } from '@/lib/outreachEmail';
+import { checkSubmission, guardResponse } from '@/lib/spamGuard';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email } = await request.json();
+    const body = await request.json();
+    const { name, email } = body;
+
+    // Without this check anyone could make the site send mail to any address
+    const verdict = checkSubmission(request, body, { texts: [email], names: [name] });
+    if (verdict.action !== 'allow') return guardResponse(verdict, request);
 
     if (typeof email !== 'string' || !EMAIL_PATTERN.test(email.trim())) {
       return NextResponse.json(

@@ -1,16 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkSubmission, guardResponse } from '@/lib/spamGuard';
+
+// Only the site's own lead forms may be relayed
+const FORM_NAMES = new Set(['contact_form', 'moulding_inquiry', 'download_dialog']);
 
 export async function POST(request: NextRequest) {
   try {
-    const { form_name, data } = await request.json();
+    const body = await request.json();
+    const { form_name, data } = body;
 
     // Validate required fields
-    if (!form_name || !data) {
+    if (!FORM_NAMES.has(form_name) || !data || typeof data !== 'object') {
       return NextResponse.json(
         { error: 'Missing required fields: form_name and data' },
         { status: 400 }
       );
     }
+
+    const { name, company, ...rest } = data as Record<string, unknown>;
+    const verdict = checkSubmission(request, body, { texts: Object.values(rest), names: [name, company] });
+    if (verdict.action !== 'allow') return guardResponse(verdict, request);
 
     // Get environment variables from server side (secure)
     const endpoint = process.env.BREW_MY_AGENT_ENDPOINT;

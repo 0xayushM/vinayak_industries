@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { appendToSheet } from '@/lib/googleSheets';
+import { checkSubmission, guardResponse } from '@/lib/spamGuard';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { name, email, phone } = body;
+
+    const verdict = checkSubmission(request, body, { texts: [email, phone], names: [name] });
+    if (verdict.action !== 'allow') return guardResponse(verdict, request);
 
     if (!name || !email || !phone) {
       return NextResponse.json(

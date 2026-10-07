@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { inquiryOf, specParts, type QuoteDraft } from '@/lib/quote';
+import { inquiryOf, type QuoteDraft } from '@/lib/quote';
 
 /**
  * Live summary of the quote form, styled like a shop-floor job card.
@@ -10,10 +10,12 @@ import { inquiryOf, specParts, type QuoteDraft } from '@/lib/quote';
 export default function InquirySheet({ draft, sent }: { draft: QuoteDraft; sent: boolean }) {
   const rows = [
     { label: 'Requirement', value: inquiryOf(draft)?.label || '' },
-    ...specParts(draft),
-    { label: 'Notes', value: draft.message.trim() },
-    { label: 'Contact', value: [draft.name.trim(), draft.company.trim()].filter(Boolean).join(' · ') },
+    { label: 'Name', value: draft.name.trim() },
     { label: 'Phone', value: draft.phone.trim() },
+    { label: 'Company', value: draft.company.trim() },
+    { label: 'Country', value: draft.country.trim() },
+    { label: 'Email', value: draft.email.trim() },
+    { label: 'Message', value: draft.message.trim() },
   ];
   const filled = rows.filter((r) => r.value).length;
   const status = sent ? 'Sent' : filled ? 'Draft' : 'Blank';
@@ -39,7 +41,7 @@ export default function InquirySheet({ draft, sent }: { draft: QuoteDraft; sent:
               <AnimatePresence mode="wait" initial={false}>
                 {r.value ? (
                   <motion.span
-                    key={r.label === 'Notes' ? 'notes' : r.value}
+                    key={r.label}
                     className="block line-clamp-2 break-words"
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { appendToSheet } from '@/lib/googleSheets';
+import { checkSubmission, guardResponse } from '@/lib/spamGuard';
 
 // Sheet1 columns: Timestamp | Name | Company | Phone | Email | Country | Message | Source
 const SOURCES = new Set(['contact_form', 'moulding_inquiry']);
@@ -9,6 +10,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, company, phone, email, country, message } = body;
     const source = SOURCES.has(body.source) ? body.source : 'contact_form';
+
+    const verdict = checkSubmission(request, body, { texts: [message, email, phone, country], names: [name, company] });
+    if (verdict.action !== 'allow') return guardResponse(verdict, request);
 
     // The moulding dialog has no country field, so only the contact form requires it.
     if (!name || !phone || !message || (source === 'contact_form' && !country)) {

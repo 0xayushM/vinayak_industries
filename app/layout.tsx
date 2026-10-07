@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import VisitorTracker from "@/components/VisitorTracker";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MobileQuoteButton from "@/components/MobileQuoteButton";
 import Script from "next/script";
 import ConsentAndTags from "@/components/ConsentAndTags";
 
@@ -86,6 +87,7 @@ export default function RootLayout({
         )}
         <VisitorTracker />
         {children}
+        <MobileQuoteButton />
         <WhatsAppButton />
         <ConsentAndTags />
       </body>

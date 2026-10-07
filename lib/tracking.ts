@@ -137,6 +137,56 @@ export function trackEvent(event: string, props: Record<string, string> = {}) {
   }).catch(() => {});
 }
 
+/* ------------------------------------------------------------------ *
+ * Form guard (client half of lib/spamGuard.ts)
+ *
+ * Every lead POST carries a signed token fetched when the form opened,
+ * plus the value of a hidden honeypot field. Real visitors never notice.
+ * ------------------------------------------------------------------ */
+
+const TOKEN_MIN_AGE_MS = 3200; // the server refuses tokens younger than 3 s
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+let formToken: Promise<{ value: string; at: number }> | null = null;
+
+function fetchFormToken() {
+  formToken = fetch('/api/form-token', { cache: 'no-store' })
+    .then((r) => r.json())
+    .then((d) => ({ value: typeof d.token === 'string' ? d.token : '', at: Date.now() }))
+    .catch(() => ({ value: '', at: Date.now() }));
+  return formToken;
+}
+
+/** Call when a form appears, so its token is old enough by the time the visitor submits. */
+export function primeFormGuard() {
+  if (typeof window !== 'undefined' && !formToken) fetchFormToken();
+}
+
+/** POST JSON with the guard fields added. Retries once with a fresh token if the old one had expired. */
+export async function guardedPost(url: string, body: Record<string, unknown>, honeypot = ''): Promise<Response> {
+  const send = async () => {
+    const token = await (formToken || fetchFormToken());
+    const tooYoungBy = TOKEN_MIN_AGE_MS - (Date.now() - token.at);
+    if (tooYoungBy > 0) await wait(tooYoungBy);
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...body, _t: token.value, _hp: honeypot }),
+    });
+  };
+
+  const used = formToken || fetchFormToken();
+  let res = await send();
+  if (res.status === 400) {
+    const code = await res.clone().json().then((d) => d.code).catch(() => '');
+    if (code === 'token') {
+      if (formToken === used) fetchFormToken(); // parallel posts share one refresh
+      res = await send();
+    }
+  }
+  return res;
+}
+
 /**
  * Submit a lead to the Google Sheet and BrewMyAgent in parallel.
  * Succeeds if EITHER destination accepted it, so one service being down
@@ -147,13 +197,11 @@ export async function submitLead(opts: {
   sheetEndpoint: string;
   sheetBody: Record<string, unknown>;
   agentData: Record<string, unknown>;
+  /** Value of the form's hidden honeypot field (empty for real visitors) */
+  honeypot?: string;
 }): Promise<boolean> {
-  const post = (url: string, body: unknown) =>
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    }).then((r) => {
+  const post = (url: string, body: Record<string, unknown>) =>
+    guardedPost(url, body, opts.honeypot).then((r) => {
       if (!r.ok) throw new Error(`${url} → ${r.status}`);
       return r;
     });
