@@ -15,10 +15,10 @@ function escapeHtml(value: string) {
 }
 
 const capabilities = [
+  ['Tooling &amp; Development', 'In-house and partner tooling for faster product development.'],
   ['Plastic Injection Moulding', 'Engineering polymers, reinforced materials and aesthetic components.'],
   ['Metal Components', 'Fabrication, machined parts and insert-based hybrid components.'],
   ['Assemblies', 'Plastic + metal sub-assemblies with built-in quality checks.'],
-  ['Tooling &amp; Development', 'In-house and partner tooling for faster product development.'],
 ];
 
 const reasons = [
@@ -61,7 +61,7 @@ function buildHtml(name: string) {
     </table>
   </td></tr>
   <tr><td style="padding:20px 32px 32px">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f6f8"><tr><td style="padding:18px 20px;font-size:13px;line-height:1.8;color:#4a5a6a"><span style="color:#16283f;font-weight:bold">Our footprint:</span>&nbsp;Two plants at Udyog Nagar Industrial Area, Peeragarhi, Delhi &nbsp;&middot;&nbsp; One plant at Kota, Rajasthan &nbsp;&middot;&nbsp; A new plant at Bahadurgarh, Haryana going operational next quarter</td></tr></table>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f6f8"><tr><td style="padding:18px 20px;font-size:13px;line-height:1.8;color:#4a5a6a"><span style="color:#16283f;font-weight:bold">Our footprint:</span>&nbsp;Two plants at Udyog Nagar Industrial Area, Peeragarhi, Delhi &nbsp;&middot;&nbsp; One plant at Kota, Rajasthan &nbsp;&middot;&nbsp; A new semi-operational plant at Bahadurgarh, Haryana going operational next quarter</td></tr></table>
   </td></tr>
   <tr><td align="center" style="padding:0 32px 36px">
     <div style="font-size:15px;color:#1f2937;padding-bottom:18px">We'd welcome the chance to understand your current and upcoming component requirements.</div>
@@ -84,15 +84,15 @@ As component requirements move toward tighter tolerances and shorter development
 Vinayak Technoplast manufactures plastic, metal and hybrid assembly components for OEMs, and we're building long-term supply relationships in the construction, off-road vehicle and farm equipment segments.
 
 What we manufacture
+- Tooling & Development: In-house and partner tooling for faster product development.
 - Plastic Injection Moulding: Engineering polymers, reinforced materials and aesthetic components.
 - Metal Components: Fabrication, machined parts and insert-based hybrid components.
 - Assemblies: Plastic + metal sub-assemblies with built-in quality checks.
-- Tooling & Development: In-house and partner tooling for faster product development.
 
 Why OEMs work with us
 ${reasons.map((r) => `✓ ${r}`).join('\n')}
 
-Our footprint: Two plants at Udyog Nagar Industrial Area, Peeragarhi, Delhi · One plant at Kota, Rajasthan · A new plant at Bahadurgarh, Haryana going operational next quarter
+Our footprint: Two plants at Udyog Nagar Industrial Area, Peeragarhi, Delhi · One plant at Kota, Rajasthan · A new semi-operational plant at Bahadurgarh, Haryana going operational next quarter
 
 We'd welcome the chance to understand your current and upcoming component requirements.
 Request a Quote: ${SITE_URL}/contact
@@ -109,6 +109,18 @@ Vinayak Technoplast · F-6, DSIDC Industrial Complex, Rohtak Road, Near Udyog Na
 sales@vinayaktechnoplast.com · +91 93113 78904
 
 You're receiving this because you downloaded our company profile on vinayaktechnoplast.com. Reply "remove" to opt out of future emails.`;
+}
+
+/**
+ * Team members copied on every company-profile email, so they see each download as it happens.
+ * Comma-separated addresses in PROFILE_EMAIL_CC (visible to the recipient) or
+ * PROFILE_EMAIL_BCC (hidden from the recipient). Unset or malformed entries are skipped.
+ */
+function teamCopies(value: string | undefined) {
+  return (value || '')
+    .split(',')
+    .map((address) => address.trim())
+    .filter((address) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address));
 }
 
 export async function sendProfileOutreachEmail(to: string, name: string) {
@@ -131,6 +143,8 @@ export async function sendProfileOutreachEmail(to: string, name: string) {
   return transporter.sendMail({
     from: { name: FROM_NAME, address: FROM_EMAIL },
     to,
+    cc: teamCopies(process.env.PROFILE_EMAIL_CC),
+    bcc: teamCopies(process.env.PROFILE_EMAIL_BCC),
     subject: SUBJECT,
     html: buildHtml(trimmedName),
     text: buildText(trimmedName),
