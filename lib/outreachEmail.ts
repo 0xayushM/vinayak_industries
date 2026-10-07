@@ -41,7 +41,7 @@ function buildHtml(name: string) {
 <body style="margin:0;padding:0;background-color:#ffffff">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;color:#000000;font-size:16px;width:600px;max-width:600px">
   <tr><td style="background-color:#16283f;padding:0"><img src="${SITE_URL}/images/email/header.png" alt="Vinayak Technoplast — ISO 9001:2015 Certified" width="600" style="display:block;width:600px;max-width:600px;height:auto;border:0"></td></tr>
-  <tr><td><img src="${SITE_URL}/images/bg-image.png" width="600" alt="Vinayak Technoplast manufacturing facility" style="outline:0;display:block;width:600px;max-width:600px;height:auto;border:0"></td></tr>
+  <tr><td><img src="${SITE_URL}/images/email/facility.jpg" width="600" alt="Vinayak Technoplast manufacturing facility" style="outline:0;display:block;width:600px;max-width:600px;height:auto;border:0"></td></tr>
   <tr><td style="background-color:#16283f;padding:28px 32px">
     <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.35;color:#ffffff;font-weight:bold">A manufacturing partner built around your tolerances, your volumes, and your timelines.</div>
     <div style="font-size:14px;line-height:1.6;color:#b9c2cc;padding-top:10px">Precision plastic components, metal parts and integrated assemblies for OEMs in automotive, construction, off-road and farm equipment.</div>
