@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Tag } from "lucide-react";
 import newslettersData from "@/data/newsletters.json";
 import caseStudiesData from "@/data/case-studies.json";
-import blogsData from "@/data/blogs.json";
 
 interface MediaItem {
   id: number;
@@ -27,7 +26,7 @@ interface MediaItem {
 export default function MediaPage() {
   const [activeTab, setActiveTab] = useState(0);
 
-  const tabs = ["Newsletters", "Case Studies", "Blogs"];
+  const tabs = ["Newsletters", "Case Studies"];
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -45,7 +44,6 @@ export default function MediaPage() {
 
   const newsletters = newslettersData.items as MediaItem[];
   const caseStudies = caseStudiesData.items as MediaItem[];
-  const blogs = blogsData.items as MediaItem[];
 
   return (
     <div className="min-h-screen bg-white">
@@ -88,7 +86,7 @@ export default function MediaPage() {
             className="text-subtitle text-white max-w-3xl leading-relaxed font-[family-name:var(--font-korto)]"
             variants={fadeInUp}
           >
-            Stories, insights and updates from inside Vinayak Technoplast — newsletters, case studies and blogs.
+            Stories, insights and updates from inside Vinayak Technoplast — newsletters and case studies.
           </motion.p>
         </motion.div>
       </section>
@@ -237,89 +235,6 @@ export default function MediaPage() {
           </section>
         )}
 
-        {/* Tab 3: Blogs */}
-        {activeTab === 2 && (
-          <section className="py-(--spacing-section) px-(--spacing-gutter) bg-white">
-            <div className="max-w-8xl mx-auto">
-              <h2 className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)] mb-4">
-                Blogs
-              </h2>
-              <p className="text-lead text-gray-600 mb-12 max-w-3xl">
-                Thoughts and learnings from our engineering team — on design, manufacturing, materials and the polymer industry.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-                {blogs.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.5, delay: index * 0.06 }}
-                    className="w-full"
-                  >
-                    {item.embedUrl ? (
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block relative group cursor-pointer"
-                        aria-label={`View on LinkedIn: ${item.title}`}
-                      >
-                        <iframe
-                          src={item.embedUrl}
-                          height="199"
-                          width="100%"
-                          frameBorder="0"
-                          allowFullScreen
-                          title={item.title}
-                          className="md:hidden rounded-2xl border border-gray-200 shadow-sm w-full pointer-events-none"
-                        />
-                        <iframe
-                          src={item.embedUrl}
-                          height="399"
-                          width="100%"
-                          frameBorder="0"
-                          allowFullScreen
-                          title={item.title}
-                          className="hidden md:block rounded-2xl border border-gray-200 shadow-sm w-full pointer-events-none"
-                        />
-                        <div className="absolute inset-0 rounded-2xl bg-transparent group-hover:bg-black/5 transition-colors duration-200" />
-                      </a>
-                    ) : (
-                      <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:shadow-lg transition-shadow flex flex-col">
-                        {item.image && (
-                          <div className="relative h-56">
-                            <Image
-                              src={item.image}
-                              alt={item.title}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        )}
-                        <div className="p-6 flex flex-col flex-1">
-                          <h3 className="text-lead font-bold text-gray-900 mb-3 font-[family-name:var(--font-carbon)]">
-                            {item.title}
-                          </h3>
-                          <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">
-                            {item.excerpt}
-                          </p>
-                          <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-auto">
-                            <button className="bg-amber-500 text-white px-5 py-2.5 rounded-full font-medium hover:bg-amber-600 transition-colors inline-flex items-center gap-2 group text-sm">
-                              Read Blog
-                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </button>
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
       </div>
 
       {/* CTA Section */}

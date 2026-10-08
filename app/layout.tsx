@@ -10,8 +10,9 @@ import { BeaconScript } from "@beacon/next";
 
 // Set NEXT_PUBLIC_GTM_ID (e.g. GTM-XXXXXXX) in Vercel to switch on Google Tag Manager.
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
-// Set NEXT_PUBLIC_BEACON_SITE_KEY (bk_…) to switch on the Beacon tracker.
-const BEACON_SITE_KEY = process.env.NEXT_PUBLIC_BEACON_SITE_KEY;
+// Set NEXT_PUBLIC_BEACON_SITE_KEY (or BEACON_SITE_KEY) to the site key (bk_…) to switch on the Beacon tracker.
+// The site key is public (it is in the page); either name works.
+const BEACON_SITE_KEY = process.env.NEXT_PUBLIC_BEACON_SITE_KEY || process.env.BEACON_SITE_KEY;
 
 const korto = localFont({
   src: "../public/fonts/Korto.ttf",

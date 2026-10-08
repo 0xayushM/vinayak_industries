@@ -307,6 +307,7 @@ export default function QuoteBuilder() {
           >
             <form
               id={FORM_ID}
+              data-beacon-ignore
               className="relative"
               onFocus={markStarted}
               onSubmit={(e) => {
@@ -704,6 +705,7 @@ export default function QuoteBuilder() {
         className="m-auto w-[min(92vw,28rem)] rounded-3xl bg-white p-0 text-gray-900 shadow-2xl backdrop:bg-gray-900/70"
       >
         <form
+          data-beacon-ignore
           className="relative p-6 md:p-8"
           onSubmit={(e) => {
             e.preventDefault();

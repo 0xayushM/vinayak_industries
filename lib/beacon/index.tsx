@@ -58,3 +58,18 @@ export function beaconConsent(yes: boolean): void {
   const w = window as unknown as { beacon?: (cmd: string, ...a: unknown[]) => void };
   w.beacon?.('consent', yes);
 }
+
+/**
+ * Send a submitted form to Beacon (Forms → this site → a table per form name).
+ * Use it where the site posts the form itself (fetch/JSON), after it was
+ * accepted; mark that <form> with data-beacon-ignore so it is not captured twice.
+ *   beaconForm('Quote request', { Name: 'Ravi', Email: 'ravi@…', Message: '…' })
+ */
+export function beaconForm(name: string, fields: Record<string, string | number | boolean | null | undefined>): void {
+  if (typeof window === 'undefined') return;
+  const d: Record<string, string> = {};
+  for (const [k, v] of Object.entries(fields)) if (v !== null && v !== undefined && String(v).trim() !== '') d[k] = String(v);
+  if (!Object.keys(d).length) return;
+  const w = window as unknown as { beacon?: (cmd: string, ...a: unknown[]) => void };
+  w.beacon?.('form', name, d);
+}

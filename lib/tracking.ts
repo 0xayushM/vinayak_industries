@@ -6,6 +6,8 @@
  * - the same events are pushed to window.dataLayer so GTM / GA4 / LinkedIn can use them
  */
 
+import { beaconForm } from '@beacon/next';
+
 type DataLayerWindow = Window & { dataLayer?: Record<string, unknown>[] };
 
 const SESSION_KEY = 'vt_sid';
@@ -215,6 +217,60 @@ export async function submitLead(opts: {
   if (agent.status === 'rejected') console.error('Lead not sent to BrewMyAgent:', agent.reason);
 
   const ok = sheet.status === 'fulfilled' || agent.status === 'fulfilled';
-  if (ok) trackEvent('generate_lead', { form_name: opts.formName });
+  if (ok) {
+    trackEvent('generate_lead', { form_name: opts.formName });
+    sendLeadToBeacon(opts.formName, Object.keys(opts.agentData).length ? opts.agentData : opts.sheetBody);
+  }
   return ok;
+}
+
+/* ------------------------------------------------------------------ *
+ * Beacon (beacon.vinayaktechnoplast.com → Forms → this site)
+ *
+ * Every accepted lead goes to Beacon with all its answers and the visit it
+ * came from (search, AI assistant, ad…), one table per form. The <form>s
+ * themselves carry data-beacon-ignore, so Beacon's automatic capture does
+ * not also record them (or the quote builder's half-filled steps).
+ * ------------------------------------------------------------------ */
+
+const BEACON_FORM_NAMES: Record<string, string> = {
+  contact_form: 'Quote request',
+  moulding_inquiry: 'Moulding enquiry',
+  download_dialog: 'Company profile request',
+};
+
+const BEACON_FIELD_LABELS: Record<string, string> = {
+  name: 'Name',
+  company: 'Company',
+  phone: 'Phone',
+  email: 'Email',
+  country: 'Country',
+  message: 'Message',
+  inquiryType: 'Enquiry type',
+  callbackRequested: 'Callback requested',
+  projectDetails: 'Project details',
+};
+
+/** camelCase / snake_case → "Sentence case" for columns Beacon has no label for. */
+function fieldLabel(key: string): string {
+  if (BEACON_FIELD_LABELS[key]) return BEACON_FIELD_LABELS[key];
+  const words = key.replace(/[_-]+/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2').trim().toLowerCase();
+  return words.charAt(0).toUpperCase() + words.slice(1);
+}
+
+function sendLeadToBeacon(formName: string, data: Record<string, unknown>) {
+  try {
+    const fields: Record<string, string> = {};
+    for (const [k, v] of Object.entries(data)) {
+      // source is our own routing tag; _t/_hp are the spam guard's
+      if (k === 'source' || k.startsWith('_')) continue;
+      if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') {
+        const value = String(v).trim();
+        if (value && value !== 'Not provided') fields[fieldLabel(k)] = value;
+      }
+    }
+    beaconForm(BEACON_FORM_NAMES[formName] ?? fieldLabel(formName), fields);
+  } catch {
+    /* never let analytics break a lead */
+  }
 }

@@ -94,6 +94,10 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 mt-8">
           <p className="text-gray-400 text-sm text-center">
             Vinayak Technoplast © {new Date().getFullYear()}. All rights reserved. ·{' '}
+            <Link href="/blog" className="hover:text-amber-500 transition-colors">
+              Blog
+            </Link>{' '}
+            ·{' '}
             <Link href="/privacy" className="hover:text-amber-500 transition-colors">
               Privacy policy
             </Link>{' '}

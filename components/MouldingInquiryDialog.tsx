@@ -115,7 +115,7 @@ export default function MouldingInquiryDialog({
               <p className="text-gray-600 text-sm">{subtitle}</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4" data-beacon-ignore>
               <Honeypot value={honeypot} onChange={setHoneypot} />
               {submitStatus && submitStatus.type === 'error' && (
                 <div className="p-3 rounded-xl bg-red-50 text-red-800 border border-red-200 text-sm">

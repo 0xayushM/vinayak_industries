@@ -17,6 +17,8 @@ export default function Navigation({ solidAfter }: { solidAfter?: number } = {})
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const isActive = (href: string) => pathname === href || (href !== '/' && pathname.startsWith(`${href}/`));
+
   const navLinks = [
     { href: "/about", label: "About Us" },
     { href: "/offerings", label: "Offerings" },
@@ -25,6 +27,7 @@ export default function Navigation({ solidAfter }: { solidAfter?: number } = {})
     { href: "/moulding", label: "Moulds" },
     { href: "/ev", label: "EV" },
     { href: "/media", label: "Media" },
+    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -70,7 +73,7 @@ export default function Navigation({ solidAfter }: { solidAfter?: number } = {})
           />
         </Link>
 
-        {/* Desktop Menu — below xl the 8 links + 2 buttons no longer fit, so we
+        {/* Desktop Menu — below xl the 9 links + 2 buttons no longer fit, so we
             fall back to the hamburger rather than letting labels wrap. */}
         <div className="hidden xl:flex items-center gap-4 2xl:gap-7">
           {navLinks.map((link) => (
@@ -78,7 +81,7 @@ export default function Navigation({ solidAfter }: { solidAfter?: number } = {})
               key={link.href}
               href={link.href}
               className={`text-sm 2xl:text-base font-bold whitespace-nowrap transition-colors relative ${
-                pathname === link.href
+                isActive(link.href)
                   ? "text-amber-500"
                   : isScrolled
                     ? "text-gray-800 hover:text-amber-500"
@@ -86,7 +89,7 @@ export default function Navigation({ solidAfter }: { solidAfter?: number } = {})
               }`}
             >
               {link.label}
-              {pathname === link.href && (
+              {isActive(link.href) && (
                 <span className="absolute -bottom-[18px] 2xl:-bottom-[21px] left-0 right-0 h-0.5 bg-amber-500"></span>
               )}
             </Link>
@@ -145,7 +148,7 @@ export default function Navigation({ solidAfter }: { solidAfter?: number } = {})
               href={link.href}
               onClick={closeMenu}
               className={`block py-2 font-medium transition-colors ${
-                pathname === link.href
+                isActive(link.href)
                   ? "text-amber-500"
                   : "text-gray-800 hover:text-amber-500"
               }`}
