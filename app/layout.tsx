@@ -6,9 +6,12 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import MobileQuoteButton from "@/components/MobileQuoteButton";
 import Script from "next/script";
 import ConsentAndTags from "@/components/ConsentAndTags";
+import { BeaconScript } from "@beacon/next";
 
 // Set NEXT_PUBLIC_GTM_ID (e.g. GTM-XXXXXXX) in Vercel to switch on Google Tag Manager.
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// Set NEXT_PUBLIC_BEACON_SITE_KEY (bk_…) to switch on the Beacon tracker.
+const BEACON_SITE_KEY = process.env.NEXT_PUBLIC_BEACON_SITE_KEY;
 
 const korto = localFont({
   src: "../public/fonts/Korto.ttf",
@@ -90,6 +93,8 @@ export default function RootLayout({
         <MobileQuoteButton />
         <WhatsAppButton />
         <ConsentAndTags />
+        {/* Beacon is cookieless (nothing stored on the visitor's device), so it runs outside the consent gate */}
+        {BEACON_SITE_KEY && <BeaconScript siteKey={BEACON_SITE_KEY} />}
       </body>
     </html>
   );

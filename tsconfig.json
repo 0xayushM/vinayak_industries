@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@beacon/next": ["./lib/beacon/index.tsx"],
+      "@beacon/next/*": ["./lib/beacon/*"]
     }
   },
   "include": [
