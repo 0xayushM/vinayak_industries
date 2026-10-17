@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import VisitorTracker from "@/components/VisitorTracker";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ElevenLabsChat from "@/components/ElevenLabsChat";
 import MobileQuoteButton from "@/components/MobileQuoteButton";
 import Script from "next/script";
 import ConsentAndTags from "@/components/ConsentAndTags";
@@ -93,6 +94,7 @@ export default function RootLayout({
         {children}
         <MobileQuoteButton />
         <WhatsAppButton />
+        <ElevenLabsChat />
         <ConsentAndTags />
         {/* Beacon is cookieless (nothing stored on the visitor's device), so it runs outside the consent gate */}
         {BEACON_SITE_KEY && <BeaconScript siteKey={BEACON_SITE_KEY} />}
