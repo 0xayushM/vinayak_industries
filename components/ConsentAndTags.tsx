@@ -23,7 +23,7 @@ function loadMarketingTags() {
   apollo.defer = true;
   apollo.onload = () => {
     (window as unknown as { trackingFunctions?: { onLoad: (o: { appId: string }) => void } }).trackingFunctions?.onLoad({
-      appId: '69c2849cd2c4040015ed6ff6',
+      appId: '6ac0c850a6423d001409bb9a',
     });
   };
   document.head.appendChild(apollo);
