@@ -16,20 +16,24 @@ const TEASER_SEEN_KEY = 'vt_chat_teaser_seen';
 const TEASER_BLOCKERS = '.fixed.inset-0, dialog[open], [aria-label="Cookie and tracking consent"]';
 
 /*
- * The widget's own launcher bar is hidden; our robot button beside the WhatsApp bubble opens the chat window instead.
- * The window sits 12px above the two buttons (bubble: fixed bottom-5 right-5, 56px / 64px on md+), right edge
- * aligned with the bubble. Fullscreen mode (phones, after "Expand") keeps the widget's own layout.
+ * The widget's own launcher bar is hidden; our button beside the WhatsApp bubble opens the chat window instead.
+ * The window sits 12px above the two buttons, right edge aligned with the bubble
+ * (bubble: 48px at bottom-4 right-4 on phones, 64px at bottom-5 right-5 on md+).
+ * Fullscreen mode (phones, after "Expand") keeps the widget's own layout.
  */
 const WIDGET_CSS = `
 .rounded-compact-sheet { display: none !important; }
 :host(:not([data-open])) .overlay > p { display: none; }
 .overlay:not(:has([data-variant=fullscreen])) {
-  bottom: 88px;
-  right: calc(20px + var(--removed-body-scroll-bar-size, 0px));
+  bottom: 76px;
+  right: calc(16px + var(--removed-body-scroll-bar-size, 0px));
 }
 .overlay:not(:has([data-variant=fullscreen])) .sheet { bottom: 0; }
 @media (min-width: 768px) {
-  .overlay:not(:has([data-variant=fullscreen])) { bottom: 96px; }
+  .overlay:not(:has([data-variant=fullscreen])) {
+    bottom: 96px;
+    right: calc(20px + var(--removed-body-scroll-bar-size, 0px));
+  }
 }
 `;
 
@@ -74,7 +78,7 @@ function markTeaserSeen() {
 const expandWidget = (action: 'expand' | 'toggle') =>
   document.dispatchEvent(new CustomEvent('elevenlabs-agent:expand', { detail: { action } }));
 
-/** ElevenLabs voice/text agent, launched from a robot button to the left of the WhatsApp bubble. */
+/** ElevenLabs voice/text agent, launched from a logo button to the left of the WhatsApp bubble. */
 export default function ElevenLabsChat() {
   const ref = useRef<HTMLElement>(null);
   const calm = useReducedMotion();
@@ -148,12 +152,12 @@ export default function ElevenLabsChat() {
       <elevenlabs-convai ref={ref} agent-id={AGENT_ID} avatar-image-url={AVATAR} placement="bottom-right" />
       <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" strategy="afterInteractive" />
 
-      {/* Sits above the robot button, its tail pointing at the button's centre (28px / 32px in from its right edge) */}
+      {/* Sits above the chat button, its tail pointing at the button's centre (24px / 32px in from its right edge) */}
       <AnimatePresence>
         {showTeaser && (
           <motion.div
             role="status"
-            className="fixed bottom-[5.5rem] right-[5.5rem] z-50 w-64 md:bottom-24 md:right-24 [body[data-quote-form]_&]:max-md:hidden"
+            className="fixed bottom-[4.75rem] right-[4.5rem] z-50 w-64 md:bottom-24 md:right-24 [body[data-quote-form]_&]:max-md:hidden"
             initial={calm ? false : { opacity: 0, y: 12, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={calm ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.95 }}
@@ -183,7 +187,7 @@ export default function ElevenLabsChat() {
             </button>
             <span
               aria-hidden="true"
-              className="absolute -bottom-1.5 right-[22px] h-3 w-3 rotate-45 bg-gray-900 shadow-[1px_1px_0_0_rgb(245_158_11/0.6)] md:right-[26px]"
+              className="absolute -bottom-1.5 right-[18px] h-3 w-3 rotate-45 bg-gray-900 shadow-[1px_1px_0_0_rgb(245_158_11/0.6)] md:right-[26px]"
             />
           </motion.div>
         )}
@@ -196,22 +200,15 @@ export default function ElevenLabsChat() {
           onClick={() => expandWidget('toggle')}
           aria-label={open ? 'Close chat assistant' : 'Chat with our AI assistant'}
           aria-expanded={open}
-          // Dark with an amber ring and robot: reads on white sections, the dark hero/footer and the amber footer band
-          className="fixed bottom-5 right-[5.5rem] z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gray-900 text-amber-500 shadow-lg shadow-black/40 ring-2 ring-amber-500 transition-transform duration-200 hover:scale-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-300 md:right-24 md:h-16 md:w-16 [body[data-quote-form]_&]:max-md:hidden"
+          // Dark with an amber ring and logo: reads on white sections, the dark hero/footer and the amber footer band.
+          // Phones: 48px, 8px left of the WhatsApp bubble; md+: 64px, 12px left of it
+          className="fixed bottom-4 right-[4.5rem] z-50 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-gray-900 text-amber-500 shadow-lg shadow-black/40 ring-2 ring-amber-500 transition-transform duration-200 hover:scale-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-300 md:bottom-5 md:right-24 md:h-16 md:w-16 [body[data-quote-form]_&]:max-md:hidden"
         >
           {open ? (
-            <X className="h-7 w-7 md:h-8 md:w-8" strokeWidth={2.5} aria-hidden="true" />
+            <X className="h-6 w-6 md:h-8 md:w-8" strokeWidth={2.5} aria-hidden="true" />
           ) : (
-            <svg viewBox="0 0 64 64" className="h-11 w-11 md:h-12 md:w-12" aria-hidden="true">
-              <line x1="32" y1="12" x2="32" y2="20" stroke="#f59e0b" strokeWidth="3" strokeLinecap="round" />
-              <circle cx="32" cy="10" r="4" fill="#fff" />
-              <rect x="9" y="31" width="5" height="12" rx="2.5" fill="#f59e0b" />
-              <rect x="50" y="31" width="5" height="12" rx="2.5" fill="#f59e0b" />
-              <rect x="13" y="20" width="38" height="32" rx="11" fill="#f59e0b" />
-              <circle cx="24.5" cy="33" r="4.5" fill="#111827" />
-              <circle cx="39.5" cy="33" r="4.5" fill="#111827" />
-              <path d="M25 42q7 5 14 0" fill="none" stroke="#111827" strokeWidth="3" strokeLinecap="round" />
-            </svg>
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={AVATAR} alt="" className="h-full w-full" />
           )}
         </button>
       )}
