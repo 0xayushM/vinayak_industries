@@ -2,10 +2,18 @@
 
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { X } from 'lucide-react';
 
 const AGENT_ID = 'agent_2701m4wcmkc7e478026a314fkr8v';
 const AVATAR = '/chatbot-avatar.svg';
+
+// "Hey there!" bubble: once per browser session, after this long on the site, for this long
+const TEASER_AFTER_MS = 4500;
+const TEASER_FOR_MS = 15000;
+const TEASER_SEEN_KEY = 'vt_chat_teaser_seen';
+// Overlays the bubble waits behind: the download / inquiry popups, the quote form's call-back dialog, the cookie banner
+const TEASER_BLOCKERS = '.fixed.inset-0, dialog[open], [aria-label="Cookie and tracking consent"]';
 
 /*
  * The widget's own launcher bar is hidden; our robot button beside the WhatsApp bubble opens the chat window instead.
@@ -38,11 +46,42 @@ declare module 'react' {
   }
 }
 
+// The home page opens its download popup 5s in, once per session (app/page.tsx); the bubble goes after it, not before
+function downloadPopupPending() {
+  try {
+    return window.location.pathname === '/' && window.sessionStorage.getItem('hasSeenDownloadPopup') !== 'true';
+  } catch {
+    return false;
+  }
+}
+
+function teaserSeen() {
+  try {
+    return window.sessionStorage.getItem(TEASER_SEEN_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function markTeaserSeen() {
+  try {
+    window.sessionStorage.setItem(TEASER_SEEN_KEY, '1');
+  } catch {
+    /* storage blocked: the bubble may show again on the next page load */
+  }
+}
+
+const expandWidget = (action: 'expand' | 'toggle') =>
+  document.dispatchEvent(new CustomEvent('elevenlabs-agent:expand', { detail: { action } }));
+
 /** ElevenLabs voice/text agent, launched from a robot button to the left of the WhatsApp bubble. */
 export default function ElevenLabsChat() {
   const ref = useRef<HTMLElement>(null);
+  const calm = useReducedMotion();
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
+  const [teaser, setTeaser] = useState(false);
+  const [teaserDone, setTeaserDone] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -61,6 +100,7 @@ export default function ElevenLabsChat() {
         const isOpen = !!root.querySelector('.sheet');
         host.toggleAttribute('data-open', isOpen);
         setOpen(isOpen);
+        if (isOpen) setTeaserDone(true);
       };
       observer = new MutationObserver(sync);
       observer.observe(root, { childList: true, subtree: true });
@@ -73,18 +113,87 @@ export default function ElevenLabsChat() {
     };
   }, []);
 
-  const toggle = () =>
-    document.dispatchEvent(new CustomEvent('elevenlabs-agent:expand', { detail: { action: 'toggle' } }));
+  // Shows the bubble once the visitor has been here a few seconds and nothing else is covering the page;
+  // it steps aside while a popup or the cookie banner is up and needs 1s of clear screen to (re)appear
+  useEffect(() => {
+    if (!ready || teaserDone) return;
+    if (teaserSeen()) {
+      setTeaserDone(true);
+      return;
+    }
+    let clearFor = 0;
+    let shownFor = 0;
+    const tick = 500;
+    const id = window.setInterval(() => {
+      if (performance.now() < TEASER_AFTER_MS) return;
+      if (document.querySelector(TEASER_BLOCKERS) || downloadPopupPending()) {
+        clearFor = 0;
+        setTeaser(false);
+        return;
+      }
+      clearFor += tick;
+      if (clearFor < 1000) return;
+      if (shownFor === 0) markTeaserSeen();
+      setTeaser(true);
+      shownFor += tick;
+      if (shownFor >= TEASER_FOR_MS) setTeaserDone(true);
+    }, tick);
+    return () => window.clearInterval(id);
+  }, [ready, teaserDone]);
+
+  const showTeaser = teaser && !teaserDone && !open;
 
   return (
     <>
       <elevenlabs-convai ref={ref} agent-id={AGENT_ID} avatar-image-url={AVATAR} placement="bottom-right" />
       <Script src="https://unpkg.com/@elevenlabs/convai-widget-embed" strategy="afterInteractive" />
+
+      {/* Sits above the robot button, its tail pointing at the button's centre (28px / 32px in from its right edge) */}
+      <AnimatePresence>
+        {showTeaser && (
+          <motion.div
+            role="status"
+            className="fixed bottom-[5.5rem] right-[5.5rem] z-50 w-64 md:bottom-24 md:right-24 [body[data-quote-form]_&]:max-md:hidden"
+            initial={calm ? false : { opacity: 0, y: 12, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={calm ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.95 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            style={{ transformOrigin: 'bottom right' }}
+          >
+            <button
+              type="button"
+              onClick={() => {
+                setTeaserDone(true);
+                expandWidget('expand');
+              }}
+              className="block w-full rounded-2xl bg-gray-900 p-4 pr-10 text-left shadow-xl shadow-black/40 ring-1 ring-amber-500/60 transition-colors hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+            >
+              <span className="block text-base font-semibold text-amber-400">Hey there! 👋</span>
+              <span className="mt-1 block text-sm leading-snug text-gray-200">
+                Got a moulding question? Chat or talk to us.
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setTeaserDone(true)}
+              aria-label="Dismiss"
+              className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+            >
+              <X className="h-4 w-4" aria-hidden="true" />
+            </button>
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-1.5 right-[22px] h-3 w-3 rotate-45 bg-gray-900 shadow-[1px_1px_0_0_rgb(245_158_11/0.6)] md:right-[26px]"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Hidden on phones while the quote form's bottom bar is up: it only leaves room for WhatsApp */}
       {ready && (
         <button
           type="button"
-          onClick={toggle}
+          onClick={() => expandWidget('toggle')}
           aria-label={open ? 'Close chat assistant' : 'Chat with our AI assistant'}
           aria-expanded={open}
           // Dark with an amber ring and robot: reads on white sections, the dark hero/footer and the amber footer band
