@@ -8,6 +8,9 @@ import MobileQuoteButton from "@/components/MobileQuoteButton";
 import Script from "next/script";
 import ConsentAndTags from "@/components/ConsentAndTags";
 import { BeaconScript } from "@beacon/next";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/blog";
+import { organizationNode, websiteNode } from "@/lib/seo";
 
 // Set NEXT_PUBLIC_GTM_ID (e.g. GTM-XXXXXXX) in Vercel to switch on Google Tag Manager.
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
@@ -28,6 +31,7 @@ const osiris = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Vinayak Technoplast - Leading Plastic Injection Molding Manufacturer",
   description: "Tier-1 injection molding facility catering to Automotive, Pharma, Kitchenware, and Electrical giants. ISO 9001:2015 certified manufacturer in New Delhi, India.",
   icons: {
@@ -45,14 +49,14 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/logo/logo.png",
-        width: 1200,
-        height: 630,
+        width: 265,
+        height: 182,
         alt: "Vinayak Technoplast Logo",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Vinayak Technoplast - Leading Plastic Injection Molding Manufacturer",
     description: "Tier-1 injection molding facility catering to Automotive, Pharma, Kitchenware, and Electrical giants. ISO 9001:2015 certified manufacturer in New Delhi, India.",
     images: ["/logo/logo.png"],
@@ -90,6 +94,8 @@ export default function RootLayout({
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
           </Script>
         )}
+        {/* Who we are, on every page; each route's layout adds its own page and breadcrumb nodes */}
+        <JsonLd nodes={[organizationNode(), websiteNode()]} />
         <VisitorTracker />
         {children}
         <MobileQuoteButton />

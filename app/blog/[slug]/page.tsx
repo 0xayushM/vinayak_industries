@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar, ChevronDown, Clock } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { BLOG_PATH, canonicalFor, formatDate, getPost, readingMinutes } from '@/lib/blog';
@@ -44,7 +44,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     <div className="min-h-full bg-white">
       <Navigation />
 
-      <section className="h-[60vh] min-h-[420px] relative overflow-hidden flex items-end z-0">
+      {/* Grows downward with long titles; the top padding keeps the title clear of the fixed navbar */}
+      <section className="min-h-[60vh] relative overflow-hidden flex items-end z-0 pt-32 lg:pt-40">
         <div className="absolute inset-0 z-0">
           {post.cover ? (
             // eslint-disable-next-line @next/next/no-img-element -- Beacon serves short-lived signed image links
@@ -54,11 +55,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/60 to-gray-900/30" />
         </div>
-        <div className="max-w-3xl mx-auto relative z-10 w-full px-(--spacing-gutter) pb-12">
+        <div className="max-w-5xl mx-auto relative z-10 w-full px-(--spacing-gutter) pb-12">
           <Link href={BLOG_PATH} className="mb-5 inline-flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-amber-400">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> All posts
           </Link>
-          <h1 className="text-display font-bold text-white leading-tight font-[family-name:var(--font-carbon)]">{post.title}</h1>
+          <h1 className="text-heading font-bold text-white leading-tight font-[family-name:var(--font-carbon)]">{post.title}</h1>
           <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/80">
             {post.author ? <span>{post.author}</span> : null}
             {post.publishedAt ? (
@@ -75,9 +76,30 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
       </section>
 
-      <main className="max-w-3xl mx-auto px-(--spacing-gutter) py-(--spacing-section-sm)">
+      <main className="max-w-5xl mx-auto px-(--spacing-gutter) py-(--spacing-section-sm)">
         {/* Beacon sanitises the HTML before it leaves Beacon. */}
         <article className="beacon-prose" dangerouslySetInnerHTML={{ __html: post.html ?? '' }} />
+
+        {/* The questions Beacon also sends as FAQPage JSON-LD; search engines want them visible on the page too. */}
+        {post.faq?.length ? (
+          <section aria-labelledby="faq-heading" className="mt-14 border-t border-gray-200 pt-10">
+            <h2 id="faq-heading" className="text-title font-bold text-gray-900 font-[family-name:var(--font-carbon)]">
+              Frequently asked <span className="text-amber-500">questions</span>
+            </h2>
+            {/* Native <details>: works without JavaScript, and the answers stay in the HTML for crawlers */}
+            <div className="mt-6 divide-y divide-gray-200 border-y border-gray-200">
+              {post.faq.map((f) => (
+                <details key={f.q} className="group">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-lead font-semibold text-gray-900 hover:text-amber-600 [&::-webkit-details-marker]:hidden">
+                    {f.q}
+                    <ChevronDown className="h-5 w-5 shrink-0 text-amber-500 transition-transform group-open:rotate-180" aria-hidden="true" />
+                  </summary>
+                  <p className="pb-6 whitespace-pre-line leading-relaxed text-gray-700">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {post.tags.length ? (
           <div className="mt-10 flex flex-wrap gap-2">

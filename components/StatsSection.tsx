@@ -46,9 +46,9 @@ export default function StatsSection() {
     },
     {
       title: "Toolroom Lead Time",
-      number: "4-6",
+      number: "2-4",
       unit: "Weeks",
-      description: "Our in-house toolroom delivers rapid mold development in just 4-6 weeks, significantly faster than industry standards, helping you get to market quickly."
+      description: "Our in-house toolroom delivers rapid mold development in just 2-4 weeks, significantly faster than industry standards, helping you get to market quickly."
     },
     {
       title: "Faster Tooling",

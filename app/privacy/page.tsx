@@ -3,11 +3,13 @@ import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import CookieSettingsButton from '@/components/CookieSettingsButton';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/privacy',
   title: 'Privacy Policy | Vinayak Technoplast',
   description: 'How Vinayak Technoplast collects, uses and protects information shared through vinayaktechnoplast.com.',
-};
+});
 
 const sections: { h: string; p: string[] }[] = [
   {

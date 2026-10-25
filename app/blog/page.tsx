@@ -5,16 +5,26 @@ import { ArrowRight, ArrowUpRight, Calendar } from 'lucide-react';
 import linkedinData from '@/data/blogs.json';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { BLOG_PATH, SITE_URL, formatDate, listPosts, postPath } from '@/lib/blog';
+import JsonLd from '@/components/JsonLd';
+import { BLOG_PATH, SITE_URL, canonicalFor, formatDate, listPosts, postPath } from '@/lib/blog';
+import { ORG_ID, pageMetadata, pageNodes } from '@/lib/seo';
 
 // Beacon refreshes these pages the moment a post is published (app/api/beacon/revalidate);
 // otherwise they are rebuilt at most every 5 minutes.
 export const revalidate = 300;
 
-export const metadata: Metadata = {
+const PAGE = {
+  path: BLOG_PATH,
+  crumb: 'Blog',
   title: 'Blog | Vinayak Technoplast',
   description: 'Guides and insights on plastic injection moulding, mould making, materials and manufacturing for automotive, pharma, kitchenware and electrical products.',
-  alternates: { canonical: `${SITE_URL}${BLOG_PATH}`, types: { 'application/rss+xml': `${SITE_URL}${BLOG_PATH}/rss.xml` } },
+};
+
+const pageMeta = pageMetadata(PAGE);
+
+export const metadata: Metadata = {
+  ...pageMeta,
+  alternates: { ...pageMeta.alternates, types: { 'application/rss+xml': `${SITE_URL}${BLOG_PATH}/rss.xml` } },
 };
 
 // Earlier posts published on LinkedIn (data/blogs.json); new posts are written and approved in Beacon.
@@ -142,6 +152,19 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
         ) : null}
       </main>
 
+      <JsonLd
+        nodes={[
+          ...pageNodes(PAGE, 'CollectionPage', { mainEntity: { '@id': `${SITE_URL}${BLOG_PATH}#blog` } }),
+          {
+            '@type': 'Blog',
+            '@id': `${SITE_URL}${BLOG_PATH}#blog`,
+            name: 'Vinayak Technoplast Blog',
+            url: `${SITE_URL}${BLOG_PATH}`,
+            publisher: { '@id': ORG_ID },
+            blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: canonicalFor(p), datePublished: p.publishedAt ?? undefined })),
+          },
+        ]}
+      />
       <Footer />
     </div>
   );

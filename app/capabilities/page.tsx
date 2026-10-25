@@ -131,7 +131,7 @@ export default function CapabilitiesPage() {
                       <h3 className="text-subtitle font-bold text-gray-900 mb-4">VMC HAAS VF3</h3>
                       <ul className="space-y-3 text-gray-600">
                         <li>• Capacity of Developing <span className="font-semibold text-amber-500">200 Moulds Per Annum</span> (Hot runner/Hot sprue/Three plate, Two plate, Cold Runner)</li>
-                        <li>• Average Lead Time of <span className="font-semibold text-amber-500">4-6 Weeks</span> & Maintenance of Over 50 Moulds</li>
+                        <li>• Average Lead Time of <span className="font-semibold text-amber-500">2-4 Weeks</span> & Maintenance of Over 50 Moulds</li>
                       </ul>
                       <button className="mt-6 bg-amber-500 text-white px-4 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium hover:bg-amber-600 transition-colors">
                         Send Enquiry

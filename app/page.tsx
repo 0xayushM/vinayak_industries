@@ -1,5 +1,4 @@
-'use client';
-
+import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -9,27 +8,19 @@ import OfferingsSection from "@/components/OfferingsSection";
 import ProductLineSection from "@/components/ProductLineSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import DownloadDialog from "@/components/DownloadDialog";
-import { useState, useEffect } from "react";
+import HomeDownloadPrompt from "@/components/HomeDownloadPrompt";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata, pageNodes } from "@/lib/seo";
+
+const PAGE = {
+  path: '/',
+  title: 'Vinayak Technoplast - Plastic Injection Moulding Manufacturer in New Delhi',
+  description: 'ISO 9001:2015 certified plastic injection moulding manufacturer in New Delhi. In-house mould making, 30+ machines from 60 to 850 tonnes and complete assembly for automotive, EV, pharma, kitchenware and electrical OEMs.',
+};
+
+export const metadata: Metadata = pageMetadata(PAGE);
 
 export default function Home() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [hasShownPopup, setHasShownPopup] = useState(false);
-
-  useEffect(() => {
-    const hasSeenPopup = sessionStorage.getItem('hasSeenDownloadPopup');
-    
-    if (!hasSeenPopup && !hasShownPopup) {
-      const timer = setTimeout(() => {
-        setIsDialogOpen(true);
-        setHasShownPopup(true);
-        sessionStorage.setItem('hasSeenDownloadPopup', 'true');
-      }, 5000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [hasShownPopup]);
-
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -42,8 +33,9 @@ export default function Home() {
       {/* <BlogSection /> */}
       <CTASection />
       <Footer />
-      
-      <DownloadDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} />
+
+      <HomeDownloadPrompt />
+      <JsonLd nodes={pageNodes(PAGE)} />
     </div>
   );
 }

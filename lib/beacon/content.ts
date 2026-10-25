@@ -31,6 +31,8 @@ export type BeaconPost = {
   meta: { title: string; description: string; canonical: string; noindex: boolean };
   /** JSON-LD blocks to render in <script type="application/ld+json"> (posts only) */
   jsonLd?: Record<string, unknown>[];
+  /** the post's questions and answers, to show under the post (also in jsonLd as FAQPage; posts only) */
+  faq?: Array<{ q: string; a: string }>;
   url: string;
 };
 
