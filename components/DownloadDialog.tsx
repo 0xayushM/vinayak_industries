@@ -5,6 +5,9 @@ import { X, Download, FileText } from 'lucide-react';
 import { guardedPost, primeFormGuard, submitLead, trackEvent } from '@/lib/tracking';
 import Honeypot from '@/components/Honeypot';
 
+/** Date of the current public/Vinayak_Profile.pdf (the deck replaced in October 2026). */
+const PROFILE_VERSION = '2026-10';
+
 interface DownloadDialogProps {
   isOpen: boolean;
   onClose: () => void;
@@ -71,8 +74,10 @@ export default function DownloadDialog({ isOpen, onClose }: DownloadDialogProps)
   const handleDownload = () => {
     trackEvent('deck_download');
     const link = document.createElement('a');
-    link.href = '/Vinayak_Profile.pdf';
-    link.download = 'Vinayak_Technoplast_Company_Profile.pdf';
+    // Bump PROFILE_VERSION whenever public/Vinayak_Profile.pdf is replaced, so phones fetch and save the new deck
+    // instead of reopening a cached or earlier-downloaded copy under the same name.
+    link.href = `/Vinayak_Profile.pdf?v=${PROFILE_VERSION}`;
+    link.download = `Vinayak_Technoplast_Company_Profile_${PROFILE_VERSION}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
